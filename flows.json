@@ -622,7 +622,7 @@
         "in": [
             {
                 "x": 40,
-                "y": 120,
+                "y": 160,
                 "wires": [
                     {
                         "id": "15470b359beaf8ad"
@@ -655,7 +655,7 @@
         },
         "color": "#DDAA99",
         "status": {
-            "x": 500,
+            "x": 280,
             "y": 40,
             "wires": [
                 {
@@ -670,9 +670,29 @@
         "type": "subflow",
         "name": "update-flows",
         "info": "",
-        "category": "subflows",
-        "in": [],
-        "out": [],
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "3c55a724.a3cb38"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 860,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "5f5ec421.2a3948"
+                    }
+                ]
+            }
+        ],
         "env": [
             {
                 "name": "flowsPath",
@@ -682,10 +702,40 @@
         ],
         "meta": {},
         "color": "#DDAA99",
-        "icon": "/node-red/subflow.svg",
-        "status": {
-            "wires": []
-        }
+        "icon": "/node-red/subflow.svg"
+    },
+    {
+        "id": "3624ea24a7bdeaa4",
+        "type": "subflow",
+        "name": "node-red",
+        "info": "",
+        "category": "review prompt",
+        "in": [
+            {
+                "x": 40,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "76bd320aab4ecae2"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 320,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "76bd320aab4ecae2",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
     },
     {
         "id": "07ae0da70cee4ba6",
@@ -1171,7 +1221,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\nList the issues with each option, ranking each by severity.\nFocus on problems that may prevent it from running.\nAlso list what each option gets right, and which takes the overall best approach.\nFinally, provide a synthesized solution.",
+        "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity.\n1.1 Focus on problems that may prevent it from running.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.",
         "output": "str",
         "x": 130,
         "y": 280,
@@ -1708,7 +1758,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "",
         "scope": null,
-        "x": 380,
+        "x": 160,
         "y": 40,
         "wires": [
             []
@@ -1720,7 +1770,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "bundle prompt",
         "x": 180,
-        "y": 280,
+        "y": 320,
         "wires": [
             [
                 "8b97ebde3ffd9ecc"
@@ -1733,7 +1783,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "set format",
         "x": 170,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "4c1e24c203e0aef7"
@@ -1746,7 +1796,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "set persona",
         "x": 170,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "1a48d7a00270d882"
@@ -1759,7 +1809,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "wrap format",
         "x": 170,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "c24941818a42ca98"
@@ -1773,18 +1823,18 @@
         "name": "",
         "env": [
             {
-                "name": "bundle",
-                "value": "true",
-                "type": "bool"
-            },
-            {
                 "name": "num_copies",
                 "value": "num_copies",
                 "type": "env"
+            },
+            {
+                "name": "bundle",
+                "value": "true",
+                "type": "bool"
             }
         ],
         "x": 170,
-        "y": 320,
+        "y": 360,
         "wires": [
             [
                 "447868e0429fdc8c"
@@ -1826,7 +1876,7 @@
         "y": 360,
         "wires": [
             [
-                "7c19ea1ce7536ae0"
+                "86c1b1c593519bdf"
             ]
         ]
     },
@@ -1875,7 +1925,7 @@
         ],
         "uncaught": false,
         "x": 180,
-        "y": 40,
+        "y": 80,
         "wires": [
             [
                 "b34ce9b36761fd82"
@@ -1892,23 +1942,10 @@
         ],
         "uncaught": false,
         "x": 180,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "b34ce9b36761fd82"
-            ]
-        ]
-    },
-    {
-        "id": "7c19ea1ce7536ae0",
-        "type": "subflow:9f31d45ecb1d3482",
-        "z": "b53b3b7e24a3e4e7",
-        "name": "set node-red schema",
-        "x": 420,
-        "y": 400,
-        "wires": [
-            [
-                "86c1b1c593519bdf"
             ]
         ]
     },
@@ -2053,11 +2090,102 @@
         "to": "",
         "reg": false,
         "x": 170,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
                 "69c4727b24bef714"
             ]
+        ]
+    },
+    {
+        "id": "006a7cb1b7f3bec3",
+        "type": "comment",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "TODO: put this column inside smartcoder",
+        "info": "most of this right hand column should be refactored into \"smartcoder\" and be paramaterized.",
+        "x": 480,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "8f2d8697.6c50c8",
+        "type": "file in",
+        "z": "aefb8e4c.cf3b",
+        "name": "Read Flows",
+        "filename": "{{flowsPath}}",
+        "filenameType": "str",
+        "format": "parsed",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 390,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f81e2a75.fe8798",
+        "type": "function",
+        "z": "aefb8e4c.cf3b",
+        "name": "Insert Payload into Flows",
+        "func": "const flows = msg.payload;\nflows.push(...msg.payload);\n\nreturn { payload: flows };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 180,
+        "wires": [
+            []
+        ],
+        "icon": "/node-red/functions.png"
+    },
+    {
+        "id": "5f5ec421.2a3948",
+        "type": "file",
+        "z": "aefb8e4c.cf3b",
+        "name": "Write Flows",
+        "filename": "{{flowsPath}}",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 730,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c55a724.a3cb38",
+        "type": "subflow:aefb8e4c.cf3b",
+        "z": "aefb8e4c.cf3b",
+        "name": "",
+        "x": 270,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76bd320aab4ecae2",
+        "type": "template",
+        "z": "3624ea24a7bdeaa4",
+        "name": "node-red review",
+        "field": "review",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The answer to the following should be yes.\nDoes the wiring appear functional?\nDoes the wiring avoid circular routing?\nAre there any unreachable nodes?\nDoes it obey the JSON schema?\nAre subflows categorized appropriately?\n",
+        "output": "str",
+        "x": 180,
+        "y": 40,
+        "wires": [
+            []
         ]
     },
     {
@@ -2149,5 +2277,16 @@
         "x": 280,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "66d21a34e48433f1",
+        "type": "subflow:aefb8e4c.cf3b",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            []
+        ]
     }
 ]
