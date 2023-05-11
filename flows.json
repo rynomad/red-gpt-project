@@ -699,6 +699,45 @@
         "color": "#DDAA99"
     },
     {
+        "id": "8843d7f92416211de9ebb963ff4ce28125932878",
+        "type": "subflow",
+        "name": "Transform nodes into subflows",
+        "info": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "d0475e52f2f9d8e9"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 520,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "d0475e52f2f9d8e9",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99",
+        "inputLabels": [
+            "Node List"
+        ],
+        "outputLabels": [
+            "Subflows"
+        ],
+        "icon": "font-awesome/fa-random"
+    },
+    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -2151,6 +2190,23 @@
         ]
     },
     {
+        "id": "d0475e52f2f9d8e9",
+        "type": "function",
+        "z": "8843d7f92416211de9ebb963ff4ce28125932878",
+        "name": "transform nodes",
+        "func": "var subflows = msg.payload.reduce(function(acc, node) {if (node.type === \"subflow\") {acc[node.id] = { id: node.id, nodes: [node] };} else if (node.z && acc[node.z]) {acc[node.z].nodes.push(node);}return acc;}, {});var result = Object.values(subflows).map(function(subflow) {return {id: subflow.id,type: \"subflow\",nodes: JSON.parse(JSON.stringify(subflow.nodes))};});msg.payload = JSON.stringify(result);return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
@@ -2315,23 +2371,6 @@
         ]
     },
     {
-        "id": "25535191091fdf63",
-        "type": "file",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "filename": "",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 160,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "f4f6fa24ca217587",
         "type": "json",
         "z": "941765e8bb2c32d6",
@@ -2366,6 +2405,34 @@
                 "pt": "msg",
                 "to": "payload.test",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "turbo",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "temperature",
+                "pt": "msg",
+                "to": "0.5",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "language",
+                "pt": "msg",
+                "to": "javascript",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "task_id",
+                "pt": "msg",
+                "to": "payload.task_id",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -2395,7 +2462,180 @@
         "x": 490,
         "y": 280,
         "wires": [
-            []
+            [
+                "922590827a20da6a"
+            ]
+        ]
+    },
+    {
+        "id": "922590827a20da6a",
+        "type": "subflow:50df1246bdaf5119",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "62612d04c38cb1a4"
+            ]
+        ]
+    },
+    {
+        "id": "62612d04c38cb1a4",
+        "type": "function",
+        "z": "941765e8bb2c32d6",
+        "name": "test",
+        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    eval(msg.payload);\n    eval(msg.test);\n    msg.pass = 1;\n} catch (e) {\n    msg.pass = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "b8010df720742aef"
+            ]
+        ]
+    },
+    {
+        "id": "b8010df720742aef",
+        "type": "join",
+        "z": "941765e8bb2c32d6",
+        "name": "sum test passes",
+        "mode": "reduce",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "$A + pass",
+        "reduceInit": "0",
+        "reduceInitType": "num",
+        "reduceFixup": "$A/$N",
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "ea9b8dbb62d99247"
+            ]
+        ]
+    },
+    {
+        "id": "ea9b8dbb62d99247",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1f104ae03f736fc7",
+        "type": "subflow:8843d7f92416211de9ebb963ff4ce28125932878",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "3ab40e04649ddf45"
+            ]
+        ]
+    },
+    {
+        "id": "b433c835d854e271",
+        "type": "file in",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "filename": "flows.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 200,
+        "y": 460,
+        "wires": [
+            [
+                "3fb29f9dbf599fa0"
+            ]
+        ]
+    },
+    {
+        "id": "3fb29f9dbf599fa0",
+        "type": "json",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "1f104ae03f736fc7"
+            ]
+        ]
+    },
+    {
+        "id": "3ab40e04649ddf45",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 200,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "3fc0a9eb4623c177",
+        "type": "inject",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 420,
+        "wires": [
+            [
+                "b433c835d854e271"
+            ]
         ]
     }
 ]
