@@ -633,7 +633,7 @@
         "out": [
             {
                 "x": 300,
-                "y": 280,
+                "y": 320,
                 "wires": [
                     {
                         "id": "8b97ebde3ffd9ecc",
@@ -1671,6 +1671,23 @@
         ]
     },
     {
+        "id": "db1958de5469c482",
+        "type": "template",
+        "z": "50df1246bdaf5119",
+        "name": "node-red review",
+        "field": "review",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The answer to the following should be yes.\nDoes the wiring appear functional?\nDoes the wiring avoid circular routing?\nAre there any unreachable nodes?\nDoes it obey the JSON schema?\nAre subflows categorized appropriately?\n",
+        "output": "str",
+        "x": 80,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "bc9b2bca5d9d9220",
         "type": "function",
         "z": "b7d91a580a2c7c19",
@@ -2108,7 +2125,7 @@
         "y": 240,
         "wires": [
             [
-                "8b97ebde3ffd9ecc"
+                "69979c46ebfcda56"
             ]
         ]
     },
@@ -2143,7 +2160,7 @@
             }
         ],
         "x": 170,
-        "y": 280,
+        "y": 320,
         "wires": [
             []
         ]
@@ -2184,6 +2201,25 @@
         "x": 480,
         "y": 40,
         "wires": []
+    },
+    {
+        "id": "69979c46ebfcda56",
+        "type": "template",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "set review",
+        "field": "review",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The answer to the following should be yes.\nDoes the wiring appear functional?\nDoes the wiring avoid circular routing?\nAre there any unreachable nodes?\nDoes it obey the JSON schema?\nAre subflows categorized appropriately?\n",
+        "output": "str",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "8b97ebde3ffd9ecc"
+            ]
+        ]
     },
     {
         "id": "8f2d8697.6c50c8",
@@ -2296,7 +2332,7 @@
             }
         ],
         "x": 120,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "99b359093fa5ee99"
@@ -2333,7 +2369,7 @@
         "y": 120,
         "wires": [
             [
-                "c13f6114b4ebbbcc"
+                "a701ddb8190d147a"
             ]
         ]
     },
@@ -2346,10 +2382,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "plain",
-        "template": "I need a node-red subflow according to the following Specification:\n\nit should be configurable with a path to a flows.json file\n\nit should treat the input payload as an array of node red Nodes\n\nit should read flows.json, insert the msg payload, and write it back to the filesystem",
+        "template": "I need a node-red subflow according to the following Specification:\n\nit should set msg.test to be a function that takes a string\n\nmsg.test should parse the string and test it as a node-red importable flow\n\nit should throw errors with a descriptive message\n{{review}}",
         "output": "str",
         "x": 130,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "414ddee1287efb66"
@@ -2370,7 +2406,20 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 280,
-        "y": 200,
+        "y": 240,
         "wires": []
+    },
+    {
+        "id": "a701ddb8190d147a",
+        "type": "subflow:3624ea24a7bdeaa4",
+        "z": "941765e8bb2c32d6",
+        "name": "set node-red review",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "c13f6114b4ebbbcc"
+            ]
+        ]
     }
 ]
