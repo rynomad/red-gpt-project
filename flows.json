@@ -360,19 +360,16 @@
     {
         "id": "f8d5a5a4f2b87c52",
         "type": "subflow",
-        "name": "subflow",
+        "name": "flow",
         "info": "",
         "category": "parser",
         "in": [
             {
-                "x": 80,
-                "y": 420,
+                "x": 120,
+                "y": 340,
                 "wires": [
                     {
                         "id": "95f92e2896b1f816"
-                    },
-                    {
-                        "id": "77e60c255444c236"
                     }
                 ]
             }
@@ -380,10 +377,10 @@
         "out": [
             {
                 "x": 280,
-                "y": 600,
+                "y": 540,
                 "wires": [
                     {
-                        "id": "25e9760c313f1739",
+                        "id": "6f3eb41d26f826f2",
                         "port": 0
                     }
                 ]
@@ -485,8 +482,8 @@
         "category": "schema",
         "in": [
             {
-                "x": 50,
-                "y": 30,
+                "x": 80,
+                "y": 60,
                 "wires": [
                     {
                         "id": "63dba49296c3a9e4"
@@ -496,8 +493,8 @@
         ],
         "out": [
             {
-                "x": 500,
-                "y": 80,
+                "x": 440,
+                "y": 100,
                 "wires": [
                     {
                         "id": "cf072eee9e78f126",
@@ -1305,22 +1302,6 @@
         ]
     },
     {
-        "id": "77e60c255444c236",
-        "type": "debug",
-        "z": "f8d5a5a4f2b87c52",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 420,
-        "wires": []
-    },
-    {
         "id": "95f92e2896b1f816",
         "type": "subflow:b7d91a580a2c7c19",
         "z": "f8d5a5a4f2b87c52",
@@ -1328,35 +1309,15 @@
         "env": [
             {
                 "name": "blockTypes",
-                "value": "json",
+                "value": "json,javascript",
                 "type": "str"
             }
         ],
         "x": 320,
-        "y": 420,
+        "y": 340,
         "wires": [
             [
                 "869689982e74b4dc"
-            ]
-        ]
-    },
-    {
-        "id": "b638cbdff3ea7ed5",
-        "type": "subflow:a25be0e127fc9e24",
-        "z": "f8d5a5a4f2b87c52",
-        "name": "restore spliced history",
-        "env": [
-            {
-                "name": "key",
-                "value": "history",
-                "type": "str"
-            }
-        ],
-        "x": 320,
-        "y": 380,
-        "wires": [
-            [
-                "95f92e2896b1f816"
             ]
         ]
     },
@@ -1365,36 +1326,17 @@
         "type": "function",
         "z": "f8d5a5a4f2b87c52",
         "name": "get result",
-        "func": "const cached = msg.payload;\nmsg.payload = msg.payload\n                .filter(({type}) => type === 'json')\n\nif (!msg.payload.length) {\n    console.error('bad payload', cached)\n    throw new Error('no payload')\n}\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Replace callback function\n  function replacer(match) {\n    if (match === '\\\\') {\n      return '\\\\\\\\';\n    }\n    if (match === '\"') {\n      return '\\\\\"';\n    }\n    return match;\n  }\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nmsg.payload = msg.payload[0].content\n\nreturn msg;",
+        "func": "msg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 460,
+        "y": 380,
         "wires": [
             [
                 "b2728fc75e03f928"
-            ]
-        ]
-    },
-    {
-        "id": "ca8f33ee37a06e27",
-        "type": "function",
-        "z": "f8d5a5a4f2b87c52",
-        "name": "splice history",
-        "func": "\nconst stashedHistory = msg.stash.history[msg.stash.history.length - 1];\n\nstashedHistory[stashedHistory.length - 1] = msg.history.pop()\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 290,
-        "y": 340,
-        "wires": [
-            [
-                "b638cbdff3ea7ed5"
             ]
         ]
     },
@@ -1407,96 +1349,29 @@
         "action": "",
         "pretty": false,
         "x": 270,
-        "y": 540,
+        "y": 460,
         "wires": [
-            []
+            [
+                "6f3eb41d26f826f2"
+            ]
         ]
     },
     {
         "id": "2c5ea07fe592c94f",
         "type": "template",
         "z": "f8d5a5a4f2b87c52",
-        "name": "fix empty",
+        "name": "fix error",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "you didn't respond with a valid GFM codeblock.\n\nremember, it should look like:\n```json\n['your','json','here']\n```",
+        "template": "Your response was rejected for the following reason:\n\n{{error.message}}\n\nremember, you need to follow these formatting instructions:\n\n{{format}}",
         "output": "str",
-        "x": 360,
-        "y": 220,
+        "x": 280,
+        "y": 100,
         "wires": [
             [
-                "384314168ce8ee86"
-            ]
-        ]
-    },
-    {
-        "id": "a688491534987069",
-        "type": "template",
-        "z": "f8d5a5a4f2b87c52",
-        "name": "fix schema",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "your output failed to parse with the following error:\n\n{{{error.message}}}\n\n{{{format}}}\n\nplease provide a fixed output.",
-        "output": "str",
-        "x": 190,
-        "y": 220,
-        "wires": [
-            [
-                "384314168ce8ee86"
-            ]
-        ]
-    },
-    {
-        "id": "9dc4e0542924d838",
-        "type": "subflow:520a10812173e701",
-        "z": "f8d5a5a4f2b87c52",
-        "name": "stash history",
-        "env": [
-            {
-                "name": "key",
-                "value": "history",
-                "type": "str"
-            },
-            {
-                "name": "clear",
-                "value": "false",
-                "type": "bool"
-            }
-        ],
-        "x": 370,
-        "y": 180,
-        "wires": [
-            [
-                "2c5ea07fe592c94f"
-            ]
-        ]
-    },
-    {
-        "id": "e1d90703b7ce3a13",
-        "type": "subflow:520a10812173e701",
-        "z": "f8d5a5a4f2b87c52",
-        "name": "stash history",
-        "env": [
-            {
-                "name": "key",
-                "value": "history",
-                "type": "str"
-            },
-            {
-                "name": "clear",
-                "value": "false",
-                "type": "bool"
-            }
-        ],
-        "x": 190,
-        "y": 180,
-        "wires": [
-            [
-                "a688491534987069"
+                "90655d2d5bb817cc"
             ]
         ]
     },
@@ -1504,16 +1379,16 @@
         "id": "06989b788e021dca",
         "type": "catch",
         "z": "f8d5a5a4f2b87c52",
-        "name": "catch empty",
+        "name": "empty/multiple",
         "scope": [
             "869689982e74b4dc"
         ],
         "uncaught": false,
-        "x": 370,
-        "y": 140,
+        "x": 100,
+        "y": 80,
         "wires": [
             [
-                "9dc4e0542924d838"
+                "2c5ea07fe592c94f"
             ]
         ]
     },
@@ -1521,16 +1396,16 @@
         "id": "719bb2e65b5f411f",
         "type": "catch",
         "z": "f8d5a5a4f2b87c52",
-        "name": "catch schema",
+        "name": "schema failure",
         "scope": [
             "25e9760c313f1739"
         ],
         "uncaught": false,
-        "x": 190,
-        "y": 140,
+        "x": 100,
+        "y": 120,
         "wires": [
             [
-                "e1d90703b7ce3a13"
+                "2c5ea07fe592c94f"
             ]
         ]
     },
@@ -1538,9 +1413,9 @@
         "id": "b2728fc75e03f928",
         "type": "subflow:9f31d45ecb1d3482",
         "z": "f8d5a5a4f2b87c52",
-        "name": "",
-        "x": 280,
-        "y": 500,
+        "name": "set node-red schema",
+        "x": 320,
+        "y": 420,
         "wires": [
             [
                 "25e9760c313f1739"
@@ -1553,10 +1428,10 @@
         "z": "f8d5a5a4f2b87c52",
         "name": "",
         "x": 280,
-        "y": 300,
+        "y": 220,
         "wires": [
             [
-                "ca8f33ee37a06e27"
+                "bb659029013a4888"
             ]
         ]
     },
@@ -1564,7 +1439,7 @@
         "id": "384314168ce8ee86",
         "type": "change",
         "z": "f8d5a5a4f2b87c52",
-        "name": "",
+        "name": "temp 0.3",
         "rules": [
             {
                 "t": "set",
@@ -1579,12 +1454,85 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 320,
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "64d95ba33b6a42ce"
+            ]
+        ]
+    },
+    {
+        "id": "6f3eb41d26f826f2",
+        "type": "change",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "clear schema",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "schema",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "schemaString",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "912fae5cd133c953",
+        "type": "subflow:d295481a52b8fd83",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "95f92e2896b1f816"
+            ]
+        ]
+    },
+    {
+        "id": "90655d2d5bb817cc",
+        "type": "subflow:520a10812173e701",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "stash temp",
+        "x": 290,
+        "y": 140,
+        "wires": [
+            [
+                "384314168ce8ee86"
+            ]
+        ]
+    },
+    {
+        "id": "bb659029013a4888",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "restore temp",
+        "env": [
+            {
+                "name": "key",
+                "value": "temperature",
+                "type": "str"
+            }
+        ],
+        "x": 290,
         "y": 260,
         "wires": [
             [
-                "64d95ba33b6a42ce",
-                "77e60c255444c236"
+                "912fae5cd133c953"
             ]
         ]
     },
@@ -1660,7 +1608,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 320,
+        "x": 260,
         "y": 100,
         "wires": [
             []
@@ -1951,7 +1899,7 @@
         "type": "subflow:f8d5a5a4f2b87c52",
         "z": "941765e8bb2c32d6",
         "name": "flow validation",
-        "x": 220,
+        "x": 240,
         "y": 380,
         "wires": [
             [
