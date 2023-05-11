@@ -115,7 +115,7 @@
         ],
         "out": [
             {
-                "x": 580,
+                "x": 340,
                 "y": 160,
                 "wires": [
                     {
@@ -702,7 +702,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
+        "x": 210,
         "y": 160,
         "wires": [
             []
@@ -774,7 +774,7 @@
         "id": "11a66484df90d49b",
         "type": "debug",
         "z": "237429fb2a5a7712",
-        "name": "debug console",
+        "name": "debug gpt input",
         "active": true,
         "tosidebar": false,
         "console": true,
@@ -791,7 +791,7 @@
         "id": "d7e95670637a4f94",
         "type": "debug",
         "z": "237429fb2a5a7712",
-        "name": "debug console",
+        "name": "debug gpt output",
         "active": true,
         "tosidebar": false,
         "console": true,
@@ -800,8 +800,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 300,
+        "x": 590,
+        "y": 400,
         "wires": []
     },
     {
