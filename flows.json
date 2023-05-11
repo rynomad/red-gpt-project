@@ -51,5 +51,19 @@
         "x": 280,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "e77075219f84bea1",
+        "type": "chatgpt",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "Organization": "",
+        "topic": "",
+        "BaseUrl": "https://api.openai.com",
+        "x": 400,
+        "y": 320,
+        "wires": [
+            []
+        ]
     }
 ]
