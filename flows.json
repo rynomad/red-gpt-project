@@ -617,7 +617,7 @@
         "in": [
             {
                 "x": 80,
-                "y": 80,
+                "y": 120,
                 "wires": [
                     {
                         "id": "69c4727b24bef714"
@@ -627,7 +627,7 @@
         ],
         "out": [
             {
-                "x": 560,
+                "x": 420,
                 "y": 280,
                 "wires": [
                     {
@@ -637,14 +637,20 @@
                 ]
             }
         ],
-        "env": [],
+        "env": [
+            {
+                "name": "num_copies",
+                "type": "str",
+                "value": "3"
+            }
+        ],
         "meta": {
             "module": "gpt-subflows",
             "version": "0.0.1"
         },
         "color": "#DDAA99",
         "status": {
-            "x": 560,
+            "x": 420,
             "y": 80,
             "wires": [
                 {
@@ -1697,8 +1703,8 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "",
         "scope": null,
-        "x": 500,
-        "y": 20,
+        "x": 220,
+        "y": 80,
         "wires": [
             []
         ]
@@ -1708,7 +1714,7 @@
         "type": "subflow:f16c08b0c74d892d",
         "z": "b53b3b7e24a3e4e7",
         "name": "bundle prompt",
-        "x": 340,
+        "x": 240,
         "y": 240,
         "wires": [
             [
@@ -1734,7 +1740,7 @@
         "type": "subflow:f6dd154f310aa615",
         "z": "b53b3b7e24a3e4e7",
         "name": "set persona to engineer",
-        "x": 310,
+        "x": 270,
         "y": 120,
         "wires": [
             [
@@ -1747,7 +1753,7 @@
         "type": "subflow:1254546b0e9fb57c",
         "z": "b53b3b7e24a3e4e7",
         "name": "wrap format instructions",
-        "x": 310,
+        "x": 270,
         "y": 200,
         "wires": [
             [
@@ -1768,11 +1774,11 @@
             },
             {
                 "name": "num_copies",
-                "value": "1",
-                "type": "num"
+                "value": "num_copies",
+                "type": "env"
             }
         ],
-        "x": 350,
+        "x": 230,
         "y": 280,
         "wires": [
             []
@@ -1884,7 +1890,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "plain",
-        "template": "I need a node-red subflow according to the following Specification:\n\nTechnical Specification for Subflow: Detect Changes in Subflow Versions\n\n**Input**:\n- `msg.payload`: The parsed JSON content of the flows.json file.\n\n**Output**:\n- `msg.updatedSubflows`: An array of subflow objects with detected changes.\n\n**Subflow Description**:\n\nThe purpose of this subflow is to detect changes in the semver of subflow definitions in a Node-RED flows.json file. It takes the parsed JSON content of the flows.json file as input and outputs an array of updated subflow objects.\n\n**Subflow Nodes**:\n\n1. `function` node (analyzeSubflows): This node will analyze the input subflows, comparing the current versions to the previously known versions.\n   - Input: `msg.payload`\n   - Process: Extract subflows and compare their semver to the last known versions stored in a \"context\" or \"flow\" variable. If a change is detected, store the updated subflow object in an array.\n   - Output: `msg.updatedSubflows`\n\n**Subflow Implementation**:\n\n1. Add a `function` node (analyzeSubflows) to the subflow workspace.\n2. Set the function node's properties as follows:\n   - Name: \"Analyze Subflows\"\n   - Function: (example JavaScript code)\n\n```javascript\nconst currentSubflows = msg.payload.filter(node => node.type.startsWith('subflow:'));\nconst updatedSubflows = [];\nconst lastKnownVersions = context.get('lastKnownVersions') || {};\n\ncurrentSubflows.forEach(subflow => {\n  const {id, type, version} = subflow;\n  const lastVersion = lastKnownVersions[id];\n\n  if (!lastVersion || lastVersion !== version) {\n    updatedSubflows.push(subflow);\n    lastKnownVersions[id] = version;\n  }\n});\n\ncontext.set('lastKnownVersions', lastKnownVersions);\nmsg.updatedSubflows = updatedSubflows;\n\nreturn msg;\n```\n\n3. Connect the input of the subflow to the input of the \"Analyze Subflows\" node.\n4. Connect the output of the \"Analyze Subflows\" node to the output of the subflow.\n",
+        "template": "I need a node-red subflow according to the following Specification:\n\nit should be configurable with a path to a flows.json file\n\nit should treat the input payload as an array of node red Nodes\n\nit should read flows.json, insert the msg payload, and write it back to the filesystem",
         "output": "str",
         "x": 230,
         "y": 280,
