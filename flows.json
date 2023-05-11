@@ -282,7 +282,7 @@
         "in": [
             {
                 "x": 40,
-                "y": 80,
+                "y": 160,
                 "wires": [
                     {
                         "id": "7cfc8986c5d0b0e2"
@@ -292,15 +292,11 @@
         ],
         "out": [
             {
-                "x": 720,
-                "y": 480,
+                "x": 500,
+                "y": 560,
                 "wires": [
                     {
-                        "id": "86c1b1c593519bdf",
-                        "port": 0
-                    },
-                    {
-                        "id": "393f19cb21285e5c",
+                        "id": "1eaa0d485c0ce940",
                         "port": 0
                     }
                 ]
@@ -316,7 +312,7 @@
         "meta": {},
         "color": "#DDAA99",
         "status": {
-            "x": 280,
+            "x": 460,
             "y": 40,
             "wires": [
                 {
@@ -740,6 +736,35 @@
         "env": [],
         "meta": {},
         "color": "#DDAA99"
+    },
+    {
+        "id": "2f1686cb6e08da2b",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "cf2be4f33396aa13"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 300,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "cf2be4f33396aa13",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": "07ae0da70cee4ba6",
@@ -1209,7 +1234,7 @@
         "finalize": "",
         "libs": [],
         "x": 160,
-        "y": 420,
+        "y": 440,
         "wires": [
             [
                 "83096e44fc2c289e"
@@ -1225,26 +1250,13 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity.\n1.1 Focus on problems that may prevent it from running.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.",
+        "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity.\n1.1 Focus on problems that may prevent it from running.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 130,
-        "y": 460,
+        "y": 480,
         "wires": [
             [
-                "ef9999d2ba3d2f28"
-            ]
-        ]
-    },
-    {
-        "id": "ef9999d2ba3d2f28",
-        "type": "subflow:02409038fd9362ee",
-        "z": "50df1246bdaf5119",
-        "name": "",
-        "x": 150,
-        "y": 500,
-        "wires": [
-            [
-                "447868e0429fdc8c"
+                "2fba30a10931ca0c"
             ]
         ]
     },
@@ -1260,7 +1272,7 @@
         "finalize": "",
         "libs": [],
         "x": 130,
-        "y": 260,
+        "y": 280,
         "wires": [
             [
                 "95fe1a4f7ccf06fb"
@@ -1279,23 +1291,10 @@
         "stream": false,
         "addname": "",
         "x": 150,
-        "y": 300,
+        "y": 320,
         "wires": [
             [
-                "432af7d250ee4197"
-            ]
-        ]
-    },
-    {
-        "id": "432af7d250ee4197",
-        "type": "subflow:02409038fd9362ee",
-        "z": "50df1246bdaf5119",
-        "name": "",
-        "x": 150,
-        "y": 340,
-        "wires": [
-            [
-                "0e3ce1809b54fad7"
+                "4604e40b24b33cb3"
             ]
         ]
     },
@@ -1320,7 +1319,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 150,
-        "y": 380,
+        "y": 400,
         "wires": [
             [
                 "31d7c39f9a6c8c97"
@@ -1348,8 +1347,8 @@
             "86c1b1c593519bdf"
         ],
         "uncaught": false,
-        "x": 400,
-        "y": 120,
+        "x": 360,
+        "y": 200,
         "wires": [
             [
                 "b34ce9b36761fd82"
@@ -1365,8 +1364,8 @@
             "eef683f2fb7c7a34"
         ],
         "uncaught": false,
-        "x": 400,
-        "y": 80,
+        "x": 360,
+        "y": 160,
         "wires": [
             [
                 "b34ce9b36761fd82"
@@ -1384,8 +1383,8 @@
         "syntax": "mustache",
         "template": "Your response was rejected for the following reason:\n\n{{{error.message}}}\n\nremember, you need to follow these formatting instructions:\n\n{{{format}}}",
         "output": "str",
-        "x": 600,
-        "y": 80,
+        "x": 540,
+        "y": 160,
         "wires": [
             [
                 "8e7320419df91165"
@@ -1404,8 +1403,8 @@
                 "type": "str"
             }
         ],
-        "x": 610,
-        "y": 120,
+        "x": 550,
+        "y": 200,
         "wires": [
             [
                 "165d1423d6343a0a"
@@ -1431,8 +1430,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 600,
-        "y": 160,
+        "x": 540,
+        "y": 240,
         "wires": [
             [
                 "0b7031b9cee904dc"
@@ -1444,8 +1443,8 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "50df1246bdaf5119",
         "name": "",
-        "x": 600,
-        "y": 200,
+        "x": 540,
+        "y": 280,
         "wires": [
             [
                 "96069e8a8601f3f2"
@@ -1464,8 +1463,8 @@
                 "type": "str"
             }
         ],
-        "x": 610,
-        "y": 240,
+        "x": 550,
+        "y": 320,
         "wires": [
             [
                 "bde788de03976b97"
@@ -1477,8 +1476,8 @@
         "type": "subflow:d295481a52b8fd83",
         "z": "50df1246bdaf5119",
         "name": "",
-        "x": 620,
-        "y": 280,
+        "x": 560,
+        "y": 360,
         "wires": [
             [
                 "447868e0429fdc8c"
@@ -1497,8 +1496,8 @@
                 "type": "str"
             }
         ],
-        "x": 630,
-        "y": 320,
+        "x": 570,
+        "y": 400,
         "wires": [
             [
                 "eef683f2fb7c7a34"
@@ -1510,33 +1509,14 @@
         "type": "function",
         "z": "50df1246bdaf5119",
         "name": "get result",
-        "func": "console.log('parsed code:', msg.payload)\nmsg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    console.warn('ignoring error:',e)\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, please provide a full flow. remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
+        "func": "console.log('parsed code:', msg.payload)\nmsg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nif (msg.payload.length > 1){\n  throw new Error('multiple code-blocks detected in your response, please respond with only the complete solution')\n}\n\nif (msg.payload.length < 1){\n  throw new Error(`no code blocks detected, please obey the formatting instructions:\\n${msg.format}`)\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 360,
-        "wires": [
-            [
-                "1eaa0d485c0ce940"
-            ]
-        ]
-    },
-    {
-        "id": "1eaa0d485c0ce940",
-        "type": "function",
-        "z": "50df1246bdaf5119",
-        "name": "test",
-        "func": "if (!msg.test){\n    return msg;\n}\n\nmsg.test(msg.payload)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 590,
-        "y": 400,
+        "x": 540,
+        "y": 440,
         "wires": [
             [
                 "393f19cb21285e5c"
@@ -1552,21 +1532,23 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "else"
+                "t": "nempty"
             },
             {
-                "t": "nempty"
+                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 440,
+        "x": 530,
+        "y": 480,
         "wires": [
-            [],
             [
                 "86c1b1c593519bdf"
+            ],
+            [
+                "1eaa0d485c0ce940"
             ]
         ]
     },
@@ -1578,10 +1560,12 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 590,
+        "x": 670,
         "y": 480,
         "wires": [
-            []
+            [
+                "1eaa0d485c0ce940"
+            ]
         ]
     },
     {
@@ -1590,7 +1574,7 @@
         "z": "50df1246bdaf5119",
         "name": "bundle prompt",
         "x": 160,
-        "y": 220,
+        "y": 240,
         "wires": [
             [
                 "189d162c7a1def8e"
@@ -1603,7 +1587,7 @@
         "z": "50df1246bdaf5119",
         "name": "wrap format",
         "x": 150,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "c24941818a42ca98"
@@ -1616,10 +1600,73 @@
         "z": "50df1246bdaf5119",
         "name": "",
         "x": 150,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "4c1e24c203e0aef7"
+            ]
+        ]
+    },
+    {
+        "id": "1eaa0d485c0ce940",
+        "type": "function",
+        "z": "50df1246bdaf5119",
+        "name": "test",
+        "func": "if (!msg.test){\n    return msg;\n}\n\nmsg.test(msg.payload)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77b5dc952d57e266",
+        "type": "comment",
+        "z": "50df1246bdaf5119",
+        "name": "smartGPTish",
+        "info": "this column is a coding specific variant of the smartgpt approach",
+        "x": 150,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "6f31904da5faaece",
+        "type": "comment",
+        "z": "50df1246bdaf5119",
+        "name": "parse errors",
+        "info": "these are two variants of a parse error:\n\nempty/multiple means we didn't get a markdown code block, or we got too many to be sure which is what we're after. ",
+        "x": 350,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4604e40b24b33cb3",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "50df1246bdaf5119",
+        "name": "",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "0e3ce1809b54fad7"
+            ]
+        ]
+    },
+    {
+        "id": "2fba30a10931ca0c",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "50df1246bdaf5119",
+        "name": "",
+        "x": 140,
+        "y": 520,
+        "wires": [
+            [
+                "447868e0429fdc8c"
             ]
         ]
     },
@@ -2032,7 +2079,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{{{persona}}}\n\n{{{requirements}}}\n\n{{{format}}}",
+        "template": "{{{persona}}}\n\n{{{requirements}}}\n\n{{{format}}}\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 210,
         "y": 40,
@@ -2213,6 +2260,23 @@
         "syntax": "mustache",
         "template": "The answer to the following should be yes.\nDoes the wiring appear functional?\nDoes the wiring avoid circular routing?\nAre there any unreachable nodes?\nDoes it obey the JSON schema?\nAre subflows categorized appropriately?\n",
         "output": "str",
+        "x": 180,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf2be4f33396aa13",
+        "type": "function",
+        "z": "2f1686cb6e08da2b",
+        "name": "function 2",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 180,
         "y": 40,
         "wires": [
