@@ -2550,7 +2550,7 @@
         "z": "941765e8bb2c32d6",
         "name": "",
         "x": 210,
-        "y": 540,
+        "y": 600,
         "wires": [
             [
                 "d97a19209a785803"
@@ -2589,25 +2589,9 @@
         "y": 500,
         "wires": [
             [
-                "1f104ae03f736fc7"
+                "bf4826fb44e15c5e"
             ]
         ]
-    },
-    {
-        "id": "3ab40e04649ddf45",
-        "type": "debug",
-        "z": "941765e8bb2c32d6",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 580,
-        "wires": []
     },
     {
         "id": "3fc0a9eb4623c177",
@@ -2647,10 +2631,9 @@
         "action": "",
         "pretty": false,
         "x": 130,
-        "y": 580,
+        "y": 640,
         "wires": [
             [
-                "3ab40e04649ddf45",
                 "6ee86c3a03682354"
             ]
         ]
@@ -2667,10 +2650,9 @@
         "stream": false,
         "addname": "",
         "x": 130,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
-                "3ab40e04649ddf45",
                 "761e9408e6850b23"
             ]
         ]
@@ -2691,8 +2673,8 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 130,
-        "y": 700,
+        "x": 210,
+        "y": 820,
         "wires": [
             []
         ]
@@ -2701,19 +2683,86 @@
         "id": "761e9408e6850b23",
         "type": "function",
         "z": "941765e8bb2c32d6",
-        "name": "function 2",
-        "func": "\nreturn msg;",
-        "outputs": 1,
+        "name": "sort eligible for doc",
+        "func": "const undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flow.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 140,
-        "y": 660,
+        "x": 170,
+        "y": 720,
         "wires": [
             [
+                "3493294fda08df95",
+                "3ab40e04649ddf45"
+            ],
+            [
+                "e5e5952cd49e64d8",
                 "3493294fda08df95"
             ]
         ]
+    },
+    {
+        "id": "bf4826fb44e15c5e",
+        "type": "change",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "flows",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 540,
+        "wires": [
+            [
+                "1f104ae03f736fc7"
+            ]
+        ]
+    },
+    {
+        "id": "3ab40e04649ddf45",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "eligible",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "e5e5952cd49e64d8",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "ineligible",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 760,
+        "wires": []
     }
 ]
