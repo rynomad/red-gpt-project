@@ -2213,7 +2213,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I need a node-red subflow according to the following Specification:\n\nit should set msg.test to be a function that takes a string\n\nmsg.test should parse the string and test it as a node-red importable flow\n\nit should throw errors with a descriptive message\nthese are the sorts of things we're looking for\n{{{review}}}\n\nthe msg.test function does not need to be super thorough, just a smoke test.",
+        "template": "I need a node-red subflow according to the following Specification:\n\nmsg.payload starts as an array of node-red node objects with the following properties:\n\nid,\ntype,\nz (optional)\n\nI want this to be transformed into an array of new objects, one for each 'subflow' type in the incoming message.\n\nthe new objects should have:\nid: the id of the subflow\nnodes: a deep clone of the subflow node, and all nodes with the subflows 'id' as their 'z' property\n\ntype: 'subflow'",
         "output": "str",
         "x": 130,
         "y": 200,
