@@ -2799,13 +2799,13 @@
         "z": "941765e8bb2c32d6",
         "name": "",
         "property": "payload.nodes",
-        "action": "",
+        "action": "str",
         "pretty": false,
         "x": 450,
         "y": 680,
         "wires": [
             [
-                "17c4c2465ba4c355"
+                "5412bb9f8505ec2d"
             ]
         ]
     },
@@ -2815,7 +2815,7 @@
         "z": "941765e8bb2c32d6",
         "name": "",
         "x": 540,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
                 "13b3fd70b0e66417",
@@ -2879,6 +2879,33 @@
         "wires": [
             [
                 "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
+        "id": "5412bb9f8505ec2d",
+        "type": "change",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.nodes",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 720,
+        "wires": [
+            [
+                "17c4c2465ba4c355"
             ]
         ]
     }
