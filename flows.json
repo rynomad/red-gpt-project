@@ -1266,7 +1266,7 @@
         "type": "function",
         "z": "b7d91a580a2c7c19",
         "name": "Extract Code Blocks",
-        "func": "function extractCodeBlocks(text, blockTypes) {\n  const results = [];\n  const allBlocks = !blockTypes || blockTypes.length === 0;\n\n  let codeBlockRegex;\n  if (allBlocks) {\n    codeBlockRegex = /```(\\w*)\\n([\\s\\S]*?)\\n```/g;\n  } else {\n    const regexStr = blockTypes.map((type) => type).join('|');\n    codeBlockRegex = new RegExp(`\\`\\`\\`(${regexStr})\\n([\\\\s\\\\S]*?)\\\\n\\`\\`\\``, 'g');\n    // const jsonBlockRegex = new RegExp(`\\`\\`\\`((json))\\n([\\\\s\\\\S]*?)\\`\\`\\``, 'g');\n    // console.log('manual match?', jsonBlockRegex.exec(text))\n  }\n\n  let match;\n  while ((match = codeBlockRegex.exec(text)) !== null) {\n    // console.log('got match', match);\n    const type = match[2];\n    const content = match[3];\n    results.push({ type, content });\n  }\n\n  return results;\n}\n\nconst text = msg.payload;\n\nconst blockTypes = (env.get('blockTypes') || '').split(',').filter(t => t);\n// console.log('extract', text, blockTypes)\nmsg.payload = extractCodeBlocks(text, blockTypes);\nreturn msg;\n",
+        "func": "function extractCodeBlocks(text, blockTypes) {\n  const results = [];\n  const allBlocks = !blockTypes || blockTypes.length === 0;\n\n  let codeBlockRegex;\n  if (allBlocks) {\n    codeBlockRegex = /```(\\w*)\\n([\\s\\S]*?)\\n```/g;\n  } else {\n    const regexStr = blockTypes.map((type) => type).join('|');\n    codeBlockRegex = new RegExp(`\\`\\`\\`(${regexStr})\\n([\\\\s\\\\S]*?)\\\\n\\`\\`\\``, 'g');\n    // const jsonBlockRegex = new RegExp(`\\`\\`\\`((json))\\n([\\\\s\\\\S]*?)\\`\\`\\``, 'g');\n    // console.log('manual match?', jsonBlockRegex.exec(text))\n  }\n\n  let match;\n  while ((match = codeBlockRegex.exec(text)) !== null) {\n    // console.log('got match', match);\n    const type = match[1];\n    const content = match[2];\n    results.push({ type, content });\n  }\n\n  return results;\n}\n\nconst text = msg.payload;\n\nconst blockTypes = (env.get('blockTypes') || '').split(',').filter(t => t);\n// console.log('extract', text, blockTypes)\nmsg.payload = extractCodeBlocks(text, blockTypes);\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2124,8 +2124,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 120,
-        "y": 260,
+        "x": 280,
+        "y": 200,
         "wires": []
     }
 ]
