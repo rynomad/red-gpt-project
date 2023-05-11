@@ -1115,7 +1115,7 @@
         "finalize": "",
         "libs": [],
         "x": 160,
-        "y": 480,
+        "y": 440,
         "wires": [
             [
                 "b446b41f8155ed4f"
@@ -1134,7 +1134,7 @@
         "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity focus on:\n1.1 problems that may prevent it from running.\n1.2 failures to deliver requested functionality.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 130,
-        "y": 560,
+        "y": 520,
         "wires": [
             [
                 "2fba30a10931ca0c"
@@ -1200,7 +1200,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 150,
-        "y": 440,
+        "y": 400,
         "wires": [
             [
                 "31d7c39f9a6c8c97"
@@ -1534,7 +1534,7 @@
         "y": 360,
         "wires": [
             [
-                "a4257cac7f2b8de1"
+                "0e3ce1809b54fad7"
             ]
         ]
     },
@@ -1544,7 +1544,7 @@
         "z": "50df1246bdaf5119",
         "name": "",
         "x": 140,
-        "y": 600,
+        "y": 560,
         "wires": [
             [
                 "447868e0429fdc8c"
@@ -1574,24 +1574,11 @@
         "z": "50df1246bdaf5119",
         "name": "minify JSON in history",
         "x": 180,
-        "y": 520,
+        "y": 480,
         "wires": [
             [
                 "83096e44fc2c289e",
                 "aef0f90d6f3245b0"
-            ]
-        ]
-    },
-    {
-        "id": "a4257cac7f2b8de1",
-        "type": "subflow:b7d91a580a2c7c19",
-        "z": "50df1246bdaf5119",
-        "name": "",
-        "x": 150,
-        "y": 400,
-        "wires": [
-            [
-                "0e3ce1809b54fad7"
             ]
         ]
     },
