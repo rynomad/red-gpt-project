@@ -805,7 +805,7 @@
         "type": "function",
         "z": "f9e0ec91.e767e",
         "name": "minify-json",
-        "func": "const inputList = Array.isArray(msg.history) ? msg.history : [];\n\ninputList.forEach((item) => {\n  item.content = item.content.replace(/```.*\\n([\\s\\S]*?)\\n```/g, (match, codeBlock) => {\n      try {\n          codeBlock = codeBlock.split('\\n').join().split('\\r').join()\n          const parsedJson = JSON.parse(codeBlock);\n          const minifiedJsonString = JSON.stringify(parsedJson);\n          return '```json\\n' + minifiedJsonString + '\\n```';\n      } catch (error) {\n          return match;\n      }\n  });\n});\n\nreturn msg;",
+        "func": "const inputList = Array.isArray(msg.history) ? msg.history : [];\n\ninputList.forEach((item) => {\n  item.content = item.content.replace(/```.*\\n([\\s\\S]*?)\\n```/g, (match, codeBlock) => {\n      try {\n          const regex = /(\\n|\\\\n|\\r)\\s*/g; // note the 'g' flag for global replacement\n          codeBlock = codeBlock.replace(regex, '');\n          const parsedJson = JSON.parse(codeBlock);\n          const minifiedJsonString = JSON.stringify(parsedJson);\n          return '```json\\n' + minifiedJsonString + '\\n```';\n      } catch (error) {\n          return match;\n      }\n  });\n});\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
