@@ -2562,14 +2562,14 @@
         "type": "file in",
         "z": "941765e8bb2c32d6",
         "name": "",
-        "filename": "./projects/red-gpt-project/flows.json",
+        "filename": "/data/projects/red-gpt-project/flows.json",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 290,
+        "x": 300,
         "y": 460,
         "wires": [
             [
