@@ -138,7 +138,7 @@
         "category": "ChatGPT",
         "in": [
             {
-                "x": 200,
+                "x": 220,
                 "y": 80,
                 "wires": [
                     {
@@ -1023,71 +1023,20 @@
         ]
     },
     {
-        "id": "496859a8d075feeb",
-        "type": "catch",
+        "id": "a8355ad2d0e207b0",
+        "type": "debug",
         "z": "237429fb2a5a7712",
-        "name": "catch gpt",
-        "scope": [
-            "1d0773bcf3416404"
-        ],
-        "uncaught": false,
-        "x": 100,
-        "y": 120,
-        "wires": [
-            [
-                "b5898d96fe66bae2"
-            ]
-        ]
-    },
-    {
-        "id": "b5898d96fe66bae2",
-        "type": "delay",
-        "z": "237429fb2a5a7712",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "30",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 100,
-        "y": 160,
-        "wires": [
-            [
-                "38a6f55d7caf7243"
-            ]
-        ]
-    },
-    {
-        "id": "38a6f55d7caf7243",
-        "type": "change",
-        "z": "237429fb2a5a7712",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "error",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 120,
-        "y": 200,
-        "wires": [
-            [
-                "1d0773bcf3416404"
-            ]
-        ]
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 40,
+        "wires": []
     },
     {
         "id": "587cc92797acd5f3",
