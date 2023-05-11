@@ -1130,14 +1130,14 @@
         "id": "31d7c39f9a6c8c97",
         "type": "function",
         "z": "50df1246bdaf5119",
-        "name": "merge",
+        "name": "merge answers",
         "func": "msg.history = [msg.history[0], msg.history[1]]\n\nmsg.history[1].content = `\nhere are ${msg.payload.length} possible solutions:\n${msg.payload.map((t,i) => `\n---${i} START---\n${t}\n---${i} END---\n`).join('\\n')}\n`\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 130,
+        "x": 160,
         "y": 240,
         "wires": [
             [
