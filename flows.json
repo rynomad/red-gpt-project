@@ -1140,7 +1140,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a researcher tasked with investigating the 3 response options below.\nList the issues with each option, ranking each by severity.\nAlso list what each option gets right, and which takes the overall best approach.\n",
+        "template": "You are a researcher tasked with investigating the response options below.\nList the issues with each option, ranking each by severity.\nAlso list what each option gets right, and which takes the overall best approach.\n",
         "output": "str",
         "x": 130,
         "y": 320,
@@ -1969,8 +1969,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 420,
-        "y": 380,
+        "x": 220,
+        "y": 440,
         "wires": []
     }
 ]
