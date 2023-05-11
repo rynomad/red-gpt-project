@@ -805,7 +805,7 @@
         "type": "function",
         "z": "f9e0ec91.e767e",
         "name": "minify-json",
-        "func": "const inputList = Array.isArray(msg.history) ? msg.history : [];\n\ninputList.forEach((item) => {\n  item.content = item.content.replace(/```json\\n([\\s\\S]*?)\\n```/g, (match, codeBlock) => {\n      try {\n          codeBlock = codeBlock.split('\\n').join().split('\\r').join()\n          const parsedJson = JSON.parse(codeBlock);\n          const minifiedJsonString = JSON.stringify(parsedJson);\n          return '```json\\n' + minifiedJsonString + '\\n```';\n      } catch (error) {\n          return match;\n      }\n  });\n});\n\nreturn msg;",
+        "func": "const inputList = Array.isArray(msg.history) ? msg.history : [];\n\ninputList.forEach((item) => {\n  item.content = item.content.replace(/```.*\\n([\\s\\S]*?)\\n```/g, (match, codeBlock) => {\n      try {\n          codeBlock = codeBlock.split('\\n').join().split('\\r').join()\n          const parsedJson = JSON.parse(codeBlock);\n          const minifiedJsonString = JSON.stringify(parsedJson);\n          return '```json\\n' + minifiedJsonString + '\\n```';\n      } catch (error) {\n          return match;\n      }\n  });\n});\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1176,14 +1176,14 @@
         "type": "function",
         "z": "50df1246bdaf5119",
         "name": "merge answers",
-        "func": "msg.history = [msg.history[0], msg.history[1]]\n\nmsg.history[1].content = `\nhere are ${msg.payload.length} possible solutions:\n${msg.payload.map((t,i) => `\n---${i} START---\n${t}\n---${i} END---\n`).join('\\n')}\n`\nreturn msg;",
+        "func": "msg.history = [msg.history[0], msg.history[1]]\n\nmsg.history[1].content = `\nhere are ${msg.payload.length} possible solutions:\n${msg.payload.map((t,i) => `\n---${i} START---\n${t.map(({type, content}) => `\n\\`\\`\\`${type}\n${content}\n\\`\\`\\`\n`).join('\\n')}\n---${i} END---\n`).join('\\n')}\n`\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 160,
-        "y": 440,
+        "y": 480,
         "wires": [
             [
                 "b446b41f8155ed4f"
@@ -1202,7 +1202,7 @@
         "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity.\n1.1 Focus on problems that may prevent it from running.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 130,
-        "y": 520,
+        "y": 560,
         "wires": [
             [
                 "2fba30a10931ca0c"
@@ -1268,7 +1268,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 150,
-        "y": 400,
+        "y": 440,
         "wires": [
             [
                 "31d7c39f9a6c8c97"
@@ -1602,7 +1602,7 @@
         "y": 360,
         "wires": [
             [
-                "0e3ce1809b54fad7"
+                "a4257cac7f2b8de1"
             ]
         ]
     },
@@ -1612,7 +1612,7 @@
         "z": "50df1246bdaf5119",
         "name": "",
         "x": 140,
-        "y": 560,
+        "y": 600,
         "wires": [
             [
                 "447868e0429fdc8c"
@@ -1642,10 +1642,23 @@
         "z": "50df1246bdaf5119",
         "name": "minify JSON in history",
         "x": 180,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
                 "83096e44fc2c289e"
+            ]
+        ]
+    },
+    {
+        "id": "a4257cac7f2b8de1",
+        "type": "subflow:b7d91a580a2c7c19",
+        "z": "50df1246bdaf5119",
+        "name": "",
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "0e3ce1809b54fad7"
             ]
         ]
     },
