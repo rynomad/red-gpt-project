@@ -2254,16 +2254,118 @@
         ]
     },
     {
-        "id": "parse-string",
-        "type": "function",
+        "id": "a20a07070efb88f0",
+        "type": "delay",
         "z": "941765e8bb2c32d6",
-        "name": "Parse String",
-        "func": "msg.test = function(str) {try {\n\t// Parse the string as a node-red importable flow\n\tvar parsedFlow = JSON.parse(str);\n\t\n\t// Check if the primary output is inside a code block with an appropriate language label\n\tvar codeBlockRegex = /^`{3}(\\w+)?\\n/;\n\tvar infoMatches = codeBlockRegex.exec(parsedFlow[0].info);\n\tif (!infoMatches || !infoMatches[1]) {\n\t\tthrow 'Primary output should be inside a code block with an appropriate language label';\n\t}\n\t\n\t// Check if the wiring is functional and there are no circular routes\n\tvar wiringChecked = RED.nodes.checkFlow(parsedFlow);\n\tif (wiringChecked.length > 0) {\n\t\tthrow 'Flow contains ' + wiringChecked.length + ' wiring errors';\n\t}\n\t\n\t// Check if there are any unreachable nodes\n\tvar unreachableNodes = RED.nodes.filterNodes(parsedFlow, function(node) {\n\t\treturn !RED.nodes.links(node).some(function(link) {\n\t\t\treturn parsedFlow.some(function(flowNode) {\n\t\t\t\treturn flowNode.id === link.target;\n\t\t\t});\n\t\t});\n\t});\n\tif (unreachableNodes.length > 0) {\n\t\tthrow 'Flow contains ' + unreachableNodes.length + ' unreachable nodes';\n\t}\n\t\n\t// Check if it obeys the JSON schema\n\tvar schemaChecked = RED.nodes.validate(parsedFlow);\n\tif (schemaChecked.errors.length > 0) {\n\t\tthrow schemaChecked.errors.join('; ');\n\t}\n\t\n\t// Check if subflows are categorized appropriately\n\tvar categoriesChecked = RED.nodes.checkFlowsCategory(parsedFlow);\n\tif (categoriesChecked.errors.length > 0) {\n\t\tthrow categoriesChecked.errors.join('; ');\n\t}\n\t\n\t// If all checks pass, return true\n\treturn true;\n} catch (error) {\n\t// If any errors are thrown, return false with a descriptive error message\n\treturn {\n\t\tisValid: false,\n\t\terror: error.message\n\t};\n}",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
         "outputs": 1,
-        "x": 370,
-        "y": 440,
+        "x": 480,
+        "y": 160,
         "wires": [
-            []
+            [
+                "5efe5bb37423ba8d"
+            ]
+        ]
+    },
+    {
+        "id": "a1eaf894417980b0",
+        "type": "file in",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "filename": "humaneval.jsonl.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "2d59b8905d9a2034"
+            ]
+        ]
+    },
+    {
+        "id": "2d59b8905d9a2034",
+        "type": "split",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "a20a07070efb88f0"
+            ]
+        ]
+    },
+    {
+        "id": "5efe5bb37423ba8d",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5e1257fb64550d03",
+        "type": "inject",
+        "z": "941765e8bb2c32d6",
+        "name": "set task props",
+        "props": [
+            {
+                "p": "min_tokens",
+                "v": "2000",
+                "vt": "str"
+            },
+            {
+                "p": "temperature",
+                "v": "0.7",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "x": 470,
+        "y": 40,
+        "wires": [
+            [
+                "a1eaf894417980b0"
+            ]
         ]
     }
 ]
