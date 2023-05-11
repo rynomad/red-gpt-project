@@ -292,7 +292,7 @@
         ],
         "out": [
             {
-                "x": 260,
+                "x": 280,
                 "y": 320,
                 "wires": [
                     {
@@ -303,11 +303,6 @@
             }
         ],
         "env": [
-            {
-                "name": "bundle",
-                "type": "bool",
-                "value": "false"
-            },
             {
                 "name": "num_copies",
                 "type": "num",
@@ -626,8 +621,8 @@
         "category": "generator",
         "in": [
             {
-                "x": 120,
-                "y": 80,
+                "x": 40,
+                "y": 120,
                 "wires": [
                     {
                         "id": "15470b359beaf8ad"
@@ -637,8 +632,8 @@
         ],
         "out": [
             {
-                "x": 400,
-                "y": 520,
+                "x": 500,
+                "y": 480,
                 "wires": [
                     {
                         "id": "f1a288a6365bfe2d",
@@ -660,7 +655,7 @@
         },
         "color": "#DDAA99",
         "status": {
-            "x": 540,
+            "x": 500,
             "y": 40,
             "wires": [
                 {
@@ -1218,13 +1213,6 @@
         "type": "subflow:02409038fd9362ee",
         "z": "50df1246bdaf5119",
         "name": "",
-        "env": [
-            {
-                "name": "bundle",
-                "value": "bundle",
-                "type": "env"
-            }
-        ],
         "x": 150,
         "y": 160,
         "wires": [
@@ -1698,7 +1686,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "",
         "scope": null,
-        "x": 440,
+        "x": 380,
         "y": 40,
         "wires": [
             []
@@ -1793,12 +1781,11 @@
                 "type": "str"
             }
         ],
-        "x": 470,
+        "x": 410,
         "y": 320,
         "wires": [
             [
-                "eef683f2fb7c7a34",
-                "df687edd651ee128"
+                "eef683f2fb7c7a34"
             ]
         ]
     },
@@ -1813,7 +1800,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
+        "x": 380,
         "y": 360,
         "wires": [
             [
@@ -1829,7 +1816,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 430,
+        "x": 370,
         "y": 440,
         "wires": [
             [
@@ -1848,7 +1835,7 @@
         "syntax": "mustache",
         "template": "Your response was rejected for the following reason:\n\n{{{error.message}}}\n\nremember, you need to follow these formatting instructions:\n\n{{{format}}}",
         "output": "str",
-        "x": 440,
+        "x": 380,
         "y": 80,
         "wires": [
             [
@@ -1865,7 +1852,7 @@
             "eef683f2fb7c7a34"
         ],
         "uncaught": false,
-        "x": 260,
+        "x": 180,
         "y": 40,
         "wires": [
             [
@@ -1882,7 +1869,7 @@
             "86c1b1c593519bdf"
         ],
         "uncaught": false,
-        "x": 260,
+        "x": 180,
         "y": 80,
         "wires": [
             [
@@ -1895,7 +1882,7 @@
         "type": "subflow:9f31d45ecb1d3482",
         "z": "b53b3b7e24a3e4e7",
         "name": "set node-red schema",
-        "x": 480,
+        "x": 420,
         "y": 400,
         "wires": [
             [
@@ -1908,7 +1895,7 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "b53b3b7e24a3e4e7",
         "name": "",
-        "x": 440,
+        "x": 380,
         "y": 200,
         "wires": [
             [
@@ -1935,7 +1922,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
+        "x": 380,
         "y": 160,
         "wires": [
             [
@@ -1965,7 +1952,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 450,
+        "x": 390,
         "y": 480,
         "wires": [
             []
@@ -1976,7 +1963,7 @@
         "type": "subflow:d295481a52b8fd83",
         "z": "b53b3b7e24a3e4e7",
         "name": "",
-        "x": 460,
+        "x": 400,
         "y": 280,
         "wires": [
             [
@@ -1996,7 +1983,7 @@
                 "type": "str"
             }
         ],
-        "x": 450,
+        "x": 390,
         "y": 120,
         "wires": [
             [
@@ -2016,7 +2003,7 @@
                 "type": "str"
             }
         ],
-        "x": 450,
+        "x": 390,
         "y": 240,
         "wires": [
             [
@@ -2050,22 +2037,6 @@
                 "69c4727b24bef714"
             ]
         ]
-    },
-    {
-        "id": "df687edd651ee128",
-        "type": "debug",
-        "z": "b53b3b7e24a3e4e7",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 700,
-        "y": 320,
-        "wires": []
     },
     {
         "id": "414ddee1287efb66",
@@ -2149,7 +2120,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 120,
