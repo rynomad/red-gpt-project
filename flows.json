@@ -282,11 +282,11 @@
         ],
         "out": [
             {
-                "x": 160,
-                "y": 460,
+                "x": 260,
+                "y": 360,
                 "wires": [
                     {
-                        "id": "c5022a931a9bcb7b",
+                        "id": "ef9999d2ba3d2f28",
                         "port": 0
                     }
                 ]
@@ -305,7 +305,17 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "status": {
+            "x": 280,
+            "y": 40,
+            "wires": [
+                {
+                    "id": "ef3a21ae34f6475f",
+                    "port": 0
+                }
+            ]
+        }
     },
     {
         "id": "b7d91a580a2c7c19",
@@ -1097,7 +1107,7 @@
         "type": "function",
         "z": "50df1246bdaf5119",
         "name": "merge",
-        "func": "msg.history = [msg.history[0], msg.history[1]]\n\nmsg.history[1].content = `\nhere are ${msg.payload.length} options:\n${msg.payload.map((t,i) => `\n---${i} START---\n${t}\n---${i} END---\n`).join('\\n')}\n`\nreturn msg;",
+        "func": "msg.history = [msg.history[0], msg.history[1]]\n\nmsg.history[1].content = `\nhere are ${msg.payload.length} possible solutions:\n${msg.payload.map((t,i) => `\n---${i} START---\n${t}\n---${i} END---\n`).join('\\n')}\n`\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1140,7 +1150,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a researcher tasked with investigating the response options below.\nList the issues with each option, ranking each by severity.\nAlso list what each option gets right, and which takes the overall best approach.\n",
+        "template": "You are a researcher tasked with investigating the potential solutions.\nList the issues with each option, ranking each by severity.\nAlso list what each option gets right, and which takes the overall best approach.\n",
         "output": "str",
         "x": 130,
         "y": 320,
@@ -1164,25 +1174,6 @@
         ],
         "x": 150,
         "y": 360,
-        "wires": [
-            [
-                "c5022a931a9bcb7b"
-            ]
-        ]
-    },
-    {
-        "id": "c5022a931a9bcb7b",
-        "type": "function",
-        "z": "50df1246bdaf5119",
-        "name": "merge history",
-        "func": "msg.history = [msg.history.pop()[0], msg.history[msg.history.length - 1]]\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 160,
-        "y": 400,
         "wires": [
             []
         ]
@@ -1271,6 +1262,18 @@
             [
                 "31d7c39f9a6c8c97"
             ]
+        ]
+    },
+    {
+        "id": "ef3a21ae34f6475f",
+        "type": "status",
+        "z": "50df1246bdaf5119",
+        "name": "",
+        "scope": null,
+        "x": 140,
+        "y": 40,
+        "wires": [
+            []
         ]
     },
     {
