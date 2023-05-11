@@ -1645,7 +1645,8 @@
         "y": 520,
         "wires": [
             [
-                "83096e44fc2c289e"
+                "83096e44fc2c289e",
+                "aef0f90d6f3245b0"
             ]
         ]
     },
@@ -1661,6 +1662,23 @@
                 "0e3ce1809b54fad7"
             ]
         ]
+    },
+    {
+        "id": "aef0f90d6f3245b0",
+        "type": "debug",
+        "z": "50df1246bdaf5119",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "history.1.content",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 580,
+        "wires": []
     },
     {
         "id": "bc9b2bca5d9d9220",
