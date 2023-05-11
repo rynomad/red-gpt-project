@@ -2,7 +2,7 @@
     {
         "id": "941765e8bb2c32d6",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Node-Red",
         "disabled": false,
         "info": "",
         "env": []
@@ -1592,23 +1592,6 @@
         ]
     },
     {
-        "id": "db1958de5469c482",
-        "type": "template",
-        "z": "50df1246bdaf5119",
-        "name": "node-red review",
-        "field": "review",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "The answer to the following should be yes.\nDoes the wiring appear functional?\nDoes the wiring avoid circular routing?\nAre there any unreachable nodes?\nDoes it obey the JSON schema?\nAre subflows categorized appropriately?\n",
-        "output": "str",
-        "x": 80,
-        "y": 20,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "b446b41f8155ed4f",
         "type": "subflow:f9e0ec91.e767e",
         "z": "50df1246bdaf5119",
@@ -2293,8 +2276,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 280,
-        "y": 240,
+        "x": 120,
+        "y": 280,
         "wires": []
     },
     {
@@ -2434,6 +2417,13 @@
                 "pt": "msg",
                 "to": "payload.task_id",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "test",
+                "pt": "msg",
+                "to": "payload.test",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -2551,7 +2541,7 @@
         "z": "941765e8bb2c32d6",
         "name": "",
         "x": 210,
-        "y": 600,
+        "y": 620,
         "wires": [
             [
                 "d97a19209a785803"
@@ -2637,7 +2627,7 @@
         "action": "",
         "pretty": false,
         "x": 130,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "6ee86c3a03682354"
@@ -2656,7 +2646,7 @@
         "stream": false,
         "addname": "",
         "x": 130,
-        "y": 680,
+        "y": 700,
         "wires": [
             [
                 "761e9408e6850b23"
@@ -2667,7 +2657,7 @@
         "id": "3493294fda08df95",
         "type": "join",
         "z": "941765e8bb2c32d6",
-        "name": "",
+        "name": "all nodes",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -2675,12 +2665,16 @@
         "key": "topic",
         "joiner": "\\n",
         "joinerType": "str",
-        "accumulate": "false",
+        "accumulate": true,
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 330,
-        "y": 920,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 480,
+        "y": 940,
         "wires": [
             [
                 "5db7cfe60d82dc48"
@@ -2692,14 +2686,14 @@
         "type": "function",
         "z": "941765e8bb2c32d6",
         "name": "sort eligible for doc",
-        "func": "const undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flows.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
+        "func": "if (msg.payload.nodes.filter(node => node.id === msg.payload.id).pop().info) {\n    return [msg, null];\n}\n\nconst undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flows.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\n\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 170,
-        "y": 720,
+        "y": 740,
         "wires": [
             [
                 "3493294fda08df95",
@@ -2736,7 +2730,7 @@
         "y": 540,
         "wires": [
             [
-                "1f104ae03f736fc7"
+                "69961b662c31c241"
             ]
         ]
     },
@@ -2753,7 +2747,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 360,
+        "x": 160,
         "y": 800,
         "wires": []
     },
@@ -2770,7 +2764,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 360,
+        "x": 160,
         "y": 840,
         "wires": []
     },
@@ -2778,14 +2772,14 @@
         "id": "17c4c2465ba4c355",
         "type": "template",
         "z": "941765e8bb2c32d6",
-        "name": "",
+        "name": "documentation",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style.",
         "output": "str",
-        "x": 480,
+        "x": 500,
         "y": 740,
         "wires": [
             [
@@ -2801,8 +2795,8 @@
         "property": "payload.nodes",
         "action": "str",
         "pretty": false,
-        "x": 450,
-        "y": 680,
+        "x": 470,
+        "y": 660,
         "wires": [
             [
                 "5412bb9f8505ec2d"
@@ -2814,12 +2808,12 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "941765e8bb2c32d6",
         "name": "",
-        "x": 540,
-        "y": 840,
+        "x": 480,
+        "y": 820,
         "wires": [
             [
                 "13b3fd70b0e66417",
-                "3493294fda08df95"
+                "145ec9df0675db99"
             ]
         ]
     },
@@ -2836,8 +2830,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 740,
+        "x": 670,
+        "y": 840,
         "wires": []
     },
     {
@@ -2854,7 +2848,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 920,
+        "y": 980,
         "wires": []
     },
     {
@@ -2874,7 +2868,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 540,
+        "x": 500,
         "y": 780,
         "wires": [
             [
@@ -2890,6 +2884,13 @@
         "rules": [
             {
                 "t": "set",
+                "p": "subflow",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
                 "p": "payload",
                 "pt": "msg",
                 "to": "payload.nodes",
@@ -2902,10 +2903,91 @@
         "to": "",
         "reg": false,
         "x": 500,
-        "y": 720,
+        "y": 700,
         "wires": [
             [
-                "17c4c2465ba4c355"
+                "16e7fb7b2bc1fd73",
+                "17c4c2465ba4c355",
+                "1c58af75659287c4"
+            ]
+        ]
+    },
+    {
+        "id": "16e7fb7b2bc1fd73",
+        "type": "template",
+        "z": "941765e8bb2c32d6",
+        "name": "schemas",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
+        "output": "str",
+        "x": 680,
+        "y": 740,
+        "wires": [
+            [
+                "2656bcf5cad4e16b"
+            ]
+        ]
+    },
+    {
+        "id": "145ec9df0675db99",
+        "type": "join",
+        "z": "941765e8bb2c32d6",
+        "name": "docs and schemas",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 510,
+        "y": 880,
+        "wires": [
+            [
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "69961b662c31c241",
+        "type": "subflow:13d4ac7b7c9898ae",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "x": 150,
+        "y": 580,
+        "wires": [
+            [
+                "1f104ae03f736fc7"
+            ]
+        ]
+    },
+    {
+        "id": "1c58af75659287c4",
+        "type": "template",
+        "z": "941765e8bb2c32d6",
+        "name": "schemas",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
+        "output": "str",
+        "x": 840,
+        "y": 740,
+        "wires": [
+            [
+                "2656bcf5cad4e16b"
             ]
         ]
     }
