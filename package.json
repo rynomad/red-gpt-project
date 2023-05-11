@@ -2,7 +2,9 @@
     "name": "red-gpt-project",
     "description": "A Node-RED Project",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-custom-chatgpt": "github:rynomad/node-red-contrib-chatgpt"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows.json",
