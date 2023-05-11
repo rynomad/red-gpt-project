@@ -2684,7 +2684,7 @@
         "type": "function",
         "z": "941765e8bb2c32d6",
         "name": "sort eligible for doc",
-        "func": "const undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flow.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
+        "func": "const undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flows.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
