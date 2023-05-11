@@ -308,6 +308,346 @@
         "color": "#DDAA99"
     },
     {
+        "id": "b7d91a580a2c7c19",
+        "type": "subflow",
+        "name": "codeblocks",
+        "info": "",
+        "category": "parser",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "bc9b2bca5d9d9220"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 380,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "bc9b2bca5d9d9220",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "blockTypes",
+                "type": "str",
+                "value": ""
+            }
+        ],
+        "meta": {},
+        "color": "#DEBD5C",
+        "icon": "font-awesome/fa-file-code-o"
+    },
+    {
+        "id": "f8d5a5a4f2b87c52",
+        "type": "subflow",
+        "name": "subflow",
+        "info": "",
+        "category": "parser",
+        "in": [
+            {
+                "x": 80,
+                "y": 420,
+                "wires": [
+                    {
+                        "id": "95f92e2896b1f816"
+                    },
+                    {
+                        "id": "77e60c255444c236"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 280,
+                "y": 600,
+                "wires": [
+                    {
+                        "id": "25e9760c313f1739",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DEBD5C",
+        "inputLabels": [
+            "flow to check"
+        ],
+        "outputLabels": [
+            "valid flow"
+        ],
+        "status": {
+            "x": 420,
+            "y": 60,
+            "wires": [
+                {
+                    "id": "9d93e67707347e32",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "1254546b0e9fb57c",
+        "type": "subflow",
+        "name": "format",
+        "info": "",
+        "category": "format",
+        "in": [
+            {
+                "x": 260,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "12256771ca410bc7"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "12256771ca410bc7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#C0C0C0",
+        "icon": "node-red/envelope.svg"
+    },
+    {
+        "id": "f6dd154f310aa615",
+        "type": "subflow",
+        "name": "engineer",
+        "info": "",
+        "category": "persona",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "d973d3ca1dc6855f"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 320,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "d973d3ca1dc6855f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#3FADB5",
+        "icon": "font-awesome/fa-address-card"
+    },
+    {
+        "id": "9f31d45ecb1d3482",
+        "type": "subflow",
+        "name": "node-red",
+        "info": "",
+        "category": "schema",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "63dba49296c3a9e4"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 500,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "cf072eee9e78f126",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "13d4ac7b7c9898ae",
+        "type": "subflow",
+        "name": "codeblock",
+        "info": "",
+        "category": "format",
+        "in": [
+            {
+                "x": 80,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "31d816170cfa7a8f"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 300,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "31d816170cfa7a8f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#87A980",
+        "icon": "font-awesome/fa-archive"
+    },
+    {
+        "id": "a5f18db0d45889f2",
+        "type": "subflow",
+        "name": "flow",
+        "info": "",
+        "category": "format",
+        "in": [
+            {
+                "x": 40,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "7da9bb553d44f56a"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 300,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "01f9b697fd8ca522",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#87A980"
+    },
+    {
+        "id": "f16c08b0c74d892d",
+        "type": "subflow",
+        "name": "prompt",
+        "info": "",
+        "category": "task",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "c306926b9536fe15"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 360,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "c306926b9536fe15",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#C0C0C0",
+        "icon": "node-red-dashboard/ui_toast.png"
+    },
+    {
+        "id": "b53b3b7e24a3e4e7",
+        "type": "subflow",
+        "name": "flows",
+        "info": "",
+        "category": "generator",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "69c4727b24bef714"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "8b97ebde3ffd9ecc",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {
+            "module": "gpt-subflows",
+            "version": "0.0.1"
+        },
+        "color": "#DDAA99",
+        "status": {
+            "x": 560,
+            "y": 80,
+            "wires": [
+                {
+                    "id": "f89c539d2436d4b8",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -934,6 +1274,561 @@
         ]
     },
     {
+        "id": "bc9b2bca5d9d9220",
+        "type": "function",
+        "z": "b7d91a580a2c7c19",
+        "name": "Extract Code Blocks",
+        "func": "function extractCodeBlocks(text, blockTypes) {\n  const results = [];\n  const allBlocks = !blockTypes || blockTypes.length === 0;\n\n  let codeBlockRegex;\n  if (allBlocks) {\n    codeBlockRegex = /```(\\w*)\\n([\\s\\S]*?)\\n```/g;\n  } else {\n    const regexStr = blockTypes.map((type) => `(${type})`).join('|');\n    codeBlockRegex = new RegExp(`\\`\\`\\`(${regexStr})\\n([\\\\s\\\\S]*?)\\\\n\\`\\`\\``, 'g');\n    // const jsonBlockRegex = new RegExp(`\\`\\`\\`((json))\\n([\\\\s\\\\S]*?)\\`\\`\\``, 'g');\n    // console.log('manual match?', jsonBlockRegex.exec(text))\n  }\n\n  let match;\n  while ((match = codeBlockRegex.exec(text)) !== null) {\n    // console.log('got match', match);\n    const type = match[2];\n    const content = match[3];\n    results.push({ type, content });\n  }\n\n  return results;\n}\n\nconst text = msg.payload;\n\nconst blockTypes = (env.get('blockTypes') || '').split(',').filter(t => t);\n// console.log('extract', text, blockTypes)\nmsg.payload = extractCodeBlocks(text, blockTypes);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d93e67707347e32",
+        "type": "status",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "",
+        "scope": null,
+        "x": 280,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77e60c255444c236",
+        "type": "debug",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "95f92e2896b1f816",
+        "type": "subflow:b7d91a580a2c7c19",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "parse json codeblocks",
+        "env": [
+            {
+                "name": "blockTypes",
+                "value": "json",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "869689982e74b4dc"
+            ]
+        ]
+    },
+    {
+        "id": "b638cbdff3ea7ed5",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "restore spliced history",
+        "env": [
+            {
+                "name": "key",
+                "value": "history",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "95f92e2896b1f816"
+            ]
+        ]
+    },
+    {
+        "id": "869689982e74b4dc",
+        "type": "function",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "get result",
+        "func": "const cached = msg.payload;\nmsg.payload = msg.payload\n                .filter(({type}) => type === 'json')\n\nif (!msg.payload.length) {\n    console.error('bad payload', cached)\n    throw new Error('no payload')\n}\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Replace callback function\n  function replacer(match) {\n    if (match === '\\\\') {\n      return '\\\\\\\\';\n    }\n    if (match === '\"') {\n      return '\\\\\"';\n    }\n    return match;\n  }\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nmsg.payload = msg.payload[0].content\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "b2728fc75e03f928"
+            ]
+        ]
+    },
+    {
+        "id": "ca8f33ee37a06e27",
+        "type": "function",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "splice history",
+        "func": "\nconst stashedHistory = msg.stash.history[msg.stash.history.length - 1];\n\nstashedHistory[stashedHistory.length - 1] = msg.history.pop()\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 340,
+        "wires": [
+            [
+                "b638cbdff3ea7ed5"
+            ]
+        ]
+    },
+    {
+        "id": "25e9760c313f1739",
+        "type": "json",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "parse",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c5ea07fe592c94f",
+        "type": "template",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "fix empty",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "you didn't respond with a valid GFM codeblock.\n\nremember, it should look like:\n```json\n['your','json','here']\n```",
+        "output": "str",
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "384314168ce8ee86"
+            ]
+        ]
+    },
+    {
+        "id": "a688491534987069",
+        "type": "template",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "fix schema",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "your output failed to parse with the following error:\n\n{{{error.message}}}\n\n{{{format}}}\n\nplease provide a fixed output.",
+        "output": "str",
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "384314168ce8ee86"
+            ]
+        ]
+    },
+    {
+        "id": "9dc4e0542924d838",
+        "type": "subflow:520a10812173e701",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "stash history",
+        "env": [
+            {
+                "name": "key",
+                "value": "history",
+                "type": "str"
+            },
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 370,
+        "y": 180,
+        "wires": [
+            [
+                "2c5ea07fe592c94f"
+            ]
+        ]
+    },
+    {
+        "id": "e1d90703b7ce3a13",
+        "type": "subflow:520a10812173e701",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "stash history",
+        "env": [
+            {
+                "name": "key",
+                "value": "history",
+                "type": "str"
+            },
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "a688491534987069"
+            ]
+        ]
+    },
+    {
+        "id": "06989b788e021dca",
+        "type": "catch",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "catch empty",
+        "scope": [
+            "869689982e74b4dc"
+        ],
+        "uncaught": false,
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "9dc4e0542924d838"
+            ]
+        ]
+    },
+    {
+        "id": "719bb2e65b5f411f",
+        "type": "catch",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "catch schema",
+        "scope": [
+            "25e9760c313f1739"
+        ],
+        "uncaught": false,
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "e1d90703b7ce3a13"
+            ]
+        ]
+    },
+    {
+        "id": "b2728fc75e03f928",
+        "type": "subflow:9f31d45ecb1d3482",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "",
+        "x": 280,
+        "y": 500,
+        "wires": [
+            [
+                "25e9760c313f1739"
+            ]
+        ]
+    },
+    {
+        "id": "64d95ba33b6a42ce",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "",
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "ca8f33ee37a06e27"
+            ]
+        ]
+    },
+    {
+        "id": "384314168ce8ee86",
+        "type": "change",
+        "z": "f8d5a5a4f2b87c52",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "temperature",
+                "pt": "msg",
+                "to": "0.3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "64d95ba33b6a42ce",
+                "77e60c255444c236"
+            ]
+        ]
+    },
+    {
+        "id": "12256771ca410bc7",
+        "type": "template",
+        "z": "1254546b0e9fb57c",
+        "name": "format meta instructions",
+        "field": "format",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Your response MUST obey the following formatting rules\n\n{{{format}}}\n\nThis formatting is critically important. Failing to obey this formatting rule will halt all progress.",
+        "output": "str",
+        "x": 410,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d973d3ca1dc6855f",
+        "type": "template",
+        "z": "f6dd154f310aa615",
+        "name": "expert debugger",
+        "field": "persona",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert {{language}} software engineer at the top of your game.\nYou are known for writing clean, clear code.\n{{persona}}",
+        "output": "str",
+        "x": 190,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63dba49296c3a9e4",
+        "type": "template",
+        "z": "9f31d45ecb1d3482",
+        "name": "set validation schema",
+        "field": "schema",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"required\": [\"id\", \"type\"],\n    \"properties\": {\n      \"nodes\": {\n        \"not\": {\n          \"type\": \"array\"\n        }\n      },\n      \"id\": {\n        \"type\": \"string\"\n      },\n      \"type\": {\n        \"type\": \"string\"\n      },\n      \"name\": {\n        \"type\": \"string\"\n      },\n      \"info\": {\n        \"type\": \"string\"\n      },\n      \"category\": {\n        \"type\": \"string\"\n      },\n      \"in\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"required\": [],\n          \"properties\": {\n            \"x\": {\n              \"type\": \"number\"\n            },\n            \"y\": {\n              \"type\": \"number\"\n            },\n            \"wires\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"required\": [],\n                \"properties\": {\n                  \"id\": {\n                    \"type\": \"string\"\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      \"wires\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"string\"\n          }\n        }\n      },\n      \"out\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"required\": [],\n          \"properties\": {\n            \"x\": {\n              \"type\": \"number\"\n            },\n            \"y\": {\n              \"type\": \"number\"\n            },\n            \"wires\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"required\": [],\n                \"properties\": {\n                  \"id\": {\n                    \"type\": \"string\"\n                  },\n                  \"port\": {\n                    \"type\": \"number\"\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      \"env\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"required\": [],\n          \"properties\": {\n            \"name\": {\n              \"type\": \"string\"\n            },\n            \"type\": {\n              \"type\": \"string\"\n            },\n            \"value\": {\n              \"type\": \"string\"\n            }\n          }\n        }\n      },\n      \"meta\": {\n        \"type\": \"object\",\n        \"required\": [],\n        \"properties\": {}\n      },\n      \"color\": {\n        \"type\": \"string\"\n      }\n    }\n  }\n}",
+        "output": "json",
+        "x": 260,
+        "y": 60,
+        "wires": [
+            [
+                "cf072eee9e78f126"
+            ]
+        ]
+    },
+    {
+        "id": "cf072eee9e78f126",
+        "type": "change",
+        "z": "9f31d45ecb1d3482",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "schemaString",
+                "pt": "msg",
+                "to": "$string(schema)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31d816170cfa7a8f",
+        "type": "template",
+        "z": "13d4ac7b7c9898ae",
+        "name": "codeblock",
+        "field": "format",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Put the primary output inside a github flavored markdown code block, with an appropriate language label\n\n{{{format}}}",
+        "output": "str",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "01f9b697fd8ca522",
+        "type": "subflow:13d4ac7b7c9898ae",
+        "z": "a5f18db0d45889f2",
+        "name": "",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb67c6f583a80cc4",
+        "type": "template",
+        "z": "a5f18db0d45889f2",
+        "name": "flow",
+        "field": "format",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please ensure your output is a valid, parsable, node-red array, suitable for import:\nhere's an example:\n\n[{\"id\":\"13d4ac7b7c9898ae\",\"type\":\"subflow\",\"name\":\"codeblock\",\"info\":\"\",\"category\":\"format\",\"in\":[{\"x\":80,\"y\":100,\"wires\":[{\"id\":\"31d816170cfa7a8f\"}]}],\"out\":[{\"x\":300,\"y\":100,\"wires\":[{\"id\":\"31d816170cfa7a8f\",\"port\":0}]}],\"env\":[],\"meta\":{},\"color\":\"#87A980\",\"icon\":\"font-awesome/fa-archive\"},{\"id\":\"31d816170cfa7a8f\",\"type\":\"template\",\"z\":\"13d4ac7b7c9898ae\",\"name\":\"codeblock\",\"field\":\"format\",\"fieldType\":\"msg\",\"format\":\"handlebars\",\"syntax\":\"mustache\",\"template\":\"Put the primary output inside a github flavored markdown code block, with an appropriate language label\\n\\n{{{format}}}\",\"output\":\"str\",\"x\":190,\"y\":100,\"wires\":[[]]}]\n\nhere's a formal definition in JSON schema\n{{{schemaString}}}\n",
+        "output": "str",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "01f9b697fd8ca522"
+            ]
+        ]
+    },
+    {
+        "id": "7da9bb553d44f56a",
+        "type": "subflow:9f31d45ecb1d3482",
+        "z": "a5f18db0d45889f2",
+        "name": "",
+        "x": 180,
+        "y": 40,
+        "wires": [
+            [
+                "bb67c6f583a80cc4"
+            ]
+        ]
+    },
+    {
+        "id": "c306926b9536fe15",
+        "type": "template",
+        "z": "f16c08b0c74d892d",
+        "name": "set task to payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{{persona}}}\n\n{{{requirements}}}\n\n{{{format}}}\n\n{{{task}}}\n",
+        "output": "str",
+        "x": 210,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f89c539d2436d4b8",
+        "type": "status",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "",
+        "scope": null,
+        "x": 500,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c24941818a42ca98",
+        "type": "subflow:f16c08b0c74d892d",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "bundle prompt",
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "8b97ebde3ffd9ecc"
+            ]
+        ]
+    },
+    {
+        "id": "1a48d7a00270d882",
+        "type": "subflow:a5f18db0d45889f2",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "set format to node-red subflow",
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "4c1e24c203e0aef7"
+            ]
+        ]
+    },
+    {
+        "id": "69c4727b24bef714",
+        "type": "subflow:f6dd154f310aa615",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "set persona to engineer",
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "1a48d7a00270d882"
+            ]
+        ]
+    },
+    {
+        "id": "4c1e24c203e0aef7",
+        "type": "subflow:1254546b0e9fb57c",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "wrap format instructions",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "c24941818a42ca98"
+            ]
+        ]
+    },
+    {
+        "id": "8b97ebde3ffd9ecc",
+        "type": "subflow:50df1246bdaf5119",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "",
+        "env": [
+            {
+                "name": "bundle",
+                "value": "true",
+                "type": "bool"
+            },
+            {
+                "name": "num_copies",
+                "value": "1",
+                "type": "num"
+            }
+        ],
+        "x": 350,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "9eeedae39c7afde6",
         "type": "inject",
         "z": "941765e8bb2c32d6",
@@ -988,5 +1883,103 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "414ddee1287efb66",
+        "type": "subflow:b53b3b7e24a3e4e7",
+        "z": "941765e8bb2c32d6",
+        "name": "generate initial flow",
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "7c5e2ba298e8f0b8"
+            ]
+        ]
+    },
+    {
+        "id": "733c94970d337f9c",
+        "type": "inject",
+        "z": "941765e8bb2c32d6",
+        "name": "set task props",
+        "props": [
+            {
+                "p": "language",
+                "v": "node-red and javascript",
+                "vt": "str"
+            },
+            {
+                "p": "min_tokens",
+                "v": "2000",
+                "vt": "str"
+            },
+            {
+                "p": "temperature",
+                "v": "0.7",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "x": 230,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c13f6114b4ebbbcc",
+        "type": "template",
+        "z": "941765e8bb2c32d6",
+        "name": "requirements",
+        "field": "requirements",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "I need a node-red subflow according to the following Specification:\n\nTechnical Specification for Subflow: Detect Changes in Subflow Versions\n\n**Input**:\n- `msg.payload`: The parsed JSON content of the flows.json file.\n\n**Output**:\n- `msg.updatedSubflows`: An array of subflow objects with detected changes.\n\n**Subflow Description**:\n\nThe purpose of this subflow is to detect changes in the semver of subflow definitions in a Node-RED flows.json file. It takes the parsed JSON content of the flows.json file as input and outputs an array of updated subflow objects.\n\n**Subflow Nodes**:\n\n1. `function` node (analyzeSubflows): This node will analyze the input subflows, comparing the current versions to the previously known versions.\n   - Input: `msg.payload`\n   - Process: Extract subflows and compare their semver to the last known versions stored in a \"context\" or \"flow\" variable. If a change is detected, store the updated subflow object in an array.\n   - Output: `msg.updatedSubflows`\n\n**Subflow Implementation**:\n\n1. Add a `function` node (analyzeSubflows) to the subflow workspace.\n2. Set the function node's properties as follows:\n   - Name: \"Analyze Subflows\"\n   - Function: (example JavaScript code)\n\n```javascript\nconst currentSubflows = msg.payload.filter(node => node.type.startsWith('subflow:'));\nconst updatedSubflows = [];\nconst lastKnownVersions = context.get('lastKnownVersions') || {};\n\ncurrentSubflows.forEach(subflow => {\n  const {id, type, version} = subflow;\n  const lastVersion = lastKnownVersions[id];\n\n  if (!lastVersion || lastVersion !== version) {\n    updatedSubflows.push(subflow);\n    lastKnownVersions[id] = version;\n  }\n});\n\ncontext.set('lastKnownVersions', lastKnownVersions);\nmsg.updatedSubflows = updatedSubflows;\n\nreturn msg;\n```\n\n3. Connect the input of the subflow to the input of the \"Analyze Subflows\" node.\n4. Connect the output of the \"Analyze Subflows\" node to the output of the subflow.\n",
+        "output": "str",
+        "x": 230,
+        "y": 280,
+        "wires": [
+            [
+                "414ddee1287efb66"
+            ]
+        ]
+    },
+    {
+        "id": "7c5e2ba298e8f0b8",
+        "type": "subflow:f8d5a5a4f2b87c52",
+        "z": "941765e8bb2c32d6",
+        "name": "flow validation",
+        "x": 220,
+        "y": 380,
+        "wires": [
+            [
+                "c671ce69c869d6d4"
+            ]
+        ]
+    },
+    {
+        "id": "c671ce69c869d6d4",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 380,
+        "wires": []
     }
 ]
