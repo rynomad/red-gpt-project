@@ -2320,7 +2320,7 @@
         "z": "941765e8bb2c32d6",
         "name": "",
         "url": "/eval",
-        "method": "get",
+        "method": "post",
         "upload": false,
         "swaggerDoc": "",
         "x": 460,
