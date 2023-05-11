@@ -611,24 +611,24 @@
     {
         "id": "b53b3b7e24a3e4e7",
         "type": "subflow",
-        "name": "flows",
+        "name": "node-red",
         "info": "",
         "category": "generator",
         "in": [
             {
-                "x": 20,
-                "y": 160,
+                "x": 120,
+                "y": 80,
                 "wires": [
                     {
-                        "id": "69c4727b24bef714"
+                        "id": "15470b359beaf8ad"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 620,
-                "y": 480,
+                "x": 400,
+                "y": 520,
                 "wires": [
                     {
                         "id": "f1a288a6365bfe2d",
@@ -650,7 +650,7 @@
         },
         "color": "#DDAA99",
         "status": {
-            "x": 580,
+            "x": 540,
             "y": 40,
             "wires": [
                 {
@@ -1703,7 +1703,7 @@
         "z": "b53b3b7e24a3e4e7",
         "name": "",
         "scope": null,
-        "x": 480,
+        "x": 440,
         "y": 40,
         "wires": [
             []
@@ -1726,8 +1726,8 @@
         "id": "1a48d7a00270d882",
         "type": "subflow:a5f18db0d45889f2",
         "z": "b53b3b7e24a3e4e7",
-        "name": "set format to node-red subflow",
-        "x": 230,
+        "name": "set format",
+        "x": 170,
         "y": 200,
         "wires": [
             [
@@ -1739,8 +1739,8 @@
         "id": "69c4727b24bef714",
         "type": "subflow:f6dd154f310aa615",
         "z": "b53b3b7e24a3e4e7",
-        "name": "set persona to engineer",
-        "x": 210,
+        "name": "set persona",
+        "x": 170,
         "y": 160,
         "wires": [
             [
@@ -1752,8 +1752,8 @@
         "id": "4c1e24c203e0aef7",
         "type": "subflow:1254546b0e9fb57c",
         "z": "b53b3b7e24a3e4e7",
-        "name": "wrap format instructions",
-        "x": 210,
+        "name": "wrap format",
+        "x": 170,
         "y": 240,
         "wires": [
             [
@@ -1798,7 +1798,7 @@
                 "type": "str"
             }
         ],
-        "x": 520,
+        "x": 480,
         "y": 320,
         "wires": [
             [
@@ -1817,7 +1817,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
+        "x": 440,
         "y": 360,
         "wires": [
             [
@@ -1833,7 +1833,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 470,
+        "x": 430,
         "y": 440,
         "wires": [
             [
@@ -1852,7 +1852,7 @@
         "syntax": "mustache",
         "template": "Your response was rejected for the following reason:\n\n{{error.message}}\n\nremember, you need to follow these formatting instructions:\n\n{{format}}",
         "output": "str",
-        "x": 480,
+        "x": 440,
         "y": 80,
         "wires": [
             [
@@ -1869,8 +1869,8 @@
             "eef683f2fb7c7a34"
         ],
         "uncaught": false,
-        "x": 300,
-        "y": 60,
+        "x": 260,
+        "y": 40,
         "wires": [
             [
                 "b34ce9b36761fd82"
@@ -1886,8 +1886,8 @@
             "86c1b1c593519bdf"
         ],
         "uncaught": false,
-        "x": 300,
-        "y": 100,
+        "x": 260,
+        "y": 80,
         "wires": [
             [
                 "b34ce9b36761fd82"
@@ -1899,7 +1899,7 @@
         "type": "subflow:9f31d45ecb1d3482",
         "z": "b53b3b7e24a3e4e7",
         "name": "set node-red schema",
-        "x": 520,
+        "x": 480,
         "y": 400,
         "wires": [
             [
@@ -1912,7 +1912,7 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "b53b3b7e24a3e4e7",
         "name": "",
-        "x": 480,
+        "x": 440,
         "y": 200,
         "wires": [
             [
@@ -1939,7 +1939,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
+        "x": 440,
         "y": 160,
         "wires": [
             [
@@ -1969,7 +1969,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
+        "x": 450,
         "y": 480,
         "wires": [
             []
@@ -1980,7 +1980,7 @@
         "type": "subflow:d295481a52b8fd83",
         "z": "b53b3b7e24a3e4e7",
         "name": "",
-        "x": 500,
+        "x": 460,
         "y": 280,
         "wires": [
             [
@@ -1993,7 +1993,7 @@
         "type": "subflow:520a10812173e701",
         "z": "b53b3b7e24a3e4e7",
         "name": "stash temp",
-        "x": 490,
+        "x": 450,
         "y": 120,
         "wires": [
             [
@@ -2013,7 +2013,7 @@
                 "type": "str"
             }
         ],
-        "x": 490,
+        "x": 450,
         "y": 240,
         "wires": [
             [
@@ -2022,10 +2022,37 @@
         ]
     },
     {
+        "id": "15470b359beaf8ad",
+        "type": "change",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "set language",
+        "rules": [
+            {
+                "t": "set",
+                "p": "language",
+                "pt": "msg",
+                "to": "node-red and javascript",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "69c4727b24bef714"
+            ]
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
-        "name": "generate initial flow",
+        "name": "compile flow",
         "env": [
             {
                 "name": "num_copies",
@@ -2033,10 +2060,12 @@
                 "type": "num"
             }
         ],
-        "x": 150,
+        "x": 130,
         "y": 200,
         "wires": [
-            []
+            [
+                "99b359093fa5ee99"
+            ]
         ]
     },
     {
@@ -2045,11 +2074,6 @@
         "z": "941765e8bb2c32d6",
         "name": "set task props",
         "props": [
-            {
-                "p": "language",
-                "v": "node-red and javascript",
-                "vt": "str"
-            },
             {
                 "p": "min_tokens",
                 "v": "1000",
@@ -2098,14 +2122,19 @@
         ]
     },
     {
-        "id": "7c5e2ba298e8f0b8",
-        "type": "subflow:f8d5a5a4f2b87c52",
+        "id": "99b359093fa5ee99",
+        "type": "debug",
         "z": "941765e8bb2c32d6",
-        "name": "flow validation",
-        "x": 140,
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 120,
         "y": 240,
-        "wires": [
-            []
-        ]
+        "wires": []
     }
 ]
