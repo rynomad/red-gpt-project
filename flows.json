@@ -2476,7 +2476,7 @@
         "type": "function",
         "z": "941765e8bb2c32d6",
         "name": "test",
-        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    eval(msg.payload);\n    eval(msg.test);\n    msg.pass = 1;\n} catch (e) {\n    msg.pass = 0;\n}\nreturn msg;",
+        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.test)\n    eval(msg.payload);\n    eval(msg.test);\n    msg.pass = 1;\n} catch (e) {\n    msg.pass = 0;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
