@@ -1899,7 +1899,7 @@
         "type": "subflow:f8d5a5a4f2b87c52",
         "z": "941765e8bb2c32d6",
         "name": "flow validation",
-        "x": 240,
+        "x": 220,
         "y": 380,
         "wires": [
             [
@@ -1919,7 +1919,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 220,
+        "x": 200,
         "y": 440,
         "wires": []
     }
