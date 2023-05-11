@@ -666,45 +666,6 @@
         }
     },
     {
-        "id": "aefb8e4c.cf3b",
-        "type": "subflow",
-        "name": "update-flows",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 100,
-                "y": 100,
-                "wires": [
-                    {
-                        "id": "3c55a724.a3cb38"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 860,
-                "y": 160,
-                "wires": [
-                    {
-                        "id": "5f5ec421.2a3948"
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "flowsPath",
-                "type": "str",
-                "value": "/path/to/flows.json"
-            }
-        ],
-        "meta": {},
-        "color": "#DDAA99",
-        "icon": "/node-red/subflow.svg"
-    },
-    {
         "id": "3624ea24a7bdeaa4",
         "type": "subflow",
         "name": "node-red",
@@ -736,93 +697,6 @@
         "env": [],
         "meta": {},
         "color": "#DDAA99"
-    },
-    {
-        "id": "2f1686cb6e08da2b",
-        "type": "subflow",
-        "name": "Subflow 1",
-        "info": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 40,
-                "wires": [
-                    {
-                        "id": "cf2be4f33396aa13"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 300,
-                "y": 40,
-                "wires": [
-                    {
-                        "id": "cf2be4f33396aa13",
-                        "port": 0
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "4a696d2e.2e59a4",
-        "type": "subflow",
-        "name": "Validate subflow",
-        "info": "Validates a subflow using the given specifications",
-        "category": "function",
-        "in": [
-            {
-                "x": 100,
-                "y": 100,
-                "wires": []
-            }
-        ],
-        "out": [
-            {
-                "x": 540,
-                "y": 100,
-                "wires": []
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#F5DEB3"
-    },
-    {
-        "id": "test-subflow",
-        "type": "subflow",
-        "name": "Test Subflow",
-        "info": "",
-        "category": "input",
-        "in": [
-            {
-                "x": 80,
-                "y": 25,
-                "wires": [
-                    {
-                        "id": "parse-string"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 300,
-                "y": 25,
-                "wires": [
-                    {
-                        "id": "parse-string",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99",
-        "icon": "font-awesome/fa-random"
     },
     {
         "id": "07ae0da70cee4ba6",
@@ -1739,17 +1613,6 @@
         "wires": []
     },
     {
-        "id": "24932a90ecbf111a",
-        "type": "subflow:4a696d2e.2e59a4",
-        "z": "50df1246bdaf5119",
-        "name": "",
-        "x": 380,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "bc9b2bca5d9d9220",
         "type": "function",
         "z": "b7d91a580a2c7c19",
@@ -2284,70 +2147,6 @@
         ]
     },
     {
-        "id": "8f2d8697.6c50c8",
-        "type": "file in",
-        "z": "aefb8e4c.cf3b",
-        "name": "Read Flows",
-        "filename": "{{flowsPath}}",
-        "filenameType": "str",
-        "format": "parsed",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 390,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f81e2a75.fe8798",
-        "type": "function",
-        "z": "aefb8e4c.cf3b",
-        "name": "Insert Payload into Flows",
-        "func": "const flows = msg.payload;\nflows.push(...msg.payload);\n\nreturn { payload: flows };",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 510,
-        "y": 180,
-        "wires": [
-            []
-        ],
-        "icon": "/node-red/functions.png"
-    },
-    {
-        "id": "5f5ec421.2a3948",
-        "type": "file",
-        "z": "aefb8e4c.cf3b",
-        "name": "Write Flows",
-        "filename": "{{flowsPath}}",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 730,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3c55a724.a3cb38",
-        "type": "subflow:aefb8e4c.cf3b",
-        "z": "aefb8e4c.cf3b",
-        "name": "",
-        "x": 270,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "76bd320aab4ecae2",
         "type": "template",
         "z": "3624ea24a7bdeaa4",
@@ -2363,50 +2162,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "cf2be4f33396aa13",
-        "type": "function",
-        "z": "2f1686cb6e08da2b",
-        "name": "function 2",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6e72af30.4b6b88",
-        "type": "function",
-        "z": "4a696d2e.2e59a4",
-        "name": "Validate subflow",
-        "func": "const JSON_SCHEMA = {\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[\"id\",\"type\"],\"properties\":{\"nodes\":{\"not\":{\"type\":\"array\"}},\"status\":{\"not\":{\"type\":\"object\"}},\"id\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"info\":{\"type\":\"string\"},\"category\":{\"type\":\"string\"},\"in\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[],\"properties\":{\"x\":{\"type\":\"number\"},\"y\":{\"type\":\"number\"},\"wires\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[],\"properties\":{\"id\":{\"type\":\"string\"}}}}}}}},\"wires\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}},\"out\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[],\"properties\":{\"x\":{\"type\":\"number\"},\"y\":{\"type\":\"number\"},\"wires\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[],\"properties\":{\"id\":{\"type\":\"string\"},\"port\":{\"type\":\"number\"}}}}}}}},\"env\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"required\":[],\"properties\":{\"name\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}}}},\"meta\":{\"type\":\"object\",\"required\":[],\"properties\":{}},\"color\":{\"type\":\"string\"}}};\n\nconst validate = async (msg, saveToContext) => {\n    try {\n        const subflow = JSON.parse(msg.payload);\n        const ajv = new Ajv();\n        const validate = ajv.compile(JSON_SCHEMA);\n        const valid = validate(subflow);\n\n        if (!valid) {\n            throw new Error('Invalid Subflow: ' + ajv.errors[0].message);\n        }\n        else {\n            msg.payload = \"Valid Subflow!\";\n            saveToContext[\"flow\"] = subflow; //Save the flow in context\n        }\n        return msg\n    }\n    catch (error) {\n        throw new Error('Invalid JSON: ' + error.message);\n    }\n}\n\nconst test = async (msg, getFromContext) => {\n    try {\n        const subflow = getFromContext(\"flow\");\n        const testResult = {\n            wiringFunctional: true,\n            circularRouting: false,\n            nodesReachable: true,\n            obeyJsonSchema: true,\n            categorizedAppropriately: true,\n        }\n\n        //Check if the wiring is functional and avoid circular routing\n        let nodeIds = [...new Set(subflow.map(node => node.id))];\n        let connections = subflow.filter(node => node.type === \"link in\" || node.type === \"link out\");\n        let wires = connections.map(node => {\n            // Get the target node\n            let targetId = node[type === \"link out\" ? \"wires\" : \"target\"][0];\n            let targetNode = subflow.find((node) => node.id === targetId);\n\n            return {\n                source: node,\n                target: targetNode\n            }\n        });\n        testResult.wiringFunctional = !detectCircularLinks(wires);\n        testResult.circularRouting = detectCircularRouting(wires);\n\n        //Check if all nodes are reachable\n        testResult.nodesReachable = verifyNodesReachable(nodeIds, wires);\n\n        //Check if subflows are categorized appropriately\n        testResult.categorizedAppropriately = subflow.every(node => node.type !== \"subflow\" || node.category);\n\n        // Check if the JSON schema is obeyed\n        const ajv = new Ajv();\n        const validate = ajv.compile(JSON_SCHEMA);\n        const valid = validate(subflow);\n        testResult.obeyJsonSchema = !!valid;\n\n        msg.payload = testResult;\n        return msg\n    }\n    catch (error) {\n        throw new Error('Test Failed: ' + error.message);\n    }\n}\n\nconst detectCircularLinks = (links) => {\n    let hasCircularLinks = false;\n    links.forEach(link => {\n        let stack = [];\n        let linkId = link.source.id;\n        let visited = {};\n        while (linkId != null && !(linkId in visited)) {\n            let linkNode = link.source;\n            visited[linkNode.id] = true;\n            stack.push(linkNode);\n            linkId = getNextLink(linkNode, links);\n        }\n        if (linkId in visited) {\n            hasCircularLinks = true;\n            return;\n        }\n    });\n    return hasCircularLinks;\n}\n\nconst getNextLink = (link, links) => {\n    let targetId = link[type === \"link out\" ? \"wires\" : \"target\"][0];\n    let targetLink = links.find((node) => node.id === targetId);\n    return targetLink ? targetLink.source.id : null;\n}\n\nconst detectCircularRouting = (wires) => {\n    let hasCircularRouting = false;\n    wires.forEach(wire => {\n        let startNode = wire.source.wires[0];\n        let endNode = wire.target;\n        let visited = {};\n        let stack = [];\n        stack.push(startNode);\n        visited[startNode.id] = true;\n        while (stack.length > 0) {\n            let curNode = stack.pop();\n            if (curNode.id === endNode.id) {\n                visited = {};\n                break;\n            }\n            let nextNodesIds = curNode.wires.map(wire => wire.id);\n            subWires = wires.filter(subWire => wire.targets.includes(subWire.source.id));\n            subWires.forEach(subWire => {\n                let subNodeId = subWire.target.id;\n                if (subNodeId in visited) {\n                    return;\n                }\n                visited[subNodeId] = true;\n                stack.push(subWire.target);\n            });\n        }\n        hasCircularRouting |= Object.keys(visited).length > 0;\n    });\n    return hasCircularRouting;\n}\n\nconst verifyNodesReachable = (nodeIds, wires) => {\n    const visited = new Set();\n    let searchStack = [nodeIds[0]];\n\n    while (!(visited.size === nodeIds.length)) {\n        if (searchStack.length === 0) {\n            return false;\n        }\n\n        let curNodeId = searchStack.pop();\n        if (visited.has(curNodeId)) {\n            continue;\n        }\n        visited.add(curNodeId);\n\n        let outwardLinks = wires.filter(link => link.source.id === curNodeId);\n        let nextNodesIds = outwardLinks.map(link => link.target.id);\n        searchStack.push(...nextNodesIds);\n    }\n    return true;\n}\n\nmsg = await validate(msg, context.get.bind(context)); //validate subflow and save to context\nmsg = await test(msg, context.get.bind(context)); //test subflow\nreturn msg;",
-        "outputs": 1,
-        "noerr": 61,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 340,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ac0d58ce.1cda2",
-        "type": "comment",
-        "z": "4a696d2e.2e59a4",
-        "name": "Validate and test a subflow",
-        "info": "",
-        "x": 140,
-        "y": 40,
-        "wires": []
     },
     {
         "id": "414ddee1287efb66",
