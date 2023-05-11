@@ -1812,7 +1812,7 @@
         "id": "447868e0429fdc8c",
         "type": "subflow:b7d91a580a2c7c19",
         "z": "b53b3b7e24a3e4e7",
-        "name": "parse json codeblocks",
+        "name": "parse codeblocks",
         "env": [
             {
                 "name": "blockTypes",
@@ -1820,11 +1820,12 @@
                 "type": "str"
             }
         ],
-        "x": 480,
+        "x": 470,
         "y": 320,
         "wires": [
             [
-                "eef683f2fb7c7a34"
+                "eef683f2fb7c7a34",
+                "df687edd651ee128"
             ]
         ]
     },
@@ -1833,7 +1834,7 @@
         "type": "function",
         "z": "b53b3b7e24a3e4e7",
         "name": "get result",
-        "func": "msg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
+        "func": "console.log('parsed code:', msg.payload)\nmsg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    console.warn('ignoring error:',e)\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1872,7 +1873,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "Your response was rejected for the following reason:\n\n{{error.message}}\n\nremember, you need to follow these formatting instructions:\n\n{{format}}",
+        "template": "Your response was rejected for the following reason:\n\n{{{error.message}}}\n\nremember, you need to follow these formatting instructions:\n\n{{{format}}}",
         "output": "str",
         "x": 440,
         "y": 80,
@@ -2076,6 +2077,22 @@
                 "69c4727b24bef714"
             ]
         ]
+    },
+    {
+        "id": "df687edd651ee128",
+        "type": "debug",
+        "z": "b53b3b7e24a3e4e7",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 320,
+        "wires": []
     },
     {
         "id": "414ddee1287efb66",
