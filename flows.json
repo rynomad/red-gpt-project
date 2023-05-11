@@ -285,7 +285,7 @@
                 "y": 80,
                 "wires": [
                     {
-                        "id": "a6038949892555d8"
+                        "id": "189d162c7a1def8e"
                     }
                 ]
             }
@@ -293,7 +293,7 @@
         "out": [
             {
                 "x": 260,
-                "y": 360,
+                "y": 320,
                 "wires": [
                     {
                         "id": "ef9999d2ba3d2f28",
@@ -1138,7 +1138,7 @@
         "finalize": "",
         "libs": [],
         "x": 130,
-        "y": 280,
+        "y": 240,
         "wires": [
             [
                 "83096e44fc2c289e"
@@ -1146,38 +1146,18 @@
         ]
     },
     {
-        "id": "a6038949892555d8",
-        "type": "subflow:520a10812173e701",
-        "z": "50df1246bdaf5119",
-        "name": "stash payload",
-        "env": [
-            {
-                "name": "clear",
-                "value": "false",
-                "type": "bool"
-            }
-        ],
-        "x": 160,
-        "y": 80,
-        "wires": [
-            [
-                "189d162c7a1def8e"
-            ]
-        ]
-    },
-    {
         "id": "83096e44fc2c289e",
         "type": "template",
         "z": "50df1246bdaf5119",
-        "name": "fixer",
+        "name": "review",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a researcher tasked with investigating the potential solutions.\nList the issues with each option, ranking each by severity.\nAlso list what each option gets right, and which takes the overall best approach.\n",
+        "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\nList the issues with each option, ranking each by severity.\nFocus on problems that may prevent it from running.\nAlso list what each option gets right, and which takes the overall best approach.\nFinally, provide a synthesized solution.",
         "output": "str",
         "x": 130,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "ef9999d2ba3d2f28"
@@ -1189,15 +1169,8 @@
         "type": "subflow:02409038fd9362ee",
         "z": "50df1246bdaf5119",
         "name": "",
-        "env": [
-            {
-                "name": "bundle",
-                "value": "true",
-                "type": "bool"
-            }
-        ],
         "x": 150,
-        "y": 360,
+        "y": 320,
         "wires": [
             []
         ]
@@ -1214,7 +1187,7 @@
         "finalize": "",
         "libs": [],
         "x": 130,
-        "y": 120,
+        "y": 80,
         "wires": [
             [
                 "95fe1a4f7ccf06fb"
@@ -1233,7 +1206,7 @@
         "stream": false,
         "addname": "",
         "x": 150,
-        "y": 160,
+        "y": 120,
         "wires": [
             [
                 "432af7d250ee4197"
@@ -1253,7 +1226,7 @@
             }
         ],
         "x": 150,
-        "y": 200,
+        "y": 160,
         "wires": [
             [
                 "0e3ce1809b54fad7"
@@ -1281,7 +1254,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 150,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "31d7c39f9a6c8c97"
@@ -1834,7 +1807,7 @@
         "type": "function",
         "z": "b53b3b7e24a3e4e7",
         "name": "get result",
-        "func": "console.log('parsed code:', msg.payload)\nmsg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    console.warn('ignoring error:',e)\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
+        "func": "console.log('parsed code:', msg.payload)\nmsg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    console.warn('ignoring error:',e)\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, please provide a full flow. remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
