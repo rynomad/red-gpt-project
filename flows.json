@@ -187,8 +187,8 @@
         "category": "",
         "in": [
             {
-                "x": 50,
-                "y": 30,
+                "x": 100,
+                "y": 80,
                 "wires": [
                     {
                         "id": "587cc92797acd5f3"
@@ -198,8 +198,8 @@
         ],
         "out": [
             {
-                "x": 540,
-                "y": 200,
+                "x": 580,
+                "y": 180,
                 "wires": [
                     {
                         "id": "4c18e4ef1378f85f",
@@ -216,7 +216,17 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "status": {
+            "x": 320,
+            "y": 40,
+            "wires": [
+                {
+                    "id": "b9ef7df646a61456",
+                    "port": 0
+                }
+            ]
+        }
     },
     {
         "id": "520a10812173e701",
@@ -812,7 +822,7 @@
         "type": "function",
         "z": "237429fb2a5a7712",
         "name": "ensure token headroom",
-        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nconsole.log('msg.max_tokens', msg.max_tokens, msg.history)\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 100; // give the encoder some wiggle room\n    if (env.get('auto4')\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    if (env.get('auto4')\n    && (msg.topic == 'gpt4')\n    && (4096 - sum > (msg.min_tokens || 0))){\n        msg.topic = 'turbo';\n    }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
+        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 100; // give the encoder some wiggle room\n    if (env.get('auto4')\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    if (env.get('auto4')\n    && (msg.topic == 'gpt4')\n    && (4096 - sum > (msg.min_tokens || 0))){\n        msg.topic = 'turbo';\n    }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -987,15 +997,15 @@
         "id": "587cc92797acd5f3",
         "type": "template",
         "z": "02409038fd9362ee",
-        "name": "add last line",
+        "name": "last line",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "{{{payload}}}\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
-        "x": 230,
-        "y": 40,
+        "x": 220,
+        "y": 80,
         "wires": [
             [
                 "94270be7a7e81ed1"
@@ -1008,7 +1018,7 @@
         "z": "02409038fd9362ee",
         "name": "",
         "x": 220,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "02498ebad85fca04"
@@ -1020,8 +1030,8 @@
         "type": "subflow:d295481a52b8fd83",
         "z": "02409038fd9362ee",
         "name": "",
-        "x": 420,
-        "y": 200,
+        "x": 440,
+        "y": 180,
         "wires": [
             []
         ]
@@ -1038,7 +1048,7 @@
         "template": "now put it all together according to the original question.\n\nbe sure to obey the formatting rules.",
         "output": "str",
         "x": 410,
-        "y": 100,
+        "y": 80,
         "wires": [
             [
                 "5392474c6ec89e72"
@@ -1064,7 +1074,7 @@
         "repair": false,
         "outputs": 2,
         "x": 220,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "bc85a1ac4b1b979e"
@@ -1080,11 +1090,23 @@
         "z": "02409038fd9362ee",
         "name": "",
         "x": 420,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "4c18e4ef1378f85f"
             ]
+        ]
+    },
+    {
+        "id": "b9ef7df646a61456",
+        "type": "status",
+        "z": "02409038fd9362ee",
+        "name": "",
+        "scope": null,
+        "x": 220,
+        "y": 40,
+        "wires": [
+            []
         ]
     },
     {
@@ -1993,6 +2015,13 @@
         "type": "subflow:520a10812173e701",
         "z": "b53b3b7e24a3e4e7",
         "name": "stash temp",
+        "env": [
+            {
+                "name": "key",
+                "value": "temperature",
+                "type": "str"
+            }
+        ],
         "x": 450,
         "y": 120,
         "wires": [
@@ -2134,7 +2163,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 120,
-        "y": 240,
+        "y": 260,
         "wires": []
     }
 ]
