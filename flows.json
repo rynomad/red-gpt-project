@@ -1186,7 +1186,7 @@
         "y": 440,
         "wires": [
             [
-                "83096e44fc2c289e"
+                "b446b41f8155ed4f"
             ]
         ]
     },
@@ -1202,7 +1202,7 @@
         "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity.\n1.1 Focus on problems that may prevent it from running.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 130,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
                 "2fba30a10931ca0c"
@@ -1612,7 +1612,7 @@
         "z": "50df1246bdaf5119",
         "name": "",
         "x": 140,
-        "y": 520,
+        "y": 560,
         "wires": [
             [
                 "447868e0429fdc8c"
@@ -1634,6 +1634,19 @@
         "y": 20,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "b446b41f8155ed4f",
+        "type": "subflow:f9e0ec91.e767e",
+        "z": "50df1246bdaf5119",
+        "name": "minify JSON in history",
+        "x": 180,
+        "y": 480,
+        "wires": [
+            [
+                "83096e44fc2c289e"
+            ]
         ]
     },
     {
@@ -2296,7 +2309,7 @@
         "props": [
             {
                 "p": "min_tokens",
-                "v": "1000",
+                "v": "2000",
                 "vt": "str"
             },
             {
