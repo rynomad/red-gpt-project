@@ -2194,7 +2194,7 @@
         "type": "function",
         "z": "8843d7f92416211de9ebb963ff4ce28125932878",
         "name": "transform nodes",
-        "func": "var subflows = msg.payload.reduce(function(acc, node) {if (node.type === \"subflow\") {acc[node.id] = { id: node.id, nodes: [node] };} else if (node.z && acc[node.z]) {acc[node.z].nodes.push(node);}return acc;}, {});var result = Object.values(subflows).map(function(subflow) {return {id: subflow.id,type: \"subflow\",nodes: JSON.parse(JSON.stringify(subflow.nodes))};});msg.payload = JSON.stringify(result);return msg;",
+        "func": "var subflows = msg.payload.reduce(function(acc, node) {\n    if (node.type === \"subflow\") {\n        acc[node.id] = { id: node.id, nodes: [node] };\n    } else if (node.z && acc[node.z]) {\n        acc[node.z].nodes.push(node);\n    }\n    return acc;\n}, {});\n\nvar result = Object.values(subflows).map(\n    function(subflow) {\n        return {id: subflow.id,type: \"subflow\",nodes: JSON.parse(JSON.stringify(subflow.nodes))};\n    }\n);\nmsg.payload = JSON.stringify(result);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2326,7 +2326,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 480,
+        "x": 560,
         "y": 160,
         "wires": [
             [
@@ -2345,7 +2345,7 @@
         "arraySpltType": "len",
         "stream": true,
         "addname": "",
-        "x": 450,
+        "x": 530,
         "y": 120,
         "wires": [
             [
@@ -2362,7 +2362,7 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 460,
+        "x": 540,
         "y": 80,
         "wires": [
             [
@@ -2378,7 +2378,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 450,
+        "x": 530,
         "y": 200,
         "wires": [
             [
@@ -2440,7 +2440,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
+        "x": 560,
         "y": 240,
         "wires": [
             [
@@ -2459,7 +2459,7 @@
         "syntax": "mustache",
         "template": "here are the requirements for a function i need you to write:\n\n{{{requirements}}} //...\n\nmake sure that you give me the whole function, and that the name matches.",
         "output": "str",
-        "x": 490,
+        "x": 570,
         "y": 280,
         "wires": [
             [
@@ -2472,7 +2472,7 @@
         "type": "subflow:50df1246bdaf5119",
         "z": "941765e8bb2c32d6",
         "name": "",
-        "x": 470,
+        "x": 550,
         "y": 320,
         "wires": [
             [
@@ -2491,7 +2491,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
+        "x": 530,
         "y": 360,
         "wires": [
             [
@@ -2519,7 +2519,7 @@
         "reduceInit": "0",
         "reduceInitType": "num",
         "reduceFixup": "$A/$N",
-        "x": 480,
+        "x": 560,
         "y": 400,
         "wires": [
             [
@@ -2540,7 +2540,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
+        "x": 540,
         "y": 440,
         "wires": []
     },
@@ -2549,11 +2549,11 @@
         "type": "subflow:8843d7f92416211de9ebb963ff4ce28125932878",
         "z": "941765e8bb2c32d6",
         "name": "",
-        "x": 270,
+        "x": 210,
         "y": 540,
         "wires": [
             [
-                "3ab40e04649ddf45"
+                "d97a19209a785803"
             ]
         ]
     },
@@ -2569,7 +2569,7 @@
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 300,
+        "x": 240,
         "y": 460,
         "wires": [
             [
@@ -2585,7 +2585,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 190,
+        "x": 130,
         "y": 500,
         "wires": [
             [
@@ -2605,8 +2605,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 200,
-        "y": 580,
+        "x": 140,
+        "y": 620,
         "wires": []
     },
     {
@@ -2630,11 +2630,27 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 200,
+        "x": 140,
         "y": 420,
         "wires": [
             [
                 "b433c835d854e271"
+            ]
+        ]
+    },
+    {
+        "id": "d97a19209a785803",
+        "type": "json",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 130,
+        "y": 580,
+        "wires": [
+            [
+                "3ab40e04649ddf45"
             ]
         ]
     }
