@@ -2279,26 +2279,6 @@
         ]
     },
     {
-        "id": "a1eaf894417980b0",
-        "type": "file in",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "filename": "humaneval.jsonl.txt",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 490,
-        "y": 80,
-        "wires": [
-            [
-                "2d59b8905d9a2034"
-            ]
-        ]
-    },
-    {
         "id": "2d59b8905d9a2034",
         "type": "split",
         "z": "941765e8bb2c32d6",
@@ -2335,36 +2315,19 @@
         "wires": []
     },
     {
-        "id": "5e1257fb64550d03",
-        "type": "inject",
+        "id": "03452b81b44554fd",
+        "type": "http in",
         "z": "941765e8bb2c32d6",
-        "name": "set task props",
-        "props": [
-            {
-                "p": "min_tokens",
-                "v": "2000",
-                "vt": "str"
-            },
-            {
-                "p": "temperature",
-                "v": "0.7",
-                "vt": "str"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "turbo",
-        "x": 470,
-        "y": 40,
+        "name": "",
+        "url": "/eval",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 460,
+        "y": 80,
         "wires": [
             [
-                "a1eaf894417980b0"
+                "2d59b8905d9a2034"
             ]
         ]
     }
