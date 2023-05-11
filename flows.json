@@ -702,7 +702,8 @@
         "id": "8843d7f92416211de9ebb963ff4ce28125932878",
         "type": "subflow",
         "name": "Transform nodes into subflows",
-        "info": "",
+        "info": "\n|------|------|\n|test  |stuff |\n|------|------|",
+        "category": "",
         "in": [
             {
                 "x": 60,
@@ -2605,16 +2606,21 @@
             {
                 "p": "topic",
                 "vt": "str"
+            },
+            {
+                "p": "temperature",
+                "v": "0.5",
+                "vt": "str"
             }
         ],
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "",
+        "topic": "turbo",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
+        "x": 160,
         "y": 420,
         "wires": [
             [
@@ -2673,10 +2679,12 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 210,
-        "y": 820,
+        "x": 330,
+        "y": 920,
         "wires": [
-            []
+            [
+                "5db7cfe60d82dc48"
+            ]
         ]
     },
     {
@@ -2695,7 +2703,8 @@
         "wires": [
             [
                 "3493294fda08df95",
-                "3ab40e04649ddf45"
+                "3ab40e04649ddf45",
+                "dae7e91edc72c83d"
             ],
             [
                 "e5e5952cd49e64d8",
@@ -2744,8 +2753,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 500,
-        "y": 700,
+        "x": 360,
+        "y": 800,
         "wires": []
     },
     {
@@ -2761,8 +2770,116 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
-        "y": 760,
+        "x": 360,
+        "y": 840,
         "wires": []
+    },
+    {
+        "id": "17c4c2465ba4c355",
+        "type": "template",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style.",
+        "output": "str",
+        "x": 480,
+        "y": 740,
+        "wires": [
+            [
+                "2656bcf5cad4e16b"
+            ]
+        ]
+    },
+    {
+        "id": "dae7e91edc72c83d",
+        "type": "json",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "property": "payload.nodes",
+        "action": "",
+        "pretty": false,
+        "x": 450,
+        "y": 680,
+        "wires": [
+            [
+                "17c4c2465ba4c355"
+            ]
+        ]
+    },
+    {
+        "id": "839a598e1ddd08d3",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "x": 540,
+        "y": 820,
+        "wires": [
+            [
+                "13b3fd70b0e66417",
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "13b3fd70b0e66417",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "docs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "5db7cfe60d82dc48",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "done",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "2656bcf5cad4e16b",
+        "type": "delay",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 780,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
+            ]
+        ]
     }
 ]
