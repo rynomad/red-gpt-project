@@ -2400,10 +2400,9 @@
         "scope": null,
         "uncaught": false,
         "x": 220,
-        "y": 20,
+        "y": 60,
         "wires": [
             [
-                "e66c7e2b9c2807aa",
                 "b722eb5e7dd70f13"
             ]
         ]
@@ -2438,8 +2437,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 40,
+        "x": 540,
+        "y": 60,
         "wires": []
     },
     {
@@ -2488,7 +2487,7 @@
         "repair": false,
         "outputs": 2,
         "x": 210,
-        "y": 60,
+        "y": 100,
         "wires": [
             [
                 "e66c7e2b9c2807aa"
