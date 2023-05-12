@@ -2511,7 +2511,9 @@
         "x": 560,
         "y": 460,
         "wires": [
-            []
+            [
+                "018ce5a7f6f94441"
+            ]
         ]
     },
     {
@@ -3020,7 +3022,7 @@
         "rules": [
             {
                 "t": "lt",
-                "v": "10",
+                "v": "1000",
                 "vt": "str"
             }
         ],
@@ -3086,7 +3088,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
+        "x": 820,
         "y": 380,
         "wires": []
     },
@@ -3106,6 +3108,67 @@
         "wires": [
             [
                 "2005eba0858b7465"
+            ]
+        ]
+    },
+    {
+        "id": "018ce5a7f6f94441",
+        "type": "debug",
+        "z": "941765e8bb2c32d6",
+        "name": "final score",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "30bf3f577ffc38e2",
+        "type": "catch",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "scope": [
+            "922590827a20da6a"
+        ],
+        "uncaught": false,
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "1ef19c0f52772c06"
+            ]
+        ]
+    },
+    {
+        "id": "1ef19c0f52772c06",
+        "type": "change",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pass",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 400,
+        "wires": [
+            [
+                "b8010df720742aef"
             ]
         ]
     }
