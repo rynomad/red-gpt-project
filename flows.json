@@ -3068,7 +3068,7 @@
         "type": "function",
         "z": "f297cec495c6b8be",
         "name": "test",
-        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    const test = new Function('console',msg.payload + '\\n' + msg.testString)\n    test(console)\n    msg.pass = 1;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = 0;\n}\n\nmsg.payload = `{pass: msg.pass, flow: msg.flow ? 'smartcoder' : 'chatgpt', model: msg.topic}`\nreturn msg;",
+        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    const test = new Function('console',msg.payload + '\\n' + msg.testString)\n    test(console)\n    msg.pass = 1;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = 0;\n}\n\nmsg.payload = JSON.stringify({pass: msg.pass, flow: msg.flow ? 'smartcoder' : 'chatgpt', model: msg.topic})\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
