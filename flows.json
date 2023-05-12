@@ -3008,7 +3008,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 550,
+        "x": 530,
         "y": 40,
         "wires": [
             [
