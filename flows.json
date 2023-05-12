@@ -1011,6 +1011,46 @@
         "wires": []
     },
     {
+        "id": "eee38431b18a000c",
+        "type": "catch",
+        "z": "237429fb2a5a7712",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "dc5ae5d65c2c0ae7"
+            ]
+        ]
+    },
+    {
+        "id": "dc5ae5d65c2c0ae7",
+        "type": "delay",
+        "z": "237429fb2a5a7712",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "10",
+        "randomLast": "60",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "1d0773bcf3416404"
+            ]
+        ]
+    },
+    {
         "id": "587cc92797acd5f3",
         "type": "template",
         "z": "02409038fd9362ee",
