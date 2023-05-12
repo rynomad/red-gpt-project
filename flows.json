@@ -2506,8 +2506,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 170,
-        "y": 280,
+        "x": 110,
+        "y": 200,
         "wires": [
             [
                 "ed65351c21590e04"
@@ -2575,8 +2575,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
-        "y": 320,
+        "x": 140,
+        "y": 240,
         "wires": [
             [
                 "8d53a1abefddfbf2"
@@ -2594,8 +2594,8 @@
         "syntax": "mustache",
         "template": "here are the requirements for a function i need you to write in javascript:\n\n{{{requirements}}} //...\n\nmake sure that you give me the whole function, and that the name matches.",
         "output": "str",
-        "x": 210,
-        "y": 360,
+        "x": 150,
+        "y": 280,
         "wires": [
             [
                 "65d8c0dd542c67cc"
@@ -2607,8 +2607,8 @@
         "type": "subflow:50df1246bdaf5119",
         "z": "f297cec495c6b8be",
         "name": "",
-        "x": 610,
-        "y": 420,
+        "x": 390,
+        "y": 320,
         "wires": [
             [
                 "62612d04c38cb1a4"
@@ -2626,7 +2626,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
+        "x": 610,
         "y": 460,
         "wires": [
             [
@@ -2654,8 +2654,8 @@
         "reduceInit": "0",
         "reduceInitType": "num",
         "reduceFixup": "$A/$N",
-        "x": 920,
-        "y": 460,
+        "x": 900,
+        "y": 540,
         "wires": [
             [
                 "4d96dd6356493577"
@@ -2673,8 +2673,8 @@
         "syntax": "plain",
         "template": "{\"task_id\": \"JavaScript/44\", \"prompt\": \"/*Change numerical base of input number x to base.\\n  return string representation after the conversion.\\n  base numbers are less than 10.\\n  >>> changeBase(8, 3)\\n  '22'\\n  >>> changeBase(8, 2)\\n  '1000'\\n  >>> changeBase(7, 2)\\n  '111'\\n  */\\nconst changeBase = (x, base) => {\\n\", \"canonical_solution\": \"  var ret = \\\"\\\";\\n  while (x > 0) {\\n    ret = (x % base).toString() + ret;\\n    x = Math.floor(x / base);\\n  }\\n  return ret;\\n}\\n\\n\", \"test\": \"const testChangeBase = () => {\\n  console.assert(changeBase(8, 3) === '22')\\n  console.assert(changeBase(9, 3) === '100')\\n  console.assert(changeBase(234, 2) === '11101010')\\n  console.assert(changeBase(16, 2) === '10000')\\n  console.assert(changeBase(8, 2) === '1000')\\n  console.assert(changeBase(7, 2) === '111')\\n\\n  for (let i = 2; i < 8; i++) {\\n    console.assert(changeBase(i, i + 1) === i.toString())\\n  }\\n}\\n\\ntestChangeBase()\\n\", \"declaration\": \"\\nconst changeBase = (x, base) => {\\n\", \"example_test\": \"const testChangeBase = () => {\\n  console.assert(changeBase(8, 3) === '22')\\n  console.assert(changeBase(8, 2) === '1000')\\n  console.assert(changeBase(7, 2) === '111')\\n}\\ntestChangeBase()\\n\"}\n{\"task_id\": \"JavaScript/45\", \"prompt\": \"/*Given length of a side and high return area for a triangle.\\n  >>> triangleArea(5, 3)\\n  7.5\\n  */\\nconst triangleArea = (a, h) => {\\n\", \"canonical_solution\": \"  return a * h / 2.0;\\n}\\n\\n\", \"test\": \"const testTriangleArea = () => {\\n  console.assert(triangleArea(5, 3) === 7.5)\\n  console.assert(triangleArea(2, 2) === 2.0)\\n  console.assert(triangleArea(10, 8) === 40.0)\\n}\\n\\ntestTriangleArea()\\n\", \"declaration\": \"\\nconst triangleArea = (a, h) => {\\n\", \"example_test\": \"const testTriangleArea = () => {\\n  console.assert(triangleArea(5, 3) === 7.5)\\n}\\ntestTriangleArea()\\n\"}\n{\"task_id\": \"JavaScript/46\", \"prompt\": \"/*The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\\n  fib4(0) -> 0\\n  fib4(1) -> 0\\n  fib4(2) -> 2\\n  fib4(3) -> 0\\n  fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).\\n  Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.\\n  >>> fib4(5)\\n  4\\n  >>> fib4(6)\\n  8\\n  >>> fib4(7)\\n  14\\n  */\\nconst fib4 = (n) => {\\n\", \"canonical_solution\": \"  var results = [0, 0, 2, 0];\\n  if (n < 4)\\n    return results[n];\\n  for (let i = 4; i < n + 1; i++) {\\n    results.push(results.at(-1) + results.at(-2) +\\n                results.at(-3) + results.at(-4));\\n    results.shift();\\n  }\\n  return results.pop();\\n}\\n\\n\", \"test\": \"const testFib4 = () => {\\n  console.assert(fib4(5) === 4)\\n  console.assert(fib4(8) === 28)\\n  console.assert(fib4(10) === 104)\\n  console.assert(fib4(12) === 386)\\n}\\n\\ntestFib4()\\n\", \"declaration\": \"\\nconst fib4 = (n) => {\\n\", \"example_test\": \"const testFib4 = () => {\\n  console.assert(fib4(5) === 4)\\n  console.assert(fib4(6) === 8)\\n  console.assert(fib4(7) === 14)\\n}\\ntestFib4()\\n\"}\n{\"task_id\": \"JavaScript/47\", \"prompt\": \"/*Return median of elements in the list l.\\n  >>> median([3, 1, 2, 4, 5])\\n  3\\n  >>> median([-10, 4, 6, 1000, 10, 20])\\n  8.0\\n  */\\nconst median = (l) => {\\n\", \"canonical_solution\": \"  l.sort((a, b) => a - b);\\n  var len = l.length;\\n  if (l.length % 2 == 1)\\n    return l[Math.floor(len / 2)];\\n  else\\n    return (l[len / 2 - 1] + l[len / 2]) / 2.0;\\n}\\n\\n\", \"test\": \"const testMedian = () => {\\n  console.assert(median([3, 1, 2, 4, 5]) === 3)\\n  console.assert(median([-10, 4, 6, 1000, 10, 20]) === 8.0)\\n  console.assert(median([5]) === 5)\\n  console.assert(median([6, 5]) === 5.5)\\n  console.assert(median([8, 1, 3, 9, 9, 2, 7]) === 7)\\n}\\n\\ntestMedian()\\n\", \"declaration\": \"\\nconst median = (l) => {\\n\", \"example_test\": \"const testMedian = () => {\\n  console.assert(median([3, 1, 2, 4, 5]) === 3)\\n  console.assert(median([-10, 4, 6, 1000, 10, 20]) === 8.0)\\n}\\ntestMedian()\\n\"}\n{\"task_id\": \"JavaScript/48\", \"prompt\": \"/*\\n  Checks if given string is a palindrome\\n  >>> isPalindrome('')\\n  true\\n  >>> isPalindrome('aba')\\n  true\\n  >>> isPalindrome('aaaaa')\\n  true\\n  >>> isPalindrome('zbcd')\\n  false\\n  */\\nconst isPalindrome = (text) => {\\n\", \"canonical_solution\": \"  for (let i = 0; i < text.length; i++)\\n    if (text[i] != text.at(-i-1))\\n      return false;\\n  return true;\\n}\\n\\n\", \"test\": \"const testIsPalindrome = () => {\\n  console.assert(isPalindrome('') === true)\\n  console.assert(isPalindrome('aba') === true)\\n  console.assert(isPalindrome('aaaaa') === true)\\n  console.assert(isPalindrome('zbcd') === false)\\n  console.assert(isPalindrome('xywyx') === true)\\n  console.assert(isPalindrome('xywyz') === false)\\n  console.assert(isPalindrome('xywzx') === false)\\n}\\n\\ntestIsPalindrome()\\n\", \"declaration\": \"\\nconst isPalindrome = (text) => {\\n\", \"example_test\": \"const testIsPalindrome = () => {\\n  console.assert(isPalindrome('') === true)\\n  console.assert(isPalindrome('aba') === true)\\n  console.assert(isPalindrome('aaaaa') === true)\\n  console.assert(isPalindrome('zbcd') === false)\\n}\\ntestIsPalindrome()\\n\"}\n{\"task_id\": \"JavaScript/49\", \"prompt\": \"/*Return 2^n modulo p (be aware of numerics).\\n  >>> modp(3, 5)\\n  3\\n  >>> modp(1101, 101)\\n  2\\n  >>> modp(0, 101)\\n  1\\n  >>> modp(3, 11)\\n  8\\n  >>> modp(100, 101)\\n  1\\n  */\\nconst modp = (n, p) => {\\n\", \"canonical_solution\": \"  var ret = 1;\\n  for (let i = 0; i < n; i++)\\n    ret = (2 * ret) % p;\\n  return ret;\\n}\\n\\n\", \"test\": \"const testModp = () => {\\n  console.assert(modp(3, 5) === 3)\\n  console.assert(modp(1101, 101) === 2)\\n  console.assert(modp(0, 101) === 1)\\n  console.assert(modp(3, 11) === 8)\\n  console.assert(modp(100, 101) === 1)\\n  console.assert(modp(30, 5) === 4)\\n  console.assert(modp(31, 5) === 3)\\n}\\n\\ntestModp()\\n\", \"declaration\": \"\\nconst modp = (n, p) => {\\n\", \"example_test\": \"const testModp = () => {\\n  console.assert(modp(3, 5) === 3)\\n  console.assert(modp(1101, 101) === 2)\\n  console.assert(modp(0, 101) === 1)\\n  console.assert(modp(3, 11) === 8)\\n  console.assert(modp(100, 101) === 1)\\n}\\ntestModp()\\n\"}\n{\"task_id\": \"JavaScript/50\", \"prompt\": \"/*\\n  returns encoded string by shifting every character by 5 in the alphabet.\\n  */\\nconst encodeShift = (s) => {\\n  return s.split(\\\"\\\").map(ch => String.fromCharCode(\\n    ((ch.charCodeAt(0) + 5 - \\\"a\\\".charCodeAt(0)) % 26) + \\\"a\\\".charCodeAt(0)\\n  )).join(\\\"\\\");\\n}\\n\\n/*\\n  takes as input string encoded with encode_shift function. Returns decoded string.\\n  */\\nconst decodeShift = (s) => {\\n\", \"canonical_solution\": \"  return s.split(\\\"\\\").map(ch => String.fromCharCode(\\n    ((ch.charCodeAt(0) - 5 + 26 - \\\"a\\\".charCodeAt(0)) % 26) + \\\"a\\\".charCodeAt(0)\\n  )).join(\\\"\\\");\\n}\\n\\n\", \"test\": \"const testDecodeShift = () => {\\n    const letters = new Array(26)\\n    .fill(null)\\n    .map((v, i) => String.fromCharCode(97 + i))\\n\\n    for (let i = 0; i < 100; i++) {\\n      let str = new Array(Math.floor(Math.random() * 20)).fill(null);\\n      str = str.map(item => letters[Math.floor(Math.random() * letters.length)]).join('');\\n      let encoded_str = encodeShift(str)\\n      console.assert(decodeShift(encoded_str) === str)\\n    }\\n\\n}\\n\\ntestDecodeShift()\\n\", \"declaration\": \"const encodeShift = (s) => {\\n  return s.split(\\\"\\\").map(ch => String.fromCharCode(\\n    ((ch.charCodeAt(0) + 5 - \\\"a\\\".charCodeAt(0)) % 26) + \\\"a\\\".charCodeAt(0)\\n  )).join(\\\"\\\");\\n}\\n\\nconst decodeShift = (s) => {\\n\", \"example_test\": \"\"}\n{\"task_id\": \"JavaScript/51\", \"prompt\": \"/*\\n  removeVowels is a function that takes string and returns string without vowels.\\n  >>> removeVowels('')\\n  ''\\n  >>> removeVowels(\\\"abcdef\\\\nghijklm\\\")\\n  'bcdf\\\\nghjklm'\\n  >>> removeVowels('abcdef')\\n  'bcdf'\\n  >>> removeVowels('aaaaa')\\n  ''\\n  >>> removeVowels('aaBAA')\\n  'B'\\n  >>> removeVowels('zbcd')\\n  'zbcd'\\n  */\\nconst removeVowels = (text) => {\\n\", \"canonical_solution\": \"  return text.split(\\\"\\\")\\n             .filter(s => ![\\\"a\\\", \\\"e\\\", \\\"i\\\", \\\"o\\\", \\\"u\\\"]\\n                      .includes(s.toLowerCase())\\n                    )\\n             .join(\\\"\\\")\\n}\\n\\n\", \"test\": \"const testRemoveVowels = () => {\\n  console.assert(removeVowels('') === '')\\n  console.assert(removeVowels('abcdef\\\\nghijklm') === 'bcdf\\\\nghjklm')\\n  console.assert(removeVowels('fedcba') === 'fdcb')\\n  console.assert(removeVowels('eeeee') === '')\\n  console.assert(removeVowels('acBAA') === 'cB')\\n  console.assert(removeVowels('EcBOO') === 'cB')\\n  console.assert(removeVowels('ybcd') === 'ybcd')\\n}\\n\\ntestRemoveVowels()\\n\", \"declaration\": \"\\nconst removeVowels = (text) => {\\n\", \"example_test\": \"const testRemoveVowels = () => {\\n  console.assert(removeVowels('') === '')\\n  console.assert(removeVowels('abcdef\\\\nghijklm') === 'bcdf\\\\nghjklm')\\n  console.assert(removeVowels('abcdef') === 'bcdf')\\n  console.assert(removeVowels('aaaaa') === '')\\n  console.assert(removeVowels('aaBAA') === 'B')\\n  console.assert(removeVowels('zbcd') === 'zbcd')\\n}\\ntestRemoveVowels()\\n\"}\n{\"task_id\": \"JavaScript/52\", \"prompt\": \"/*Return true if all numbers in the list l are below threshold t.\\n  >>> belowThreshold([1, 2, 4, 10], 100)\\n  true\\n  >>> belowThreshold([1, 20, 4, 10], 5)\\n  false\\n  */\\nconst belowThreshold = (l, t) => {\\n\", \"canonical_solution\": \"  for (const e of l)\\n    if (e >= t)\\n      return false;\\n  return true;\\n}\\n\\n\", \"test\": \"const testBelowThreshold = () => {\\n  console.assert(belowThreshold([1, 2, 4, 10], 100) === true)\\n  console.assert(belowThreshold([1, 20, 4, 10], 5) === false)\\n  console.assert(belowThreshold([1, 20, 4, 10], 21) === true)\\n  console.assert(belowThreshold([1, 20, 4, 10], 22) === true)\\n  console.assert(belowThreshold([1, 8, 4, 10], 11) === true)\\n  console.assert(belowThreshold([1, 8, 4, 10], 10) === false)\\n}\\n\\ntestBelowThreshold()\\n\", \"declaration\": \"\\nconst belowThreshold = (l, t) => {\\n\", \"example_test\": \"const testBelowThreshold = () => {\\n  console.assert(belowThreshold([1, 2, 4, 10], 100) === true)\\n  console.assert(belowThreshold([1, 20, 4, 10], 5) === false)\\n}\\ntestBelowThreshold()\\n\"}\n{\"task_id\": \"JavaScript/53\", \"prompt\": \"/*Add two numbers x and y\\n  >>> add(2, 3)\\n  5\\n  >>> add(5, 7)\\n  12\\n  */\\nconst add = (x, y) => {\\n\", \"canonical_solution\": \"  return x + y;\\n}\\n\\n\", \"test\": \"const testAdd = () => {\\n  const getRandomIntInclusive = (min = 0, max = 9) => {\\n    min = Math.ceil(min)\\n    max = Math.floor(max)\\n    return Math.floor(Math.random() * (max - min + 1)) + min //\\u542b\\u6700\\u5927\\u503c\\uff0c\\u542b\\u6700\\u5c0f\\u503c\\n  }\\n\\n  console.assert(add(0, 1) === 1)\\n  console.assert(add(1, 0) === 1)\\n  console.assert(add(2, 3) === 5)\\n  console.assert(add(5, 7) === 12)\\n  console.assert(add(7, 5) === 12)\\n\\n  for (let i = 0; i < 100; i++) {\\n    let x = getRandomIntInclusive()\\n    let y = getRandomIntInclusive()\\n    console.assert(x + y === add(x, y))\\n  }\\n}\\n\\ntestAdd()\\n\", \"declaration\": \"\\nconst add = (x, y) => {\\n\", \"example_test\": \"const testAdd = () => {\\n  const getRandomIntInclusive = (min = 0, max = 9) => {\\n    min = Math.ceil(min)\\n    max = Math.floor(max)\\n    return Math.floor(Math.random() * (max - min + 1)) + min //\\u542b\\u6700\\u5927\\u503c\\uff0c\\u542b\\u6700\\u5c0f\\u503c\\n  }\\n  console.assert(add(2, 3) === 5)\\n  console.assert(add(5, 7) === 12)\\n}\\ntestAdd()\\n\"}\n{\"task_id\": \"JavaScript/54\", \"prompt\": \"/*\\n  Check if two words have the same characters.\\n  >>> sameChars('eabcdzzzz', 'dddzzzzzzzddeddabc')\\n  true\\n  >>> sameChars('abcd', 'dddddddabc')\\n  true\\n  >>> sameChars('dddddddabc', 'abcd')\\n  true\\n  >>> sameChars('eabcd', 'dddddddabc')\\n  false\\n  >>> sameChars('abcd', 'dddddddabce')\\n  false\\n  >>> sameChars('eabcdzzzz', 'dddzzzzzzzddddabc')\\n  false\\n  */\\nconst sameChars = (s0, s1) => {\\n\", \"canonical_solution\": \"  return JSON.stringify([...new Set(s0)].sort()) === JSON.stringify([...new Set(s1)].sort());\\n}\\n\\n\", \"test\": \"const testSameChars = () => {\\n  console.assert(sameChars('eabcdzzzz', 'dddzzzzzzzddeddabc') === true)\\n  console.assert(sameChars('abcd', 'dddddddabc') === true)\\n  console.assert(sameChars('dddddddabc', 'abcd') === true)\\n  console.assert(sameChars('eabcd', 'dddddddabc') === false)\\n  console.assert(sameChars('abcd', 'dddddddabcf') === false)\\n  console.assert(sameChars('eabcdzzzz', 'dddzzzzzzzddddabc') === false)\\n  console.assert(sameChars('aabb', 'aaccc') === false)\\n}\\n\\ntestSameChars()\\n\", \"declaration\": \"\\nconst sameChars = (s0, s1) => {\\n\", \"example_test\": \"const testSameChars = () => {\\n  console.assert(sameChars('eabcdzzzz', 'dddzzzzzzzddeddabc') === true)\\n  console.assert(sameChars('abcd', 'dddddddabc') === true)\\n  console.assert(sameChars('dddddddabc', 'abcd') === true)\\n  console.assert(sameChars('eabcd', 'dddddddabc') === false)\\n  console.assert(sameChars('abcd', 'dddddddabcf') === false)\\n  console.assert(sameChars('eabcdzzzz', 'dddzzzzzzzddddabc') === false)\\n}\\ntestSameChars()\\n\"}\n{\"task_id\": \"JavaScript/55\", \"prompt\": \"/*Return n-th Fibonacci number.\\n  >>> fib(10)\\n  55\\n  >>> fib(1)\\n  1\\n  >>> fib(8)\\n  21\\n  */\\nconst fib = (n) => {\\n\", \"canonical_solution\": \"  if (n == 0)\\n    return 0;\\n  if (n == 1)\\n    return 1;\\n  return fib(n - 1) + fib(n - 2);\\n}\\n\\n\", \"test\": \"const testFib = () => {\\n  console.assert(fib(10) === 55)\\n  console.assert(fib(1) === 1)\\n  console.assert(fib(8) === 21)\\n  console.assert(fib(11) === 89)\\n  console.assert(fib(12) === 144)\\n}\\n\\ntestFib()\\n\", \"declaration\": \"\\nconst fib = (n) => {\\n\", \"example_test\": \"const testFib = () => {\\n  console.assert(fib(10) === 55)\\n  console.assert(fib(1) === 1)\\n  console.assert(fib(8) === 21)\\n}\\ntestFib()\\n\"}\n{\"task_id\": \"JavaScript/56\", \"prompt\": \"/* brackets is a string of \\\"<\\\" and \\\">\\\".\\n  return false if every opening bracket has a corresponding closing bracket.\\n\\n  >>> correctBracketing(\\\"<\\\")\\n  false\\n  >>> correctBracketing(\\\"<>\\\")\\n  false\\n  >>> correctBracketing(\\\"<<><>>\\\")\\n  false\\n  >>> correctBracketing(\\\"><<>\\\")\\n  false\\n  */\\nconst correctBracketing = (brackets) => {\\n\", \"canonical_solution\": \"  var depth = 0;\\n  for (const b of brackets) {\\n    if (b == \\\"<\\\")\\n      depth += 1;\\n    else\\n      depth -= 1;\\n    if (depth < 0)\\n      return false;\\n  }\\n  return depth == 0;\\n}\\n\\n\", \"test\": \"const testCorrectBracketing = () => {\\n  console.assert(correctBracketing('<>') === true)\\n  console.assert(correctBracketing('<<><>>') === true)\\n  console.assert(correctBracketing('<><><<><>><>') === true)\\n  console.assert(correctBracketing('<><><<<><><>><>><<><><<>>>') === true)\\n  console.assert(correctBracketing('<<<><>>>>') === false)\\n  console.assert(correctBracketing('><<>') === false)\\n  console.assert(correctBracketing('<') === false)\\n  console.assert(correctBracketing('<<<<') === false)\\n  console.assert(correctBracketing('>') === false)\\n  console.assert(correctBracketing('<<>') === false)\\n  console.assert(correctBracketing('<><><<><>><>><<>') === false)\\n  console.assert(correctBracketing('<><><<><>><>>><>') === false)\\n}\\n\\ntestCorrectBracketing()\\n\", \"declaration\": \"\\nconst correctBracketing = (brackets) => {\\n\", \"example_test\": \"const testCorrectBracketing = () => {\\n  console.assert(correctBracketing('<>') === true)\\n  console.assert(correctBracketing('<<><>>') === true)\\n  console.assert(correctBracketing('><<>') === false)\\n  console.assert(correctBracketing('<') === false)\\n}\\ntestCorrectBracketing()\\n\"}\n{\"task_id\": \"JavaScript/57\", \"prompt\": \"/*Return true is list elements are monotonically increasing or decreasing.\\n  >>> monotonic([1, 2, 4, 20])\\n  true\\n  >>> monotonic([1, 20, 4, 10])\\n  false\\n  >>> monotonic([4, 1, 0, -10])\\n  true\\n  */\\nconst monotonic = (l) => {\\n\", \"canonical_solution\": \"  var sort1 = [...l].sort((a, b) => a - b);\\n  var sort2 = [...l].sort((a, b) => b - a);\\n  if (JSON.stringify(l) === JSON.stringify(sort1) ||\\n      JSON.stringify(l) === JSON.stringify(sort2))\\n    return true;\\n  return false;\\n}\\n\\n\", \"test\": \"const testMonotonic = () => {\\n  console.assert(monotonic([1, 2, 4, 10]) === true)\\n  console.assert(monotonic([1, 2, 4, 20]) === true)\\n  console.assert(monotonic([1, 20, 4, 10]) === false)\\n  console.assert(monotonic([4, 1, 0, -10]) === true)\\n  console.assert(monotonic([4, 1, 1, 0]) === true)\\n  console.assert(monotonic([1, 2, 3, 2, 5, 60]) === false)\\n  console.assert(monotonic([1, 2, 3, 4, 5, 60]) === true)\\n  console.assert(monotonic([9, 9, 9, 9]) === true)\\n}\\n\\ntestMonotonic()\\n\", \"declaration\": \"\\nconst monotonic = (l) => {\\n\", \"example_test\": \"const testMonotonic = () => {\\n  console.assert(monotonic([1, 2, 4, 10]) === true)\\n  console.assert(monotonic([1, 20, 4, 10]) === false)\\n  console.assert(monotonic([4, 1, 0, -10]) === true)\\n}\\ntestMonotonic()\\n\"}",
         "output": "str",
-        "x": 190,
-        "y": 160,
+        "x": 130,
+        "y": 80,
         "wires": [
             [
                 "2d59b8905d9a2034"
@@ -2698,8 +2698,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 170,
-        "y": 240,
+        "x": 110,
+        "y": 160,
         "wires": [
             [
                 "f4f6fa24ca217587"
@@ -2723,8 +2723,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 120,
+        "x": 130,
+        "y": 40,
         "wires": [
             [
                 "183a83919e31ea2f"
@@ -2742,8 +2742,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 170,
-        "y": 200,
+        "x": 110,
+        "y": 120,
         "wires": [
             [
                 "d7ff3df8b8bca72b"
@@ -2759,29 +2759,12 @@
             "922590827a20da6a"
         ],
         "uncaught": false,
-        "x": 590,
-        "y": 380,
+        "x": 370,
+        "y": 280,
         "wires": [
             [
                 "922590827a20da6a"
             ]
-        ]
-    },
-    {
-        "id": "1eae1ff8a68266bc",
-        "type": "file",
-        "z": "f297cec495c6b8be",
-        "name": "",
-        "filename": "/data/bench.txt",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 940,
-        "y": 280,
-        "wires": [
-            []
         ]
     },
     {
@@ -2796,7 +2779,7 @@
         "overwriteFile": "true",
         "encoding": "utf8",
         "x": 910,
-        "y": 540,
+        "y": 620,
         "wires": [
             [
                 "75992a64fd9b37f1"
@@ -2817,7 +2800,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 880,
-        "y": 580,
+        "y": 660,
         "wires": []
     },
     {
@@ -2825,8 +2808,8 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "f297cec495c6b8be",
         "name": "",
-        "x": 600,
-        "y": 580,
+        "x": 380,
+        "y": 680,
         "wires": [
             [
                 "49f531afe4600028"
@@ -2880,7 +2863,7 @@
         "to": "",
         "reg": false,
         "x": 390,
-        "y": 480,
+        "y": 400,
         "wires": [
             [
                 "90bfb9ae3c54bda3"
@@ -2899,7 +2882,7 @@
                 "type": "str"
             }
         ],
-        "x": 630,
+        "x": 650,
         "y": 540,
         "wires": [
             [
@@ -2912,13 +2895,13 @@
         "type": "function",
         "z": "f297cec495c6b8be",
         "name": "get result",
-        "func": "console.log('parsed code:', msg.parts)\nmsg.payload = msg.payload\n                .filter(({type}) => ['javascript'].indexOf(type) >= 0)\n\nif (msg.payload.length > 1){\n  msg.payload = `throw new Error('multiple code-blocks detected in your response, please respond with only the complete solution')`\n  return [null, msg]\n} else if (msg.payload.length < 1){\n  msg.payload = `throw new Error('no code blocks detected, please obey the formatting instructions:')`\n  return [null, msg]\n} else {\n  msg.payload = msg.payload[0].content; \n  return [msg, null]\n}",
+        "func": "console.log('parsed code:', msg.parts)\nmsg.payload = msg.payload\n                .filter(({type}) => ['javascript'].indexOf(type) >= 0)\n\nif (msg.payload.length > 1){\n  msg.payload = `throw new Error('multiple code-blocks detected in your response, please respond with only the complete solution')`\n  return [null, msg]\n} else if (msg.payload.length < 1){\n  msg.payload = `throw new Error('no code blocks detected, please obey the formatting instructions and return your answer inside a markdown code block.')`\n  return [null, msg]\n} else {\n  msg.payload = msg.payload[0].content; \n  return [msg, null]\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 620,
         "y": 500,
         "wires": [
             [
@@ -2988,7 +2971,7 @@
         "to": "",
         "reg": false,
         "x": 390,
-        "y": 440,
+        "y": 360,
         "wires": [
             [
                 "922590827a20da6a"
@@ -3004,8 +2987,8 @@
             "6ccea9b424e51207"
         ],
         "uncaught": false,
-        "x": 590,
-        "y": 620,
+        "x": 370,
+        "y": 720,
         "wires": [
             [
                 "6ccea9b424e51207"
@@ -3023,8 +3006,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 170,
-        "y": 480,
+        "x": 110,
+        "y": 400,
         "wires": [
             [
                 "aa85c030e8d55e76"
@@ -3063,8 +3046,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 4,
-        "x": 170,
-        "y": 540,
+        "x": 110,
+        "y": 460,
         "wires": [
             [
                 "90bfb9ae3c54bda3"
@@ -3091,8 +3074,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 170,
-        "y": 400,
+        "x": 110,
+        "y": 320,
         "wires": [
             [
                 "aec1f52637b20998"
@@ -3119,7 +3102,7 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 710,
+        "x": 870,
         "y": 460,
         "wires": [
             [
@@ -3147,8 +3130,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 210,
-        "y": 440,
+        "x": 150,
+        "y": 360,
         "wires": [
             [
                 "b0fd40f4cbec0c92"
@@ -3174,8 +3157,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 840,
-        "y": 380,
+        "x": 900,
+        "y": 500,
         "wires": [
             [
                 "b8010df720742aef"
@@ -3190,8 +3173,8 @@
         "property": "payload",
         "action": "str",
         "pretty": true,
-        "x": 890,
-        "y": 500,
+        "x": 870,
+        "y": 580,
         "wires": [
             [
                 "a596c13563210cd3"
