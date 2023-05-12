@@ -3086,7 +3086,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "log",
+        "complete": "pass",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
