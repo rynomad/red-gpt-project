@@ -3078,7 +3078,6 @@
         "y": 460,
         "wires": [
             [
-                "dd6525506c9b9349",
                 "b8010df720742aef"
             ]
         ]
@@ -3103,11 +3102,12 @@
         "reduceInit": "0",
         "reduceInitType": "num",
         "reduceFixup": "$A/$N",
-        "x": 820,
+        "x": 760,
         "y": 440,
         "wires": [
             [
-                "65b9251080cb6b42"
+                "65b9251080cb6b42",
+                "75992a64fd9b37f1"
             ]
         ]
     },
@@ -3196,25 +3196,6 @@
         "wires": [
             [
                 "d7ff3df8b8bca72b"
-            ]
-        ]
-    },
-    {
-        "id": "dd6525506c9b9349",
-        "type": "template",
-        "z": "f297cec495c6b8be",
-        "name": "log",
-        "field": "log",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{{{payload}}}\n{{{testString}}}\n\n{{{pass}}}\n",
-        "output": "str",
-        "x": 750,
-        "y": 320,
-        "wires": [
-            [
-                "75992a64fd9b37f1"
             ]
         ]
     },
