@@ -3297,7 +3297,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a single sentence that summarizes its purpose.",
+        "template": "I have the following node-red subflow:\n{{{payload}}}\n\nplease analyze it and provide a single sentence that summarizes its purpose.",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3748,8 +3748,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 870,
-        "y": 560,
+        "x": 810,
+        "y": 440,
         "wires": []
     }
 ]
