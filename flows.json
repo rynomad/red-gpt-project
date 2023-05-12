@@ -3309,7 +3309,6 @@
         "wires": [
             [
                 "13b3fd70b0e66417",
-                "3470efd583a5b1ce",
                 "fdaac179ca821150"
             ]
         ]
@@ -3602,7 +3601,7 @@
         "y": 500,
         "wires": [
             [
-                "b81f7e4ee8ee40d7"
+                "7ec6901fd576cd8c"
             ]
         ]
     },
@@ -3657,56 +3656,6 @@
         "wires": [
             [
                 "5db7cfe60d82dc48"
-            ]
-        ]
-    },
-    {
-        "id": "b81f7e4ee8ee40d7",
-        "type": "switch",
-        "z": "064c17312433ce15",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "else"
-            },
-            {
-                "t": "jsonata_exp",
-                "v": "$count(payload)=1",
-                "vt": "jsonata"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 770,
-        "y": 500,
-        "wires": [
-            [
-                "3470efd583a5b1ce"
-            ],
-            [
-                "7ec6901fd576cd8c"
-            ]
-        ]
-    },
-    {
-        "id": "3470efd583a5b1ce",
-        "type": "template",
-        "z": "064c17312433ce15",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "please wrap your response in the appropriate triple backtick codeblock:\n\n```\nyour response here\n```",
-        "output": "str",
-        "x": 780,
-        "y": 460,
-        "wires": [
-            [
-                "839a598e1ddd08d3"
             ]
         ]
     },
