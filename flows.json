@@ -3273,7 +3273,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style. your output will be put into the \"info\" field of the node to help people use it within the node-red IDE.\nput the documentation within a codeblock:\n\n```markdown\n# Overview\n...\n```",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style. your output will be put into the \"info\" field of the node to help people use it within the node-red IDE.\n\n{{{format}}}",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3390,7 +3390,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\nput the schema within a codeblock:\n```json\n{\n    \"$schema\": \"....\"\n    ...\n}\n```",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\n{{{format}}}",
         "output": "str",
         "x": 750,
         "y": 320,
@@ -3422,7 +3422,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\nput the schema within a codeblock:\n```json\n{\n    \"$schema\": \"....\"\n    ...\n}\n```",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\n{{{format}}}",
         "output": "str",
         "x": 970,
         "y": 320,
@@ -3509,7 +3509,7 @@
         "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "1f9eec57b02af92e"
             ]
         ]
     },
@@ -3575,7 +3575,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 520,
+        "y": 540,
         "wires": [
             [
                 "3493294fda08df95"
@@ -3666,6 +3666,25 @@
         "wires": [
             [
                 "5db7cfe60d82dc48"
+            ]
+        ]
+    },
+    {
+        "id": "1f9eec57b02af92e",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "function 2",
+        "func": "msg.payload = `\n\\`\\`\\`markdown\n${msg.payload}\n\\`\\`\\`\n`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
             ]
         ]
     }
