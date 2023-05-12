@@ -1015,9 +1015,11 @@
         "type": "catch",
         "z": "237429fb2a5a7712",
         "name": "",
-        "scope": null,
+        "scope": [
+            "1d0773bcf3416404"
+        ],
         "uncaught": false,
-        "x": 120,
+        "x": 110,
         "y": 160,
         "wires": [
             [
@@ -1036,8 +1038,8 @@
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
-        "randomFirst": "30",
-        "randomLast": "60",
+        "randomFirst": "60",
+        "randomLast": "300",
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
@@ -2342,7 +2344,7 @@
         "timeout": "5",
         "timeoutUnits": "seconds",
         "rate": "1",
-        "nbRateUnits": "10",
+        "nbRateUnits": "30",
         "rateUnits": "second",
         "randomFirst": "1",
         "randomLast": "5",
@@ -2350,8 +2352,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 560,
-        "y": 200,
+        "x": 700,
+        "y": 160,
         "wires": [
             [
                 "f4f6fa24ca217587"
