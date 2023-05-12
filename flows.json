@@ -2433,14 +2433,14 @@
         "type": "function",
         "z": "941765e8bb2c32d6",
         "name": "test",
-        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    eval(msg.payload);\n    eval(msg.testString);\n    msg.pass = 1;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = 0;\n}\nreturn msg;",
+        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    const test = new Function('console',msg.payload + '\\n' + msg.testString)\n    test(console)\n    msg.pass = 1;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = 0;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 400,
+        "y": 420,
         "wires": [
             [
                 "b8010df720742aef",
@@ -2469,7 +2469,7 @@
         "reduceInitType": "num",
         "reduceFixup": "$A/$N",
         "x": 560,
-        "y": 440,
+        "y": 460,
         "wires": [
             [
                 "ea9b8dbb62d99247"
