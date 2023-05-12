@@ -3018,6 +3018,13 @@
                 "pt": "msg",
                 "to": "payload.test",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "min_tokens",
+                "pt": "msg",
+                "to": "2000",
+                "tot": "num"
             }
         ],
         "action": "",
