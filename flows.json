@@ -2302,7 +2302,7 @@
         "timeout": "5",
         "timeoutUnits": "seconds",
         "rate": "1",
-        "nbRateUnits": "10",
+        "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
         "randomLast": "5",
@@ -2310,12 +2310,11 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 560,
+        "x": 550,
         "y": 200,
         "wires": [
             [
-                "f4f6fa24ca217587",
-                "ea9b8dbb62d99247"
+                "f4f6fa24ca217587"
             ]
         ]
     },
@@ -2965,7 +2964,6 @@
         "y": 80,
         "wires": [
             [
-                "ea9b8dbb62d99247",
                 "2d59b8905d9a2034"
             ]
         ]
