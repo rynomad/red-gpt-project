@@ -1465,7 +1465,8 @@
         "y": 440,
         "wires": [
             [
-                "393f19cb21285e5c"
+                "393f19cb21285e5c",
+                "aef0f90d6f3245b0"
             ]
         ]
     },
@@ -1625,8 +1626,7 @@
         "y": 480,
         "wires": [
             [
-                "83096e44fc2c289e",
-                "aef0f90d6f3245b0"
+                "83096e44fc2c289e"
             ]
         ]
     },
@@ -1636,15 +1636,15 @@
         "z": "50df1246bdaf5119",
         "name": "debug 3",
         "active": true,
-        "tosidebar": false,
-        "console": true,
+        "tosidebar": true,
+        "console": false,
         "tostatus": false,
-        "complete": "history.1.content",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 350,
-        "y": 400,
+        "x": 360,
+        "y": 360,
         "wires": []
     },
     {
