@@ -3034,7 +3034,8 @@
         "y": 120,
         "wires": [
             [
-                "d7ff3df8b8bca72b"
+                "d7ff3df8b8bca72b",
+                "2696f3b43eef0046"
             ]
         ]
     },
