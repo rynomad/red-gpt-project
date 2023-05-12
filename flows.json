@@ -3135,34 +3135,8 @@
         "y": 280,
         "wires": [
             [
-                "1ef19c0f52772c06",
                 "0d015472dda60528"
             ]
-        ]
-    },
-    {
-        "id": "1ef19c0f52772c06",
-        "type": "change",
-        "z": "f297cec495c6b8be",
-        "name": "set msg.pass as fail",
-        "rules": [
-            {
-                "t": "set",
-                "p": "pass",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 320,
-        "wires": [
-            []
         ]
     },
     {
