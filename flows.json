@@ -3273,7 +3273,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and provide a brief description of its purpose and suggested usage.\n\n{{{format}}}",
+        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a brief description of its purpose and suggested usage.\n\n{{{format}}}\n\nplease put the description of the entire node inside your code block so that I can parse it and add it to my collection of documentation.",
         "output": "str",
         "x": 560,
         "y": 320,
