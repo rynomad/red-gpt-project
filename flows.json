@@ -3195,11 +3195,9 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 540,
-        "y": 580,
+        "y": 680,
         "wires": [
-            [
-                "91e3a48774c92f05"
-            ]
+            []
         ]
     },
     {
@@ -3315,7 +3313,7 @@
         "action": "str",
         "pretty": false,
         "x": 530,
-        "y": 120,
+        "y": 80,
         "wires": [
             [
                 "5412bb9f8505ec2d"
@@ -3349,8 +3347,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
-        "y": 420,
+        "x": 870,
+        "y": 400,
         "wires": []
     },
     {
@@ -3367,7 +3365,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 530,
-        "y": 660,
+        "y": 700,
         "wires": []
     },
     {
@@ -3397,7 +3395,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 160,
+        "y": 120,
         "wires": [
             [
                 "92768a8167b18d9a"
@@ -3534,7 +3532,6 @@
         "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3",
                 "13b3fd70b0e66417"
             ]
         ]
@@ -3544,26 +3541,18 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "clone",
-        "func": "const clones = []\nfor (let i = 0; i < node.outputCount; i++) {\n    const cloneMsg = JSON.parse(JSON.stringify(msg))\n    cloneMsg._msgid = Math.random() + '';\n    if (cloneMsg.parts) {\n        cloneMsg.parts.id = cloneMsg.parts.id + \":clone\" + i;\n    }\n    clones.push(cloneMsg)\n}\n\nconsole.log('clones?', clones.map(msg => msg._msgid))\n\nreturn [clones];",
-        "outputs": 3,
+        "func": "msg.payload = [msg.payload, msg.payload, msg.payload]",
+        "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 280,
+        "x": 710,
+        "y": 200,
         "wires": [
             [
-                "1c58af75659287c4",
-                "16886019852ce7a4"
-            ],
-            [
-                "16e7fb7b2bc1fd73",
-                "16886019852ce7a4"
-            ],
-            [
-                "17c4c2465ba4c355",
-                "16886019852ce7a4"
+                "16886019852ce7a4",
+                "9021cf925783a560"
             ]
         ]
     },
@@ -3579,7 +3568,7 @@
         "finalize": "",
         "libs": [],
         "x": 350,
-        "y": 580,
+        "y": 680,
         "wires": [
             [
                 "3493294fda08df95"
@@ -3604,10 +3593,10 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 540,
+        "y": 520,
         "wires": [
             [
-                "3493294fda08df95"
+                "add40d01a5910b28"
             ]
         ]
     },
@@ -3624,11 +3613,11 @@
             }
         ],
         "x": 550,
-        "y": 500,
+        "y": 480,
         "wires": [
             [
-                "7ec6901fd576cd8c",
-                "f2496a14e2d3349f"
+                "f2496a14e2d3349f",
+                "7ec6901fd576cd8c"
             ]
         ]
     },
@@ -3638,7 +3627,7 @@
         "z": "064c17312433ce15",
         "name": "",
         "x": 570,
-        "y": 200,
+        "y": 160,
         "wires": [
             [
                 "92f596418b88218c"
@@ -3651,38 +3640,10 @@
         "z": "064c17312433ce15",
         "name": "",
         "x": 540,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "faec021f67110605"
-            ]
-        ]
-    },
-    {
-        "id": "91e3a48774c92f05",
-        "type": "join",
-        "z": "064c17312433ce15",
-        "name": "",
-        "mode": "custom",
-        "build": "array",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": false,
-        "timeout": "",
-        "count": "3",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 530,
-        "y": 620,
-        "wires": [
-            [
-                "5db7cfe60d82dc48"
             ]
         ]
     },
@@ -3697,8 +3658,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 500,
+        "x": 800,
+        "y": 480,
         "wires": [
             [
                 "7ec6901fd576cd8c",
@@ -3750,8 +3711,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 460,
+        "x": 990,
+        "y": 560,
         "wires": []
     },
     {
@@ -3793,8 +3754,175 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
-        "y": 260,
+        "x": 880,
+        "y": 200,
         "wires": []
+    },
+    {
+        "id": "678fd0992d3a0f8a",
+        "type": "split",
+        "z": "064c17312433ce15",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "49c6cd17167fda13"
+            ]
+        ]
+    },
+    {
+        "id": "49c6cd17167fda13",
+        "type": "switch",
+        "z": "064c17312433ce15",
+        "name": "",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 770,
+        "y": 260,
+        "wires": [
+            [
+                "17c4c2465ba4c355"
+            ],
+            [
+                "16e7fb7b2bc1fd73"
+            ],
+            [
+                "1c58af75659287c4"
+            ]
+        ]
+    },
+    {
+        "id": "9021cf925783a560",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "sequence",
+                "pt": "msg",
+                "to": "parts",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 240,
+        "wires": [
+            [
+                "678fd0992d3a0f8a"
+            ]
+        ]
+    },
+    {
+        "id": "3a05ecf93cf9ab5d",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "parts",
+                "pt": "msg",
+                "to": "sequence",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 600,
+        "wires": [
+            [
+                "2e410a19acc23c63"
+            ]
+        ]
+    },
+    {
+        "id": "2e410a19acc23c63",
+        "type": "join",
+        "z": "064c17312433ce15",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 530,
+        "y": 640,
+        "wires": [
+            [
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "add40d01a5910b28",
+        "type": "join",
+        "z": "064c17312433ce15",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 530,
+        "y": 560,
+        "wires": [
+            [
+                "3a05ecf93cf9ab5d"
+            ]
+        ]
     }
 ]
