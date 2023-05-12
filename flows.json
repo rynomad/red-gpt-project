@@ -2381,7 +2381,7 @@
         "type": "join",
         "z": "941765e8bb2c32d6",
         "name": "sum test passes",
-        "mode": "reduce",
+        "mode": "auto",
         "build": "object",
         "property": "payload",
         "propertyType": "msg",
@@ -2401,7 +2401,7 @@
         "wires": [
             [
                 "018ce5a7f6f94441",
-                "a596c13563210cd3"
+                "65b9251080cb6b42"
             ]
         ]
     },
@@ -2980,11 +2980,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "pass",
+        "complete": "parts",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
+        "x": 860,
         "y": 420,
         "wires": []
     },
@@ -3097,8 +3097,8 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 720,
-        "y": 520,
+        "x": 760,
+        "y": 540,
         "wires": [
             []
         ]
@@ -3118,6 +3118,25 @@
         "x": 740,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "65b9251080cb6b42",
+        "type": "function",
+        "z": "941765e8bb2c32d6",
+        "name": "function 2",
+        "func": "msg.payload = `benchmark result: ${msg.payload.reduce((a, { pass }) => a + pass, 0)} of ${msg.payload.length}, ${msg.payload.reduce((a, { pass }) => a + pass, 0)/msg.payload.length}`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 500,
+        "wires": [
+            [
+                "a596c13563210cd3"
+            ]
+        ]
     },
     {
         "id": "8c1cba224d949d09",
