@@ -798,7 +798,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 320,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "d2ee1fb0b75e93b6"
@@ -907,7 +907,7 @@
             [
                 "1ffc34a3a1a366d1",
                 "11a66484df90d49b",
-                "8c1cba224d949d09"
+                "b98332fdc0290246"
             ]
         ]
     },
@@ -917,7 +917,7 @@
         "z": "237429fb2a5a7712",
         "name": "minify JSON in history",
         "x": 360,
-        "y": 280,
+        "y": 320,
         "wires": [
             [
                 "2d60fcbd28eb92c7",
@@ -944,7 +944,7 @@
         "to": "",
         "reg": false,
         "x": 350,
-        "y": 320,
+        "y": 360,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -989,7 +989,7 @@
             }
         ],
         "x": 330,
-        "y": 360,
+        "y": 400,
         "wires": [
             []
         ]
@@ -1019,8 +1019,8 @@
             "1d0773bcf3416404"
         ],
         "uncaught": false,
-        "x": 110,
-        "y": 160,
+        "x": 90,
+        "y": 80,
         "wires": [
             [
                 "dc5ae5d65c2c0ae7"
@@ -1044,11 +1044,11 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 120,
-        "y": 200,
+        "x": 100,
+        "y": 120,
         "wires": [
             [
-                "1d0773bcf3416404"
+                "b98332fdc0290246"
             ]
         ]
     },
@@ -1056,21 +1056,79 @@
         "id": "8c1cba224d949d09",
         "type": "delay",
         "z": "237429fb2a5a7712",
-        "name": "",
+        "name": "gpt4 limit",
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
         "rate": "5",
-        "nbRateUnits": "20",
+        "nbRateUnits": "60",
         "rateUnits": "second",
         "randomFirst": "5",
         "randomLast": "20",
         "randomUnits": "seconds",
-        "drop": true,
+        "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 340,
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "1d0773bcf3416404"
+            ]
+        ]
+    },
+    {
+        "id": "b98332fdc0290246",
+        "type": "switch",
+        "z": "237429fb2a5a7712",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "gpt4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "turbo",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 310,
         "y": 200,
+        "wires": [
+            [
+                "8c1cba224d949d09"
+            ],
+            [
+                "4b735d4be9323117"
+            ]
+        ]
+    },
+    {
+        "id": "4b735d4be9323117",
+        "type": "delay",
+        "z": "237429fb2a5a7712",
+        "name": "turbo limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "21",
+        "nbRateUnits": "60",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 240,
         "wires": [
             [
                 "1d0773bcf3416404"
