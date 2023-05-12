@@ -3545,7 +3545,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "clone",
-        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
+        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    clones._msgId = Math.random();\n    if (msg.parts){\n        msg.parts.id = msg.parts.id + \":clone\" + i;\n    }\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
         "outputs": 3,
         "noerr": 0,
         "initialize": "",
