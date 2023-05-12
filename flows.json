@@ -3572,7 +3572,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "mux payload",
-        "func": "console.log('msg.payload mux', msg.key, msg.payload)\nmsg.payload = {\n    key: msg.key,\n    value: msg.key === 'info' ? msg.payload[0] : JSON.parse(msg.payload[0])\n}\nreturn msg;",
+        "func": "console.log('msg.payload mux', msg.key, msg.payload)\nmsg.payload = {\n    key: msg.key,\n    value: msg.key === 'info' ? msg.payload[0].content : JSON.parse(msg.payload[0].content)\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
