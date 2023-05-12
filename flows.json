@@ -2521,12 +2521,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
+        "complete": "pass",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 480,
+        "x": 700,
+        "y": 400,
         "wires": []
     },
     {
