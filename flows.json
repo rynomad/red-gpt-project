@@ -2400,7 +2400,7 @@
         "scope": null,
         "uncaught": false,
         "x": 220,
-        "y": 40,
+        "y": 20,
         "wires": [
             [
                 "dd2038bc71721c1f"
@@ -3297,7 +3297,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a brief (max 5 sentence) description of its purpose.",
+        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a single sentence that summarizes its purpose.",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3448,7 +3448,7 @@
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\n{{{format}}}",
         "output": "str",
-        "x": 970,
+        "x": 950,
         "y": 320,
         "wires": [
             [
@@ -3475,7 +3475,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
+        "x": 950,
         "y": 360,
         "wires": [
             [
@@ -3688,7 +3688,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "wrap markdown",
-        "func": "msg.payload = [msg.payload]\nreturn msg;",
+        "func": "msg.payload = [{content: msg.payload}]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
