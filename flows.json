@@ -2472,7 +2472,8 @@
         "y": 460,
         "wires": [
             [
-                "018ce5a7f6f94441"
+                "018ce5a7f6f94441",
+                "a596c13563210cd3"
             ]
         ]
     },
@@ -3067,7 +3068,8 @@
         "y": 420,
         "wires": [
             [
-                "2005eba0858b7465"
+                "2005eba0858b7465",
+                "1eae1ff8a68266bc"
             ]
         ]
     },
@@ -3133,6 +3135,40 @@
         ]
     },
     {
+        "id": "1eae1ff8a68266bc",
+        "type": "file",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "filename": "/data/bench.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 820,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a596c13563210cd3",
+        "type": "file",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "filename": "/data/bench.total.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 720,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "8c1cba224d949d09",
         "type": "delay",
         "z": "e961334cde89144c",
@@ -3153,8 +3189,7 @@
         "y": 140,
         "wires": [
             [
-                "1d0773bcf3416404",
-                "9fc8b46413eadcb2"
+                "1d0773bcf3416404"
             ]
         ]
     },
@@ -3179,8 +3214,7 @@
         "y": 140,
         "wires": [
             [
-                "1d0773bcf3416404",
-                "9fc8b46413eadcb2"
+                "1d0773bcf3416404"
             ]
         ]
     },
@@ -3255,7 +3289,7 @@
         "wires": [
             [
                 "9f4d0154bcaa5bdb",
-                "9fc8b46413eadcb2"
+                "56380579ca248c30"
             ]
         ]
     },
@@ -3358,19 +3392,20 @@
         ]
     },
     {
-        "id": "9fc8b46413eadcb2",
-        "type": "debug",
+        "id": "56380579ca248c30",
+        "type": "file",
         "z": "e961334cde89144c",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 240,
-        "wires": []
+        "name": "",
+        "filename": "/data/gptlog.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 400,
+        "y": 340,
+        "wires": [
+            []
+        ]
     }
 ]
