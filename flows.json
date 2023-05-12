@@ -2283,7 +2283,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 380,
-        "y": 180,
+        "y": 220,
         "wires": [
             [
                 "1d0773bcf3416404",
@@ -2309,7 +2309,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 220,
-        "y": 180,
+        "y": 220,
         "wires": [
             [
                 "1d0773bcf3416404",
@@ -2340,7 +2340,7 @@
         "repair": false,
         "outputs": 2,
         "x": 210,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "8c1cba224d949d09"
@@ -2357,7 +2357,7 @@
         "name": "link in 1",
         "links": [],
         "x": 65,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "b98332fdc0290246"
@@ -2372,7 +2372,7 @@
         "mode": "return",
         "links": [],
         "x": 375,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -2384,7 +2384,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 220,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "56380579ca248c30",
@@ -2434,8 +2434,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "error",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 560,
@@ -2460,7 +2460,7 @@
         "to": "",
         "reg": false,
         "x": 240,
-        "y": 100,
+        "y": 140,
         "wires": [
             [
                 "b98332fdc0290246"
@@ -2476,6 +2476,9 @@
         "propertyType": "msg",
         "rules": [
             {
+                "t": "else"
+            },
+            {
                 "t": "eq",
                 "v": "429",
                 "vt": "str"
@@ -2483,10 +2486,13 @@
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 210,
         "y": 60,
         "wires": [
+            [
+                "e66c7e2b9c2807aa"
+            ],
             [
                 "dd2038bc71721c1f"
             ]
