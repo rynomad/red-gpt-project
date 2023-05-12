@@ -3091,7 +3091,7 @@
             },
             {
                 "p": "temperature",
-                "v": "0.7",
+                "v": "0.5",
                 "vt": "str"
             },
             {
@@ -3104,7 +3104,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "turbo",
+        "topic": "gpt4",
         "payload": "",
         "payloadType": "date",
         "x": 160,
