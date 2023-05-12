@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "e961334cde89144c",
+        "type": "tab",
+        "label": "gpt queue",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
@@ -790,22 +798,6 @@
         ]
     },
     {
-        "id": "1d0773bcf3416404",
-        "type": "chatgpt",
-        "z": "237429fb2a5a7712",
-        "name": "",
-        "Organization": " ",
-        "topic": "__EMPTY__",
-        "BaseUrl": "https://api.openai.com",
-        "x": 320,
-        "y": 280,
-        "wires": [
-            [
-                "d2ee1fb0b75e93b6"
-            ]
-        ]
-    },
-    {
         "id": "056755aef7aa376e",
         "type": "status",
         "z": "237429fb2a5a7712",
@@ -907,7 +899,7 @@
             [
                 "1ffc34a3a1a366d1",
                 "11a66484df90d49b",
-                "b98332fdc0290246"
+                "0e8a88234ef86bb0"
             ]
         ]
     },
@@ -917,7 +909,7 @@
         "z": "237429fb2a5a7712",
         "name": "minify JSON in history",
         "x": 360,
-        "y": 320,
+        "y": 240,
         "wires": [
             [
                 "2d60fcbd28eb92c7",
@@ -944,7 +936,7 @@
         "to": "",
         "reg": false,
         "x": 350,
-        "y": 360,
+        "y": 280,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -989,7 +981,7 @@
             }
         ],
         "x": 330,
-        "y": 400,
+        "y": 320,
         "wires": [
             []
         ]
@@ -1022,91 +1014,24 @@
         "x": 90,
         "y": 80,
         "wires": [
-            [
-                "b98332fdc0290246"
-            ]
+            []
         ]
     },
     {
-        "id": "8c1cba224d949d09",
-        "type": "delay",
+        "id": "0e8a88234ef86bb0",
+        "type": "link call",
         "z": "237429fb2a5a7712",
-        "name": "gpt4 limit",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "5",
-        "nbRateUnits": "90",
-        "rateUnits": "second",
-        "randomFirst": "5",
-        "randomLast": "20",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 480,
-        "y": 240,
-        "wires": [
-            [
-                "1d0773bcf3416404"
-            ]
-        ]
-    },
-    {
-        "id": "b98332fdc0290246",
-        "type": "switch",
-        "z": "237429fb2a5a7712",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "gpt4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "turbo",
-                "vt": "str"
-            }
+        "name": "gpt queue",
+        "links": [
+            "f2342d49916a4e23"
         ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 310,
+        "linkType": "static",
+        "timeout": "120",
+        "x": 330,
         "y": 200,
         "wires": [
             [
-                "8c1cba224d949d09"
-            ],
-            [
-                "4b735d4be9323117"
-            ]
-        ]
-    },
-    {
-        "id": "4b735d4be9323117",
-        "type": "delay",
-        "z": "237429fb2a5a7712",
-        "name": "turbo limit",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "20",
-        "nbRateUnits": "80",
-        "rateUnits": "second",
-        "randomFirst": "5",
-        "randomLast": "20",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 320,
-        "y": 240,
-        "wires": [
-            [
-                "1d0773bcf3416404"
+                "d2ee1fb0b75e93b6"
             ]
         ]
     },
@@ -3124,7 +3049,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 820,
-        "y": 380,
+        "y": 360,
         "wires": []
     },
     {
@@ -3138,8 +3063,8 @@
         "syntax": "mustache",
         "template": "{{{payload}}}\n{{{testString}}}\n\n{{{pass}}}\n",
         "output": "str",
-        "x": 730,
-        "y": 340,
+        "x": 690,
+        "y": 400,
         "wires": [
             [
                 "2005eba0858b7465"
@@ -3204,6 +3129,130 @@
         "wires": [
             [
                 "b8010df720742aef"
+            ]
+        ]
+    },
+    {
+        "id": "8c1cba224d949d09",
+        "type": "delay",
+        "z": "e961334cde89144c",
+        "name": "gpt4 limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "70",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "1d0773bcf3416404"
+            ]
+        ]
+    },
+    {
+        "id": "4b735d4be9323117",
+        "type": "delay",
+        "z": "e961334cde89144c",
+        "name": "turbo limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "20",
+        "nbRateUnits": "70",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "1d0773bcf3416404"
+            ]
+        ]
+    },
+    {
+        "id": "b98332fdc0290246",
+        "type": "switch",
+        "z": "e961334cde89144c",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "gpt4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "turbo",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "8c1cba224d949d09"
+            ],
+            [
+                "4b735d4be9323117"
+            ]
+        ]
+    },
+    {
+        "id": "f2342d49916a4e23",
+        "type": "link in",
+        "z": "e961334cde89144c",
+        "name": "link in 1",
+        "links": [],
+        "x": 65,
+        "y": 100,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "9f4d0154bcaa5bdb",
+        "type": "link out",
+        "z": "e961334cde89144c",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [],
+        "x": 505,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1d0773bcf3416404",
+        "type": "chatgpt",
+        "z": "e961334cde89144c",
+        "name": "",
+        "Organization": " ",
+        "topic": "__EMPTY__",
+        "BaseUrl": "https://api.openai.com",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "9f4d0154bcaa5bdb"
             ]
         ]
     }
