@@ -3294,7 +3294,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n{{{payload}}}\n\nplease analyze it and provide a single sentence that summarizes its purpose.",
+        "template": "I have the following node-red subflow:\n{{{payload}}}\n\nplease analyze it and provide a brief readme.md that would help someone use the node in their node-red flow. ",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3348,7 +3348,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 870,
-        "y": 400,
+        "y": 420,
         "wires": []
     },
     {
