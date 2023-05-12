@@ -3544,7 +3544,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "clone",
-        "func": "const clones = []\nfor (let i = 0; i < node.outputCount; i++) {\n    clones.push(JSON.parse(JSON.stringify(msg)))\n}\nconst updatedClones = clones.map((cloneMsg, i) => {\n    cloneMsg._msgid = Math.random() + '';\n    if (cloneMsg.parts) {\n        cloneMsg.parts.id = cloneMsg.parts.id + \":clone\" + i;\n    }\n    return cloneMsg;\n});\n\nconsole.log('clones?', msg, updatedClones)\n\nreturn updatedClones;\n",
+        "func": "const clones = []\nfor (let i = 0; i < node.outputCount; i++) {\n    const cloneMsg = JSON.parse(JSON.stringify(msg))\n    cloneMsg._msgid = Math.random() + '';\n    if (cloneMsg.parts) {\n        cloneMsg.parts.id = cloneMsg.parts.id + \":clone\" + i;\n    }\n    clones.push(cloneMsg)\n}\n\nconsole.log('clones?', msg, clones)\n\nreturn [clones];",
         "outputs": 3,
         "noerr": 0,
         "initialize": "",
