@@ -3273,7 +3273,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style. your output will be put into the \"info\" field of the node to help people use it within the node-red IDE.\n\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\nput the documentation within a codeblock:\n\n```markdown\n# Overview\n...\n```",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style. your output will be put into the \"info\" field of the node to help people use it within the node-red IDE.\nput the documentation within a codeblock:\n\n```markdown\n# Overview\n...\n```",
         "output": "str",
         "x": 560,
         "y": 320,
