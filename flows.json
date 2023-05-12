@@ -3116,7 +3116,7 @@
                 "p": "pass",
                 "pt": "msg",
                 "to": "0",
-                "tot": "str"
+                "tot": "num"
             }
         ],
         "action": "",
@@ -3237,7 +3237,7 @@
         "mode": "link",
         "links": [],
         "x": 505,
-        "y": 180,
+        "y": 200,
         "wires": []
     },
     {
@@ -3249,7 +3249,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 220,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
