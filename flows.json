@@ -3175,32 +3175,6 @@
         ]
     },
     {
-        "id": "3493294fda08df95",
-        "type": "join",
-        "z": "064c17312433ce15",
-        "name": "all nodes",
-        "mode": "auto",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 540,
-        "y": 680,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "761e9408e6850b23",
         "type": "function",
         "z": "064c17312433ce15",
@@ -3219,7 +3193,7 @@
             ],
             [
                 "e5e5952cd49e64d8",
-                "4413f5e49ca00117"
+                "2e410a19acc23c63"
             ]
         ]
     },
@@ -3364,8 +3338,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 530,
-        "y": 700,
+        "x": 830,
+        "y": 600,
         "wires": []
     },
     {
@@ -3554,31 +3528,6 @@
             [
                 "16886019852ce7a4",
                 "9021cf925783a560"
-            ]
-        ]
-    },
-    {
-        "id": "4413f5e49ca00117",
-        "type": "function",
-        "z": "064c17312433ce15",
-        "name": "clone",
-        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
-        "outputs": 3,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 350,
-        "y": 680,
-        "wires": [
-            [
-                "3493294fda08df95"
-            ],
-            [
-                "3493294fda08df95"
-            ],
-            [
-                "3493294fda08df95"
             ]
         ]
     },
@@ -3897,7 +3846,7 @@
         "y": 640,
         "wires": [
             [
-                "3493294fda08df95"
+                "5db7cfe60d82dc48"
             ]
         ]
     },
@@ -3925,7 +3874,8 @@
         "y": 560,
         "wires": [
             [
-                "3a05ecf93cf9ab5d"
+                "3a05ecf93cf9ab5d",
+                "5db7cfe60d82dc48"
             ]
         ]
     }
