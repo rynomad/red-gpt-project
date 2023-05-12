@@ -3049,7 +3049,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 820,
-        "y": 360,
+        "y": 420,
         "wires": []
     },
     {
@@ -3063,8 +3063,8 @@
         "syntax": "mustache",
         "template": "{{{payload}}}\n{{{testString}}}\n\n{{{pass}}}\n",
         "output": "str",
-        "x": 690,
-        "y": 400,
+        "x": 670,
+        "y": 420,
         "wires": [
             [
                 "2005eba0858b7465"
@@ -3254,7 +3254,8 @@
         "y": 200,
         "wires": [
             [
-                "9f4d0154bcaa5bdb"
+                "9f4d0154bcaa5bdb",
+                "9fc8b46413eadcb2"
             ]
         ]
     },
@@ -3368,7 +3369,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 240,
+        "x": 360,
         "y": 260,
         "wires": []
     }
