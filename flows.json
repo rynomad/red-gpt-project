@@ -3273,7 +3273,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a brief description of its purpose and suggested usage.",
+        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a brief (max 5 sentence) description of its purpose.",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3680,7 +3680,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 730,
+        "x": 770,
         "y": 500,
         "wires": [
             [
@@ -3702,7 +3702,7 @@
         "syntax": "mustache",
         "template": "please wrap your response in the appropriate triple backtick codeblock:\n\n```\nyour response here\n```",
         "output": "str",
-        "x": 740,
+        "x": 780,
         "y": 460,
         "wires": [
             [
