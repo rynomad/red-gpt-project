@@ -3061,7 +3061,6 @@
         "y": 400,
         "wires": [
             [
-                "62612d04c38cb1a4",
                 "1eae1ff8a68266bc",
                 "75992a64fd9b37f1"
             ]
@@ -3078,8 +3077,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 400,
+        "x": 590,
+        "y": 460,
         "wires": [
             [
                 "b8010df720742aef",
@@ -3107,8 +3106,8 @@
         "reduceInit": "0",
         "reduceInitType": "num",
         "reduceFixup": "$A/$N",
-        "x": 760,
-        "y": 400,
+        "x": 800,
+        "y": 440,
         "wires": [
             [
                 "65b9251080cb6b42"
@@ -3303,7 +3302,7 @@
         "type": "debug",
         "z": "f297cec495c6b8be",
         "name": "debug 4",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3368,7 +3367,7 @@
         "z": "f297cec495c6b8be",
         "name": "",
         "x": 600,
-        "y": 600,
+        "y": 660,
         "wires": [
             [
                 "49f531afe4600028"
@@ -3442,7 +3441,7 @@
             }
         ],
         "x": 610,
-        "y": 560,
+        "y": 620,
         "wires": [
             [
                 "f98edf899c38d504"
@@ -3460,8 +3459,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 520,
+        "x": 600,
+        "y": 580,
         "wires": [
             [
                 "62612d04c38cb1a4",
