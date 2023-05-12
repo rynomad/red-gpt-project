@@ -2320,25 +2320,6 @@
         ]
     },
     {
-        "id": "2d59b8905d9a2034",
-        "type": "split",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": true,
-        "addname": "",
-        "x": 530,
-        "y": 160,
-        "wires": [
-            [
-                "a20a07070efb88f0"
-            ]
-        ]
-    },
-    {
         "id": "f4f6fa24ca217587",
         "type": "json",
         "z": "941765e8bb2c32d6",
@@ -2984,8 +2965,8 @@
         "y": 80,
         "wires": [
             [
-                "d7ff3df8b8bca72b",
-                "ea9b8dbb62d99247"
+                "ea9b8dbb62d99247",
+                "2d59b8905d9a2034"
             ]
         ]
     },
@@ -3028,10 +3009,10 @@
         "repair": false,
         "outputs": 1,
         "x": 530,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
-                "2d59b8905d9a2034"
+                "a20a07070efb88f0"
             ]
         ]
     },
@@ -3051,6 +3032,25 @@
         "wires": [
             [
                 "183a83919e31ea2f"
+            ]
+        ]
+    },
+    {
+        "id": "2d59b8905d9a2034",
+        "type": "split",
+        "z": "941765e8bb2c32d6",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "d7ff3df8b8bca72b"
             ]
         ]
     }
