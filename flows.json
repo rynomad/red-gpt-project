@@ -3373,7 +3373,7 @@
         "type": "function",
         "z": "f297cec495c6b8be",
         "name": "clone",
-        "func": "const clones = (new Array(node.outputCount)).map(() => RED.util.cloneMessage(msg))\n\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',clones.length)\n\nreturn clones",
+        "func": "const clones = (new Array(node.outputCount)).map(() => RED.util.cloneMessage(msg))\n\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',clones)\n\nreturn clones",
         "outputs": 4,
         "noerr": 0,
         "initialize": "",
@@ -3456,7 +3456,7 @@
         "to": "",
         "reg": false,
         "x": 390,
-        "y": 440,
+        "y": 460,
         "wires": [
             [
                 "922590827a20da6a"
