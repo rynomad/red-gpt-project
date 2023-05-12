@@ -810,74 +810,6 @@
         ]
     },
     {
-        "id": "1ffc34a3a1a366d1",
-        "type": "debug",
-        "z": "237429fb2a5a7712",
-        "name": "debug gpt input",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 600,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "5319c261f38a4760",
-        "type": "debug",
-        "z": "237429fb2a5a7712",
-        "name": "debug gpt output",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "11a66484df90d49b",
-        "type": "debug",
-        "z": "237429fb2a5a7712",
-        "name": "debug gpt input",
-        "active": true,
-        "tosidebar": false,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "d7e95670637a4f94",
-        "type": "debug",
-        "z": "237429fb2a5a7712",
-        "name": "debug gpt output",
-        "active": true,
-        "tosidebar": false,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 280,
-        "wires": []
-    },
-    {
         "id": "5d459fc8-eec7-4ace-94e5-b653c47e5061",
         "type": "function",
         "z": "237429fb2a5a7712",
@@ -897,8 +829,6 @@
         "y": 160,
         "wires": [
             [
-                "1ffc34a3a1a366d1",
-                "11a66484df90d49b",
                 "0e8a88234ef86bb0"
             ]
         ]
@@ -912,9 +842,7 @@
         "y": 240,
         "wires": [
             [
-                "2d60fcbd28eb92c7",
-                "5319c261f38a4760",
-                "d7e95670637a4f94"
+                "2d60fcbd28eb92c7"
             ]
         ]
     },
