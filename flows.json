@@ -1982,7 +1982,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{{{persona}}}\n\n{{{requirements}}}\n\n{{{format}}}\n\nPlease do your best to provide a complete solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
+        "template": "{{{persona}}}\n\n{{{requirements}}}\n\n{{{format}}}\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 210,
         "y": 40,
@@ -3613,7 +3613,8 @@
         "y": 400,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "839a598e1ddd08d3",
+                "13b3fd70b0e66417"
             ]
         ]
     },
