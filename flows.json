@@ -2807,34 +2807,6 @@
         ]
     },
     {
-        "id": "ec0b257dab9ab827",
-        "type": "function",
-        "z": "f297cec495c6b8be",
-        "name": "clone",
-        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
-        "outputs": 4,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 460,
-        "wires": [
-            [
-                "90bfb9ae3c54bda3"
-            ],
-            [
-                "355dc2522a499301"
-            ],
-            [
-                "b3dc275d4210ec42"
-            ],
-            [
-                "32d8cfeb8705d916"
-            ]
-        ]
-    },
-    {
         "id": "6ccea9b424e51207",
         "type": "subflow:237429fb2a5a7712",
         "z": "f297cec495c6b8be",
@@ -3030,7 +3002,7 @@
         "y": 400,
         "wires": [
             [
-                "ec0b257dab9ab827"
+                "c7d0f2c61f85caea"
             ]
         ]
     },
@@ -3048,6 +3020,34 @@
         "wires": [
             [
                 "6ccea9b424e51207"
+            ]
+        ]
+    },
+    {
+        "id": "c7d0f2c61f85caea",
+        "type": "function",
+        "z": "f297cec495c6b8be",
+        "name": "clone",
+        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    clones._msgId = Math.random();\n    if (msg.parts){\n        msg.parts.id = msg.parts.id + \":clone\" + i;\n    }\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "90bfb9ae3c54bda3"
+            ],
+            [
+                "355dc2522a499301"
+            ],
+            [
+                "b3dc275d4210ec42"
+            ],
+            [
+                "32d8cfeb8705d916"
             ]
         ]
     },
