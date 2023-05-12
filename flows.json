@@ -3060,10 +3060,7 @@
         "x": 410,
         "y": 400,
         "wires": [
-            [
-                "1eae1ff8a68266bc",
-                "75992a64fd9b37f1"
-            ]
+            []
         ]
     },
     {
@@ -3081,7 +3078,6 @@
         "y": 460,
         "wires": [
             [
-                "b8010df720742aef",
                 "dd6525506c9b9349"
             ]
         ]
@@ -3106,7 +3102,7 @@
         "reduceInit": "0",
         "reduceInitType": "num",
         "reduceFixup": "$A/$N",
-        "x": 800,
+        "x": 820,
         "y": 440,
         "wires": [
             [
@@ -3213,11 +3209,11 @@
         "syntax": "mustache",
         "template": "{{{payload}}}\n{{{testString}}}\n\n{{{pass}}}\n",
         "output": "str",
-        "x": 730,
-        "y": 360,
+        "x": 750,
+        "y": 320,
         "wires": [
             [
-                "1eae1ff8a68266bc"
+                "75992a64fd9b37f1"
             ]
         ]
     },
@@ -3258,9 +3254,7 @@
         "x": 540,
         "y": 320,
         "wires": [
-            [
-                "b8010df720742aef"
-            ]
+            []
         ]
     },
     {
@@ -3274,7 +3268,7 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 900,
+        "x": 940,
         "y": 280,
         "wires": [
             []
@@ -3291,8 +3285,8 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 900,
-        "y": 480,
+        "x": 960,
+        "y": 540,
         "wires": [
             []
         ]
@@ -3302,7 +3296,7 @@
         "type": "debug",
         "z": "f297cec495c6b8be",
         "name": "debug 4",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3325,8 +3319,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 950,
-        "y": 400,
+        "x": 1030,
+        "y": 420,
         "wires": [
             [
                 "a596c13563210cd3"
@@ -3463,9 +3457,7 @@
         "y": 580,
         "wires": [
             [
-                "62612d04c38cb1a4",
-                "1eae1ff8a68266bc",
-                "75992a64fd9b37f1"
+                "62612d04c38cb1a4"
             ],
             [
                 "6ccea9b424e51207"
@@ -3481,9 +3473,7 @@
         "y": 640,
         "wires": [
             [
-                "6ccea9b424e51207",
-                "1eae1ff8a68266bc",
-                "75992a64fd9b37f1"
+                "6ccea9b424e51207"
             ]
         ]
     },
@@ -3536,9 +3526,7 @@
         "y": 440,
         "wires": [
             [
-                "922590827a20da6a",
-                "1eae1ff8a68266bc",
-                "75992a64fd9b37f1"
+                "922590827a20da6a"
             ]
         ]
     }
