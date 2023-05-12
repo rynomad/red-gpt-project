@@ -3430,7 +3430,7 @@
         "type": "function",
         "z": "f297cec495c6b8be",
         "name": "get result",
-        "func": "console.log('parsed code:', msg.parts)\nmsg.payload = msg.payload\n                .filter(({type}) => ['javascript'].indexOf(type) >= 0)\n\nif (msg.payload.length > 1){\n  msg.payload = ('multiple code-blocks detected in your response, please respond with only the complete solution')\n  return [null, msg]\n} else if (msg.payload.length < 1){\n  msg.payload = (`no code blocks detected, please obey the formatting instructions:\\n${msg.format}`)\n  return [null, msg]\n} else {\n  msg.payload = msg.payload[0].content; \n  return [msg, null]\n}",
+        "func": "console.log('parsed code:', msg.parts)\nmsg.payload = msg.payload\n                .filter(({type}) => ['javascript'].indexOf(type) >= 0)\n\nif (msg.payload.length > 1){\n  msg.payload = `throw new Error('multiple code-blocks detected in your response, please respond with only the complete solution')`\n  return [null, msg]\n} else if (msg.payload.length < 1){\n  msg.payload = `throw new Error('no code blocks detected, please obey the formatting instructions:')`\n  return [null, msg]\n} else {\n  msg.payload = msg.payload[0].content; \n  return [msg, null]\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -3443,7 +3443,7 @@
                 "62612d04c38cb1a4"
             ],
             [
-                "6ccea9b424e51207"
+                "62612d04c38cb1a4"
             ]
         ]
     },
