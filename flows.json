@@ -3252,7 +3252,7 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "documentation",
-        "field": "requirements",
+        "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
@@ -3369,11 +3369,11 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "schema in",
-        "field": "requirements",
+        "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\nput the schema within a codeblock:\n```json\n{\n    \"$schema\": \"....\"\n    ...\n}\n```",
         "output": "str",
         "x": 750,
         "y": 320,
@@ -3405,7 +3405,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\nput the schema within a codeblock:\n```json\n{\n    \"$schema\": \"....\"\n    ...\n}\n```",
         "output": "str",
         "x": 970,
         "y": 320,
@@ -3438,7 +3438,7 @@
         "y": 360,
         "wires": [
             [
-                "589fead04f767fd0"
+                "839a598e1ddd08d3"
             ]
         ]
     },
@@ -3465,7 +3465,7 @@
         "y": 360,
         "wires": [
             [
-                "589fead04f767fd0"
+                "839a598e1ddd08d3"
             ]
         ]
     },
@@ -3492,7 +3492,7 @@
         "y": 360,
         "wires": [
             [
-                "589fead04f767fd0"
+                "839a598e1ddd08d3"
             ]
         ]
     },
@@ -3570,6 +3570,13 @@
         "type": "subflow:b7d91a580a2c7c19",
         "z": "064c17312433ce15",
         "name": "",
+        "env": [
+            {
+                "name": "blockTypes",
+                "value": "json",
+                "type": "str"
+            }
+        ],
         "x": 550,
         "y": 480,
         "wires": [
@@ -3601,19 +3608,6 @@
         "wires": [
             [
                 "92f596418b88218c"
-            ]
-        ]
-    },
-    {
-        "id": "589fead04f767fd0",
-        "type": "subflow:f16c08b0c74d892d",
-        "z": "064c17312433ce15",
-        "name": "",
-        "x": 560,
-        "y": 400,
-        "wires": [
-            [
-                "839a598e1ddd08d3"
             ]
         ]
     },
