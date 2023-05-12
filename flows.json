@@ -3248,11 +3248,109 @@
         "Organization": " ",
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
-        "x": 220,
+        "x": 240,
         "y": 200,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
+            ]
+        ]
+    },
+    {
+        "id": "09ae223c8021bfb1",
+        "type": "catch",
+        "z": "e961334cde89144c",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 300,
+        "y": 40,
+        "wires": [
+            [
+                "63e981e00783ca8a"
+            ]
+        ]
+    },
+    {
+        "id": "25c4aeea71cf6223",
+        "type": "delay",
+        "z": "e961334cde89144c",
+        "name": "gpt4 limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "70",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 80,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "16692009bdaac826",
+        "type": "delay",
+        "z": "e961334cde89144c",
+        "name": "turbo limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "20",
+        "nbRateUnits": "70",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 80,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "63e981e00783ca8a",
+        "type": "switch",
+        "z": "e961334cde89144c",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "gpt4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "turbo",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 450,
+        "y": 40,
+        "wires": [
+            [
+                "25c4aeea71cf6223"
+            ],
+            [
+                "16692009bdaac826"
             ]
         ]
     }
