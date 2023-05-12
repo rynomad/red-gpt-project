@@ -3328,7 +3328,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 750,
-        "y": 420,
+        "y": 400,
         "wires": []
     },
     {
@@ -3591,18 +3591,10 @@
         "type": "subflow:b7d91a580a2c7c19",
         "z": "064c17312433ce15",
         "name": "",
-        "env": [
-            {
-                "name": "blockTypes",
-                "value": "json,markdown",
-                "type": "str"
-            }
-        ],
         "x": 550,
         "y": 500,
         "wires": [
             [
-                "7ec6901fd576cd8c",
                 "b81f7e4ee8ee40d7"
             ]
         ]
@@ -3682,12 +3674,14 @@
         "repair": false,
         "outputs": 2,
         "x": 730,
-        "y": 520,
+        "y": 500,
         "wires": [
             [
                 "3470efd583a5b1ce"
             ],
-            []
+            [
+                "7ec6901fd576cd8c"
+            ]
         ]
     },
     {
@@ -3702,7 +3696,7 @@
         "template": "please wrap your response in the appropriate triple backtick codeblock:\n\n```\nyour response here\n```",
         "output": "str",
         "x": 740,
-        "y": 480,
+        "y": 460,
         "wires": [
             [
                 "839a598e1ddd08d3"
