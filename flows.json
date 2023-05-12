@@ -3262,12 +3262,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 140,
-        "y": 420,
+        "x": 180,
+        "y": 540,
         "wires": []
     },
     {
