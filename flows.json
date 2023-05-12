@@ -3074,6 +3074,11 @@
                 "p": "temperature",
                 "v": "0.5",
                 "vt": "str"
+            },
+            {
+                "p": "language",
+                "v": "node-red and javascript",
+                "vt": "str"
             }
         ],
         "repeat": "",
@@ -3146,11 +3151,11 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 480,
-        "y": 580,
+        "x": 540,
+        "y": 560,
         "wires": [
             [
-                "5db7cfe60d82dc48"
+                "91e3a48774c92f05"
             ]
         ]
     },
@@ -3174,7 +3179,7 @@
             ],
             [
                 "e5e5952cd49e64d8",
-                "3493294fda08df95"
+                "4413f5e49ca00117"
             ]
         ]
     },
@@ -3245,14 +3250,14 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "documentation",
-        "field": "payload",
+        "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style.",
         "output": "str",
-        "x": 500,
-        "y": 380,
+        "x": 560,
+        "y": 320,
         "wires": [
             [
                 "5ac8e1eb22d9be16"
@@ -3268,7 +3273,7 @@
         "action": "str",
         "pretty": false,
         "x": 530,
-        "y": 220,
+        "y": 80,
         "wires": [
             [
                 "5412bb9f8505ec2d"
@@ -3280,12 +3285,12 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "064c17312433ce15",
         "name": "",
-        "x": 480,
-        "y": 460,
+        "x": 540,
+        "y": 440,
         "wires": [
             [
                 "13b3fd70b0e66417",
-                "145ec9df0675db99"
+                "b89c365523f76187"
             ]
         ]
     },
@@ -3302,8 +3307,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 480,
+        "x": 730,
+        "y": 460,
         "wires": []
     },
     {
@@ -3319,8 +3324,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
-        "y": 620,
+        "x": 530,
+        "y": 660,
         "wires": []
     },
     {
@@ -3350,10 +3355,10 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 260,
+        "y": 120,
         "wires": [
             [
-                "faec021f67110605"
+                "bfd3c7c84dfbd47a"
             ]
         ]
     },
@@ -3362,45 +3367,17 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "schema in",
-        "field": "payload",
+        "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
         "output": "str",
-        "x": 690,
-        "y": 380,
+        "x": 750,
+        "y": 320,
         "wires": [
             [
                 "04838b8e66b73717"
-            ]
-        ]
-    },
-    {
-        "id": "145ec9df0675db99",
-        "type": "join",
-        "z": "064c17312433ce15",
-        "name": "docs and schemas",
-        "mode": "auto",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 510,
-        "y": 540,
-        "wires": [
-            [
-                "3493294fda08df95"
             ]
         ]
     },
@@ -3422,14 +3399,14 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "schema out",
-        "field": "payload",
+        "field": "requirementes",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format",
         "output": "str",
-        "x": 910,
-        "y": 380,
+        "x": 970,
+        "y": 320,
         "wires": [
             [
                 "1a45745cdcdcc2a0"
@@ -3455,11 +3432,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
-        "y": 420,
+        "x": 970,
+        "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "589fead04f767fd0"
             ]
         ]
     },
@@ -3482,11 +3459,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 690,
-        "y": 420,
+        "x": 750,
+        "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "589fead04f767fd0"
             ]
         ]
     },
@@ -3509,11 +3486,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
-        "y": 420,
+        "x": 550,
+        "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "589fead04f767fd0"
             ]
         ]
     },
@@ -3529,7 +3506,7 @@
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 300,
+        "y": 280,
         "wires": [
             [
                 "1c58af75659287c4"
@@ -3539,6 +3516,143 @@
             ],
             [
                 "17c4c2465ba4c355"
+            ]
+        ]
+    },
+    {
+        "id": "4413f5e49ca00117",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "clone",
+        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "3493294fda08df95"
+            ],
+            [
+                "3493294fda08df95"
+            ],
+            [
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "7ec6901fd576cd8c",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "mux payload",
+        "func": "msg.payload = {\n    key: msg.key,\n    value: msg.key === 'info' ? msg.payload[0] : JSON.parse(msg.payload[0])\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "b89c365523f76187",
+        "type": "subflow:b7d91a580a2c7c19",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "7ec6901fd576cd8c"
+            ]
+        ]
+    },
+    {
+        "id": "bfd3c7c84dfbd47a",
+        "type": "subflow:13d4ac7b7c9898ae",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 550,
+        "y": 160,
+        "wires": [
+            [
+                "92768a8167b18d9a"
+            ]
+        ]
+    },
+    {
+        "id": "92768a8167b18d9a",
+        "type": "subflow:1254546b0e9fb57c",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 570,
+        "y": 200,
+        "wires": [
+            [
+                "92f596418b88218c"
+            ]
+        ]
+    },
+    {
+        "id": "589fead04f767fd0",
+        "type": "subflow:f16c08b0c74d892d",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 560,
+        "y": 400,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
+        "id": "92f596418b88218c",
+        "type": "subflow:f6dd154f310aa615",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "faec021f67110605"
+            ]
+        ]
+    },
+    {
+        "id": "91e3a48774c92f05",
+        "type": "join",
+        "z": "064c17312433ce15",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 530,
+        "y": 620,
+        "wires": [
+            [
+                "5db7cfe60d82dc48"
             ]
         ]
     }
