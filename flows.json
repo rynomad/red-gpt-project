@@ -3625,7 +3625,8 @@
         "y": 500,
         "wires": [
             [
-                "7ec6901fd576cd8c"
+                "7ec6901fd576cd8c",
+                "f2496a14e2d3349f"
             ]
         ]
     },
@@ -3698,7 +3699,8 @@
         "y": 500,
         "wires": [
             [
-                "7ec6901fd576cd8c"
+                "7ec6901fd576cd8c",
+                "f2496a14e2d3349f"
             ]
         ]
     },
@@ -3732,5 +3734,22 @@
                 "b89c365523f76187"
             ]
         ]
+    },
+    {
+        "id": "f2496a14e2d3349f",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "parsed docs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 560,
+        "wires": []
     }
 ]
