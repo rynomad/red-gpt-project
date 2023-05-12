@@ -3273,7 +3273,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a brief description of its purpose and suggested usage.\n\n{{{format}}}\n\nplease put the description of the entire node inside your code block so that I can parse it and add it to my collection of documentation.",
+        "template": "I have the following node-red subflow:\n{{{payload}}}\n\n\nplease analyze it and provide a brief description of its purpose and suggested usage.",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3310,7 +3310,7 @@
             [
                 "13b3fd70b0e66417",
                 "3470efd583a5b1ce",
-                "b89c365523f76187"
+                "fdaac179ca821150"
             ]
         ]
     },
@@ -3591,6 +3591,13 @@
         "type": "subflow:b7d91a580a2c7c19",
         "z": "064c17312433ce15",
         "name": "",
+        "env": [
+            {
+                "name": "blockTypes",
+                "value": "markdown,json",
+                "type": "str"
+            }
+        ],
         "x": 550,
         "y": 500,
         "wires": [
@@ -3700,6 +3707,25 @@
         "wires": [
             [
                 "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
+        "id": "fdaac179ca821150",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "wrap markdown",
+        "func": "if (msg.key === 'info'){\n    msg.payload = `\n\\`\\`\\`markdown\n${msg.payload}\n\\`\\`\\`\n`\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 460,
+        "wires": [
+            [
+                "b89c365523f76187"
             ]
         ]
     }
