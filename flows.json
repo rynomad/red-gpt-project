@@ -24,6 +24,14 @@
         "env": []
     },
     {
+        "id": "064c17312433ce15",
+        "type": "tab",
+        "label": "Document",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
@@ -962,7 +970,7 @@
             "f2342d49916a4e23"
         ],
         "linkType": "static",
-        "timeout": "3600",
+        "timeout": "36000",
         "x": 330,
         "y": 200,
         "wires": [
@@ -2237,462 +2245,6 @@
         ]
     },
     {
-        "id": "1f104ae03f736fc7",
-        "type": "subflow:8843d7f92416211de9ebb963ff4ce28125932878",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "x": 210,
-        "y": 620,
-        "wires": [
-            [
-                "d97a19209a785803"
-            ]
-        ]
-    },
-    {
-        "id": "b433c835d854e271",
-        "type": "file in",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "filename": "/data/projects/red-gpt-project/flows.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 240,
-        "y": 460,
-        "wires": [
-            [
-                "3fb29f9dbf599fa0"
-            ]
-        ]
-    },
-    {
-        "id": "3fb29f9dbf599fa0",
-        "type": "json",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 130,
-        "y": 500,
-        "wires": [
-            [
-                "bf4826fb44e15c5e"
-            ]
-        ]
-    },
-    {
-        "id": "3fc0a9eb4623c177",
-        "type": "inject",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            },
-            {
-                "p": "temperature",
-                "v": "0.5",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "turbo",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 420,
-        "wires": [
-            [
-                "b433c835d854e271"
-            ]
-        ]
-    },
-    {
-        "id": "d97a19209a785803",
-        "type": "json",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 130,
-        "y": 660,
-        "wires": [
-            [
-                "6ee86c3a03682354"
-            ]
-        ]
-    },
-    {
-        "id": "6ee86c3a03682354",
-        "type": "split",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 130,
-        "y": 700,
-        "wires": [
-            [
-                "761e9408e6850b23"
-            ]
-        ]
-    },
-    {
-        "id": "3493294fda08df95",
-        "type": "join",
-        "z": "941765e8bb2c32d6",
-        "name": "all nodes",
-        "mode": "auto",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 480,
-        "y": 940,
-        "wires": [
-            [
-                "5db7cfe60d82dc48"
-            ]
-        ]
-    },
-    {
-        "id": "761e9408e6850b23",
-        "type": "function",
-        "z": "941765e8bb2c32d6",
-        "name": "sort eligible for doc",
-        "func": "if (msg.payload.nodes.filter(node => node.id === msg.payload.id).pop().info) {\n    return [msg, null];\n}\n\nconst undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flows.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\n\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 740,
-        "wires": [
-            [
-                "3493294fda08df95",
-                "3ab40e04649ddf45",
-                "dae7e91edc72c83d"
-            ],
-            [
-                "e5e5952cd49e64d8",
-                "3493294fda08df95"
-            ]
-        ]
-    },
-    {
-        "id": "bf4826fb44e15c5e",
-        "type": "change",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "flows",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg",
-                "dc": true
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 540,
-        "wires": [
-            [
-                "69961b662c31c241"
-            ]
-        ]
-    },
-    {
-        "id": "3ab40e04649ddf45",
-        "type": "debug",
-        "z": "941765e8bb2c32d6",
-        "name": "eligible",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 160,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "e5e5952cd49e64d8",
-        "type": "debug",
-        "z": "941765e8bb2c32d6",
-        "name": "ineligible",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 160,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "17c4c2465ba4c355",
-        "type": "template",
-        "z": "941765e8bb2c32d6",
-        "name": "documentation",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style.",
-        "output": "str",
-        "x": 500,
-        "y": 740,
-        "wires": [
-            [
-                "2656bcf5cad4e16b"
-            ]
-        ]
-    },
-    {
-        "id": "dae7e91edc72c83d",
-        "type": "json",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "property": "payload.nodes",
-        "action": "str",
-        "pretty": false,
-        "x": 470,
-        "y": 660,
-        "wires": [
-            [
-                "5412bb9f8505ec2d"
-            ]
-        ]
-    },
-    {
-        "id": "839a598e1ddd08d3",
-        "type": "subflow:237429fb2a5a7712",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "x": 480,
-        "y": 820,
-        "wires": [
-            [
-                "13b3fd70b0e66417",
-                "145ec9df0675db99"
-            ]
-        ]
-    },
-    {
-        "id": "13b3fd70b0e66417",
-        "type": "debug",
-        "z": "941765e8bb2c32d6",
-        "name": "docs",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "5db7cfe60d82dc48",
-        "type": "debug",
-        "z": "941765e8bb2c32d6",
-        "name": "done",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "2656bcf5cad4e16b",
-        "type": "delay",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "10",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 500,
-        "y": 780,
-        "wires": [
-            [
-                "839a598e1ddd08d3"
-            ]
-        ]
-    },
-    {
-        "id": "5412bb9f8505ec2d",
-        "type": "change",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "subflow",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.nodes",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 500,
-        "y": 700,
-        "wires": [
-            [
-                "16e7fb7b2bc1fd73",
-                "17c4c2465ba4c355",
-                "1c58af75659287c4"
-            ]
-        ]
-    },
-    {
-        "id": "16e7fb7b2bc1fd73",
-        "type": "template",
-        "z": "941765e8bb2c32d6",
-        "name": "schemas",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
-        "output": "str",
-        "x": 680,
-        "y": 740,
-        "wires": [
-            [
-                "2656bcf5cad4e16b"
-            ]
-        ]
-    },
-    {
-        "id": "145ec9df0675db99",
-        "type": "join",
-        "z": "941765e8bb2c32d6",
-        "name": "docs and schemas",
-        "mode": "auto",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 510,
-        "y": 880,
-        "wires": [
-            [
-                "3493294fda08df95"
-            ]
-        ]
-    },
-    {
-        "id": "69961b662c31c241",
-        "type": "subflow:13d4ac7b7c9898ae",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "x": 150,
-        "y": 580,
-        "wires": [
-            [
-                "1f104ae03f736fc7"
-            ]
-        ]
-    },
-    {
-        "id": "1c58af75659287c4",
-        "type": "template",
-        "z": "941765e8bb2c32d6",
-        "name": "schemas",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
-        "output": "str",
-        "x": 840,
-        "y": 740,
-        "wires": [
-            [
-                "2656bcf5cad4e16b"
-            ]
-        ]
-    },
-    {
         "id": "ffc06a5a5bbea58f",
         "type": "batch",
         "z": "941765e8bb2c32d6",
@@ -3453,6 +3005,540 @@
         "wires": [
             [
                 "ec0b257dab9ab827"
+            ]
+        ]
+    },
+    {
+        "id": "1f104ae03f736fc7",
+        "type": "subflow:8843d7f92416211de9ebb963ff4ce28125932878",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "d97a19209a785803"
+            ]
+        ]
+    },
+    {
+        "id": "b433c835d854e271",
+        "type": "file in",
+        "z": "064c17312433ce15",
+        "name": "",
+        "filename": "/data/projects/red-gpt-project/flows.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 240,
+        "y": 100,
+        "wires": [
+            [
+                "3fb29f9dbf599fa0"
+            ]
+        ]
+    },
+    {
+        "id": "3fb29f9dbf599fa0",
+        "type": "json",
+        "z": "064c17312433ce15",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "bf4826fb44e15c5e"
+            ]
+        ]
+    },
+    {
+        "id": "3fc0a9eb4623c177",
+        "type": "inject",
+        "z": "064c17312433ce15",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "temperature",
+                "v": "0.5",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "b433c835d854e271"
+            ]
+        ]
+    },
+    {
+        "id": "d97a19209a785803",
+        "type": "json",
+        "z": "064c17312433ce15",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "6ee86c3a03682354"
+            ]
+        ]
+    },
+    {
+        "id": "6ee86c3a03682354",
+        "type": "split",
+        "z": "064c17312433ce15",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "761e9408e6850b23"
+            ]
+        ]
+    },
+    {
+        "id": "3493294fda08df95",
+        "type": "join",
+        "z": "064c17312433ce15",
+        "name": "all nodes",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 480,
+        "y": 580,
+        "wires": [
+            [
+                "5db7cfe60d82dc48"
+            ]
+        ]
+    },
+    {
+        "id": "761e9408e6850b23",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "sort eligible for doc",
+        "func": "if (msg.payload.nodes.filter(node => node.id === msg.payload.id).pop().info) {\n    return [msg, null];\n}\n\nconst undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flows.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\n\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "3ab40e04649ddf45",
+                "dae7e91edc72c83d"
+            ],
+            [
+                "e5e5952cd49e64d8",
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "bf4826fb44e15c5e",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "flows",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "69961b662c31c241"
+            ]
+        ]
+    },
+    {
+        "id": "3ab40e04649ddf45",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "eligible",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e5e5952cd49e64d8",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "ineligible",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "17c4c2465ba4c355",
+        "type": "template",
+        "z": "064c17312433ce15",
+        "name": "documentation",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a markdown within a codeblock, describing the functionality of the subflow\n\nuse the idiomatic node-red documentation style.",
+        "output": "str",
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "5ac8e1eb22d9be16"
+            ]
+        ]
+    },
+    {
+        "id": "dae7e91edc72c83d",
+        "type": "json",
+        "z": "064c17312433ce15",
+        "name": "",
+        "property": "payload.nodes",
+        "action": "str",
+        "pretty": false,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "5412bb9f8505ec2d"
+            ]
+        ]
+    },
+    {
+        "id": "839a598e1ddd08d3",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 480,
+        "y": 460,
+        "wires": [
+            [
+                "13b3fd70b0e66417",
+                "145ec9df0675db99"
+            ]
+        ]
+    },
+    {
+        "id": "13b3fd70b0e66417",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "docs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "5db7cfe60d82dc48",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "done",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "5412bb9f8505ec2d",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "subflow",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.nodes",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 260,
+        "wires": [
+            [
+                "faec021f67110605"
+            ]
+        ]
+    },
+    {
+        "id": "16e7fb7b2bc1fd73",
+        "type": "template",
+        "z": "064c17312433ce15",
+        "name": "schema in",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format",
+        "output": "str",
+        "x": 690,
+        "y": 380,
+        "wires": [
+            [
+                "04838b8e66b73717"
+            ]
+        ]
+    },
+    {
+        "id": "145ec9df0675db99",
+        "type": "join",
+        "z": "064c17312433ce15",
+        "name": "docs and schemas",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [
+                "3493294fda08df95"
+            ]
+        ]
+    },
+    {
+        "id": "69961b662c31c241",
+        "type": "subflow:13d4ac7b7c9898ae",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "1f104ae03f736fc7"
+            ]
+        ]
+    },
+    {
+        "id": "1c58af75659287c4",
+        "type": "template",
+        "z": "064c17312433ce15",
+        "name": "schema out",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format",
+        "output": "str",
+        "x": 910,
+        "y": 380,
+        "wires": [
+            [
+                "1a45745cdcdcc2a0"
+            ]
+        ]
+    },
+    {
+        "id": "1a45745cdcdcc2a0",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "key",
+                "pt": "msg",
+                "to": "outputSchema",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 420,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
+        "id": "04838b8e66b73717",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "key",
+                "pt": "msg",
+                "to": "inputSchema",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 420,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
+        "id": "5ac8e1eb22d9be16",
+        "type": "change",
+        "z": "064c17312433ce15",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "key",
+                "pt": "msg",
+                "to": "info",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 420,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
+        "id": "faec021f67110605",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "clone",
+        "func": "const clones = []\n\nfor (let i = 0; i < node.outputCount; i++){\n    clones.push(RED.util.cloneMessage(msg))\n}\nclones.forEach((msg, i) => {\n    msg.parts.id = msg.parts.id + \":clone\" + i;\n});\n\nconsole.log('clones?',msg,clones)\n\nreturn clones",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 300,
+        "wires": [
+            [
+                "1c58af75659287c4"
+            ],
+            [
+                "16e7fb7b2bc1fd73"
+            ],
+            [
+                "17c4c2465ba4c355"
             ]
         ]
     }
