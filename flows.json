@@ -3590,7 +3590,7 @@
         "env": [
             {
                 "name": "blockTypes",
-                "value": "json",
+                "value": "json,markdown",
                 "type": "str"
             }
         ],
