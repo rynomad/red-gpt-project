@@ -2521,12 +2521,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "pass",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 700,
-        "y": 360,
+        "y": 400,
         "wires": []
     },
     {
