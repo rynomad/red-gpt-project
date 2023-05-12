@@ -3309,7 +3309,7 @@
         "wires": [
             [
                 "13b3fd70b0e66417",
-                "fdaac179ca821150"
+                "a9c68f429a6c89f8"
             ]
         ]
     },
@@ -3552,7 +3552,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
+        "x": 350,
         "y": 580,
         "wires": [
             [
@@ -3664,15 +3664,46 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "wrap markdown",
-        "func": "if (msg.key === 'info'){\n    msg.payload = `\n\\`\\`\\`markdown\n${msg.payload}\n\\`\\`\\`\n`\n}\nreturn msg;",
+        "func": "msg.payload = [msg.payload]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 460,
+        "x": 760,
+        "y": 500,
         "wires": [
+            [
+                "7ec6901fd576cd8c"
+            ]
+        ]
+    },
+    {
+        "id": "a9c68f429a6c89f8",
+        "type": "switch",
+        "z": "064c17312433ce15",
+        "name": "",
+        "property": "key",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "info",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 440,
+        "wires": [
+            [
+                "fdaac179ca821150"
+            ],
             [
                 "b89c365523f76187"
             ]
