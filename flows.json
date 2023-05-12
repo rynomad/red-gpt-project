@@ -3062,7 +3062,8 @@
         "wires": [
             [
                 "62612d04c38cb1a4",
-                "1eae1ff8a68266bc"
+                "1eae1ff8a68266bc",
+                "75992a64fd9b37f1"
             ]
         ]
     },
@@ -3110,7 +3111,6 @@
         "y": 400,
         "wires": [
             [
-                "018ce5a7f6f94441",
                 "65b9251080cb6b42"
             ]
         ]
@@ -3199,27 +3199,9 @@
         "y": 160,
         "wires": [
             [
-                "d7ff3df8b8bca72b",
-                "75992a64fd9b37f1"
+                "d7ff3df8b8bca72b"
             ]
         ]
-    },
-    {
-        "id": "2005eba0858b7465",
-        "type": "debug",
-        "z": "f297cec495c6b8be",
-        "name": "individual test",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "parts",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 920,
-        "y": 320,
-        "wires": []
     },
     {
         "id": "dd6525506c9b9349",
@@ -3236,27 +3218,9 @@
         "y": 360,
         "wires": [
             [
-                "2005eba0858b7465",
                 "1eae1ff8a68266bc"
             ]
         ]
-    },
-    {
-        "id": "018ce5a7f6f94441",
-        "type": "debug",
-        "z": "f297cec495c6b8be",
-        "name": "final score",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 890,
-        "y": 360,
-        "wires": []
     },
     {
         "id": "30bf3f577ffc38e2",
@@ -3346,8 +3310,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 400,
-        "y": 160,
+        "x": 920,
+        "y": 340,
         "wires": []
     },
     {
@@ -3500,7 +3464,8 @@
         "wires": [
             [
                 "62612d04c38cb1a4",
-                "1eae1ff8a68266bc"
+                "1eae1ff8a68266bc",
+                "75992a64fd9b37f1"
             ]
         ]
     },
@@ -3514,7 +3479,8 @@
         "wires": [
             [
                 "6ccea9b424e51207",
-                "1eae1ff8a68266bc"
+                "1eae1ff8a68266bc",
+                "75992a64fd9b37f1"
             ]
         ]
     },
@@ -3568,7 +3534,8 @@
         "wires": [
             [
                 "922590827a20da6a",
-                "1eae1ff8a68266bc"
+                "1eae1ff8a68266bc",
+                "75992a64fd9b37f1"
             ]
         ]
     }
