@@ -2484,8 +2484,7 @@
         "wires": [
             [
                 "b8010df720742aef",
-                "2005eba0858b7465",
-                "4a7993b992cbbbee"
+                "dd6525506c9b9349"
             ]
         ]
     },
@@ -2512,27 +2511,8 @@
         "x": 560,
         "y": 460,
         "wires": [
-            [
-                "ea9b8dbb62d99247"
-            ]
+            []
         ]
-    },
-    {
-        "id": "ea9b8dbb62d99247",
-        "type": "debug",
-        "z": "941765e8bb2c32d6",
-        "name": "individual test",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "pass",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 840,
-        "y": 420,
-        "wires": []
     },
     {
         "id": "1f104ae03f736fc7",
@@ -3102,36 +3082,30 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "pass",
+        "complete": "log",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
-        "y": 460,
+        "x": 860,
+        "y": 300,
         "wires": []
     },
     {
-        "id": "4a7993b992cbbbee",
-        "type": "delay",
+        "id": "dd6525506c9b9349",
+        "type": "template",
         "z": "941765e8bb2c32d6",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 620,
-        "y": 420,
+        "name": "log",
+        "field": "log",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{{payload}}}\n{{{testString}}}\n\n{{{pass}}}\n",
+        "output": "str",
+        "x": 730,
+        "y": 340,
         "wires": [
             [
-                "ea9b8dbb62d99247"
+                "2005eba0858b7465"
             ]
         ]
     }
