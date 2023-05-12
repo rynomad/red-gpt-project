@@ -3070,7 +3070,7 @@
         "type": "function",
         "z": "f297cec495c6b8be",
         "name": "test",
-        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    const test = new Function('console',msg.payload + '\\n' + msg.testString)\n    test(console)\n    msg.pass = 1;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = 0;\n}\n\nmsg.payload = {pass: msg.pass, flow: msg.schema ? 'smartcoder' : 'chatgpt', model: msg.topic}\nreturn msg;",
+        "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    const test = new Function('console',msg.payload + '\\n' + msg.testString)\n    test(console)\n    msg.pass = 1;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = 0;\n}\n\nmsg.payload = {pass: msg.pass, flow: msg.flow ? 'smartcoder' : 'chatgpt', model: msg.topic}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3354,7 +3354,7 @@
         "type": "function",
         "z": "f297cec495c6b8be",
         "name": "format bench result",
-        "func": "msg.payload = `${msg.payload[0].flow},${msg.payload[0].model},${msg.payload.reduce((a, { pass }) => a + pass, 0)},${msg.payload.length},${msg.payload.reduce((a, { pass }) => a + pass, 0)/msg.payload.length}`\nreturn msg;",
+        "func": "msg.payload = `${msg.payload[0].flow || 'chatgpt'},${msg.payload[0].model},${msg.payload.reduce((a, { pass }) => a + pass, 0)},${msg.payload.length},${msg.payload.reduce((a, { pass }) => a + pass, 0)/msg.payload.length}`\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3383,8 +3383,8 @@
         "y": 420,
         "wires": [
             [
-                "922590827a20da6a",
-                "1eae1ff8a68266bc"
+                "1eae1ff8a68266bc",
+                "90bfb9ae3c54bda3"
             ],
             [
                 "355dc2522a499301"
@@ -3457,10 +3457,10 @@
         "to": "",
         "reg": false,
         "x": 390,
-        "y": 460,
+        "y": 480,
         "wires": [
             [
-                "922590827a20da6a"
+                "90bfb9ae3c54bda3"
             ]
         ]
     },
@@ -3539,6 +3539,33 @@
         "wires": [
             [
                 "fc173ba8f27163d1"
+            ]
+        ]
+    },
+    {
+        "id": "90bfb9ae3c54bda3",
+        "type": "change",
+        "z": "f297cec495c6b8be",
+        "name": "tag smartgpt",
+        "rules": [
+            {
+                "t": "set",
+                "p": "flow",
+                "pt": "msg",
+                "to": "smartgpt",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "922590827a20da6a"
             ]
         ]
     }
