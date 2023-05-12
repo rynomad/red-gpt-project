@@ -150,7 +150,7 @@
         "out": [
             {
                 "x": 500,
-                "y": 320,
+                "y": 360,
                 "wires": [
                     {
                         "id": "d5f444de1f8ceabb",
@@ -798,7 +798,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 320,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "d2ee1fb0b75e93b6"
@@ -848,7 +848,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 610,
-        "y": 280,
+        "y": 320,
         "wires": []
     },
     {
@@ -882,7 +882,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 610,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -905,9 +905,9 @@
         "y": 160,
         "wires": [
             [
-                "1d0773bcf3416404",
                 "1ffc34a3a1a366d1",
-                "11a66484df90d49b"
+                "11a66484df90d49b",
+                "8c1cba224d949d09"
             ]
         ]
     },
@@ -917,7 +917,7 @@
         "z": "237429fb2a5a7712",
         "name": "minify JSON in history",
         "x": 360,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "2d60fcbd28eb92c7",
@@ -944,7 +944,7 @@
         "to": "",
         "reg": false,
         "x": 350,
-        "y": 280,
+        "y": 320,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -989,7 +989,7 @@
             }
         ],
         "x": 330,
-        "y": 320,
+        "y": 360,
         "wires": [
             []
         ]
@@ -1045,6 +1045,31 @@
         "allowrate": false,
         "outputs": 1,
         "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "1d0773bcf3416404"
+            ]
+        ]
+    },
+    {
+        "id": "8c1cba224d949d09",
+        "type": "delay",
+        "z": "237429fb2a5a7712",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "20",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 340,
         "y": 200,
         "wires": [
             [
@@ -2336,31 +2361,6 @@
         ]
     },
     {
-        "id": "a20a07070efb88f0",
-        "type": "delay",
-        "z": "941765e8bb2c32d6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "30",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 700,
-        "y": 160,
-        "wires": [
-            [
-                "f4f6fa24ca217587"
-            ]
-        ]
-    },
-    {
         "id": "f4f6fa24ca217587",
         "type": "json",
         "z": "941765e8bb2c32d6",
@@ -3035,7 +3035,7 @@
         "y": 160,
         "wires": [
             [
-                "a20a07070efb88f0"
+                "f4f6fa24ca217587"
             ]
         ]
     },
