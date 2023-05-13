@@ -775,18 +775,6 @@
         ]
     },
     {
-        "id": "bb7d7de463c784c3",
-        "type": "junction",
-        "z": "064c17312433ce15",
-        "x": 420,
-        "y": 460,
-        "wires": [
-            [
-                "839a598e1ddd08d3"
-            ]
-        ]
-    },
-    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -1164,7 +1152,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert code reviewer.\n\nThe code above has yet to be run.\n\n1 List the issues with each option, ranking each by severity focus on:\n1.1 problems that may prevent it from running.\n1.2 failures to deliver requested functionality.\n2 List what each option gets right, and which takes the overall best approach.\n3 Answer the following:\n{{review}}\n\nFinally, provide a synthesized solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
+        "template": "You are an expert reviewer and researcher.\n\nThe results above have yet to be deployed.\n\n1 List the issues with each option, ranking each by severity focus on:\n1.1 problems that may prevent it from working.\n1.2 failures to deliver on the specifications of the request.\n2 List what each option gets right, and which takes the overall best approach.\n3 synthesize a complete and robust solution.\n\nLet's work this out in a step by step way to be sure we have the right answer:",
         "output": "str",
         "x": 130,
         "y": 520,
@@ -3312,6 +3300,11 @@
                 "p": "language",
                 "v": "node-red and javascript",
                 "vt": "str"
+            },
+            {
+                "p": "min_tokens",
+                "v": "1000",
+                "vt": "str"
             }
         ],
         "repeat": "",
@@ -3450,19 +3443,6 @@
         ]
     },
     {
-        "id": "839a598e1ddd08d3",
-        "type": "subflow:237429fb2a5a7712",
-        "z": "064c17312433ce15",
-        "name": "",
-        "x": 540,
-        "y": 400,
-        "wires": [
-            [
-                "b89c365523f76187"
-            ]
-        ]
-    },
-    {
         "id": "5db7cfe60d82dc48",
         "type": "debug",
         "z": "064c17312433ce15",
@@ -3476,7 +3456,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 530,
-        "y": 760,
+        "y": 720,
         "wires": []
     },
     {
@@ -3587,7 +3567,7 @@
         "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "afdc81229134a1c7"
             ]
         ]
     },
@@ -3614,7 +3594,7 @@
         "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "afdc81229134a1c7"
             ]
         ]
     },
@@ -3641,7 +3621,7 @@
         "y": 360,
         "wires": [
             [
-                "839a598e1ddd08d3"
+                "afdc81229134a1c7"
             ]
         ]
     },
@@ -3669,40 +3649,20 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "mux payload",
-        "func": "if (!msg.payload[0]){\n    msg.payload = `I was unable to parse your output, please wrap what I asked for in a codeblock according to github flavored markdown.`\n    return [msg, null]\n}\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload[0].content : JSON.parse(msg.payload[0].content);\n} catch (e){\n    //ignore\n}\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn [null,msg];",
+        "func": "if (!msg.payload[0] || msg.payload.length > 1){\n    msg.payload = `I was unable to parse your output, please wrap your final result inside a codeblock according to github flavored markdown.`\n    return [msg, null]\n}\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload : JSON.parse(msg.payload);\n} catch (e){\n    //ignore\n    console.log(e)\n}\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 480,
-        "wires": [
-            [
-                "bb7d7de463c784c3"
-            ],
-            [
-                "add40d01a5910b28"
-            ]
-        ]
-    },
-    {
-        "id": "b89c365523f76187",
-        "type": "subflow:b7d91a580a2c7c19",
-        "z": "064c17312433ce15",
-        "name": "",
-        "env": [
-            {
-                "name": "blockTypes",
-                "value": "json,html",
-                "type": "str"
-            }
-        ],
-        "x": 550,
         "y": 440,
         "wires": [
             [
-                "7ec6901fd576cd8c"
+                "5506cf1c9109e94f"
+            ],
+            [
+                "add40d01a5910b28"
             ]
         ]
     },
@@ -3840,7 +3800,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 560,
+        "y": 520,
         "wires": [
             [
                 "2e410a19acc23c63"
@@ -3864,7 +3824,7 @@
         "count": "",
         "reduceRight": false,
         "x": 530,
-        "y": 600,
+        "y": 560,
         "wires": [
             [
                 "2cd00d0c53ecf4fb"
@@ -3892,7 +3852,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 530,
-        "y": 520,
+        "y": 480,
         "wires": [
             [
                 "3a05ecf93cf9ab5d"
@@ -3911,7 +3871,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 640,
+        "y": 600,
         "wires": [
             [
                 "0b0814f0b4085a24"
@@ -3930,7 +3890,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 650,
-        "y": 720,
+        "y": 680,
         "wires": [
             [
                 "5db7cfe60d82dc48"
@@ -3946,7 +3906,7 @@
         "action": "str",
         "pretty": true,
         "x": 530,
-        "y": 680,
+        "y": 640,
         "wires": [
             [
                 "965d9cce35236045"
@@ -3959,11 +3919,11 @@
         "z": "064c17312433ce15",
         "name": "confgpt",
         "scope": [
-            "839a598e1ddd08d3"
+            "afdc81229134a1c7"
         ],
         "uncaught": false,
         "x": 90,
-        "y": 520,
+        "y": 440,
         "wires": [
             [
                 "b561ced84cd69718",
@@ -3985,7 +3945,69 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 240,
-        "y": 560,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "afdc81229134a1c7",
+        "type": "subflow:50df1246bdaf5119",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "7ec6901fd576cd8c"
+            ]
+        ]
+    },
+    {
+        "id": "5506cf1c9109e94f",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "parse fail",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "36739576145f65c6",
+        "type": "catch",
+        "z": "064c17312433ce15",
+        "name": "confgpt",
+        "scope": null,
+        "uncaught": true,
+        "x": 110,
+        "y": 680,
+        "wires": [
+            [
+                "cd54a881ed9ca306"
+            ]
+        ]
+    },
+    {
+        "id": "cd54a881ed9ca306",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "all doc errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 680,
         "wires": []
     }
 ]
