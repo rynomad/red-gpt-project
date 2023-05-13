@@ -35,7 +35,7 @@
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
-        "info": "```html\n<p>Combines history data from the start index and most recent index into a new history array.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">start <span class=\"property-type\">number</span></dt>\n    <dd>The index of the starting history value. It can be set as an environment variable in the subflow properties. Default value is 0.</dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>history <span class=\"property-type\">array</span></dt>\n    <dd>An array containing two elements - the starting history value based on the specified index, and the most recent history value.</dd>\n</dl>\n<h3>Details</h3>\n<p>The subflow first retrieves the 'start' value from the environment variables. The starting history value is fetched based on this index, and the latest history value is retrieved as well. The function then creates a new array containing these two values and sets it as the output message 'history' property.</p>\n```",
+        "info": "\n<p>Combines history data from the start index and most recent index into a new history array.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">start <span class=\"property-type\">number</span></dt>\n    <dd>The index of the starting history value. It can be set as an environment variable in the subflow properties. Default value is 0.</dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>history <span class=\"property-type\">array</span></dt>\n    <dd>An array containing two elements - the starting history value based on the specified index, and the most recent history value.</dd>\n</dl>\n<h3>Details</h3>\n<p>The subflow first retrieves the 'start' value from the environment variables. The starting history value is fetched based on this index, and the latest history value is retrieved as well. The function then creates a new array containing these two values and sets it as the output message 'history' property.</p>\n",
         "category": "",
         "in": [
             {
@@ -68,44 +68,7 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99",
-        "outputSchema": {
-            "$schema": "http://json-schema.org/draft-06/schema#",
-            "type": "object",
-            "properties": {
-                "history": {
-                    "type": "array",
-                    "minItems": 2,
-                    "maxItems": 2,
-                    "items": [
-                        {
-                            "type": "object"
-                        },
-                        {
-                            "type": "object"
-                        }
-                    ]
-                }
-            },
-            "required": [
-                "history"
-            ]
-        },
-        "inputSchema": {
-            "$schema": "http://json-schema.org/draft-06/schema#",
-            "type": "object",
-            "properties": {
-                "history": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                }
-            },
-            "required": [
-                "history"
-            ]
-        }
+        "color": "#DDAA99"
     },
     {
         "id": "a25be0e127fc9e24",
@@ -3483,7 +3446,7 @@
         "y": 400,
         "wires": [
             [
-                "a9c68f429a6c89f8"
+                "b89c365523f76187"
             ]
         ]
     },
@@ -3716,7 +3679,7 @@
         "env": [
             {
                 "name": "blockTypes",
-                "value": "markdown,json",
+                "value": "json,html",
                 "type": "str"
             }
         ],
@@ -3751,56 +3714,6 @@
         "wires": [
             [
                 "faec021f67110605"
-            ]
-        ]
-    },
-    {
-        "id": "fdaac179ca821150",
-        "type": "function",
-        "z": "064c17312433ce15",
-        "name": "wrap markdown",
-        "func": "msg.payload = [{content: msg.payload}]\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 480,
-        "wires": [
-            [
-                "7ec6901fd576cd8c"
-            ]
-        ]
-    },
-    {
-        "id": "a9c68f429a6c89f8",
-        "type": "switch",
-        "z": "064c17312433ce15",
-        "name": "",
-        "property": "key",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "info",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 530,
-        "y": 440,
-        "wires": [
-            [
-                "fdaac179ca821150"
-            ],
-            [
-                "b89c365523f76187"
             ]
         ]
     },
@@ -3976,7 +3889,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "merge docs",
-        "func": "msg.payload.filter(Array.isArray).map(arr => {\n    arr.forEach(item => {\n        if (item && item.id && item.key && item.value !== undefined) {\n            let flow = msg.flows.find(flow => flow.id === item.id);\n            if (flow) {\n                flow[item.key] = item.value;\n            }\n        }\n    });\n});\n\nmsg.payload = msg.flows;\n\nreturn msg;",
+        "func": "msg.payload.filter(Array.isArray).forEach(arr => {\n    arr.forEach(item => {\n        if (item && item.id && item.key && item.value !== undefined) {\n            console.log('item', item)\n            let flow = msg.flows.find(flow => flow.id === item.id);\n            if (flow) {\n                flow[item.key] = item.value;\n            }\n        }\n    });\n});\n\nmsg.payload = msg.flows;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
