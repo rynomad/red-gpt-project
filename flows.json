@@ -306,10 +306,10 @@
         "in": [
             {
                 "x": 40,
-                "y": 160,
+                "y": 120,
                 "wires": [
                     {
-                        "id": "7cfc8986c5d0b0e2"
+                        "id": "83118313911459b5"
                     }
                 ]
             }
@@ -1533,7 +1533,7 @@
         "name": "smartGPTish",
         "info": "this column is a coding specific variant of the smartgpt approach",
         "x": 150,
-        "y": 100,
+        "y": 80,
         "wires": []
     },
     {
@@ -1543,7 +1543,7 @@
         "name": "parse errors",
         "info": "these are two variants of a parse error:\n\nempty/multiple means we didn't get a markdown code block, or we got too many to be sure which is what we're after. ",
         "x": 350,
-        "y": 100,
+        "y": 80,
         "wires": []
     },
     {
@@ -1582,6 +1582,19 @@
         "wires": [
             [
                 "83096e44fc2c289e"
+            ]
+        ]
+    },
+    {
+        "id": "83118313911459b5",
+        "type": "subflow:f6dd154f310aa615",
+        "z": "50df1246bdaf5119",
+        "name": "",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "7cfc8986c5d0b0e2"
             ]
         ]
     },
@@ -3403,7 +3416,7 @@
         "y": 200,
         "wires": [
             [
-                "69961b662c31c241"
+                "1f104ae03f736fc7"
             ]
         ]
     },
@@ -3412,11 +3425,11 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "documentation",
-        "field": "payload",
+        "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n{{{payload}}}\n\nplease analyze it and provide some brief html document to describe it:\n\nstart with a brief description of no more than three sentences,\n\nuse the following three sections as necessary: inputs, outputs, and details\n\nhere's an example document that describes the \"read file\" subflow:\n\n```html\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n```\n\ninputs/outputs should refer only to properties on messages that move through the flow. put env variable descriptions into the 'details' section.\n\ntake care to be sure that the behavior you report is actually what the subflow does.\n\nwhen you respond, it is very important that you wrap the html inside a github flavored markdown code block, with an appropriate language label, otherwise I won't be able to parse it.\n\nlet's take this in a step by step way to ensure we arrive at the right answer.\n\n",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and provide a brief html document to describe it:\n\nstart with a brief description of no more than three sentences,\n\nuse the following three sections as necessary: inputs, outputs, and details\n\nhere's an example document that describes the \"read file\" subflow:\n\n```html\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n```\n\ninputs/outputs should refer only to properties on messages that move through the flow. put env variable descriptions into the 'details' section.\n\ntake care to be sure that the behavior you report is actually what the subflow does.",
         "output": "str",
         "x": 560,
         "y": 320,
@@ -3488,9 +3501,7 @@
         "x": 560,
         "y": 120,
         "wires": [
-            [
-                "92768a8167b18d9a"
-            ]
+            []
         ]
     },
     {
@@ -3498,30 +3509,17 @@
         "type": "template",
         "z": "064c17312433ce15",
         "name": "schema in",
-        "field": "payload",
+        "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above. \n\n{{{format}}}\n\nlet's take this in a step by step way to ensure we arrive at the right answer.",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above. ",
         "output": "str",
         "x": 750,
         "y": 320,
         "wires": [
             [
                 "04838b8e66b73717"
-            ]
-        ]
-    },
-    {
-        "id": "69961b662c31c241",
-        "type": "subflow:13d4ac7b7c9898ae",
-        "z": "064c17312433ce15",
-        "name": "",
-        "x": 250,
-        "y": 240,
-        "wires": [
-            [
-                "1f104ae03f736fc7"
             ]
         ]
     },
@@ -3534,7 +3532,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\nonly include properties in the schema that you observe being used or set in the flow above. \n\n{{{format}}}\n\nlet's take this in a step by step way to ensure we arrive at the right answer.",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\nonly include properties in the schema that you observe being used or set in the flow above.",
         "output": "str",
         "x": 950,
         "y": 320,
@@ -3663,19 +3661,6 @@
             ],
             [
                 "add40d01a5910b28"
-            ]
-        ]
-    },
-    {
-        "id": "92768a8167b18d9a",
-        "type": "subflow:1254546b0e9fb57c",
-        "z": "064c17312433ce15",
-        "name": "",
-        "x": 570,
-        "y": 160,
-        "wires": [
-            [
-                "92f596418b88218c"
             ]
         ]
     },
