@@ -2466,7 +2466,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
+        "x": 700,
         "y": 80,
         "wires": []
     },
@@ -2504,9 +2504,6 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "else"
-            },
-            {
                 "t": "cont",
                 "v": "maximum context length",
                 "vt": "str"
@@ -2525,6 +2522,9 @@
                 "t": "eq",
                 "v": "read ECONNRESET",
                 "vt": "str"
+            },
+            {
+                "t": "else"
             }
         ],
         "checkall": "true",
@@ -2533,9 +2533,6 @@
         "x": 410,
         "y": 140,
         "wires": [
-            [
-                "e66c7e2b9c2807aa"
-            ],
             [
                 "cb040ea047dc84fb"
             ],
@@ -2547,6 +2544,9 @@
             ],
             [
                 "c8ed6299a7db1bac"
+            ],
+            [
+                "e66c7e2b9c2807aa"
             ]
         ]
     },
