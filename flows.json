@@ -822,6 +822,30 @@
         "color": "#DDAA99"
     },
     {
+        "id": "48101654b91252fc",
+        "type": "subflow",
+        "name": "planner",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": []
+            }
+        ],
+        "out": [
+            {
+                "x": 480,
+                "y": 80,
+                "wires": []
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
@@ -2109,7 +2133,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a thorough researcher and analyst.\n\nYou have just been presented with the following:\n{{{payload}}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.\n\n{{#question}}\nFocus your response on details relevant to this question:\n{{{question}}}\n{{/question}}",
+        "template": "You are a thorough researcher and analyst.\n\n{{{context}}}\n\nYou have just been presented with the following:\n{{{payload}}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.",
         "output": "str",
         "x": 240,
         "y": 160,
@@ -2192,6 +2216,99 @@
         "wires": [
             [
                 "c7cbd7f5c3cbdaa8"
+            ]
+        ]
+    },
+    {
+        "id": "54aae0f36c581409",
+        "type": "template",
+        "z": "48101654b91252fc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are a thorough researcher and analyst.\n\n{{{context}}}\n\nYou have just been presented with the following:\n{{{payload}}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.",
+        "output": "str",
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "3e0c33f17172fc85"
+            ]
+        ]
+    },
+    {
+        "id": "3e0c33f17172fc85",
+        "type": "link call",
+        "z": "48101654b91252fc",
+        "name": "gpt queue",
+        "links": [],
+        "linkType": "static",
+        "timeout": "3600",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "f6821c700cf97b2f"
+            ]
+        ]
+    },
+    {
+        "id": "16ea30faba5cfc3c",
+        "type": "subflow:520a10812173e701",
+        "z": "48101654b91252fc",
+        "name": "",
+        "env": [
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 230,
+        "y": 80,
+        "wires": [
+            [
+                "54aae0f36c581409"
+            ]
+        ]
+    },
+    {
+        "id": "9bd6b5f18d3a0ecc",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "48101654b91252fc",
+        "name": "",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6821c700cf97b2f",
+        "type": "change",
+        "z": "48101654b91252fc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "analysis",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 200,
+        "wires": [
+            [
+                "9bd6b5f18d3a0ecc"
             ]
         ]
     },
@@ -2690,7 +2807,7 @@
         "type": "function",
         "z": "e961334cde89144c",
         "name": "fix token overage",
-        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else {\n    //we fucked\n    throw new Error('token overage')\n}\n\n\nreturn msg;",
+        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else {\n    //we fucked\n    throw new Error('token overage')\n}\n\nmsg.history.pop()\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
