@@ -3798,7 +3798,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nhere are some facts about it:\n{{{analysis}}}\n\nplease respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
         "output": "str",
         "x": 770,
         "y": 367.72727272727263,
@@ -3817,10 +3817,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
+        "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nhere are some facts about it:\n{{{analysis}}}\n\nplease respond with a draft-06 JSON schema that represents the expected output message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
         "output": "str",
         "x": 970,
-        "y": 396.36363636363626,
+        "y": 380,
         "wires": [
             [
                 "1a45745cdcdcc2a0"
@@ -3874,7 +3874,7 @@
         "to": "",
         "reg": false,
         "x": 770,
-        "y": 440,
+        "y": 420,
         "wires": [
             [
                 "afdc81229134a1c7"
