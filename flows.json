@@ -1907,7 +1907,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "Put the primary output inside a github flavored markdown code block, with an appropriate language label",
+        "template": "Put the primary output inside a github flavored markdown code block, with an appropriate language label\n{{{format}}}",
         "output": "str",
         "x": 190,
         "y": 100,
@@ -3872,6 +3872,11 @@
                 "pt": "msg",
                 "to": "outputSchema",
                 "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "format",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -3879,7 +3884,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
+        "x": 980,
         "y": 424.9999999999999,
         "wires": [
             [
@@ -3899,6 +3904,11 @@
                 "pt": "msg",
                 "to": "inputSchema",
                 "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "format",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -3906,7 +3916,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
+        "x": 780,
         "y": 420,
         "wires": [
             [
@@ -3926,6 +3936,11 @@
                 "pt": "msg",
                 "to": "info",
                 "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "format",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -3933,7 +3948,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
+        "x": 560,
         "y": 410,
         "wires": [
             [
