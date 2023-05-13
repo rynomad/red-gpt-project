@@ -4138,8 +4138,27 @@
         "x": 1120,
         "y": 240,
         "wires": [
-            []
+            [
+                "bbaa903631d0a420"
+            ]
         ]
+    },
+    {
+        "id": "bbaa903631d0a420",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "analysis",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 380,
+        "wires": []
     },
     {
         "id": "d1d0af354e071590",
