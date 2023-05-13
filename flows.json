@@ -3939,7 +3939,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "merge docs",
-        "func": "msg.payload.filter(Array.isArray).map(arr => {\n    arr.forEach(item => {\n        if (item.id && item.key && item.value !== undefined) {\n            let flow = msg.flows.find(flow => flow.id === item.id);\n            if (flow) {\n                flow[item.key] = item.value;\n            }\n        }\n    });\n});\n\nmsg.payload = msg.flows;\n\nreturn msg;",
+        "func": "msg.payload.filter(Array.isArray).map(arr => {\n    arr.forEach(item => {\n        if (item && item.id && item.key && item.value !== undefined) {\n            let flow = msg.flows.find(flow => flow.id === item.id);\n            if (flow) {\n                flow[item.key] = item.value;\n            }\n        }\n    });\n});\n\nmsg.payload = msg.flows;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
