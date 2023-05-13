@@ -3248,7 +3248,7 @@
         "z": "064c17312433ce15",
         "name": "",
         "x": 190,
-        "y": 280,
+        "y": 240,
         "wires": [
             [
                 "d97a19209a785803"
@@ -3344,7 +3344,7 @@
         "action": "",
         "pretty": false,
         "x": 270,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "6ee86c3a03682354"
@@ -3363,7 +3363,7 @@
         "stream": false,
         "addname": "",
         "x": 270,
-        "y": 360,
+        "y": 320,
         "wires": [
             [
                 "761e9408e6850b23"
@@ -3382,7 +3382,7 @@
         "finalize": "",
         "libs": [],
         "x": 230,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "dae7e91edc72c83d"
@@ -3432,7 +3432,7 @@
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and provide a brief html document to describe it:\n\nstart with a brief description of no more than three sentences,\n\nuse the following three sections as necessary: inputs, outputs, and details\n\nhere's an example document that describes the \"read file\" subflow:\n\n```html\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n```\n\ninputs/outputs should refer only to properties on messages that move through the flow. put env variable descriptions into the 'details' section.\n\ntake care to be sure that the behavior you report is actually what the subflow does.",
         "output": "str",
         "x": 560,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "5ac8e1eb22d9be16"
@@ -3469,7 +3469,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 530,
-        "y": 720,
+        "y": 680,
         "wires": []
     },
     {
@@ -3501,7 +3501,9 @@
         "x": 560,
         "y": 120,
         "wires": [
-            []
+            [
+                "faec021f67110605"
+            ]
         ]
     },
     {
@@ -3516,7 +3518,7 @@
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above. ",
         "output": "str",
         "x": 750,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "04838b8e66b73717"
@@ -3535,7 +3537,7 @@
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nplease analyze it and respond with a draft-06 JSON schema that represents the expected output message format\n\nonly include properties in the schema that you observe being used or set in the flow above.",
         "output": "str",
         "x": 950,
-        "y": 320,
+        "y": 280,
         "wires": [
             [
                 "1a45745cdcdcc2a0"
@@ -3562,7 +3564,7 @@
         "to": "",
         "reg": false,
         "x": 950,
-        "y": 360,
+        "y": 320,
         "wires": [
             [
                 "afdc81229134a1c7"
@@ -3589,7 +3591,7 @@
         "to": "",
         "reg": false,
         "x": 750,
-        "y": 360,
+        "y": 320,
         "wires": [
             [
                 "afdc81229134a1c7"
@@ -3616,7 +3618,7 @@
         "to": "",
         "reg": false,
         "x": 550,
-        "y": 360,
+        "y": 320,
         "wires": [
             [
                 "afdc81229134a1c7"
@@ -3634,8 +3636,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 200,
+        "x": 530,
+        "y": 160,
         "wires": [
             [
                 "9021cf925783a560"
@@ -3654,26 +3656,13 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 440,
+        "y": 400,
         "wires": [
             [
                 "5506cf1c9109e94f"
             ],
             [
                 "add40d01a5910b28"
-            ]
-        ]
-    },
-    {
-        "id": "92f596418b88218c",
-        "type": "subflow:f6dd154f310aa615",
-        "z": "064c17312433ce15",
-        "name": "",
-        "x": 540,
-        "y": 200,
-        "wires": [
-            [
-                "faec021f67110605"
             ]
         ]
     },
@@ -3689,7 +3678,7 @@
         "stream": false,
         "addname": "",
         "x": 530,
-        "y": 280,
+        "y": 240,
         "wires": [
             [
                 "49c6cd17167fda13"
@@ -3724,7 +3713,7 @@
         "repair": false,
         "outputs": 3,
         "x": 790,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
                 "1c58af75659287c4"
@@ -3758,7 +3747,7 @@
         "to": "",
         "reg": false,
         "x": 570,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "678fd0992d3a0f8a"
@@ -3785,7 +3774,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 520,
+        "y": 480,
         "wires": [
             [
                 "2e410a19acc23c63"
@@ -3809,7 +3798,7 @@
         "count": "",
         "reduceRight": false,
         "x": 530,
-        "y": 560,
+        "y": 520,
         "wires": [
             [
                 "2cd00d0c53ecf4fb"
@@ -3837,7 +3826,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 530,
-        "y": 480,
+        "y": 440,
         "wires": [
             [
                 "3a05ecf93cf9ab5d"
@@ -3856,7 +3845,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 600,
+        "y": 560,
         "wires": [
             [
                 "0b0814f0b4085a24"
@@ -3875,7 +3864,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 650,
-        "y": 680,
+        "y": 640,
         "wires": [
             [
                 "5db7cfe60d82dc48"
@@ -3891,7 +3880,7 @@
         "action": "str",
         "pretty": true,
         "x": 530,
-        "y": 640,
+        "y": 600,
         "wires": [
             [
                 "965d9cce35236045"
@@ -3939,7 +3928,7 @@
         "z": "064c17312433ce15",
         "name": "",
         "x": 550,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "7ec6901fd576cd8c"
@@ -3960,7 +3949,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 780,
-        "y": 420,
+        "y": 380,
         "wires": []
     },
     {
