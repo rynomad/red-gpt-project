@@ -3149,7 +3149,7 @@
         "type": "function",
         "z": "e961334cde89144c",
         "name": "ensure token headroom",
-        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    if (env.auto4\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
+        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    node.log('token sum: ' + sum);\n    if (env.auto4\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
