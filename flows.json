@@ -3908,13 +3908,13 @@
         "type": "file",
         "z": "064c17312433ce15",
         "name": "",
-        "filename": "/data/projects/red-gpt-project/flows.json",
+        "filename": "/data/projects/red-gpt-project/flows.dox.json",
         "filenameType": "str",
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 640,
+        "x": 650,
         "y": 720,
         "wires": [
             [
