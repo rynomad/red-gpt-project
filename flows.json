@@ -796,18 +796,18 @@
         "category": "",
         "in": [
             {
-                "x": 140,
+                "x": 100,
                 "y": 120,
                 "wires": [
                     {
-                        "id": "64cb2cf8b2438912"
+                        "id": "d0dbee1844d3bfd6"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 380,
+                "x": 400,
                 "y": 360,
                 "wires": [
                     {
@@ -2128,14 +2128,14 @@
         "id": "417ff54d16e93866",
         "type": "template",
         "z": "bf9fecd68e29a50a",
-        "name": "",
+        "name": "set payload",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "You are a thorough researcher and analyst.\n\n{{{context}}}\n\nYou have just been presented with the following:\n{{{payload}}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.",
         "output": "str",
-        "x": 240,
+        "x": 250,
         "y": 160,
         "wires": [
             [
@@ -2147,13 +2147,13 @@
         "id": "dd15f39d9f569f23",
         "type": "link call",
         "z": "bf9fecd68e29a50a",
-        "name": "gpt queue",
+        "name": "send message",
         "links": [
             "f2342d49916a4e23"
         ],
         "linkType": "static",
         "timeout": "3600",
-        "x": 250,
+        "x": 260,
         "y": 200,
         "wires": [
             [
@@ -2165,7 +2165,7 @@
         "id": "64cb2cf8b2438912",
         "type": "subflow:520a10812173e701",
         "z": "bf9fecd68e29a50a",
-        "name": "",
+        "name": "stash payload",
         "env": [
             {
                 "name": "clear",
@@ -2173,7 +2173,7 @@
                 "type": "bool"
             }
         ],
-        "x": 230,
+        "x": 260,
         "y": 120,
         "wires": [
             [
@@ -2185,8 +2185,8 @@
         "id": "c7cbd7f5c3cbdaa8",
         "type": "subflow:a25be0e127fc9e24",
         "z": "bf9fecd68e29a50a",
-        "name": "",
-        "x": 240,
+        "name": "restore payload",
+        "x": 260,
         "y": 280,
         "wires": [
             [
@@ -2225,7 +2225,7 @@
         "id": "cfc30e5be9fe3f3e",
         "type": "subflow:520a10812173e701",
         "z": "bf9fecd68e29a50a",
-        "name": "",
+        "name": "clear history",
         "env": [
             {
                 "name": "key",
@@ -2233,7 +2233,7 @@
                 "type": "str"
             }
         ],
-        "x": 230,
+        "x": 250,
         "y": 320,
         "wires": [
             [
@@ -2245,7 +2245,7 @@
         "id": "b38df9f10df3098f",
         "type": "subflow:a25be0e127fc9e24",
         "z": "bf9fecd68e29a50a",
-        "name": "",
+        "name": "restore history",
         "env": [
             {
                 "name": "key",
@@ -2253,15 +2253,35 @@
                 "type": "str"
             },
             {
-                "name": "apply",
-                "value": "false",
-                "type": "bool"
+                "name": "depth",
+                "value": "2",
+                "type": "num"
             }
         ],
-        "x": 240,
+        "x": 260,
         "y": 360,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "d0dbee1844d3bfd6",
+        "type": "subflow:520a10812173e701",
+        "z": "bf9fecd68e29a50a",
+        "name": "stash history",
+        "env": [
+            {
+                "name": "key",
+                "value": "history",
+                "type": "str"
+            }
+        ],
+        "x": 250,
+        "y": 80,
+        "wires": [
+            [
+                "64cb2cf8b2438912"
+            ]
         ]
     },
     {
