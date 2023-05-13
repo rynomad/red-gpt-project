@@ -886,11 +886,11 @@
         "category": "",
         "in": [
             {
-                "x": 40,
-                "y": 80,
+                "x": 140,
+                "y": 40,
                 "wires": [
                     {
-                        "id": "5dc00d8927160955"
+                        "id": "684254331f69bb61"
                     }
                 ]
             }
@@ -899,12 +899,7 @@
             {
                 "x": 400,
                 "y": 40,
-                "wires": [
-                    {
-                        "id": "60fcad446502b527",
-                        "port": 0
-                    }
-                ]
+                "wires": []
             }
         ],
         "env": [],
@@ -2528,30 +2523,11 @@
         "syntax": "mustache",
         "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
-        "x": 760,
-        "y": 80,
+        "x": 260,
+        "y": 200,
         "wires": [
             [
                 "eefbfc8dd8aecccf"
-            ]
-        ]
-    },
-    {
-        "id": "aa6dc0e2a85c6173",
-        "type": "function",
-        "z": "657c8f0e9df6242e",
-        "name": "merge parts",
-        "func": "msg.payload = msg.payload.map((t,i) => `Part ${i}:\\n ${t}`).join('\\n\\n')\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 590,
-        "y": 80,
-        "wires": [
-            [
-                "de2f72edd32ba706"
             ]
         ]
     },
@@ -2560,12 +2536,11 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "657c8f0e9df6242e",
         "name": "",
-        "x": 920,
-        "y": 80,
+        "x": 260,
+        "y": 240,
         "wires": [
             [
-                "99961076a36af9ed",
-                "86f817dc8921ae9d"
+                "99961076a36af9ed"
             ]
         ]
     },
@@ -2585,127 +2560,107 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 1050,
-        "y": 80,
+        "x": 250,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "627a5403fe4f266f",
+        "type": "batch",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "mode": "count",
+        "count": "2",
+        "overlap": "1",
+        "interval": 10,
+        "allowEmptySequence": false,
+        "topics": [],
+        "x": 250,
+        "y": 120,
         "wires": [
             [
-                "5beda5098dd22c42",
-                "60fcad446502b527"
+                "adea012ca386cd69"
             ]
         ]
     },
     {
-        "id": "5beda5098dd22c42",
-        "type": "debug",
+        "id": "684254331f69bb61",
+        "type": "json",
         "z": "657c8f0e9df6242e",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1210,
-        "y": 80,
-        "wires": []
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "081d39183e2323d2"
+            ]
+        ]
     },
     {
-        "id": "b4a6f466e43ea819",
+        "id": "081d39183e2323d2",
+        "type": "split",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "splt": "3000",
+        "spltType": "len",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 250,
+        "y": 80,
+        "wires": [
+            [
+                "627a5403fe4f266f"
+            ]
+        ]
+    },
+    {
+        "id": "adea012ca386cd69",
+        "type": "change",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$join(payload)",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "3060977ea66fc48b"
+            ]
+        ]
+    },
+    {
+        "id": "3060977ea66fc48b",
         "type": "debug",
         "z": "657c8f0e9df6242e",
         "name": "debug 12",
         "active": true,
         "tosidebar": true,
-        "console": true,
+        "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 450,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "60fcad446502b527",
-        "type": "function",
-        "z": "657c8f0e9df6242e",
-        "name": "batch",
-        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\");\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode.bind(gpt3Encoder))\n                        .reduce((a,t) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "gpt3Encoder",
-                "module": "gpt-3-encoder"
-            }
-        ],
-        "x": 290,
-        "y": 80,
-        "wires": [
-            [],
-            [
-                "ddcb1171e64df407"
-            ]
-        ]
-    },
-    {
-        "id": "5dc00d8927160955",
-        "type": "function",
-        "z": "657c8f0e9df6242e",
-        "name": "function 3",
-        "func": "console.log('msg.payload.map', msg.payload.map)\nconst payload = []\n\nfor (const item of msg.payload){\n    console.log('item', payload.length)\n    if (typeof item === 'object') {\n        payload.push(JSON.stringify(item));\n    } else {\n        payload.push(item)\n    }\n}\nmsg.payload = payload;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 160,
-        "y": 80,
-        "wires": [
-            [
-                "60fcad446502b527"
-            ]
-        ]
-    },
-    {
-        "id": "ddcb1171e64df407",
-        "type": "split",
-        "z": "657c8f0e9df6242e",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 430,
-        "y": 80,
-        "wires": [
-            [
-                "aa6dc0e2a85c6173"
-            ]
-        ]
-    },
-    {
-        "id": "86f817dc8921ae9d",
-        "type": "debug",
-        "z": "657c8f0e9df6242e",
-        "name": "debug 13",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1090,
-        "y": 40,
+        "x": 500,
+        "y": 160,
         "wires": []
     },
     {
