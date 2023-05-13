@@ -2109,7 +2109,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a thorough researcher and analyst.\n\nYou have just been presented with the following:\n{{payload}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.\n\n{{#question}}\nFocus your response on details relevant to this question:\n{{{question}}}\n{{/question}}",
+        "template": "You are a thorough researcher and analyst.\n\nYou have just been presented with the following:\n{{{payload}}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.\n\n{{#question}}\nFocus your response on details relevant to this question:\n{{{question}}}\n{{/question}}",
         "output": "str",
         "x": 240,
         "y": 160,
@@ -2493,7 +2493,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
+        "x": 680,
         "y": 80,
         "wires": []
     },
@@ -2561,7 +2561,8 @@
         "y": 140,
         "wires": [
             [
-                "cb040ea047dc84fb"
+                "cb040ea047dc84fb",
+                "e66c7e2b9c2807aa"
             ],
             [
                 "c8ed6299a7db1bac"
