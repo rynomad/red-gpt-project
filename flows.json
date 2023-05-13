@@ -4696,14 +4696,14 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "function 3",
-        "func": "msg.payload = msg.payload.map(o => {\n\n    try {\n        return JSON.stringify(o)\n        console.log('stringified', o.id)\n    } catch (e) {\n        console.log('string error')\n        return o\n    }\n})\nreturn msg;",
+        "func": "console.log('msg.payload.map', msg.payload.map)\nconst payload = []\n\nfor (const item of msg.payload){\n    console.log('item', payload.length)\n    if (typeof item === 'object') {\n        payload.push(JSON.stringify(item));\n    } else {\n        payload.push(item)\n    }\n}\nmsg.payload = payload;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 60,
+        "x": 760,
+        "y": 80,
         "wires": [
             [
                 "60fcad446502b527",
