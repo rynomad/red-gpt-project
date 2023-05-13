@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "8dfc33ccdf4bd813",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
@@ -779,6 +787,39 @@
                 "wires": []
             }
         ]
+    },
+    {
+        "id": "bf9fecd68e29a50a",
+        "type": "subflow",
+        "name": "analyzer",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "64cb2cf8b2438912"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 380,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "c7cbd7f5c3cbdaa8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -2055,6 +2096,72 @@
         "name": "",
         "x": 320,
         "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "417ff54d16e93866",
+        "type": "template",
+        "z": "bf9fecd68e29a50a",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are a thorough researcher and analyst.\n\nYou have just been presented with the following:\n{{payload}}\n\nPlease analyze it and list as many facts, observations, and insights about it as you can.\nrate each item with a confidence score from 0 to 10.\n\n{{#question}}\nFocus your response on details relevant to this question:\n{{{question}}}\n{{/question}}",
+        "output": "str",
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "dd15f39d9f569f23"
+            ]
+        ]
+    },
+    {
+        "id": "dd15f39d9f569f23",
+        "type": "link call",
+        "z": "bf9fecd68e29a50a",
+        "name": "gpt queue",
+        "links": [],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "c7cbd7f5c3cbdaa8"
+            ]
+        ]
+    },
+    {
+        "id": "64cb2cf8b2438912",
+        "type": "subflow:520a10812173e701",
+        "z": "bf9fecd68e29a50a",
+        "name": "",
+        "env": [
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "417ff54d16e93866"
+            ]
+        ]
+    },
+    {
+        "id": "c7cbd7f5c3cbdaa8",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "bf9fecd68e29a50a",
+        "name": "",
+        "x": 240,
+        "y": 240,
         "wires": [
             []
         ]
@@ -4009,6 +4116,29 @@
         "statusType": "auto",
         "x": 310,
         "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d1d0af354e071590",
+        "type": "link in",
+        "z": "eeba88e77478c844",
+        "name": "link in 2",
+        "links": [],
+        "x": 155,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9a912ebb505f748",
+        "type": "link out",
+        "z": "eeba88e77478c844",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [],
+        "x": 405,
+        "y": 200,
         "wires": []
     }
 ]
