@@ -898,18 +898,7 @@
                 ]
             }
         ],
-        "out": [
-            {
-                "x": 360,
-                "y": 40,
-                "wires": [
-                    {
-                        "id": "60fcad446502b527",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
+        "out": [],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
@@ -2543,28 +2532,7 @@
                 "b4a6f466e43ea819"
             ],
             [
-                "a345373ea8cb46f0",
                 "b4a6f466e43ea819"
-            ]
-        ]
-    },
-    {
-        "id": "a345373ea8cb46f0",
-        "type": "split",
-        "z": "657c8f0e9df6242e",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 430,
-        "y": 80,
-        "wires": [
-            [
-                "aa6dc0e2a85c6173",
-                "5beda5098dd22c42"
             ]
         ]
     },
@@ -3988,7 +3956,7 @@
         "y": 160,
         "wires": [
             [
-                "272d17a387e30363"
+                "1cc1ca9d93e5f981"
             ]
         ]
     },
@@ -4781,6 +4749,15 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 640,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "1cc1ca9d93e5f981",
+        "type": "subflow:657c8f0e9df6242e",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 450,
         "y": 40,
         "wires": []
     },
