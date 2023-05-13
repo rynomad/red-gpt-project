@@ -924,6 +924,42 @@
         ]
     },
     {
+        "id": "bb3eea2eeff7495c",
+        "type": "junction",
+        "z": "064c17312433ce15",
+        "x": 660,
+        "y": 440,
+        "wires": [
+            [
+                "7933d60af84f3844"
+            ]
+        ]
+    },
+    {
+        "id": "7933d60af84f3844",
+        "type": "junction",
+        "z": "064c17312433ce15",
+        "x": 980,
+        "y": 440,
+        "wires": [
+            [
+                "6d9fb5aa70b87fab"
+            ]
+        ]
+    },
+    {
+        "id": "6d9fb5aa70b87fab",
+        "type": "junction",
+        "z": "064c17312433ce15",
+        "x": 1240,
+        "y": 440,
+        "wires": [
+            [
+                "772999f5b16b416a"
+            ]
+        ]
+    },
+    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -4070,8 +4106,8 @@
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nhere are some facts about it:\n{{{analysis}}}\n\nplease respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
         "output": "str",
-        "x": 770,
-        "y": 367.72727272727263,
+        "x": 850,
+        "y": 360,
         "wires": [
             [
                 "04838b8e66b73717"
@@ -4089,7 +4125,7 @@
         "syntax": "mustache",
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nhere are some facts about it:\n{{{analysis}}}\n\nplease respond with a draft-06 JSON schema that represents the expected output message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
         "output": "str",
-        "x": 970,
+        "x": 1130,
         "y": 380,
         "wires": [
             [
@@ -4121,10 +4157,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 980,
-        "y": 424.9999999999999,
+        "x": 1140,
+        "y": 420,
         "wires": [
-            []
+            [
+                "6d9fb5aa70b87fab"
+            ]
         ]
     },
     {
@@ -4151,10 +4189,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
+        "x": 880,
         "y": 420,
         "wires": [
-            []
+            [
+                "7933d60af84f3844"
+            ]
         ]
     },
     {
@@ -4185,7 +4225,7 @@
         "y": 410,
         "wires": [
             [
-                "772999f5b16b416a"
+                "bb3eea2eeff7495c"
             ]
         ]
     },
@@ -4223,7 +4263,7 @@
         "y": 500,
         "wires": [
             [
-                "772999f5b16b416a"
+                "bb3eea2eeff7495c"
             ],
             [
                 "add40d01a5910b28"
