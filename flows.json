@@ -2424,9 +2424,11 @@
         "type": "catch",
         "z": "e961334cde89144c",
         "name": "",
-        "scope": null,
+        "scope": [
+            "1d0773bcf3416404"
+        ],
         "uncaught": false,
-        "x": 400,
+        "x": 390,
         "y": 80,
         "wires": [
             [
@@ -2464,8 +2466,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 120,
+        "x": 720,
+        "y": 80,
         "wires": []
     },
     {
