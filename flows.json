@@ -35,7 +35,7 @@
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
-        "info": "",
+        "info": "```html\n<p>Combines history data from the start index and most recent index into a new history array.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">start <span class=\"property-type\">number</span></dt>\n    <dd>The index of the starting history value. It can be set as an environment variable in the subflow properties. Default value is 0.</dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>history <span class=\"property-type\">array</span></dt>\n    <dd>An array containing two elements - the starting history value based on the specified index, and the most recent history value.</dd>\n</dl>\n<h3>Details</h3>\n<p>The subflow first retrieves the 'start' value from the environment variables. The starting history value is fetched based on this index, and the latest history value is retrieved as well. The function then creates a new array containing these two values and sets it as the output message 'history' property.</p>\n```",
         "category": "",
         "in": [
             {
@@ -68,7 +68,44 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "outputSchema": {
+            "$schema": "http://json-schema.org/draft-06/schema#",
+            "type": "object",
+            "properties": {
+                "history": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": [
+                        {
+                            "type": "object"
+                        },
+                        {
+                            "type": "object"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "history"
+            ]
+        },
+        "inputSchema": {
+            "$schema": "http://json-schema.org/draft-06/schema#",
+            "type": "object",
+            "properties": {
+                "history": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                }
+            },
+            "required": [
+                "history"
+            ]
+        }
     },
     {
         "id": "a25be0e127fc9e24",
