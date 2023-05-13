@@ -888,14 +888,7 @@
             {
                 "x": 40,
                 "y": 80,
-                "wires": [
-                    {
-                        "id": "5dc00d8927160955"
-                    },
-                    {
-                        "id": "6561f76ff8addfbc"
-                    }
-                ]
+                "wires": []
             }
         ],
         "out": [],
@@ -2510,33 +2503,6 @@
         ]
     },
     {
-        "id": "60fcad446502b527",
-        "type": "function",
-        "z": "657c8f0e9df6242e",
-        "name": "batch",
-        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\")\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "gpt3Encoder",
-                "module": "gpt-3-encoder"
-            }
-        ],
-        "x": 270,
-        "y": 80,
-        "wires": [
-            [
-                "b4a6f466e43ea819"
-            ],
-            [
-                "b4a6f466e43ea819"
-            ]
-        ]
-    },
-    {
         "id": "de2f72edd32ba706",
         "type": "template",
         "z": "657c8f0e9df6242e",
@@ -2615,26 +2581,6 @@
         ]
     },
     {
-        "id": "5dc00d8927160955",
-        "type": "function",
-        "z": "657c8f0e9df6242e",
-        "name": "function 3",
-        "func": "msg.payload = msg.payload.map(o => {\n\n    try {\n        return JSON.stringify(o)\n        console.log('stringified', o.id)\n    } catch (e) {\n        console.log('string error')\n        return o\n    }\n})\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 140,
-        "y": 80,
-        "wires": [
-            [
-                "60fcad446502b527",
-                "fe14d1df072c2e42"
-            ]
-        ]
-    },
-    {
         "id": "5beda5098dd22c42",
         "type": "debug",
         "z": "657c8f0e9df6242e",
@@ -2649,40 +2595,6 @@
         "statusType": "auto",
         "x": 870,
         "y": 200,
-        "wires": []
-    },
-    {
-        "id": "6561f76ff8addfbc",
-        "type": "debug",
-        "z": "657c8f0e9df6242e",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 250,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "fe14d1df072c2e42",
-        "type": "debug",
-        "z": "657c8f0e9df6242e",
-        "name": "debug 11",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 270,
-        "y": 180,
         "wires": []
     },
     {
@@ -3956,7 +3868,7 @@
         "y": 160,
         "wires": [
             [
-                "1cc1ca9d93e5f981"
+                "5dc00d8927160955"
             ]
         ]
     },
@@ -4753,12 +4665,84 @@
         "wires": []
     },
     {
-        "id": "1cc1ca9d93e5f981",
-        "type": "subflow:657c8f0e9df6242e",
+        "id": "60fcad446502b527",
+        "type": "function",
         "z": "064c17312433ce15",
-        "name": "",
-        "x": 450,
-        "y": 40,
+        "name": "batch",
+        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\")\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "gpt3Encoder",
+                "module": "gpt-3-encoder"
+            }
+        ],
+        "x": 950,
+        "y": 60,
+        "wires": [
+            [
+                "6561f76ff8addfbc"
+            ],
+            [
+                "6561f76ff8addfbc"
+            ]
+        ]
+    },
+    {
+        "id": "5dc00d8927160955",
+        "type": "function",
+        "z": "064c17312433ce15",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload.map(o => {\n\n    try {\n        return JSON.stringify(o)\n        console.log('stringified', o.id)\n    } catch (e) {\n        console.log('string error')\n        return o\n    }\n})\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 60,
+        "wires": [
+            [
+                "60fcad446502b527",
+                "fe14d1df072c2e42"
+            ]
+        ]
+    },
+    {
+        "id": "6561f76ff8addfbc",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "fe14d1df072c2e42",
+        "type": "debug",
+        "z": "064c17312433ce15",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 160,
         "wires": []
     },
     {
