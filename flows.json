@@ -2524,9 +2524,11 @@
         "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
         "x": 260,
-        "y": 160,
+        "y": 200,
         "wires": [
-            []
+            [
+                "99961076a36af9ed"
+            ]
         ]
     },
     {
@@ -2535,7 +2537,7 @@
         "z": "657c8f0e9df6242e",
         "name": "",
         "x": 260,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "99961076a36af9ed"
@@ -2554,12 +2556,16 @@
         "key": "topic",
         "joiner": "\\n",
         "joinerType": "str",
-        "accumulate": "false",
+        "accumulate": true,
         "timeout": "",
         "count": "",
         "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
         "x": 250,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "f1ec3d7d996bb121"
@@ -2581,8 +2587,7 @@
         "y": 120,
         "wires": [
             [
-                "3060977ea66fc48b",
-                "de2f72edd32ba706"
+                "a401ef68997c6b2a"
             ]
         ]
     },
@@ -2617,27 +2622,9 @@
         "y": 80,
         "wires": [
             [
-                "627a5403fe4f266f",
-                "e1abd94791dc493a"
+                "627a5403fe4f266f"
             ]
         ]
-    },
-    {
-        "id": "3060977ea66fc48b",
-        "type": "debug",
-        "z": "657c8f0e9df6242e",
-        "name": "batch",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 140,
-        "wires": []
     },
     {
         "id": "f1ec3d7d996bb121",
@@ -2652,26 +2639,37 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 320,
+        "x": 480,
+        "y": 280,
         "wires": []
     },
     {
-        "id": "e1abd94791dc493a",
-        "type": "debug",
+        "id": "a401ef68997c6b2a",
+        "type": "join",
         "z": "657c8f0e9df6242e",
-        "name": "split",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 100,
-        "wires": []
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "de2f72edd32ba706"
+            ]
+        ]
     },
     {
         "id": "414ddee1287efb66",
