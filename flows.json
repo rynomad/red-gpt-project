@@ -888,10 +888,25 @@
             {
                 "x": 40,
                 "y": 80,
-                "wires": []
+                "wires": [
+                    {
+                        "id": "5dc00d8927160955"
+                    }
+                ]
             }
         ],
-        "out": [],
+        "out": [
+            {
+                "x": 400,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "60fcad446502b527",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
@@ -2615,6 +2630,69 @@
         "wires": []
     },
     {
+        "id": "60fcad446502b527",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "batch",
+        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\");\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode.bind(gpt3Encoder))\n                        .reduce((a,t) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "gpt3Encoder",
+                "module": "gpt-3-encoder"
+            }
+        ],
+        "x": 290,
+        "y": 80,
+        "wires": [
+            [],
+            [
+                "ddcb1171e64df407"
+            ]
+        ]
+    },
+    {
+        "id": "5dc00d8927160955",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "function 3",
+        "func": "console.log('msg.payload.map', msg.payload.map)\nconst payload = []\n\nfor (const item of msg.payload){\n    console.log('item', payload.length)\n    if (typeof item === 'object') {\n        payload.push(JSON.stringify(item));\n    } else {\n        payload.push(item)\n    }\n}\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "60fcad446502b527"
+            ]
+        ]
+    },
+    {
+        "id": "ddcb1171e64df407",
+        "type": "split",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 430,
+        "y": 80,
+        "wires": [
+            [
+                "aa6dc0e2a85c6173"
+            ]
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
@@ -3867,9 +3945,7 @@
         "x": 270,
         "y": 160,
         "wires": [
-            [
-                "5dc00d8927160955"
-            ]
+            []
         ]
     },
     {
@@ -4663,53 +4739,6 @@
         "x": 900,
         "y": 20,
         "wires": []
-    },
-    {
-        "id": "60fcad446502b527",
-        "type": "function",
-        "z": "064c17312433ce15",
-        "name": "batch",
-        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\");\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode.bind(gpt3Encoder))\n                        .reduce((a,t) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "gpt3Encoder",
-                "module": "gpt-3-encoder"
-            }
-        ],
-        "x": 810,
-        "y": 100,
-        "wires": [
-            [
-                "6561f76ff8addfbc"
-            ],
-            [
-                "6561f76ff8addfbc"
-            ]
-        ]
-    },
-    {
-        "id": "5dc00d8927160955",
-        "type": "function",
-        "z": "064c17312433ce15",
-        "name": "function 3",
-        "func": "console.log('msg.payload.map', msg.payload.map)\nconst payload = []\n\nfor (const item of msg.payload){\n    console.log('item', payload.length)\n    if (typeof item === 'object') {\n        payload.push(JSON.stringify(item));\n    } else {\n        payload.push(item)\n    }\n}\nmsg.payload = payload;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 40,
-        "wires": [
-            [
-                "fe14d1df072c2e42",
-                "60fcad446502b527"
-            ]
-        ]
     },
     {
         "id": "6561f76ff8addfbc",
