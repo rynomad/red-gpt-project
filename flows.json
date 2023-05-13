@@ -2524,10 +2524,11 @@
         "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
         "x": 260,
-        "y": 200,
+        "y": 160,
         "wires": [
             [
-                "eefbfc8dd8aecccf"
+                "eefbfc8dd8aecccf",
+                "389840eed39047c8"
             ]
         ]
     },
@@ -2537,7 +2538,7 @@
         "z": "657c8f0e9df6242e",
         "name": "",
         "x": 260,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "99961076a36af9ed"
@@ -2561,9 +2562,11 @@
         "count": "",
         "reduceRight": false,
         "x": 250,
-        "y": 280,
+        "y": 240,
         "wires": [
-            []
+            [
+                "f1ec3d7d996bb121"
+            ]
         ]
     },
     {
@@ -2581,8 +2584,8 @@
         "y": 120,
         "wires": [
             [
-                "adea012ca386cd69",
-                "3060977ea66fc48b"
+                "3060977ea66fc48b",
+                "de2f72edd32ba706"
             ]
         ]
     },
@@ -2622,31 +2625,6 @@
         ]
     },
     {
-        "id": "adea012ca386cd69",
-        "type": "change",
-        "z": "657c8f0e9df6242e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "$join(payload)",
-                "tot": "env"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 280,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3060977ea66fc48b",
         "type": "debug",
         "z": "657c8f0e9df6242e",
@@ -2655,7 +2633,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 500,
@@ -2677,6 +2656,23 @@
         "statusType": "auto",
         "x": 500,
         "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f1ec3d7d996bb121",
+        "type": "debug",
+        "z": "657c8f0e9df6242e",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 320,
         "wires": []
     },
     {
