@@ -800,7 +800,7 @@
                 "y": 120,
                 "wires": [
                     {
-                        "id": "d0dbee1844d3bfd6"
+                        "id": "64cb2cf8b2438912"
                     }
                 ]
             }
@@ -808,10 +808,10 @@
         "out": [
             {
                 "x": 400,
-                "y": 360,
+                "y": 380,
                 "wires": [
                     {
-                        "id": "b38df9f10df3098f",
+                        "id": "ec6d7c68553d97b3",
                         "port": 0
                     }
                 ]
@@ -2219,55 +2219,7 @@
         "y": 320,
         "wires": [
             [
-                "b38df9f10df3098f"
-            ]
-        ]
-    },
-    {
-        "id": "b38df9f10df3098f",
-        "type": "subflow:a25be0e127fc9e24",
-        "z": "bf9fecd68e29a50a",
-        "name": "restore history",
-        "env": [
-            {
-                "name": "key",
-                "value": "history",
-                "type": "str"
-            },
-            {
-                "name": "depth",
-                "value": "2",
-                "type": "num"
-            }
-        ],
-        "x": 260,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d0dbee1844d3bfd6",
-        "type": "subflow:520a10812173e701",
-        "z": "bf9fecd68e29a50a",
-        "name": "stash history",
-        "env": [
-            {
-                "name": "key",
-                "value": "history",
-                "type": "str"
-            },
-            {
-                "name": "clear",
-                "value": "false",
-                "type": "bool"
-            }
-        ],
-        "x": 250,
-        "y": 80,
-        "wires": [
-            [
-                "64cb2cf8b2438912"
+                "ec6d7c68553d97b3"
             ]
         ]
     },
@@ -2282,6 +2234,24 @@
             [
                 "4d88bceb18e53451"
             ]
+        ]
+    },
+    {
+        "id": "ec6d7c68553d97b3",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "bf9fecd68e29a50a",
+        "name": "",
+        "env": [
+            {
+                "name": "apply",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 240,
+        "y": 360,
+        "wires": [
+            []
         ]
     },
     {
