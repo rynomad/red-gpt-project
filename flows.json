@@ -4660,8 +4660,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
-        "y": 40,
+        "x": 900,
+        "y": 20,
         "wires": []
     },
     {
@@ -4706,7 +4706,6 @@
         "y": 40,
         "wires": [
             [
-                "60fcad446502b527",
                 "fe14d1df072c2e42"
             ]
         ]
