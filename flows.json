@@ -890,7 +890,7 @@
                 "y": 80,
                 "wires": [
                     {
-                        "id": "60fcad446502b527"
+                        "id": "5dc00d8927160955"
                     }
                 ]
             }
@@ -2533,7 +2533,7 @@
                 "module": "gpt-3-encoder"
             }
         ],
-        "x": 170,
+        "x": 230,
         "y": 80,
         "wires": [
             [],
@@ -2553,7 +2553,7 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 330,
+        "x": 390,
         "y": 80,
         "wires": [
             [
@@ -2572,7 +2572,7 @@
         "syntax": "mustache",
         "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
-        "x": 660,
+        "x": 760,
         "y": 80,
         "wires": [
             [
@@ -2591,7 +2591,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
+        "x": 590,
         "y": 80,
         "wires": [
             [
@@ -2604,7 +2604,7 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "657c8f0e9df6242e",
         "name": "",
-        "x": 820,
+        "x": 920,
         "y": 80,
         "wires": [
             [
@@ -2628,8 +2628,27 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 950,
+        "x": 1050,
         "y": 80,
+        "wires": [
+            [
+                "60fcad446502b527"
+            ]
+        ]
+    },
+    {
+        "id": "5dc00d8927160955",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload.map(o => {\n    try {\n        return JSON.stringify(o)\n    } catch (e) {\n        return o\n    }\n})\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 120,
+        "y": 200,
         "wires": [
             [
                 "60fcad446502b527"
