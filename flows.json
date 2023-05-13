@@ -846,6 +846,72 @@
         "color": "#DDAA99"
     },
     {
+        "id": "bfe4dee01d61e0c2",
+        "type": "subflow",
+        "name": "scanner",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "d1331f209c505041"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 740,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "73176ac6586b6585",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "657c8f0e9df6242e",
+        "type": "subflow",
+        "name": "summariser",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "60fcad446502b527"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 300,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "60fcad446502b527",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
@@ -2348,6 +2414,179 @@
         ]
     },
     {
+        "id": "92fd8467775c1835",
+        "type": "subflow:bf9fecd68e29a50a",
+        "z": "bfe4dee01d61e0c2",
+        "name": "",
+        "x": 400,
+        "y": 160,
+        "wires": [
+            [
+                "73176ac6586b6585"
+            ]
+        ]
+    },
+    {
+        "id": "d1331f209c505041",
+        "type": "split",
+        "z": "bfe4dee01d61e0c2",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "92fd8467775c1835"
+            ]
+        ]
+    },
+    {
+        "id": "73176ac6586b6585",
+        "type": "join",
+        "z": "bfe4dee01d61e0c2",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 590,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "60fcad446502b527",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "batch",
+        "func": "if (msg.payload.length === 1){\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        batches.push(batch)\n        batch = []\n    }\n}\n\nbatches.push(batch)\nmsg.payload = batches;\n\nreturn [null,msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst batches = []\nlet batch = []\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => t + a, 0);\n    if (tokens > 2000){\n        batches.push(batch)\n        batch = []\n    }\n}\n\nbatches.push(batch)\n\nmsg.payload = batches\nreturn msg;",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "gpt3Encoder",
+                "module": "gpt-3-encoder"
+            }
+        ],
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [],
+            [
+                "a345373ea8cb46f0"
+            ]
+        ]
+    },
+    {
+        "id": "a345373ea8cb46f0",
+        "type": "split",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "aa6dc0e2a85c6173"
+            ]
+        ]
+    },
+    {
+        "id": "de2f72edd32ba706",
+        "type": "template",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
+        "output": "str",
+        "x": 660,
+        "y": 80,
+        "wires": [
+            [
+                "eefbfc8dd8aecccf"
+            ]
+        ]
+    },
+    {
+        "id": "aa6dc0e2a85c6173",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "merge parts",
+        "func": "msg.payload = msg.payload.map((t,i) => `Part ${i}:\\n ${t}`).join('\\n\\n')\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "de2f72edd32ba706"
+            ]
+        ]
+    },
+    {
+        "id": "eefbfc8dd8aecccf",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "x": 820,
+        "y": 80,
+        "wires": [
+            [
+                "99961076a36af9ed"
+            ]
+        ]
+    },
+    {
+        "id": "99961076a36af9ed",
+        "type": "join",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 950,
+        "y": 80,
+        "wires": [
+            [
+                "60fcad446502b527"
+            ]
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
@@ -2460,11 +2699,7 @@
         "overlap": 0,
         "interval": 10,
         "allowEmptySequence": false,
-        "topics": [
-            {
-                "topic": ""
-            }
-        ],
+        "topics": [],
         "x": 370,
         "y": 180,
         "wires": [
