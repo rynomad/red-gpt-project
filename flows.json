@@ -32,6 +32,14 @@
         "env": []
     },
     {
+        "id": "eeba88e77478c844",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
@@ -162,22 +170,22 @@
         "category": "ChatGPT",
         "in": [
             {
-                "x": 220,
-                "y": 80,
+                "x": 80,
+                "y": 140,
                 "wires": [
                     {
-                        "id": "b636b9ea5bf45435"
+                        "id": "7be18892c7b30810"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 500,
-                "y": 360,
+                "x": 480,
+                "y": 140,
                 "wires": [
                     {
-                        "id": "d5f444de1f8ceabb",
+                        "id": "0e8a88234ef86bb0",
                         "port": 0
                     }
                 ]
@@ -191,17 +199,7 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99",
-        "status": {
-            "x": 420,
-            "y": 80,
-            "wires": [
-                {
-                    "id": "056755aef7aa376e",
-                    "port": 0
-                }
-            ]
-        }
+        "color": "#DDAA99"
     },
     {
         "id": "02409038fd9362ee",
@@ -763,10 +761,30 @@
         "icon": "font-awesome/fa-random"
     },
     {
+        "id": "a9cb3f5fc1c3e1b8",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 140,
+                "wires": []
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 140,
+                "wires": []
+            }
+        ]
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
-        "x": 320,
+        "x": 500,
         "y": 160,
         "wires": [
             [
@@ -826,154 +844,6 @@
         ]
     },
     {
-        "id": "056755aef7aa376e",
-        "type": "status",
-        "z": "237429fb2a5a7712",
-        "name": "",
-        "scope": null,
-        "x": 320,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5d459fc8-eec7-4ace-94e5-b653c47e5061",
-        "type": "function",
-        "z": "237429fb2a5a7712",
-        "name": "ensure token headroom",
-        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    if (env.get('auto4')\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "gpt3Encoder",
-                "module": "gpt-3-encoder"
-            }
-        ],
-        "x": 370,
-        "y": 160,
-        "wires": [
-            [
-                "0e8a88234ef86bb0"
-            ]
-        ]
-    },
-    {
-        "id": "d2ee1fb0b75e93b6",
-        "type": "subflow:f9e0ec91.e767e",
-        "z": "237429fb2a5a7712",
-        "name": "minify JSON in history",
-        "x": 360,
-        "y": 240,
-        "wires": [
-            [
-                "2d60fcbd28eb92c7"
-            ]
-        ]
-    },
-    {
-        "id": "2d60fcbd28eb92c7",
-        "type": "change",
-        "z": "237429fb2a5a7712",
-        "name": "clear max_tokens",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "max_tokens",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 350,
-        "y": 280,
-        "wires": [
-            [
-                "d5f444de1f8ceabb"
-            ]
-        ]
-    },
-    {
-        "id": "b636b9ea5bf45435",
-        "type": "subflow:520a10812173e701",
-        "z": "237429fb2a5a7712",
-        "name": "stash topic",
-        "env": [
-            {
-                "name": "key",
-                "value": "topic",
-                "type": "str"
-            },
-            {
-                "name": "clear",
-                "value": "false",
-                "type": "bool"
-            }
-        ],
-        "x": 330,
-        "y": 120,
-        "wires": [
-            [
-                "5d459fc8-eec7-4ace-94e5-b653c47e5061"
-            ]
-        ]
-    },
-    {
-        "id": "d5f444de1f8ceabb",
-        "type": "subflow:a25be0e127fc9e24",
-        "z": "237429fb2a5a7712",
-        "name": "restore topic",
-        "env": [
-            {
-                "name": "key",
-                "value": "topic",
-                "type": "str"
-            }
-        ],
-        "x": 330,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a8355ad2d0e207b0",
-        "type": "debug",
-        "z": "237429fb2a5a7712",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 280,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "eee38431b18a000c",
-        "type": "catch",
-        "z": "237429fb2a5a7712",
-        "name": "",
-        "scope": [
-            "1d0773bcf3416404"
-        ],
-        "uncaught": false,
-        "x": 90,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "0e8a88234ef86bb0",
         "type": "link call",
         "z": "237429fb2a5a7712",
@@ -983,11 +853,36 @@
         ],
         "linkType": "static",
         "timeout": "36000",
-        "x": 330,
-        "y": 200,
+        "x": 370,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7be18892c7b30810",
+        "type": "change",
+        "z": "237429fb2a5a7712",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "auto4",
+                "pt": "msg",
+                "to": "auto4",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 140,
         "wires": [
             [
-                "d2ee1fb0b75e93b6"
+                "0e8a88234ef86bb0"
             ]
         ]
     },
@@ -2154,6 +2049,17 @@
         ]
     },
     {
+        "id": "cf791c6d0c28776a",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "a9cb3f5fc1c3e1b8",
+        "name": "",
+        "x": 320,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
@@ -2294,7 +2200,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 420,
+        "x": 580,
         "y": 280,
         "wires": [
             [
@@ -2320,7 +2226,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 220,
+        "x": 400,
         "y": 280,
         "wires": [
             [
@@ -2351,7 +2257,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 210,
+        "x": 390,
         "y": 240,
         "wires": [
             [
@@ -2369,10 +2275,10 @@
         "name": "link in 1",
         "links": [],
         "x": 65,
-        "y": 240,
+        "y": 180,
         "wires": [
             [
-                "b98332fdc0290246"
+                "b636b9ea5bf45435"
             ]
         ]
     },
@@ -2383,8 +2289,8 @@
         "name": "link out 1",
         "mode": "return",
         "links": [],
-        "x": 375,
-        "y": 340,
+        "x": 605,
+        "y": 480,
         "wires": []
     },
     {
@@ -2395,12 +2301,12 @@
         "Organization": " ",
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
-        "x": 220,
+        "x": 400,
         "y": 340,
         "wires": [
             [
                 "56380579ca248c30",
-                "9f4d0154bcaa5bdb"
+                "d2ee1fb0b75e93b6"
             ]
         ]
     },
@@ -2411,7 +2317,7 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 220,
+        "x": 400,
         "y": 80,
         "wires": [
             [
@@ -2430,8 +2336,8 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 680,
-        "y": 300,
+        "x": 760,
+        "y": 320,
         "wires": [
             []
         ]
@@ -2449,8 +2355,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 60,
+        "x": 700,
+        "y": 120,
         "wires": []
     },
     {
@@ -2470,7 +2376,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 240,
+        "x": 420,
         "y": 200,
         "wires": [
             [
@@ -2491,6 +2397,11 @@
             },
             {
                 "t": "eq",
+                "v": "400",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
                 "v": "429",
                 "vt": "str"
             },
@@ -2507,21 +2418,150 @@
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
-        "x": 230,
+        "outputs": 5,
+        "x": 410,
         "y": 140,
         "wires": [
             [
                 "e66c7e2b9c2807aa"
             ],
             [
-                "c8ed6299a7db1bac"
+                "cb040ea047dc84fb"
             ],
             [
                 "c8ed6299a7db1bac"
             ],
             [
                 "c8ed6299a7db1bac"
+            ],
+            [
+                "c8ed6299a7db1bac"
+            ]
+        ]
+    },
+    {
+        "id": "d2ee1fb0b75e93b6",
+        "type": "subflow:f9e0ec91.e767e",
+        "z": "e961334cde89144c",
+        "name": "minify JSON in history",
+        "x": 440,
+        "y": 400,
+        "wires": [
+            [
+                "2d60fcbd28eb92c7"
+            ]
+        ]
+    },
+    {
+        "id": "2d60fcbd28eb92c7",
+        "type": "change",
+        "z": "e961334cde89144c",
+        "name": "clear max_tokens",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "max_tokens",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 440,
+        "wires": [
+            [
+                "d5f444de1f8ceabb"
+            ]
+        ]
+    },
+    {
+        "id": "d5f444de1f8ceabb",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "e961334cde89144c",
+        "name": "restore topic",
+        "env": [
+            {
+                "name": "key",
+                "value": "topic",
+                "type": "str"
+            }
+        ],
+        "x": 410,
+        "y": 480,
+        "wires": [
+            [
+                "9f4d0154bcaa5bdb"
+            ]
+        ]
+    },
+    {
+        "id": "5d459fc8-eec7-4ace-94e5-b653c47e5061",
+        "type": "function",
+        "z": "e961334cde89144c",
+        "name": "ensure token headroom",
+        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    if (env.auto4\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "gpt3Encoder",
+                "module": "gpt-3-encoder"
+            }
+        ],
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "b636b9ea5bf45435",
+        "type": "subflow:520a10812173e701",
+        "z": "e961334cde89144c",
+        "name": "stash topic",
+        "env": [
+            {
+                "name": "key",
+                "value": "topic",
+                "type": "str"
+            },
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "5d459fc8-eec7-4ace-94e5-b653c47e5061"
+            ]
+        ]
+    },
+    {
+        "id": "cb040ea047dc84fb",
+        "type": "function",
+        "z": "e961334cde89144c",
+        "name": "fix token overage",
+        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\n\nconst overage = values.requestedTokens - values.tokensInCompletion;\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = msg.max_tokens - overage\n} else if (msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else {\n    //we fucked\n    throw new Error('token overage')\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 160,
+        "wires": [
+            [
+                "dd2038bc71721c1f"
             ]
         ]
     },
