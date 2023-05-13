@@ -4107,7 +4107,7 @@
         "template": "I have the following node-red subflow:\n\n```json\n{{{payload}}}\n```\n\nhere are some facts about it:\n{{{analysis}}}\n\nplease respond with a draft-06 JSON schema that represents the expected input message format\n\nonly include properties in the schema that you observe being used or set in the flow above.\n\nIGNORE anything you see from \"env.get\" (those go elsewhere)",
         "output": "str",
         "x": 850,
-        "y": 360,
+        "y": 380,
         "wires": [
             [
                 "04838b8e66b73717"
@@ -4234,7 +4234,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "clone",
-        "func": "msg.payload = [msg.payload, msg.payload, msg.payload,msg.payload]\nreturn msg;",
+        "func": "msg.payload = [msg.payload, msg.payload, msg.payload]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4311,18 +4311,13 @@
                 "t": "eq",
                 "v": "2",
                 "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
-        "x": 970,
-        "y": 240,
+        "outputs": 3,
+        "x": 990,
+        "y": 320,
         "wires": [
             [
                 "1c58af75659287c4"
@@ -4332,8 +4327,7 @@
             ],
             [
                 "17c4c2465ba4c355"
-            ],
-            []
+            ]
         ]
     },
     {
@@ -4610,7 +4604,7 @@
         "finalize": "",
         "libs": [],
         "x": 800,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "49c6cd17167fda13"
