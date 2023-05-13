@@ -1907,7 +1907,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "Put the primary output inside a github flavored markdown code block, with an appropriate language label\n\n{{{format}}}",
+        "template": "Put the primary output inside a github flavored markdown code block, with an appropriate language label",
         "output": "str",
         "x": 190,
         "y": 100,
