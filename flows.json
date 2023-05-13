@@ -2524,7 +2524,7 @@
         "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
         "x": 260,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "99961076a36af9ed"
@@ -2537,7 +2537,7 @@
         "z": "657c8f0e9df6242e",
         "name": "",
         "x": 260,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "99961076a36af9ed"
@@ -2548,24 +2548,24 @@
         "id": "99961076a36af9ed",
         "type": "join",
         "z": "657c8f0e9df6242e",
-        "name": "",
-        "mode": "auto",
-        "build": "object",
+        "name": "recombine",
+        "mode": "custom",
+        "build": "string",
         "property": "payload",
         "propertyType": "msg",
         "key": "topic",
         "joiner": "\\n",
         "joinerType": "str",
-        "accumulate": true,
+        "accumulate": false,
         "timeout": "",
         "count": "",
         "reduceRight": false,
         "reduceExp": "",
         "reduceInit": "",
-        "reduceInitType": "",
+        "reduceInitType": "num",
         "reduceFixup": "",
-        "x": 250,
-        "y": 280,
+        "x": 270,
+        "y": 320,
         "wires": [
             [
                 "f1ec3d7d996bb121"
@@ -2584,7 +2584,7 @@
         "allowEmptySequence": false,
         "topics": [],
         "x": 250,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
                 "a401ef68997c6b2a"
@@ -2622,7 +2622,7 @@
         "y": 80,
         "wires": [
             [
-                "627a5403fe4f266f"
+                "e00be323f0003974"
             ]
         ]
     },
@@ -2664,7 +2664,92 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 250,
-        "y": 160,
+        "y": 200,
+        "wires": [
+            [
+                "0c3087c33362c56c"
+            ]
+        ]
+    },
+    {
+        "id": "1bf095ea109bae31",
+        "type": "change",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "willComplete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "627a5403fe4f266f"
+            ]
+        ]
+    },
+    {
+        "id": "e00be323f0003974",
+        "type": "switch",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "property": "parts.count",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "parts.index + 1",
+                "vt": "msg"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 250,
+        "y": 120,
+        "wires": [
+            [
+                "1bf095ea109bae31"
+            ],
+            [
+                "627a5403fe4f266f"
+            ]
+        ]
+    },
+    {
+        "id": "0c3087c33362c56c",
+        "type": "change",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "willComplete",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 200,
         "wires": [
             [
                 "de2f72edd32ba706"
