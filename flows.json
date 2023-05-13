@@ -2124,7 +2124,9 @@
         "type": "link call",
         "z": "bf9fecd68e29a50a",
         "name": "gpt queue",
-        "links": [],
+        "links": [
+            "f2342d49916a4e23"
+        ],
         "linkType": "static",
         "timeout": "30",
         "x": 250,
@@ -4134,27 +4136,8 @@
         "x": 1120,
         "y": 240,
         "wires": [
-            [
-                "e611c9e055cafac7"
-            ]
+            []
         ]
-    },
-    {
-        "id": "e611c9e055cafac7",
-        "type": "debug",
-        "z": "064c17312433ce15",
-        "name": "analyzer",
-        "active": true,
-        "tosidebar": false,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1130,
-        "y": 280,
-        "wires": []
     },
     {
         "id": "d1d0af354e071590",
