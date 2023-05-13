@@ -2960,7 +2960,9 @@
             [
                 "c8ed6299a7db1bac"
             ],
-            []
+            [
+                "e66c7e2b9c2807aa"
+            ]
         ]
     },
     {
@@ -4122,9 +4124,7 @@
         "x": 980,
         "y": 424.9999999999999,
         "wires": [
-            [
-                "afdc81229134a1c7"
-            ]
+            []
         ]
     },
     {
@@ -4154,9 +4154,7 @@
         "x": 780,
         "y": 420,
         "wires": [
-            [
-                "afdc81229134a1c7"
-            ]
+            []
         ]
     },
     {
@@ -4187,7 +4185,7 @@
         "y": 410,
         "wires": [
             [
-                "afdc81229134a1c7"
+                "772999f5b16b416a"
             ]
         ]
     },
@@ -4215,7 +4213,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "mux payload",
-        "func": "if (!msg.payload[0] || msg.payload.length > 1){\n    msg.payload = `I was unable to parse your output, please wrap your final result inside a codeblock according to github flavored markdown.`\n    return [msg, null]\n}\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload : JSON.parse(msg.payload);\n} catch (e){\n    //ignore\n    console.log(e)\n}\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn [null,msg];",
+        "func": "msg.parseError = msg.parseError || 0\nif (!msg.payload[0] || msg.payload.length > 1){\n    msg.payload = `I was unable to parse your output, please wrap your final result inside a codeblock according to github flavored markdown.`\n    msg.parseError++\n    if (msg.parseError > 3){\n        return [msg, null]\n    }\n}\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload : JSON.parse(msg.payload);\n} catch (e){\n    msg.parseError++\n    //ignore\n    msg.payload = 'I was unable to parse your output, please ensure you are giving me a valid JSON schema inside a single markdown code block'\n    if (msg.parseError > 3) {\n        return [msg, null]\n    }\n}\n\n\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -4224,7 +4222,9 @@
         "x": 550,
         "y": 500,
         "wires": [
-            [],
+            [
+                "772999f5b16b416a"
+            ],
             [
                 "add40d01a5910b28"
             ]
@@ -4493,19 +4493,6 @@
         "wires": []
     },
     {
-        "id": "afdc81229134a1c7",
-        "type": "subflow:50df1246bdaf5119",
-        "z": "064c17312433ce15",
-        "name": "",
-        "x": 550,
-        "y": 451.25,
-        "wires": [
-            [
-                "7ec6901fd576cd8c"
-            ]
-        ]
-    },
-    {
         "id": "36739576145f65c6",
         "type": "catch",
         "z": "064c17312433ce15",
@@ -4585,6 +4572,19 @@
         "wires": [
             [
                 "49c6cd17167fda13"
+            ]
+        ]
+    },
+    {
+        "id": "772999f5b16b416a",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "064c17312433ce15",
+        "name": "",
+        "x": 540,
+        "y": 460,
+        "wires": [
+            [
+                "7ec6901fd576cd8c"
             ]
         ]
     },
