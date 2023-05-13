@@ -775,6 +775,18 @@
         ]
     },
     {
+        "id": "bb7d7de463c784c3",
+        "type": "junction",
+        "z": "064c17312433ce15",
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "839a598e1ddd08d3"
+            ]
+        ]
+    },
+    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -3657,8 +3669,8 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "mux payload",
-        "func": "\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload[0].content : JSON.parse(msg.payload[0].content);\n} catch (e){\n    //ignore\n}\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn msg;",
-        "outputs": 1,
+        "func": "if (!msg.payload[0]){\n    msg.payload = `I was unable to parse your output, please wrap what I asked for in a codeblock according to github flavored markdown.`\n    return [msg, null]\n}\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload[0].content : JSON.parse(msg.payload[0].content);\n} catch (e){\n    //ignore\n}\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn [null,msg];",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -3666,6 +3678,9 @@
         "x": 550,
         "y": 480,
         "wires": [
+            [
+                "bb7d7de463c784c3"
+            ],
             [
                 "add40d01a5910b28"
             ]
