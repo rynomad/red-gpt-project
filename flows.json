@@ -2139,25 +2139,7 @@
         "y": 160,
         "wires": [
             [
-                "dd15f39d9f569f23"
-            ]
-        ]
-    },
-    {
-        "id": "dd15f39d9f569f23",
-        "type": "link call",
-        "z": "bf9fecd68e29a50a",
-        "name": "send message",
-        "links": [
-            "f2342d49916a4e23"
-        ],
-        "linkType": "static",
-        "timeout": "3600",
-        "x": 260,
-        "y": 200,
-        "wires": [
-            [
-                "4d88bceb18e53451"
+                "d127214359ceeb96"
             ]
         ]
     },
@@ -2281,6 +2263,19 @@
         "wires": [
             [
                 "64cb2cf8b2438912"
+            ]
+        ]
+    },
+    {
+        "id": "d127214359ceeb96",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "bf9fecd68e29a50a",
+        "name": "",
+        "x": 240,
+        "y": 200,
+        "wires": [
+            [
+                "4d88bceb18e53451"
             ]
         ]
     },
