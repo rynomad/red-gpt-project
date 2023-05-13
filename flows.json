@@ -2256,6 +2256,11 @@
                 "name": "key",
                 "value": "history",
                 "type": "str"
+            },
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
             }
         ],
         "x": 250,
