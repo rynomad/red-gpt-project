@@ -3040,6 +3040,9 @@
         "propertyType": "msg",
         "rules": [
             {
+                "t": "else"
+            },
+            {
                 "t": "cont",
                 "v": "maximum context length",
                 "vt": "str"
@@ -3058,9 +3061,6 @@
                 "t": "eq",
                 "v": "read ECONNRESET",
                 "vt": "str"
-            },
-            {
-                "t": "else"
             }
         ],
         "checkall": "true",
@@ -3070,11 +3070,10 @@
         "y": 140,
         "wires": [
             [
-                "cb040ea047dc84fb",
                 "e66c7e2b9c2807aa"
             ],
             [
-                "c8ed6299a7db1bac"
+                "cb040ea047dc84fb"
             ],
             [
                 "c8ed6299a7db1bac"
@@ -3083,7 +3082,7 @@
                 "c8ed6299a7db1bac"
             ],
             [
-                "e66c7e2b9c2807aa"
+                "c8ed6299a7db1bac"
             ]
         ]
     },
