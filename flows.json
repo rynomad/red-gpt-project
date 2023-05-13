@@ -4669,7 +4669,7 @@
         "type": "function",
         "z": "064c17312433ce15",
         "name": "batch",
-        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\");\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\n// const batches = [];\n// let batch = [];\n\n// for (const item of msg.payload){\n//     batch.push(item)\n//     const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n//     if (tokens > 3000){\n//         console.log('batch')\n//         batches.push(batch)\n//         batch = []\n//     }\n// }\n// console.log('last batch')\n// batches.push(batch)\n// msg.payload = batches;\n// console.log('done batching')\nreturn [null,msg];",
+        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\");\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = 1000;//batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -4680,8 +4680,8 @@
                 "module": "gpt-3-encoder"
             }
         ],
-        "x": 950,
-        "y": 60,
+        "x": 810,
+        "y": 40,
         "wires": [
             [
                 "6561f76ff8addfbc"
