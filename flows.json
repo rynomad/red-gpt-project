@@ -2525,7 +2525,7 @@
         "type": "function",
         "z": "657c8f0e9df6242e",
         "name": "batch",
-        "func": "\nif (msg.payload.length === 1){\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        batches.push(batch)\n        batch = []\n    }\n}\n\nbatches.push(batch)\nmsg.payload = batches;\n\nreturn [null,msg];",
+        "func": "\nif (msg.payload.length === 1){\n    console.log(\"base case\")\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        console.log('batch')\n        batches.push(batch)\n        batch = []\n    }\n}\nconsole.log('last batch')\nbatches.push(batch)\nmsg.payload = batches;\nconsole.log('done batching')\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -2651,7 +2651,7 @@
         "type": "function",
         "z": "657c8f0e9df6242e",
         "name": "function 3",
-        "func": "msg.payload = msg.payload.map(o => {\n    try {\n        return JSON.stringify(o)\n    } catch (e) {\n        return o\n    }\n})\nreturn msg;",
+        "func": "msg.payload = msg.payload.map(o => {\n\n    try {\n        return JSON.stringify(o)\n        console.log('stringified', o.id)\n    } catch (e) {\n        console.log('string error')\n        return o\n    }\n})\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2713,8 +2713,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 290,
-        "y": 160,
+        "x": 270,
+        "y": 180,
         "wires": []
     },
     {
