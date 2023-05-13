@@ -2522,10 +2522,10 @@
         "type": "function",
         "z": "657c8f0e9df6242e",
         "name": "batch",
-        "func": "if (msg.payload.length === 1){\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        batches.push(batch)\n        batch = []\n    }\n}\n\nbatches.push(batch)\nmsg.payload = batches;\n\nreturn [null,msg];",
+        "func": "\nif (msg.payload.length === 1){\n    msg.payload = msg.payload.pop();\n    return [msg,null];\n}\n\n\nconst batches = [];\nlet batch = [];\n\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => a + t.length, 0)\n\n    if (tokens > 3000){\n        batches.push(batch)\n        batch = []\n    }\n}\n\nbatches.push(batch)\nmsg.payload = batches;\n\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst batches = []\nlet batch = []\nfor (const item of msg.payload){\n    batch.push(item)\n    const tokens = batch.map(gpt3Encoder.encode).reduce((t,a) => t + a, 0);\n    if (tokens > 2000){\n        batches.push(batch)\n        batch = []\n    }\n}\n\nbatches.push(batch)\n\nmsg.payload = batches\nreturn msg;",
+        "initialize": "",
         "finalize": "",
         "libs": [
             {
