@@ -986,8 +986,9 @@
     {
         "id": "0da2717d76f314c6",
         "type": "subflow",
-        "name": "Subflow 2",
+        "name": "describe node",
         "info": "",
+        "category": "",
         "in": [
             {
                 "x": 50,
@@ -1010,7 +1011,10 @@
                     }
                 ]
             }
-        ]
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
     },
     {
         "id": "c8ed6299a7db1bac",
