@@ -3186,7 +3186,7 @@
                 "c8ed6299a7db1bac"
             ],
             [
-                "e66c7e2b9c2807aa"
+                "742d10fb144f3c99"
             ]
         ]
     },
@@ -3329,7 +3329,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
+        "x": 880,
         "y": 100,
         "wires": []
     },
@@ -3369,6 +3369,41 @@
         "x": 640,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "742d10fb144f3c99",
+        "type": "switch",
+        "z": "e961334cde89144c",
+        "name": "ignore duplicates",
+        "property": "error.message",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "That model is currently overloaded with other requests",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "400",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 670,
+        "y": 100,
+        "wires": [
+            [],
+            [],
+            [
+                "e66c7e2b9c2807aa"
+            ]
+        ]
     },
     {
         "id": "f4f6fa24ca217587",
