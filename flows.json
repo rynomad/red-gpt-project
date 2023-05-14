@@ -984,6 +984,14 @@
         "color": "#DDAA99"
     },
     {
+        "id": "0da2717d76f314c6",
+        "type": "subflow",
+        "name": "Subflow 2",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
@@ -3277,6 +3285,218 @@
         ]
     },
     {
+        "id": "8b156f3f879bad59",
+        "type": "file in",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "filename": "/data/projects/red-gpt-project/flows.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 220,
+        "y": 60,
+        "wires": [
+            [
+                "cf9ef8b14dd35b82"
+            ]
+        ]
+    },
+    {
+        "id": "cf9ef8b14dd35b82",
+        "type": "json",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "be4f16af0b79b997"
+            ]
+        ]
+    },
+    {
+        "id": "408fdd3b394de382",
+        "type": "template",
+        "z": "0da2717d76f314c6",
+        "name": "set system message",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.",
+        "output": "str",
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "d7466f149b33b961"
+            ]
+        ],
+        "info": "test it hey hey"
+    },
+    {
+        "id": "be4f16af0b79b997",
+        "type": "function",
+        "z": "0da2717d76f314c6",
+        "name": "function 4",
+        "func": "msg.payload = msg.payload.filter(({type, info}) => \n    !info && !['junction','subflow','tab','status'].some((t) => type.indexOf(t) > -1)\n).slice(0,10)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "408fdd3b394de382"
+            ]
+        ]
+    },
+    {
+        "id": "d7466f149b33b961",
+        "type": "subflow:788598196e86646c",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "ad78713cb0a6df80"
+            ]
+        ]
+    },
+    {
+        "id": "ad78713cb0a6df80",
+        "type": "split",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "080cad2872ab96ce"
+            ]
+        ]
+    },
+    {
+        "id": "846729d5f0dd8306",
+        "type": "template",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{{payload}}}",
+        "output": "str",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "3e54165e7294db19"
+            ]
+        ]
+    },
+    {
+        "id": "80e5304f2999ce6b",
+        "type": "join",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 330,
+        "y": 420,
+        "wires": [
+            [
+                "7cbbf9d31cb04d05"
+            ]
+        ]
+    },
+    {
+        "id": "080cad2872ab96ce",
+        "type": "json",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "846729d5f0dd8306"
+            ]
+        ]
+    },
+    {
+        "id": "4c1404f306ef020a",
+        "type": "file",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "filename": "/data/flowinfo.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 290,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7cbbf9d31cb04d05",
+        "type": "json",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
+        "y": 460,
+        "wires": [
+            [
+                "4c1404f306ef020a"
+            ]
+        ]
+    },
+    {
+        "id": "3e54165e7294db19",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "80e5304f2999ce6b"
+            ]
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
@@ -5512,42 +5732,6 @@
         ]
     },
     {
-        "id": "8b156f3f879bad59",
-        "type": "file in",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "filename": "/data/projects/red-gpt-project/flows.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 240,
-        "y": 180,
-        "wires": [
-            [
-                "cf9ef8b14dd35b82"
-            ]
-        ]
-    },
-    {
-        "id": "cf9ef8b14dd35b82",
-        "type": "json",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 350,
-        "y": 220,
-        "wires": [
-            [
-                "be4f16af0b79b997"
-            ]
-        ]
-    },
-    {
         "id": "3f4b4b20e1f7bbd2",
         "type": "inject",
         "z": "eeba88e77478c844",
@@ -5586,99 +5770,7 @@
         "x": 320,
         "y": 140,
         "wires": [
-            [
-                "8b156f3f879bad59"
-            ]
-        ]
-    },
-    {
-        "id": "408fdd3b394de382",
-        "type": "template",
-        "z": "eeba88e77478c844",
-        "name": "set system message",
-        "field": "system",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a summary of the node's functionality.",
-        "output": "str",
-        "x": 300,
-        "y": 300,
-        "wires": [
-            [
-                "d7466f149b33b961"
-            ]
-        ],
-        "info": "test it hey hey"
-    },
-    {
-        "id": "be4f16af0b79b997",
-        "type": "function",
-        "z": "eeba88e77478c844",
-        "name": "function 4",
-        "func": "msg.payload = msg.payload.filter(({type}) => \n    !['junction','subflow','tab','status'].some((t) => type.indexOf(t) > -1)\n).slice(0,10)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 340,
-        "y": 260,
-        "wires": [
-            [
-                "408fdd3b394de382"
-            ]
-        ]
-    },
-    {
-        "id": "d7466f149b33b961",
-        "type": "subflow:788598196e86646c",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "x": 330,
-        "y": 340,
-        "wires": [
-            [
-                "ad78713cb0a6df80"
-            ]
-        ]
-    },
-    {
-        "id": "ad78713cb0a6df80",
-        "type": "split",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 350,
-        "y": 380,
-        "wires": [
-            [
-                "080cad2872ab96ce"
-            ]
-        ]
-    },
-    {
-        "id": "846729d5f0dd8306",
-        "type": "template",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{{{payload}}}",
-        "output": "str",
-        "x": 340,
-        "y": 460,
-        "wires": [
-            [
-                "3e54165e7294db19"
-            ]
+            []
         ]
     },
     {
@@ -5699,31 +5791,6 @@
         "wires": []
     },
     {
-        "id": "80e5304f2999ce6b",
-        "type": "join",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "mode": "auto",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": "false",
-        "timeout": "",
-        "count": "",
-        "reduceRight": false,
-        "x": 350,
-        "y": 540,
-        "wires": [
-            [
-                "a474ad0b3977327b",
-                "7cbbf9d31cb04d05"
-            ]
-        ]
-    },
-    {
         "id": "a474ad0b3977327b",
         "type": "debug",
         "z": "eeba88e77478c844",
@@ -5739,67 +5806,5 @@
         "x": 580,
         "y": 540,
         "wires": []
-    },
-    {
-        "id": "080cad2872ab96ce",
-        "type": "json",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 350,
-        "y": 420,
-        "wires": [
-            [
-                "846729d5f0dd8306"
-            ]
-        ]
-    },
-    {
-        "id": "4c1404f306ef020a",
-        "type": "file",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "filename": "/data/flowinfo.json",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 310,
-        "y": 620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7cbbf9d31cb04d05",
-        "type": "json",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 350,
-        "y": 580,
-        "wires": [
-            [
-                "4c1404f306ef020a"
-            ]
-        ]
-    },
-    {
-        "id": "3e54165e7294db19",
-        "type": "subflow:237429fb2a5a7712",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "x": 340,
-        "y": 500,
-        "wires": [
-            [
-                "80e5304f2999ce6b"
-            ]
-        ]
     }
 ]
