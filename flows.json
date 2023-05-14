@@ -3353,7 +3353,7 @@
         "y": 100,
         "wires": [
             [
-                "ad78713cb0a6df80"
+                "7bfa76128231ef2d"
             ]
         ]
     },
@@ -3704,6 +3704,25 @@
         "wires": [
             [
                 "80e5304f2999ce6b"
+            ]
+        ]
+    },
+    {
+        "id": "7bfa76128231ef2d",
+        "type": "function",
+        "z": "0da2717d76f314c6",
+        "name": "function 4",
+        "func": "msg.payload = msg.payload.slice(0,10)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "ad78713cb0a6df80"
             ]
         ]
     },
