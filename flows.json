@@ -5543,8 +5543,7 @@
         "y": 220,
         "wires": [
             [
-                "be4f16af0b79b997",
-                "7685c12228ceb9c0"
+                "be4f16af0b79b997"
             ]
         ]
     },
@@ -5639,8 +5638,7 @@
         "y": 340,
         "wires": [
             [
-                "ad78713cb0a6df80",
-                "7685c12228ceb9c0"
+                "ad78713cb0a6df80"
             ]
         ]
     },
@@ -5678,8 +5676,7 @@
         "y": 460,
         "wires": [
             [
-                "566d68e0b7d41141",
-                "7685c12228ceb9c0"
+                "566d68e0b7d41141"
             ]
         ]
     },
@@ -5740,7 +5737,8 @@
         "y": 540,
         "wires": [
             [
-                "a474ad0b3977327b"
+                "a474ad0b3977327b",
+                "7cbbf9d31cb04d05"
             ]
         ]
     },
@@ -5774,6 +5772,39 @@
         "wires": [
             [
                 "846729d5f0dd8306"
+            ]
+        ]
+    },
+    {
+        "id": "4c1404f306ef020a",
+        "type": "file",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "filename": "/data/flowinfo.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 310,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7cbbf9d31cb04d05",
+        "type": "json",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "4c1404f306ef020a"
             ]
         ]
     }
