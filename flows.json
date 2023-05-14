@@ -917,11 +917,46 @@
         "name": "multigpt",
         "info": "",
         "category": "",
-        "in": [],
-        "out": [],
-        "env": [],
+        "in": [
+            {
+                "x": 100,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "8e5d03e6e7f3bb64"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 360,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "fec09085fa1a30ec",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "n",
+                "type": "num",
+                "value": "3"
+            }
+        ],
         "meta": {},
         "color": "#DDAA99"
+    },
+    {
+        "id": "788598196e86646c",
+        "type": "subflow",
+        "name": "Subflow 2",
+        "info": "",
+        "in": [],
+        "out": []
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -2627,7 +2662,7 @@
         "type": "split",
         "z": "657c8f0e9df6242e",
         "name": "",
-        "splt": "1000",
+        "splt": "2000",
         "spltType": "len",
         "arraySplt": 1,
         "arraySpltType": "len",
@@ -2765,7 +2800,7 @@
         "rules": [
             {
                 "t": "lte",
-                "v": "1000",
+                "v": "2000",
                 "vt": "str"
             },
             {
@@ -3037,6 +3072,120 @@
         "wires": [
             [
                 "081d39183e2323d2"
+            ]
+        ]
+    },
+    {
+        "id": "b8a97edc759eb948",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "d66a7c662b619014",
+        "name": "",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "36b8184a08d13132"
+            ]
+        ]
+    },
+    {
+        "id": "36b8184a08d13132",
+        "type": "function",
+        "z": "d66a7c662b619014",
+        "name": "assemble payloads",
+        "func": "msg.payload = msg.full.choices.map(({message},i) => \n`---OPTION ${i} START---\\n${message.content}\\n---OPTION ${i} END---\\n`).join('')\n\nmsg.payload = `Here are ${msg.full.choices.length} options:\\n${msg.payload}`\n\nmsg.history[msg.history.length - 1].content = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "56543d4e523ebe7f"
+            ]
+        ]
+    },
+    {
+        "id": "56543d4e523ebe7f",
+        "type": "template",
+        "z": "d66a7c662b619014",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please compare and evaluate the options, and synthesize them into a single best option.\n\nlet's take this step by step to make sure we arrive at the correct answer.",
+        "output": "str",
+        "x": 220,
+        "y": 200,
+        "wires": [
+            [
+                "e5607ee4eaaa50d5"
+            ]
+        ]
+    },
+    {
+        "id": "fec09085fa1a30ec",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "d66a7c662b619014",
+        "name": "",
+        "x": 220,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8e5d03e6e7f3bb64",
+        "type": "change",
+        "z": "d66a7c662b619014",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "n",
+                "pt": "msg",
+                "to": "n",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 80,
+        "wires": [
+            [
+                "b8a97edc759eb948"
+            ]
+        ]
+    },
+    {
+        "id": "e5607ee4eaaa50d5",
+        "type": "change",
+        "z": "d66a7c662b619014",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "n",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 240,
+        "wires": [
+            [
+                "fec09085fa1a30ec"
             ]
         ]
     },
