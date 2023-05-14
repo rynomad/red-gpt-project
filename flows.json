@@ -2599,7 +2599,7 @@
         "wires": [
             [
                 "04a9a0c8084ec082",
-                "887bb48be4e86542"
+                "036e8e789347f95f"
             ]
         ]
     },
@@ -2614,7 +2614,7 @@
         "interval": 10,
         "allowEmptySequence": false,
         "topics": [],
-        "x": 250,
+        "x": 570,
         "y": 200,
         "wires": [
             [
@@ -2637,7 +2637,7 @@
         "y": 80,
         "wires": [
             [
-                "40663c267e076c78"
+                "6f07e77c85840df0"
             ]
         ]
     },
@@ -2661,7 +2661,7 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 250,
+        "x": 570,
         "y": 240,
         "wires": [
             [
@@ -2688,7 +2688,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
+        "x": 760,
         "y": 160,
         "wires": [
             [
@@ -2717,7 +2717,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 250,
+        "x": 570,
         "y": 160,
         "wires": [
             [
@@ -2747,7 +2747,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 430,
+        "x": 750,
         "y": 240,
         "wires": [
             [
@@ -2849,7 +2849,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
+        "x": 1040,
         "y": 160,
         "wires": []
     },
@@ -2885,7 +2885,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
+        "x": 960,
         "y": 240,
         "wires": [
             [
@@ -2979,7 +2979,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
+        "x": 750,
         "y": 440,
         "wires": [
             [
@@ -3013,7 +3013,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 280,
+        "x": 600,
         "y": 120,
         "wires": [
             [
