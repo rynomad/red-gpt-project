@@ -3271,7 +3271,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
+        "x": 650,
         "y": 160,
         "wires": [
             [
@@ -3292,8 +3292,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 200,
-        "y": 120,
+        "x": 660,
+        "y": 100,
         "wires": []
     },
     {
