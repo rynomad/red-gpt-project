@@ -3086,10 +3086,10 @@
         ],
         "uncaught": false,
         "x": 390,
-        "y": 60,
+        "y": 40,
         "wires": [
             [
-                "b722eb5e7dd70f13"
+                "45d0a3a5f2e2b024"
             ]
         ]
     },
@@ -3308,7 +3308,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
+        "x": 670,
         "y": 160,
         "wires": [
             [
@@ -3320,7 +3320,7 @@
         "id": "e66c7e2b9c2807aa",
         "type": "debug",
         "z": "e961334cde89144c",
-        "name": "unknown error 2",
+        "name": "unknown error",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3331,6 +3331,43 @@
         "statusType": "auto",
         "x": 660,
         "y": 100,
+        "wires": []
+    },
+    {
+        "id": "45d0a3a5f2e2b024",
+        "type": "function",
+        "z": "e961334cde89144c",
+        "name": "clean history",
+        "func": "if (msg.history){\n    const seen = new Set()\n    msg.history = msg.history.filter(item => {\n        if (seen.has(item.content)){\n            return false;\n        }\n        seen.add(item.content)\n        return true;\n    })\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 80,
+        "wires": [
+            [
+                "b722eb5e7dd70f13",
+                "dd3b4001dfae1c23"
+            ]
+        ]
+    },
+    {
+        "id": "dd3b4001dfae1c23",
+        "type": "debug",
+        "z": "e961334cde89144c",
+        "name": "all errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 60,
         "wires": []
     },
     {
