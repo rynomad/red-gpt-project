@@ -1002,8 +1002,8 @@
         ],
         "out": [
             {
-                "x": 420,
-                "y": 620,
+                "x": 440,
+                "y": 780,
                 "wires": [
                     {
                         "id": "4c1404f306ef020a",
@@ -3412,7 +3412,7 @@
         "count": "",
         "reduceRight": false,
         "x": 230,
-        "y": 540,
+        "y": 700,
         "wires": [
             [
                 "7cbbf9d31cb04d05"
@@ -3447,7 +3447,7 @@
         "overwriteFile": "false",
         "encoding": "none",
         "x": 270,
-        "y": 620,
+        "y": 780,
         "wires": [
             []
         ]
@@ -3461,7 +3461,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 580,
+        "y": 740,
         "wires": [
             [
                 "4c1404f306ef020a"
@@ -3477,7 +3477,7 @@
         "y": 460,
         "wires": [
             [
-                "80e5304f2999ce6b"
+                "a7b4d25950105f75"
             ]
         ]
     },
@@ -3576,6 +3576,134 @@
         "wires": [
             [
                 "c003a05da5c1d6b6"
+            ]
+        ]
+    },
+    {
+        "id": "a7b4d25950105f75",
+        "type": "change",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "node.info",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 500,
+        "wires": [
+            [
+                "6f0b43126a3d3089"
+            ]
+        ]
+    },
+    {
+        "id": "6f0b43126a3d3089",
+        "type": "change",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$string(node)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "system",
+                "pt": "msg",
+                "to": "The user is about to provide you with a brief description of a node-red node. your job is to provide a short name for it. you may use up to 5 words. Respond with ONLY the name.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 540,
+        "wires": [
+            [
+                "abc59e2895a6bd61"
+            ]
+        ]
+    },
+    {
+        "id": "abc59e2895a6bd61",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "x": 240,
+        "y": 580,
+        "wires": [
+            [
+                "3501eb14ac590776"
+            ]
+        ]
+    },
+    {
+        "id": "3501eb14ac590776",
+        "type": "change",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "node.name",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 620,
+        "wires": [
+            [
+                "c372f6322d121463"
+            ]
+        ]
+    },
+    {
+        "id": "c372f6322d121463",
+        "type": "change",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "node",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 660,
+        "wires": [
+            [
+                "80e5304f2999ce6b"
             ]
         ]
     },
