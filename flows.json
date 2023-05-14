@@ -1003,7 +1003,7 @@
         "out": [
             {
                 "x": 420,
-                "y": 500,
+                "y": 620,
                 "wires": [
                     {
                         "id": "4c1404f306ef020a",
@@ -1087,6 +1087,18 @@
         "wires": [
             [
                 "081d39183e2323d2"
+            ]
+        ]
+    },
+    {
+        "id": "97cebd272ffda79e",
+        "type": "junction",
+        "z": "0da2717d76f314c6",
+        "x": 120,
+        "y": 280,
+        "wires": [
+            [
+                "80e5304f2999ce6b"
             ]
         ]
     },
@@ -3341,58 +3353,6 @@
         "y": 100,
         "wires": [
             [
-                "be4f16af0b79b997"
-            ]
-        ]
-    },
-    {
-        "id": "408fdd3b394de382",
-        "type": "template",
-        "z": "0da2717d76f314c6",
-        "name": "set system message",
-        "field": "system",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.",
-        "output": "str",
-        "x": 280,
-        "y": 180,
-        "wires": [
-            [
-                "d7466f149b33b961"
-            ]
-        ],
-        "info": "test it hey hey"
-    },
-    {
-        "id": "be4f16af0b79b997",
-        "type": "function",
-        "z": "0da2717d76f314c6",
-        "name": "function 4",
-        "func": "msg.payload = msg.payload.filter(({type, info}) => \n    !info && !['junction','subflow','tab','status'].some((t) => type.indexOf(t) > -1)\n).slice(0,10)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 240,
-        "y": 140,
-        "wires": [
-            [
-                "408fdd3b394de382"
-            ]
-        ]
-    },
-    {
-        "id": "d7466f149b33b961",
-        "type": "subflow:788598196e86646c",
-        "z": "0da2717d76f314c6",
-        "name": "",
-        "x": 250,
-        "y": 220,
-        "wires": [
-            [
                 "ad78713cb0a6df80"
             ]
         ]
@@ -3409,10 +3369,10 @@
         "stream": false,
         "addname": "",
         "x": 230,
-        "y": 260,
+        "y": 180,
         "wires": [
             [
-                "080cad2872ab96ce"
+                "352b07a97db83983"
             ]
         ]
     },
@@ -3428,7 +3388,7 @@
         "template": "{{{payload}}}",
         "output": "str",
         "x": 240,
-        "y": 340,
+        "y": 420,
         "wires": [
             [
                 "3e54165e7294db19"
@@ -3452,7 +3412,7 @@
         "count": "",
         "reduceRight": false,
         "x": 230,
-        "y": 420,
+        "y": 540,
         "wires": [
             [
                 "7cbbf9d31cb04d05"
@@ -3468,7 +3428,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 300,
+        "y": 380,
         "wires": [
             [
                 "846729d5f0dd8306"
@@ -3487,7 +3447,7 @@
         "overwriteFile": "false",
         "encoding": "none",
         "x": 270,
-        "y": 500,
+        "y": 620,
         "wires": [
             []
         ]
@@ -3501,7 +3461,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 460,
+        "y": 580,
         "wires": [
             [
                 "4c1404f306ef020a"
@@ -3514,10 +3474,108 @@
         "z": "0da2717d76f314c6",
         "name": "",
         "x": 240,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "80e5304f2999ce6b"
+            ]
+        ]
+    },
+    {
+        "id": "408fdd3b394de382",
+        "type": "template",
+        "z": "0da2717d76f314c6",
+        "name": "set system message",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.",
+        "output": "str",
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "d7466f149b33b961"
+            ]
+        ],
+        "info": "test it hey hey"
+    },
+    {
+        "id": "d7466f149b33b961",
+        "type": "subflow:788598196e86646c",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "x": 250,
+        "y": 340,
+        "wires": [
+            [
+                "080cad2872ab96ce"
+            ]
+        ]
+    },
+    {
+        "id": "c003a05da5c1d6b6",
+        "type": "switch",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "property": "payload.info",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "link.*|subflow.*|junction|tab|status",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "97cebd272ffda79e"
+            ],
+            [
+                "97cebd272ffda79e"
+            ],
+            [
+                "408fdd3b394de382"
+            ]
+        ]
+    },
+    {
+        "id": "352b07a97db83983",
+        "type": "change",
+        "z": "0da2717d76f314c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "node",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 220,
+        "wires": [
+            [
+                "c003a05da5c1d6b6"
             ]
         ]
     },
