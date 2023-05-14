@@ -987,7 +987,7 @@
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
-        "x": 500,
+        "x": 520,
         "y": 160,
         "wires": [
             [
@@ -3611,12 +3611,17 @@
                 "vt": "str"
             },
             {
+                "t": "eq",
+                "v": "Rate limit reached",
+                "vt": "str"
+            },
+            {
                 "t": "else"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 5,
+        "outputs": 6,
         "x": 410,
         "y": 140,
         "wires": [
@@ -3631,6 +3636,9 @@
             ],
             [
                 "c8ed6299a7db1bac"
+            ],
+            [
+                "0e15e195386e7615"
             ],
             [
                 "742d10fb144f3c99"
@@ -3755,7 +3763,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
+        "x": 890,
         "y": 160,
         "wires": [
             [
@@ -3813,7 +3821,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
+        "x": 600,
         "y": 60,
         "wires": []
     },
@@ -3842,8 +3850,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 670,
-        "y": 100,
+        "x": 890,
+        "y": 60,
         "wires": [
             [],
             [],
@@ -3864,6 +3872,31 @@
         "wires": [
             [
                 "e66c7e2b9c2807aa"
+            ]
+        ]
+    },
+    {
+        "id": "0e15e195386e7615",
+        "type": "delay",
+        "z": "e961334cde89144c",
+        "name": "rate limit delay",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 680,
+        "y": 160,
+        "wires": [
+            [
+                "dd2038bc71721c1f"
             ]
         ]
     },
