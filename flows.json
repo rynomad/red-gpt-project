@@ -898,7 +898,7 @@
         "out": [
             {
                 "x": 420,
-                "y": 380,
+                "y": 440,
                 "wires": [
                     {
                         "id": "036e8e789347f95f",
@@ -2538,14 +2538,13 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a terse yet expressive analyst. You are good at summarising.\n\n{{{context}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{payload}}}\n\nPlease give a summary of the relevant information.",
+        "template": "You are a concise yet expressive analyst. You are good at synthesizing and summarizing observations.\n\n{{{context}}}\n\nhere is the subject matter:\n{{{payload}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{analysis}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
         "x": 260,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
-                "eefbfc8dd8aecccf",
-                "32c5ac3105cfb0dd"
+                "eefbfc8dd8aecccf"
             ]
         ]
     },
@@ -2555,11 +2554,10 @@
         "z": "657c8f0e9df6242e",
         "name": "",
         "x": 260,
-        "y": 280,
+        "y": 320,
         "wires": [
             [
-                "99961076a36af9ed",
-                "ad324153b789d318"
+                "99961076a36af9ed"
             ]
         ]
     },
@@ -2584,7 +2582,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 270,
-        "y": 320,
+        "y": 360,
         "wires": [
             [
                 "036e8e789347f95f"
@@ -2631,7 +2629,7 @@
         "type": "split",
         "z": "657c8f0e9df6242e",
         "name": "",
-        "splt": "3000",
+        "splt": "1000",
         "spltType": "len",
         "arraySplt": 1,
         "arraySpltType": "len",
@@ -2755,7 +2753,7 @@
         "y": 200,
         "wires": [
             [
-                "de2f72edd32ba706"
+                "6f07e77c85840df0"
             ]
         ]
     },
@@ -2780,14 +2778,13 @@
         "repair": false,
         "outputs": 2,
         "x": 250,
-        "y": 360,
+        "y": 400,
         "wires": [
             [
                 "e94dc57b47a49387"
             ],
             [
-                "1eb0bc16cb04fae2",
-                "9fa479ba82f44e5c"
+                "1eb0bc16cb04fae2"
             ]
         ]
     },
@@ -2805,24 +2802,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "9fa479ba82f44e5c",
-        "type": "debug",
-        "z": "657c8f0e9df6242e",
-        "name": "cycle",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 440,
+        "y": 400,
         "wires": []
     },
     {
@@ -2833,7 +2813,7 @@
         "scope": null,
         "uncaught": false,
         "x": 260,
-        "y": 500,
+        "y": 560,
         "wires": [
             [
                 "4962c2ab1cf86f48"
@@ -2844,7 +2824,7 @@
         "id": "4962c2ab1cf86f48",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "debug 12",
+        "name": "summarizer error",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2853,8 +2833,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 420,
-        "y": 500,
+        "x": 450,
+        "y": 560,
         "wires": []
     },
     {
@@ -2875,38 +2855,17 @@
         "wires": []
     },
     {
-        "id": "32c5ac3105cfb0dd",
-        "type": "debug",
+        "id": "6f07e77c85840df0",
+        "type": "subflow:bf9fecd68e29a50a",
         "z": "657c8f0e9df6242e",
-        "name": "in",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "complete",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
+        "name": "",
+        "x": 260,
         "y": 240,
-        "wires": []
-    },
-    {
-        "id": "ad324153b789d318",
-        "type": "debug",
-        "z": "657c8f0e9df6242e",
-        "name": "out",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "complete",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 280,
-        "wires": []
+        "wires": [
+            [
+                "de2f72edd32ba706"
+            ]
+        ]
     },
     {
         "id": "414ddee1287efb66",
@@ -4248,7 +4207,7 @@
         "y": 160,
         "wires": [
             [
-                "cd4c326a3811b3e0"
+                "fd82d1078959f5bb"
             ]
         ]
     },
@@ -5088,6 +5047,25 @@
         "wires": [
             [
                 "6561f76ff8addfbc"
+            ]
+        ]
+    },
+    {
+        "id": "fd82d1078959f5bb",
+        "type": "template",
+        "z": "064c17312433ce15",
+        "name": "",
+        "field": "context",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "we're working our way through a node-red flows.json file\n\nwe can't work on it all at once, so I'm giving you a chunk of it here.\n\nDo your best to follow the rest of the instructions with node-red in mind.\n\nour end goal is to try and infer a description of the entire project from its pieces.",
+        "output": "str",
+        "x": 400,
+        "y": 40,
+        "wires": [
+            [
+                "cd4c326a3811b3e0"
             ]
         ]
     },
