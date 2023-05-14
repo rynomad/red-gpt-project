@@ -2933,25 +2933,6 @@
         "wires": []
     },
     {
-        "id": "7b9a1b1ffbbd3731",
-        "type": "function",
-        "z": "657c8f0e9df6242e",
-        "name": "function 3",
-        "func": "msg.payload = msg.payload.substring(0, 10000)\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 260,
-        "y": 80,
-        "wires": [
-            [
-                "081d39183e2323d2"
-            ]
-        ]
-    },
-    {
         "id": "684254331f69bb61",
         "type": "json",
         "z": "657c8f0e9df6242e",
@@ -2963,7 +2944,7 @@
         "y": 40,
         "wires": [
             [
-                "7b9a1b1ffbbd3731"
+                "081d39183e2323d2"
             ]
         ]
     },
@@ -5186,7 +5167,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "we're working our way through a node-red flows.json file\n\nwe can't work on it all at once, so I'm giving you a chunk of it here.\n\nDo your best to follow the rest of the instructions with node-red in mind.\n\nour end goal is to try and infer a description of the entire project from its pieces.",
+        "template": "we're working our way through a node-red flows.json file\n\nwe can't work on it all at once, so I'm giving you a chunk of it here.\n\nDo your best to follow the rest of the instructions with node-red in mind.\n\nour end goal is to try and infer a description of the entire project from its pieces.\n\nmake use of node id's where available so we can compare notes with each other when we have insight into different nodes in the overall flow.",
         "output": "str",
         "x": 390,
         "y": 40,
