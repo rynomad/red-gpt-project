@@ -2709,7 +2709,7 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "$sum(parts.index,1)",
+                "v": "$sum([parts.index,1])",
                 "vt": "jsonata"
             },
             {
