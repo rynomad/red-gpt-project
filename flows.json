@@ -898,7 +898,7 @@
         "out": [
             {
                 "x": 420,
-                "y": 440,
+                "y": 480,
                 "wires": [
                     {
                         "id": "036e8e789347f95f",
@@ -978,7 +978,7 @@
         "type": "junction",
         "z": "657c8f0e9df6242e",
         "x": 140,
-        "y": 420,
+        "y": 480,
         "wires": [
             [
                 "081d39183e2323d2"
@@ -2541,7 +2541,7 @@
         "template": "You are a concise yet expressive analyst. You are good at synthesizing and summarizing observations.\n\n{{{context}}}\n\nhere is the subject matter:\n{{{payload}}}\n\nYou have just been presented with the following pieces of analysis of a larger work:\n{{{analysis}}}\n\nPlease give a summary of the relevant information.",
         "output": "str",
         "x": 260,
-        "y": 280,
+        "y": 320,
         "wires": [
             [
                 "eefbfc8dd8aecccf"
@@ -2554,7 +2554,7 @@
         "z": "657c8f0e9df6242e",
         "name": "",
         "x": 260,
-        "y": 320,
+        "y": 360,
         "wires": [
             [
                 "99961076a36af9ed",
@@ -2583,7 +2583,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 270,
-        "y": 360,
+        "y": 400,
         "wires": [
             [
                 "036e8e789347f95f",
@@ -2603,26 +2603,10 @@
         "allowEmptySequence": false,
         "topics": [],
         "x": 250,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "a401ef68997c6b2a"
-            ]
-        ]
-    },
-    {
-        "id": "684254331f69bb61",
-        "type": "json",
-        "z": "657c8f0e9df6242e",
-        "name": "",
-        "property": "payload",
-        "action": "str",
-        "pretty": false,
-        "x": 250,
-        "y": 40,
-        "wires": [
-            [
-                "081d39183e2323d2"
             ]
         ]
     },
@@ -2638,7 +2622,7 @@
         "stream": false,
         "addname": "",
         "x": 250,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "e00be323f0003974"
@@ -2666,7 +2650,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 250,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "0c3087c33362c56c"
@@ -2693,7 +2677,7 @@
         "to": "",
         "reg": false,
         "x": 440,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
                 "627a5403fe4f266f",
@@ -2722,7 +2706,7 @@
         "repair": false,
         "outputs": 2,
         "x": 250,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
                 "1bf095ea109bae31"
@@ -2752,7 +2736,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "8d02872f841e29bf"
@@ -2780,7 +2764,7 @@
         "repair": false,
         "outputs": 2,
         "x": 250,
-        "y": 400,
+        "y": 440,
         "wires": [
             [
                 "e94dc57b47a49387"
@@ -2805,7 +2789,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 400,
+        "y": 440,
         "wires": []
     },
     {
@@ -2854,7 +2838,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 720,
-        "y": 120,
+        "y": 160,
         "wires": []
     },
     {
@@ -2863,7 +2847,7 @@
         "z": "657c8f0e9df6242e",
         "name": "",
         "x": 260,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "de2f72edd32ba706"
@@ -2890,7 +2874,7 @@
         "to": "",
         "reg": false,
         "x": 640,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "6f07e77c85840df0"
@@ -2911,7 +2895,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 500,
-        "y": 360,
+        "y": 400,
         "wires": []
     },
     {
@@ -2928,7 +2912,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 320,
+        "y": 360,
         "wires": []
     },
     {
@@ -2945,8 +2929,43 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 370,
-        "y": 480,
+        "y": 520,
         "wires": []
+    },
+    {
+        "id": "7b9a1b1ffbbd3731",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload.substring(0, 10000)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 80,
+        "wires": [
+            [
+                "081d39183e2323d2"
+            ]
+        ]
+    },
+    {
+        "id": "684254331f69bb61",
+        "type": "json",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "7b9a1b1ffbbd3731"
+            ]
+        ]
     },
     {
         "id": "414ddee1287efb66",
@@ -5135,14 +5154,14 @@
         "id": "fd82d1078959f5bb",
         "type": "template",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "set context",
         "field": "context",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "we're working our way through a node-red flows.json file\n\nwe can't work on it all at once, so I'm giving you a chunk of it here.\n\nDo your best to follow the rest of the instructions with node-red in mind.\n\nour end goal is to try and infer a description of the entire project from its pieces.",
         "output": "str",
-        "x": 400,
+        "x": 390,
         "y": 40,
         "wires": [
             [
