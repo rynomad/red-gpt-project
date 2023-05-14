@@ -2557,7 +2557,8 @@
         "y": 320,
         "wires": [
             [
-                "99961076a36af9ed"
+                "99961076a36af9ed",
+                "1ccb9174383664e1"
             ]
         ]
     },
@@ -2585,7 +2586,8 @@
         "y": 360,
         "wires": [
             [
-                "036e8e789347f95f"
+                "036e8e789347f95f",
+                "04a9a0c8084ec082"
             ]
         ]
     },
@@ -2784,7 +2786,8 @@
                 "e94dc57b47a49387"
             ],
             [
-                "1eb0bc16cb04fae2"
+                "1eb0bc16cb04fae2",
+                "92ac0da2b13b0b14"
             ]
         ]
     },
@@ -2893,6 +2896,57 @@
                 "6f07e77c85840df0"
             ]
         ]
+    },
+    {
+        "id": "04a9a0c8084ec082",
+        "type": "debug",
+        "z": "657c8f0e9df6242e",
+        "name": "combined",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "_msgid",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1ccb9174383664e1",
+        "type": "debug",
+        "z": "657c8f0e9df6242e",
+        "name": "chunk",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "92ac0da2b13b0b14",
+        "type": "debug",
+        "z": "657c8f0e9df6242e",
+        "name": "cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 480,
+        "wires": []
     },
     {
         "id": "414ddee1287efb66",
