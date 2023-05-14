@@ -3141,7 +3141,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "Please compare and evaluate the options, and synthesize them into a single best option.\n\nlet's take this step by step to make sure we arrive at the correct answer.",
+        "template": "Please compare and evaluate the options, and synthesize them into a single best answer",
         "output": "str",
         "x": 220,
         "y": 200,
@@ -5523,7 +5523,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a summary of the node's functionality.\nYour summary MUST follow the following template:\n\n```json\n{\n    \"id\": \"{node ID here}\",\n    \"info\": \"{your summary here}\"\n}\n```",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a summary of the node's functionality.",
         "output": "str",
         "x": 300,
         "y": 300,
@@ -5538,7 +5538,7 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "function 4",
-        "func": "msg.payload = msg.payload.filter(({type}) => \n    !['junction','subflow','tab'].some((t) => type.indexOf(t) > -1)\n).slice(0,10)\n\nreturn msg;",
+        "func": "msg.payload = msg.payload.filter(({type}) => \n    !['junction','subflow','tab','status'].some((t) => type.indexOf(t) > -1)\n).slice(0,10)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5653,7 +5653,7 @@
         "count": "",
         "reduceRight": false,
         "x": 350,
-        "y": 540,
+        "y": 600,
         "wires": [
             [
                 "a474ad0b3977327b"
@@ -5673,8 +5673,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 540,
+        "x": 580,
+        "y": 600,
         "wires": []
     },
     {
