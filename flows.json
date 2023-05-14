@@ -953,10 +953,35 @@
     {
         "id": "788598196e86646c",
         "type": "subflow",
-        "name": "Subflow 2",
+        "name": "systemGPT",
         "info": "",
-        "in": [],
-        "out": []
+        "category": "",
+        "in": [
+            {
+                "x": 160,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "bccea17a75c2795e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "bccea17a75c2795e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -3187,6 +3212,23 @@
             [
                 "fec09085fa1a30ec"
             ]
+        ]
+    },
+    {
+        "id": "bccea17a75c2795e",
+        "type": "function",
+        "z": "788598196e86646c",
+        "name": "set system message into history",
+        "func": "msg.history = msg.history || []\nif (!msg.system){\n    return msg;\n}\n\nif (msg.history[0] && msg.history[0].role === 'system'){\n    msg.history = msg.history.slice(1)\n}\n\n\nmsg.history = [{\n    role: 'system',\n    content: msg.system\n}].concat(msg.history);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 120,
+        "wires": [
+            []
         ]
     },
     {
