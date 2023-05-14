@@ -3365,7 +3365,7 @@
         "y": 100,
         "wires": [
             [
-                "7bfa76128231ef2d"
+                "ad78713cb0a6df80"
             ]
         ]
     },
@@ -3456,7 +3456,7 @@
         "filenameType": "str",
         "appendNewline": true,
         "createDir": false,
-        "overwriteFile": "false",
+        "overwriteFile": "true",
         "encoding": "none",
         "x": 270,
         "y": 860,
@@ -3715,25 +3715,6 @@
         "wires": [
             [
                 "80e5304f2999ce6b"
-            ]
-        ]
-    },
-    {
-        "id": "7bfa76128231ef2d",
-        "type": "function",
-        "z": "0da2717d76f314c6",
-        "name": "function 4",
-        "func": "msg.payload = msg.payload.slice(0,50)\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 240,
-        "y": 140,
-        "wires": [
-            [
-                "ad78713cb0a6df80"
             ]
         ]
     },
