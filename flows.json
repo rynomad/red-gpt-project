@@ -3107,9 +3107,6 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "else"
-            },
-            {
                 "t": "cont",
                 "v": "maximum context length",
                 "vt": "str"
@@ -3128,17 +3125,17 @@
                 "t": "cont",
                 "v": "read ECONNRESET",
                 "vt": "str"
+            },
+            {
+                "t": "else"
             }
         ],
-        "checkall": "true",
+        "checkall": "false",
         "repair": false,
         "outputs": 5,
         "x": 410,
         "y": 140,
         "wires": [
-            [
-                "e66c7e2b9c2807aa"
-            ],
             [
                 "cb040ea047dc84fb"
             ],
@@ -3150,6 +3147,9 @@
             ],
             [
                 "c8ed6299a7db1bac"
+            ],
+            [
+                "e66c7e2b9c2807aa"
             ]
         ]
     },
@@ -3292,8 +3292,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 80,
+        "x": 200,
+        "y": 120,
         "wires": []
     },
     {
