@@ -3118,7 +3118,7 @@
         "type": "function",
         "z": "d66a7c662b619014",
         "name": "assemble payloads",
-        "func": "msg.payload = msg.full.data.choices.map(({message},i) => \n`---OPTION ${i} START---\\n${message.content}\\n---OPTION ${i} END---\\n`).join('')\n\nmsg.payload = `Here are ${msg.full.choices.length} options:\\n${msg.payload}`\n\nmsg.history[msg.history.length - 1].content = msg.payload;\n\nreturn msg;",
+        "func": "msg.payload = msg.full.data.choices.map(({message},i) => \n`---OPTION ${i} START---\\n${message.content}\\n---OPTION ${i} END---\\n`).join('')\n\nmsg.payload = `Here are ${msg.full.data.choices.length} options:\\n${msg.payload}`\n\nmsg.history[msg.history.length - 1].content = msg.payload;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
