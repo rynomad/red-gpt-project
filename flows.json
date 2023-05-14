@@ -5538,7 +5538,7 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "function 4",
-        "func": "msg.payload = msg.payload.filter(({type}) => \n    !['junction','subflow','tab'].some((t) => type.indexOf(t) === -1)\n).slice(0,10)\n\nreturn msg;",
+        "func": "msg.payload = msg.payload.filter(({type}) => \n    !['junction','subflow','tab'].some((t) => type.indexOf(t) > -1)\n).slice(0,10)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5632,7 +5632,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
+        "x": 620,
         "y": 500,
         "wires": []
     },
