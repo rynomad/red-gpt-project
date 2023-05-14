@@ -2694,7 +2694,8 @@
         "y": 120,
         "wires": [
             [
-                "627a5403fe4f266f"
+                "627a5403fe4f266f",
+                "1b0a1216ae61c7a3"
             ]
         ]
     },
@@ -2741,11 +2742,6 @@
                 "pt": "msg",
                 "to": "willComplete",
                 "tot": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "willComplete",
-                "pt": "msg"
             }
         ],
         "action": "",
@@ -2753,7 +2749,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 430,
         "y": 200,
         "wires": [
             [
@@ -2859,6 +2855,23 @@
         "statusType": "auto",
         "x": 420,
         "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1b0a1216ae61c7a3",
+        "type": "debug",
+        "z": "657c8f0e9df6242e",
+        "name": "complete msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "_msgid",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 120,
         "wires": []
     },
     {
