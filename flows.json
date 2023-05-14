@@ -5434,7 +5434,43 @@
         ]
     },
     {
-        "id": "ab6cb2a20ad914c8",
+        "id": "8b156f3f879bad59",
+        "type": "file in",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "filename": "/data/projects/red-gpt-project/flows.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "cf9ef8b14dd35b82"
+            ]
+        ]
+    },
+    {
+        "id": "cf9ef8b14dd35b82",
+        "type": "json",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 220,
+        "wires": [
+            [
+                "be4f16af0b79b997"
+            ]
+        ]
+    },
+    {
+        "id": "3f4b4b20e1f7bbd2",
         "type": "inject",
         "z": "eeba88e77478c844",
         "name": "",
@@ -5445,37 +5481,136 @@
             {
                 "p": "topic",
                 "vt": "str"
+            },
+            {
+                "p": "temperature",
+                "v": "0.5",
+                "vt": "str"
+            },
+            {
+                "p": "language",
+                "v": "node-red and javascript",
+                "vt": "str"
+            },
+            {
+                "p": "min_tokens",
+                "v": "1000",
+                "vt": "str"
             }
         ],
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "",
+        "topic": "turbo",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 60,
+        "x": 320,
+        "y": 140,
         "wires": [
             [
-                "2216518958f9fd40"
+                "8b156f3f879bad59"
             ]
         ]
     },
     {
-        "id": "2216518958f9fd40",
-        "type": "debug",
+        "id": "408fdd3b394de382",
+        "type": "template",
         "z": "eeba88e77478c844",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 280,
-        "y": 80,
-        "wires": []
+        "name": "set system message",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a summary of the node's functionality.\nYour summary MUST follow the following template:\n\n```json\n{\n    \"id\": \"{node ID here}\",\n    \"info\": \"{your summary here}\"\n}\n```",
+        "output": "str",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "d7466f149b33b961"
+            ]
+        ]
+    },
+    {
+        "id": "be4f16af0b79b997",
+        "type": "function",
+        "z": "eeba88e77478c844",
+        "name": "function 4",
+        "func": "msg.payload = msg.payload.slice(0,10)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 260,
+        "wires": [
+            [
+                "408fdd3b394de382"
+            ]
+        ]
+    },
+    {
+        "id": "d7466f149b33b961",
+        "type": "subflow:788598196e86646c",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "ad78713cb0a6df80"
+            ]
+        ]
+    },
+    {
+        "id": "ad78713cb0a6df80",
+        "type": "split",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "splt": "2000",
+        "spltType": "len",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "846729d5f0dd8306"
+            ]
+        ]
+    },
+    {
+        "id": "846729d5f0dd8306",
+        "type": "template",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{{payload}}}",
+        "output": "str",
+        "x": 340,
+        "y": 420,
+        "wires": [
+            [
+                "566d68e0b7d41141"
+            ]
+        ]
+    },
+    {
+        "id": "566d68e0b7d41141",
+        "type": "subflow:d66a7c662b619014",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 340,
+        "y": 460,
+        "wires": [
+            []
+        ]
     }
 ]
