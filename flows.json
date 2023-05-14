@@ -2544,7 +2544,8 @@
         "y": 240,
         "wires": [
             [
-                "eefbfc8dd8aecccf"
+                "eefbfc8dd8aecccf",
+                "32c5ac3105cfb0dd"
             ]
         ]
     },
@@ -2872,6 +2873,23 @@
         "statusType": "auto",
         "x": 720,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "32c5ac3105cfb0dd",
+        "type": "debug",
+        "z": "657c8f0e9df6242e",
+        "name": "done",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "complete",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 240,
         "wires": []
     },
     {
