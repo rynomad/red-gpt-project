@@ -5537,7 +5537,7 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "function 4",
-        "func": "msg.payload = msg.payload.filter(({type}) => type.indexOf('subflow') === -1)\nreturn msg;",
+        "func": "msg.payload = msg.payload.filter(({type}) => type.indexOf('subflow') === -1).slice(0,10)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5599,7 +5599,8 @@
         "y": 460,
         "wires": [
             [
-                "7685c12228ceb9c0"
+                "7685c12228ceb9c0",
+                "566d68e0b7d41141"
             ]
         ]
     },
