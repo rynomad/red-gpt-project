@@ -1255,7 +1255,7 @@
         "type": "function",
         "z": "50df1246bdaf5119",
         "name": "copy",
-        "func": "const num_copies = env.get(\"num_copies\") || 1;\nconst copies = [];\nfor(let i = 0; i < num_copies; i++){\n    copies.push(msg.payload);\n}\n\nmsg.payload = copies;\nreturn msg;\n",
+        "func": "const num_copies = msg.num_copies || env.get(\"num_copies\") || 1;\nconst copies = [];\nfor(let i = 0; i < num_copies; i++){\n    copies.push(msg.payload);\n}\n\nmsg.payload = copies;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
