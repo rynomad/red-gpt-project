@@ -1003,7 +1003,7 @@
         "out": [
             {
                 "x": 440,
-                "y": 780,
+                "y": 820,
                 "wires": [
                     {
                         "id": "4c1404f306ef020a",
@@ -1094,8 +1094,20 @@
         "id": "97cebd272ffda79e",
         "type": "junction",
         "z": "0da2717d76f314c6",
-        "x": 120,
+        "x": 420,
         "y": 280,
+        "wires": [
+            [
+                "66242fd6d641dc63"
+            ]
+        ]
+    },
+    {
+        "id": "66242fd6d641dc63",
+        "type": "junction",
+        "z": "0da2717d76f314c6",
+        "x": 440,
+        "y": 700,
         "wires": [
             [
                 "80e5304f2999ce6b"
@@ -3388,7 +3400,7 @@
         "template": "{{{payload}}}",
         "output": "str",
         "x": 240,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "3e54165e7294db19"
@@ -3412,7 +3424,7 @@
         "count": "",
         "reduceRight": false,
         "x": 230,
-        "y": 700,
+        "y": 740,
         "wires": [
             [
                 "7cbbf9d31cb04d05"
@@ -3428,7 +3440,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 380,
+        "y": 420,
         "wires": [
             [
                 "846729d5f0dd8306"
@@ -3447,7 +3459,7 @@
         "overwriteFile": "false",
         "encoding": "none",
         "x": 270,
-        "y": 780,
+        "y": 820,
         "wires": [
             []
         ]
@@ -3461,7 +3473,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 740,
+        "y": 780,
         "wires": [
             [
                 "4c1404f306ef020a"
@@ -3474,7 +3486,7 @@
         "z": "0da2717d76f314c6",
         "name": "",
         "x": 240,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "a7b4d25950105f75"
@@ -3493,7 +3505,7 @@
         "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.",
         "output": "str",
         "x": 280,
-        "y": 300,
+        "y": 340,
         "wires": [
             [
                 "d7466f149b33b961"
@@ -3507,7 +3519,7 @@
         "z": "0da2717d76f314c6",
         "name": "",
         "x": 250,
-        "y": 340,
+        "y": 380,
         "wires": [
             [
                 "080cad2872ab96ce"
@@ -3518,8 +3530,8 @@
         "id": "c003a05da5c1d6b6",
         "type": "switch",
         "z": "0da2717d76f314c6",
-        "name": "",
-        "property": "payload.info",
+        "name": "ignore types",
+        "property": "payload.type",
         "propertyType": "msg",
         "rules": [
             {
@@ -3529,26 +3541,20 @@
                 "case": false
             },
             {
-                "t": "nempty"
-            },
-            {
                 "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 3,
-        "x": 230,
+        "outputs": 2,
+        "x": 250,
         "y": 260,
         "wires": [
             [
                 "97cebd272ffda79e"
             ],
             [
-                "97cebd272ffda79e"
-            ],
-            [
-                "408fdd3b394de382"
+                "8c111b3dbf792ca6"
             ]
         ]
     },
@@ -3599,7 +3605,7 @@
         "to": "",
         "reg": false,
         "x": 270,
-        "y": 500,
+        "y": 540,
         "wires": [
             [
                 "6f0b43126a3d3089"
@@ -3633,7 +3639,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "abc59e2895a6bd61"
@@ -3646,7 +3652,7 @@
         "z": "0da2717d76f314c6",
         "name": "",
         "x": 240,
-        "y": 580,
+        "y": 620,
         "wires": [
             [
                 "3501eb14ac590776"
@@ -3673,7 +3679,7 @@
         "to": "",
         "reg": false,
         "x": 280,
-        "y": 620,
+        "y": 660,
         "wires": [
             [
                 "c372f6322d121463"
@@ -3700,7 +3706,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 660,
+        "y": 700,
         "wires": [
             [
                 "80e5304f2999ce6b"
@@ -3712,7 +3718,7 @@
         "type": "function",
         "z": "0da2717d76f314c6",
         "name": "function 4",
-        "func": "msg.payload = msg.payload.slice(0,10)\nreturn msg;",
+        "func": "msg.payload = msg.payload.slice(0,50)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3723,6 +3729,35 @@
         "wires": [
             [
                 "ad78713cb0a6df80"
+            ]
+        ]
+    },
+    {
+        "id": "8c111b3dbf792ca6",
+        "type": "switch",
+        "z": "0da2717d76f314c6",
+        "name": "ignore info",
+        "property": "payload.info",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "97cebd272ffda79e"
+            ],
+            [
+                "408fdd3b394de382"
             ]
         ]
     },
@@ -6018,8 +6053,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 500,
+        "x": 300,
+        "y": 220,
         "wires": []
     },
     {
@@ -6045,7 +6080,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 310,
-        "y": 200,
+        "y": 180,
         "wires": [
             [
                 "7685c12228ceb9c0"
