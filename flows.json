@@ -5610,7 +5610,67 @@
         "x": 340,
         "y": 460,
         "wires": [
-            []
+            [
+                "7685c12228ceb9c0",
+                "80e5304f2999ce6b"
+            ]
         ]
+    },
+    {
+        "id": "7685c12228ceb9c0",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "80e5304f2999ce6b",
+        "type": "join",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 350,
+        "y": 500,
+        "wires": [
+            [
+                "a474ad0b3977327b"
+            ]
+        ]
+    },
+    {
+        "id": "a474ad0b3977327b",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 500,
+        "wires": []
     }
 ]
