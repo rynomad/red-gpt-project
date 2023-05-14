@@ -3406,6 +3406,21 @@
         ]
     },
     {
+        "id": "d65872b05ad84bb5",
+        "type": "catch",
+        "z": "e961334cde89144c",
+        "name": "",
+        "scope": null,
+        "uncaught": true,
+        "x": 640,
+        "y": 20,
+        "wires": [
+            [
+                "e66c7e2b9c2807aa"
+            ]
+        ]
+    },
+    {
         "id": "f4f6fa24ca217587",
         "type": "json",
         "z": "f297cec495c6b8be",
