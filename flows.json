@@ -2709,8 +2709,8 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "parts.index + 1",
-                "vt": "msg"
+                "v": "$sum(parts.index,1)",
+                "vt": "jsonata"
             },
             {
                 "t": "else"
