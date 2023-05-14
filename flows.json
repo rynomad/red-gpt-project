@@ -912,6 +912,18 @@
         "color": "#DDAA99"
     },
     {
+        "id": "d66a7c662b619014",
+        "type": "subflow",
+        "name": "multigpt",
+        "info": "",
+        "category": "",
+        "in": [],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
@@ -2622,10 +2634,10 @@
         "stream": false,
         "addname": "",
         "x": 250,
-        "y": 120,
+        "y": 80,
         "wires": [
             [
-                "e00be323f0003974"
+                "40663c267e076c78"
             ]
         ]
     },
@@ -2789,7 +2801,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 440,
+        "y": 460,
         "wires": []
     },
     {
@@ -2944,7 +2956,7 @@
         "y": 40,
         "wires": [
             [
-                "081d39183e2323d2"
+                "f8bdadc87267634b"
             ]
         ]
     },
@@ -2972,6 +2984,59 @@
         "wires": [
             [
                 "036e8e789347f95f"
+            ]
+        ]
+    },
+    {
+        "id": "40663c267e076c78",
+        "type": "change",
+        "z": "657c8f0e9df6242e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "willComplete",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "e00be323f0003974"
+            ]
+        ]
+    },
+    {
+        "id": "f8bdadc87267634b",
+        "type": "function",
+        "z": "657c8f0e9df6242e",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload.substring(0, msg.payload.length / 5)\nnode.log(\"msg.payload.length \"+ msg.payload.length  );\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 40,
+        "wires": [
+            [
+                "081d39183e2323d2"
             ]
         ]
     },
