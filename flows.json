@@ -930,11 +930,11 @@
         ],
         "out": [
             {
-                "x": 360,
-                "y": 280,
+                "x": 420,
+                "y": 360,
                 "wires": [
                     {
-                        "id": "fec09085fa1a30ec",
+                        "id": "20a76c3c2e5a2985",
                         "port": 0
                     }
                 ]
@@ -3109,7 +3109,7 @@
         "y": 120,
         "wires": [
             [
-                "36b8184a08d13132"
+                "a57074888a023788"
             ]
         ]
     },
@@ -3125,7 +3125,7 @@
         "finalize": "",
         "libs": [],
         "x": 250,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "56543d4e523ebe7f"
@@ -3144,7 +3144,7 @@
         "template": "Please compare and evaluate the options, and synthesize them into a single best answer",
         "output": "str",
         "x": 220,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "e5607ee4eaaa50d5"
@@ -3157,9 +3157,11 @@
         "z": "d66a7c662b619014",
         "name": "",
         "x": 220,
-        "y": 280,
+        "y": 320,
         "wires": [
-            []
+            [
+                "20a76c3c2e5a2985"
+            ]
         ]
     },
     {
@@ -3207,11 +3209,54 @@
         "to": "",
         "reg": false,
         "x": 230,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "fec09085fa1a30ec"
             ]
+        ]
+    },
+    {
+        "id": "a57074888a023788",
+        "type": "subflow:520a10812173e701",
+        "z": "d66a7c662b619014",
+        "name": "stash history",
+        "env": [
+            {
+                "name": "key",
+                "value": "history",
+                "type": "str"
+            },
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "36b8184a08d13132"
+            ]
+        ]
+    },
+    {
+        "id": "20a76c3c2e5a2985",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "d66a7c662b619014",
+        "name": "",
+        "env": [
+            {
+                "name": "key",
+                "value": "history",
+                "type": "str"
+            }
+        ],
+        "x": 220,
+        "y": 360,
+        "wires": [
+            []
         ]
     },
     {
@@ -5610,12 +5655,18 @@
         "type": "subflow:d66a7c662b619014",
         "z": "eeba88e77478c844",
         "name": "",
+        "env": [
+            {
+                "name": "n",
+                "value": "5",
+                "type": "num"
+            }
+        ],
         "x": 340,
         "y": 500,
         "wires": [
             [
-                "80e5304f2999ce6b",
-                "a474ad0b3977327b"
+                "80e5304f2999ce6b"
             ]
         ]
     },
@@ -5653,7 +5704,7 @@
         "count": "",
         "reduceRight": false,
         "x": 350,
-        "y": 600,
+        "y": 540,
         "wires": [
             [
                 "a474ad0b3977327b"
@@ -5674,7 +5725,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 580,
-        "y": 600,
+        "y": 540,
         "wires": []
     },
     {
