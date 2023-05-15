@@ -7510,13 +7510,6 @@
         "rules": [
             {
                 "t": "set",
-                "p": "n",
-                "pt": "msg",
-                "to": "20",
-                "tot": "str"
-            },
-            {
-                "t": "set",
                 "p": "temperature",
                 "pt": "msg",
                 "to": "0.6",
@@ -7528,7 +7521,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 180,
+        "x": 200,
         "y": 380,
         "wires": [
             [
@@ -7541,7 +7534,7 @@
         "type": "function",
         "z": "8dfc33ccdf4bd813",
         "name": "parse tests",
-        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('[');\n    const lastIndex = str.lastIndexOf(']');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nconst tests = []\n\nfor (const {message: {content}} of msg.full.data.choices){\n    try {\n        const test = JSON.parse(extractJsonString(content))\n        tests.push(test)\n    } catch (e) {\n        // ignore\n    }\n}\nmsg.payload = JSON.stringify(tests, null, 4);\n\nreturn msg;",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('[');\n    const lastIndex = str.lastIndexOf(']');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\ntry {\n    msg.payload = JSON.stringify(JSON.parse(extractJsonString(msg.payload)), null, 4);\n} catch (e) {\n    node.warn(e)\n    // ignore\n}\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
