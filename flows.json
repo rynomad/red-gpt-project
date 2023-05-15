@@ -991,8 +991,8 @@
         "category": "",
         "in": [
             {
-                "x": 50,
-                "y": 30,
+                "x": 120,
+                "y": 100,
                 "wires": [
                     {
                         "id": "8b156f3f879bad59"
@@ -1002,8 +1002,8 @@
         ],
         "out": [
             {
-                "x": 440,
-                "y": 860,
+                "x": 420,
+                "y": 980,
                 "wires": [
                     {
                         "id": "4c1404f306ef020a",
@@ -1094,7 +1094,7 @@
         "id": "97cebd272ffda79e",
         "type": "junction",
         "z": "0da2717d76f314c6",
-        "x": 420,
+        "x": 520,
         "y": 280,
         "wires": [
             [
@@ -1106,11 +1106,35 @@
         "id": "66242fd6d641dc63",
         "type": "junction",
         "z": "0da2717d76f314c6",
-        "x": 440,
-        "y": 740,
+        "x": 520,
+        "y": 860,
         "wires": [
             [
                 "80e5304f2999ce6b"
+            ]
+        ]
+    },
+    {
+        "id": "a2ad850716bad89c",
+        "type": "junction",
+        "z": "0da2717d76f314c6",
+        "x": 440,
+        "y": 600,
+        "wires": [
+            [
+                "b6722223de78c720"
+            ]
+        ]
+    },
+    {
+        "id": "b6722223de78c720",
+        "type": "junction",
+        "z": "0da2717d76f314c6",
+        "x": 440,
+        "y": 820,
+        "wires": [
+            [
+                "c372f6322d121463"
             ]
         ]
     },
@@ -3346,7 +3370,7 @@
         "encoding": "utf8",
         "allProps": false,
         "x": 340,
-        "y": 60,
+        "y": 100,
         "wires": [
             [
                 "cf9ef8b14dd35b82"
@@ -3362,7 +3386,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 100,
+        "y": 140,
         "wires": [
             [
                 "ad78713cb0a6df80"
@@ -3424,7 +3448,7 @@
         "count": "",
         "reduceRight": false,
         "x": 230,
-        "y": 780,
+        "y": 900,
         "wires": [
             [
                 "7cbbf9d31cb04d05"
@@ -3459,7 +3483,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 270,
-        "y": 860,
+        "y": 980,
         "wires": [
             []
         ]
@@ -3473,7 +3497,7 @@
         "action": "",
         "pretty": false,
         "x": 230,
-        "y": 820,
+        "y": 940,
         "wires": [
             [
                 "4c1404f306ef020a"
@@ -3502,7 +3526,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nbeyond describing the node, include how it is used. i.e. \"this is a delay node set to rate limit at 1 message per 5 seconds\"",
         "output": "str",
         "x": 280,
         "y": 340,
@@ -3613,7 +3637,7 @@
         "y": 540,
         "wires": [
             [
-                "6f0b43126a3d3089"
+                "cdcf2d5167b70bad"
             ]
         ]
     },
@@ -3629,13 +3653,6 @@
                 "pt": "msg",
                 "to": "$string(node)",
                 "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "system",
-                "pt": "msg",
-                "to": "The user is about to provide you with a brief description of a node-red node. your job is to provide a short name for it. you may use up to 5 words. Respond with ONLY the name.",
-                "tot": "str"
             }
         ],
         "action": "",
@@ -3644,10 +3661,10 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 580,
+        "y": 700,
         "wires": [
             [
-                "50495c457b07dafa"
+                "6451da63a4bc4c3f"
             ]
         ]
     },
@@ -3657,10 +3674,10 @@
         "z": "0da2717d76f314c6",
         "name": "",
         "x": 240,
-        "y": 660,
+        "y": 820,
         "wires": [
             [
-                "3501eb14ac590776"
+                "c372f6322d121463"
             ]
         ]
     },
@@ -3684,10 +3701,10 @@
         "to": "",
         "reg": false,
         "x": 280,
-        "y": 700,
+        "y": 660,
         "wires": [
             [
-                "c372f6322d121463"
+                "6f0b43126a3d3089"
             ]
         ]
     },
@@ -3711,7 +3728,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 740,
+        "y": 860,
         "wires": [
             [
                 "80e5304f2999ce6b"
@@ -3753,10 +3770,90 @@
         "z": "0da2717d76f314c6",
         "name": "",
         "x": 250,
-        "y": 620,
+        "y": 780,
         "wires": [
             [
                 "abc59e2895a6bd61"
+            ]
+        ]
+    },
+    {
+        "id": "1c07d510078ca6e5",
+        "type": "switch",
+        "z": "0da2717d76f314c6",
+        "name": "check name empty",
+        "property": "node.name",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 620,
+        "wires": [
+            [
+                "a2ad850716bad89c"
+            ],
+            [
+                "3501eb14ac590776"
+            ]
+        ]
+    },
+    {
+        "id": "6451da63a4bc4c3f",
+        "type": "template",
+        "z": "0da2717d76f314c6",
+        "name": "set system message",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to name nodes such that they will be understandable at a glance.\nThe user will provide you with a description of a function node.\nYou must respond with a short (< 10 word) name for the node, based on the description.\nreturn only the name, do not include quotation marks.\n",
+        "output": "str",
+        "x": 280,
+        "y": 740,
+        "wires": [
+            [
+                "50495c457b07dafa"
+            ]
+        ],
+        "info": "test it hey hey"
+    },
+    {
+        "id": "cdcf2d5167b70bad",
+        "type": "switch",
+        "z": "0da2717d76f314c6",
+        "name": "check is function",
+        "property": "node.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "function",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "a2ad850716bad89c"
+            ],
+            [
+                "1c07d510078ca6e5"
             ]
         ]
     },
