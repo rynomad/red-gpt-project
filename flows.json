@@ -3495,7 +3495,7 @@
         "name": "",
         "property": "payload",
         "action": "",
-        "pretty": false,
+        "pretty": true,
         "x": 230,
         "y": 940,
         "wires": [
