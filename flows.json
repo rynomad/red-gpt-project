@@ -1262,7 +1262,9 @@
         "x": 380,
         "y": 60,
         "wires": [
-            []
+            [
+                "b74d4d377fba494c"
+            ]
         ]
     },
     {
@@ -7421,7 +7423,7 @@
         "y": 60,
         "wires": [
             [
-                "1363f969815d9986"
+                "1d9f80521e1580fd"
             ]
         ]
     },
@@ -7637,28 +7639,21 @@
         ]
     },
     {
-        "id": "1363f969815d9986",
-        "type": "switch",
+        "id": "1d9f80521e1580fd",
+        "type": "function",
         "z": "8dfc33ccdf4bd813",
-        "name": "",
-        "property": "subflow.inputSchema",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "empty"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
+        "name": "function 5",
+        "func": "const hasNecessary = msg.payload.reduce((a, i) => a && i.content, true)\nif (hasNecessary){\n    return [null, msg];\n} else {\n    return [msg,null];\n}",
         "outputs": 2,
-        "x": 150,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
         "y": 60,
         "wires": [
             [
-                "b74d4d377fba494c"
+                "6f88846e3073cd41"
             ],
             [
                 "a55e8e5fafc718c6"
