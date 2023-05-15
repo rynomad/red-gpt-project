@@ -6124,7 +6124,7 @@
         "y": 140,
         "wires": [
             [
-                "4ab26ecf870ea59c"
+                "ad78713cb0a6df80"
             ]
         ]
     },
@@ -6196,7 +6196,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "str",
         "pretty": true,
         "x": 130,
         "y": 460,
@@ -6932,25 +6932,6 @@
         ]
     },
     {
-        "id": "4ab26ecf870ea59c",
-        "type": "function",
-        "z": "eeba88e77478c844",
-        "name": "function 4",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 140,
-        "wires": [
-            [
-                "ad78713cb0a6df80"
-            ]
-        ]
-    },
-    {
         "id": "025f8888c4bf0d76",
         "type": "catch",
         "z": "eeba88e77478c844",
@@ -6974,12 +6955,30 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 1040,
         "y": 40,
         "wires": []
+    },
+    {
+        "id": "3b147a7b7e72bed7",
+        "type": "file in",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "filename": "/data/flow.node_info.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 190,
+        "y": 540,
+        "wires": [
+            []
+        ]
     }
 ]
