@@ -34,7 +34,7 @@
     {
         "id": "eeba88e77478c844",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "node-red docs",
         "disabled": false,
         "info": "",
         "env": []
@@ -6386,7 +6386,7 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "map info into flows",
-        "func": "for (const inner of msg.payload) {\n    for (const { id, key, value } of inner){\n        msg.flows = msg.flows.map(node => {\n            if (node.id === id){\n                node[key] = value;\n            }\n\n            return node;\n        })\n    }\n}\n\nreturn msg;",
+        "func": "for (const inner of msg.payload) {\n    for (const { id, key, content } of inner){\n        msg.flows = msg.flows.map(node => {\n            if (node.id === id){\n                node[key] = content;\n            }\n\n            return node;\n        })\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6864,13 +6864,6 @@
                 "pt": "msg",
                 "to": "flows",
                 "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "parts",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
             }
         ],
         "action": "",
@@ -7249,5 +7242,73 @@
         "x": 810,
         "y": 420,
         "wires": []
+    },
+    {
+        "id": "270dcc5c3ccf3876",
+        "type": "link in",
+        "z": "8dfc33ccdf4bd813",
+        "name": "link in 2",
+        "links": [],
+        "x": 185,
+        "y": 80,
+        "wires": [
+            [
+                "5edf8f327eee67c4"
+            ]
+        ]
+    },
+    {
+        "id": "b74d4d377fba494c",
+        "type": "link out",
+        "z": "8dfc33ccdf4bd813",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [],
+        "x": 445,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1b87f89d5033a7ed",
+        "type": "subflow:788598196e86646c",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "80d1647716ac9376"
+            ]
+        ]
+    },
+    {
+        "id": "5edf8f327eee67c4",
+        "type": "template",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "This is the payload: {{payload}} !",
+        "output": "str",
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "1b87f89d5033a7ed"
+            ]
+        ]
+    },
+    {
+        "id": "80d1647716ac9376",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "x": 300,
+        "y": 240,
+        "wires": [
+            []
+        ]
     }
 ]
