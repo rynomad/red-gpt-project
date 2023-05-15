@@ -7691,5 +7691,37 @@
                 "c11ad7c7e95eedfc"
             ]
         ]
+    },
+    {
+        "id": "85c59508d6d782c6",
+        "type": "catch",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "scope": null,
+        "uncaught": true,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "5382a75eb35e6e6e"
+            ]
+        ]
+    },
+    {
+        "id": "5382a75eb35e6e6e",
+        "type": "debug",
+        "z": "8dfc33ccdf4bd813",
+        "name": "fuzz error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 180,
+        "wires": []
     }
 ]
