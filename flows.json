@@ -6104,7 +6104,7 @@
         "y": 60,
         "wires": [
             [
-                "3b147a7b7e72bed7"
+                "8b156f3f879bad59"
             ]
         ]
     },
@@ -6892,13 +6892,13 @@
         "type": "file",
         "z": "eeba88e77478c844",
         "name": "",
-        "filename": "/data/flow.node_info.json",
+        "filename": "/data/flow.node_info.subflows.json",
         "filenameType": "str",
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 670,
+        "x": 700,
         "y": 1060,
         "wires": [
             []
@@ -6951,26 +6951,6 @@
         "x": 1060,
         "y": 40,
         "wires": []
-    },
-    {
-        "id": "3b147a7b7e72bed7",
-        "type": "file in",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "filename": "/data/flow.node_info.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 410,
-        "y": 60,
-        "wires": [
-            [
-                "c0024d1c868deb0b"
-            ]
-        ]
     },
     {
         "id": "c008dae24103c0c1",
