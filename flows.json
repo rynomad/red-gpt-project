@@ -4288,7 +4288,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
+        "x": 930,
         "y": 160,
         "wires": [
             [
@@ -6088,7 +6088,7 @@
         "y": 300,
         "wires": [
             [
-                "2973aeab39664823"
+                "80e5304f2999ce6b"
             ]
         ]
     },
@@ -6164,7 +6164,7 @@
         "count": "",
         "reduceRight": false,
         "x": 130,
-        "y": 420,
+        "y": 340,
         "wires": [
             [
                 "7cbbf9d31cb04d05"
@@ -6183,7 +6183,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 190,
-        "y": 500,
+        "y": 420,
         "wires": [
             [
                 "c0024d1c868deb0b"
@@ -6199,7 +6199,7 @@
         "action": "str",
         "pretty": true,
         "x": 130,
-        "y": 460,
+        "y": 380,
         "wires": [
             [
                 "4c1404f306ef020a"
@@ -6482,33 +6482,6 @@
         ]
     },
     {
-        "id": "2973aeab39664823",
-        "type": "change",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "node.info",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 170,
-        "y": 340,
-        "wires": [
-            [
-                "c8c78eb17a610917"
-            ]
-        ]
-    },
-    {
         "id": "e95ef67408de2621",
         "type": "switch",
         "z": "eeba88e77478c844",
@@ -6564,7 +6537,7 @@
         "y": 700,
         "wires": [
             [
-                "88e3d673a22d3c22"
+                "c008dae24103c0c1"
             ]
         ],
         "info": "test it hey hey"
@@ -6584,7 +6557,7 @@
         "y": 700,
         "wires": [
             [
-                "88e3d673a22d3c22"
+                "c008dae24103c0c1"
             ]
         ],
         "info": "test it hey hey"
@@ -6746,9 +6719,9 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "parse",
-        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return [msg,null];\n} \n\ntry {\n    payload.content = JSON.parse(msg.payload);\n} catch (e) {\n    if (msg.parseError){\n        msg.payload = payload;\n        return [null, msg];\n    }\n    msg.payload = 'I was unable to parse the JSON, please respond ONLY with the JSON.'\n    msg.parseError = true;\n    return [null, msg]\n}\n\nmsg.payload = payload;\nreturn [msg, null];",
+        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return [msg,null];\n} \n\ntry {\n    for (const str of )\n    payload.content = JSON.parse(msg.payload);\n} catch (e) {\n    if (msg.parseError){\n        msg.payload = payload;\n        return [null, msg];\n    }\n    msg.payload = 'I was unable to parse the JSON, please respond ONLY with the JSON.'\n    msg.parseError = true;\n    return [null, msg]\n}\n\nmsg.payload = payload;\nreturn [msg, null];",
         "outputs": 2,
-        "noerr": 0,
+        "noerr": 2,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -6832,33 +6805,6 @@
         ]
     },
     {
-        "id": "c8c78eb17a610917",
-        "type": "change",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "node",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 380,
-        "wires": [
-            [
-                "80e5304f2999ce6b"
-            ]
-        ]
-    },
-    {
         "id": "7792dd5704da3bef",
         "type": "subflow:237429fb2a5a7712",
         "z": "eeba88e77478c844",
@@ -6910,7 +6856,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 670,
-        "y": 1060,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -6924,7 +6870,7 @@
         "action": "",
         "pretty": true,
         "x": 610,
-        "y": 1020,
+        "y": 980,
         "wires": [
             [
                 "5e15f1532da6cf0c"
@@ -6976,9 +6922,36 @@
         "encoding": "none",
         "allProps": false,
         "x": 190,
-        "y": 540,
+        "y": 460,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "c008dae24103c0c1",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "try 5 times",
+        "rules": [
+            {
+                "t": "set",
+                "p": "n",
+                "pt": "msg",
+                "to": "5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 740,
+        "wires": [
+            [
+                "88e3d673a22d3c22"
+            ]
         ]
     }
 ]
