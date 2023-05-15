@@ -1118,7 +1118,7 @@
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
-        "name": "function 1",
+        "name": "\"History Filter\"",
         "func": "msg.history = [msg.history[env.get('start')],msg.history[msg.history.length - 1]]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1129,13 +1129,14 @@
         "y": 60,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a function node that takes an input message and sets a property called \"history\" to an array containing the element at index \"start\" and the last element of the \"history\" array of the input message. The modified message is then passed to the node's output."
     },
     {
         "id": "40226d5093552176",
         "type": "function",
         "z": "a25be0e127fc9e24",
-        "name": "pop",
+        "name": "\"Pop Function Node\"",
         "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nlet depth = env.get('depth')\n\nwhile (depth){\n    const stash = msg.stash[key].pop()\n    if (env.get('apply')){\n        msg[key] = stash;\n    }\n    // @ts-ignore\n    depth--;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1146,13 +1147,14 @@
         "y": 60,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a function node in Node-RED called \"pop\". It pops items from an array stored in the node's context (msg.stash) and outputs the last popped item on msg[key]. It has parameters for the key and depth of the array. If the apply flag is set, the popped item will be stored on the msg object."
     },
     {
         "id": "ffdcd61d.64da38",
         "type": "function",
         "z": "f9e0ec91.e767e",
-        "name": "minify-json",
+        "name": "\"Minify JSON Function Node\"",
         "func": "const inputList = Array.isArray(msg.history) ? msg.history : [];\n\ninputList.forEach((item) => {\n  item.content = item.content.replace(/```.*\\n([\\s\\S]*?)\\n```/g, (match, codeBlock) => {\n      try {\n          const regex = /(\\n|\\\\n|\\r)\\s*/g; // note the 'g' flag for global replacement\n          return '```json\\n' + codeBlock.replace(regex, ''); + '\\n```';\n      } catch (error) {\n          return match;\n      }\n  });\n});\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1163,7 +1165,8 @@
         "y": 160,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a custom function node that takes in a message object and minifies any JSON content in its `history` property. It first checks if `msg.history` is an array and assigns it to `inputList`. Then, for each item in `inputList`, it looks for content enclosed in triple backticks (code block) with a language identifier of `json` and removes any whitespace characters (including new lines) from it. The updated `msg` object is returned at the end."
     },
     {
         "id": "0e8a88234ef86bb0",
@@ -1185,7 +1188,7 @@
         "id": "7be18892c7b30810",
         "type": "change",
         "z": "237429fb2a5a7712",
-        "name": "",
+        "name": "set-env-msg-property",
         "rules": [
             {
                 "t": "set",
@@ -1206,13 +1209,14 @@
             [
                 "0e8a88234ef86bb0"
             ]
-        ]
+        ],
+        "info": "This `change` node sets the value of the `auto4` property on the incoming message object to the value of the `auto4` environment variable. The modified message is then sent to the node connected to its output wire."
     },
     {
         "id": "587cc92797acd5f3",
         "type": "template",
         "z": "02409038fd9362ee",
-        "name": "last line",
+        "name": "Template Last Line.",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -1225,7 +1229,8 @@
             [
                 "94270be7a7e81ed1"
             ]
-        ]
+        ],
+        "info": "This node receives a message with data in the \"payload\" field. It converts the data into a string using a Handlebars template and adds a new line at the end with a specific message. The final string is sent as the output to the next node in the flow."
     },
     {
         "id": "94270be7a7e81ed1",
@@ -1255,7 +1260,7 @@
         "id": "bc85a1ac4b1b979e",
         "type": "template",
         "z": "02409038fd9362ee",
-        "name": "bundle",
+        "name": "\"Template\"",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -1268,13 +1273,14 @@
             [
                 "5392474c6ec89e72"
             ]
-        ]
+        ],
+        "info": "This is a Template node. It takes in a message and combines it with a pre-defined template using the Handlebars templating language. The resulting string is then outputted to the next node in the flow."
     },
     {
         "id": "02498ebad85fca04",
         "type": "switch",
         "z": "02409038fd9362ee",
-        "name": "bundle?",
+        "name": "Env Switch",
         "property": "bundle",
         "propertyType": "env",
         "rules": [
@@ -1297,7 +1303,8 @@
             [
                 "4c18e4ef1378f85f"
             ]
-        ]
+        ],
+        "info": "This is a switch node that checks if a variable named \"bundle\" exists in the environment of Node-RED. If the variable exists and its value is true, it will output the message to the first output. Otherwise, it will output the message to the second output."
     },
     {
         "id": "5392474c6ec89e72",
@@ -1328,7 +1335,7 @@
         "id": "dd186aa6a265fc5d",
         "type": "function",
         "z": "520a10812173e701",
-        "name": "stash key value ",
+        "name": "\"Stash Key Value\"",
         "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nmsg.stash[key].push(JSON.parse(JSON.stringify(msg[key] || '')))\nif (env.get('clear')) {\n    msg[key] = undefined;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1339,13 +1346,14 @@
         "y": 40,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a custom function node named \"stash key value\". It takes a message object and stores the value of a specified key in a \"stash\" object. If the specified key doesn't exist in the stash, it creates an empty array. It also provides an option to clear the original key's value from the message object."
     },
     {
         "id": "31d7c39f9a6c8c97",
         "type": "function",
         "z": "50df1246bdaf5119",
-        "name": "merge answers",
+        "name": "\"Merge Answers\"",
         "func": "msg.history = [msg.history[0], msg.history[1]]\n\nmsg.history[1].content = `\nhere are ${msg.payload.length} possible solutions:\n${msg.payload.map((t, i) => `\n---${i} START---\n${t}\n---${i} END---\n`).join('\\n')}\n`\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1358,13 +1366,14 @@
             [
                 "b446b41f8155ed4f"
             ]
-        ]
+        ],
+        "info": "This is a function node in Node-RED called \"merge answers\". It takes input from the previous node and merges the first 2 objects in the input message history and the payload to create a new message. The node then formats the payload and sets it as the content of the second object in the message history. Finally, it outputs the modified message to the next node."
     },
     {
         "id": "83096e44fc2c289e",
         "type": "template",
         "z": "50df1246bdaf5119",
-        "name": "review",
+        "name": "Template Node",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -1377,13 +1386,14 @@
             [
                 "2fba30a10931ca0c"
             ]
-        ]
+        ],
+        "info": "This node is a template node that uses handlebars/mustache syntax to create a multi-line message that gives instructions for reviewing options and synthesizing a complete solution. It takes the payload message as input and outputs a string message."
     },
     {
         "id": "189d162c7a1def8e",
         "type": "function",
         "z": "50df1246bdaf5119",
-        "name": "copy",
+        "name": "\"Multi-Copy\"",
         "func": "const num_copies = msg.num_copies || env.get(\"num_copies\") || 1;\nconst copies = [];\nfor(let i = 0; i < num_copies; i++){\n    copies.push(msg.payload);\n}\n\nmsg.payload = copies;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
@@ -1396,13 +1406,14 @@
             [
                 "95fe1a4f7ccf06fb"
             ]
-        ]
+        ],
+        "info": "This function node creates multiple copies of the input message payload based on the value of `num_copies` parameter in the message or an environment variable. The copied payloads are sent out as an array in the output message payload."
     },
     {
         "id": "95fe1a4f7ccf06fb",
         "type": "split",
         "z": "50df1246bdaf5119",
-        "name": "split copies",
+        "name": "Split Node.",
         "splt": "",
         "spltType": "msg",
         "arraySplt": 1,
@@ -1415,13 +1426,14 @@
             [
                 "4604e40b24b33cb3"
             ]
-        ]
+        ],
+        "info": "This is a node that splits a message into multiple messages. The splitting logic can be either a fixed number of messages or determined by the length of an array in the incoming message. The resulting messages are sent to the connected wires for further processing."
     },
     {
         "id": "0e3ce1809b54fad7",
         "type": "join",
         "z": "50df1246bdaf5119",
-        "name": "join copies",
+        "name": "Array Join Node",
         "mode": "auto",
         "build": "array",
         "property": "payload",
@@ -1443,7 +1455,8 @@
             [
                 "31d7c39f9a6c8c97"
             ]
-        ]
+        ],
+        "info": "This is a node-red join node that combines multiple messages into an array. The messages are joined based on their topic and the resulting array is outputted. The node has options for setting a timeout and reducing the array, but these are not utilized in this specific instance."
     },
     {
         "id": "ef3a21ae34f6475f",
@@ -1461,7 +1474,7 @@
         "id": "1c0f8158f5a82cc5",
         "type": "catch",
         "z": "50df1246bdaf5119",
-        "name": "schema failure",
+        "name": "\"catch schema failure\"",
         "scope": [
             "86c1b1c593519bdf"
         ],
@@ -1472,13 +1485,14 @@
             [
                 "b34ce9b36761fd82"
             ]
-        ]
+        ],
+        "info": "The catch node with id \"1c0f8158f5a82cc5\" catches any errors or exceptions thrown in the flow when it is triggered by events in the scope of node \"86c1b1c593519bdf\". When such an error or exception is caught, the node sends the message to the node with id \"b34ce9b36761fd82\". The name of the node is \"schema failure\". The \"uncaught\" setting is specified as \"false\"."
     },
     {
         "id": "ec40afea20b4c218",
         "type": "catch",
         "z": "50df1246bdaf5119",
-        "name": "empty/multiple",
+        "name": "\"Catch-Empty-Multi\"",
         "scope": [
             "eef683f2fb7c7a34"
         ],
@@ -1489,13 +1503,14 @@
             [
                 "b34ce9b36761fd82"
             ]
-        ]
+        ],
+        "info": "This is a Catch node in Node-RED. It is used to catch any errors that may occur in the flow and prevent them from stopping the entire flow. The node has the ability to catch empty messages or multiple messages simultaneously. The output of this node will be sent to the connected wires in case of any errors."
     },
     {
         "id": "b34ce9b36761fd82",
         "type": "template",
         "z": "50df1246bdaf5119",
-        "name": "fix error",
+        "name": "Handlebars Template node.",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -1508,7 +1523,8 @@
             [
                 "8e7320419df91165"
             ]
-        ]
+        ],
+        "info": "This is a Template node. It receives a message, applies a Handlebars template to the 'payload' field of the message, and outputs the result string to the next node. In this specific example, the node is being used to create an error message by injecting the 'error.message' field into the Handlebars template."
     },
     {
         "id": "8e7320419df91165",
@@ -1534,7 +1550,7 @@
         "id": "165d1423d6343a0a",
         "type": "change",
         "z": "50df1246bdaf5119",
-        "name": "temp 0.3",
+        "name": "\"Set Temp Node\"",
         "rules": [
             {
                 "t": "set",
@@ -1555,7 +1571,8 @@
             [
                 "0b7031b9cee904dc"
             ]
-        ]
+        ],
+        "info": "The \"change\" node sets a property \"temperature\" to a value of 0.3 in the input message. The modified message is then passed to its output."
     },
     {
         "id": "0b7031b9cee904dc",
@@ -1627,7 +1644,7 @@
         "id": "eef683f2fb7c7a34",
         "type": "function",
         "z": "50df1246bdaf5119",
-        "name": "get result",
+        "name": "Payload Filter Node.",
         "func": "console.log('parsed code:', msg.payload)\nmsg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nif (msg.payload.length > 1){\n  throw new Error('multiple code-blocks detected in your response, please respond with only the complete solution')\n}\n\nif (msg.payload.length < 1){\n  throw new Error(`no code blocks detected, please obey the formatting instructions:\\n${msg.format}`)\n}\n\nmsg.payload = msg.payload[0].content;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1640,13 +1657,14 @@
             [
                 "393f19cb21285e5c"
             ]
-        ]
+        ],
+        "info": "This function node filters the payload for JSON and JavaScript types and preprocesses the JSON string to escape unescaped double quotes and backslashes. Then it checks if there is only one code block in the payload and throws an error if there is more than one or none detected. Finally, it sets the payload to the content of the code block and passes it on."
     },
     {
         "id": "393f19cb21285e5c",
         "type": "switch",
         "z": "50df1246bdaf5119",
-        "name": "",
+        "name": "Non-empty Switch Node.",
         "property": "schema",
         "propertyType": "msg",
         "rules": [
@@ -1669,13 +1687,14 @@
             [
                 "1eaa0d485c0ce940"
             ]
-        ]
+        ],
+        "info": "This is a switch node in node-red. It checks the value of the `schema` property of the incoming message. If the property is not empty, it sends the message to the first output. Otherwise, it sends it to the second output."
     },
     {
         "id": "86c1b1c593519bdf",
         "type": "json",
         "z": "50df1246bdaf5119",
-        "name": "parse",
+        "name": "\"JSON Parse Property Node\"",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -1685,7 +1704,8 @@
             [
                 "1eaa0d485c0ce940"
             ]
-        ]
+        ],
+        "info": "This node parses incoming messages in JSON format and extracts a specified property from the message payload. The extracted property is then passed on to the next node in the flow."
     },
     {
         "id": "c24941818a42ca98",
@@ -1730,7 +1750,7 @@
         "id": "1eaa0d485c0ce940",
         "type": "function",
         "z": "50df1246bdaf5119",
-        "name": "test",
+        "name": "Test Function Node.",
         "func": "if (!msg.test){\n    return msg;\n}\n\nmsg.test(msg.payload)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1741,7 +1761,8 @@
         "y": 520,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a function node that checks if the `msg` object has a property called \"test\". If it does not, it simply returns the `msg`. If it does, it calls the function stored in the \"test\" property with `msg.payload` as its argument. The modified `msg` is then passed on to the next node."
     },
     {
         "id": "77b5dc952d57e266",
@@ -1806,7 +1827,7 @@
         "id": "bc9b2bca5d9d9220",
         "type": "function",
         "z": "b7d91a580a2c7c19",
-        "name": "Extract Code Blocks",
+        "name": "code-block-extractor",
         "func": "function extractCodeBlocks(text, blockTypes) {\n  const results = [];\n  const allBlocks = !blockTypes || blockTypes.length === 0;\n\n  let codeBlockRegex;\n  if (allBlocks) {\n    codeBlockRegex = /```(\\w*)\\n([\\s\\S]*?)\\n```/g;\n  } else {\n    const regexStr = blockTypes.map((type) => type).join('|');\n    codeBlockRegex = new RegExp(`\\`\\`\\`(${regexStr})\\n([\\\\s\\\\S]*?)\\\\n\\`\\`\\``, 'g');\n    // const jsonBlockRegex = new RegExp(`\\`\\`\\`((json))\\n([\\\\s\\\\S]*?)\\`\\`\\``, 'g');\n    // console.log('manual match?', jsonBlockRegex.exec(text))\n  }\n\n  let match;\n  while ((match = codeBlockRegex.exec(text)) !== null) {\n    // console.log('got match', match);\n    const type = match[1];\n    const content = match[2];\n    results.push({ type, content });\n  }\n\n  return results;\n}\n\nconst text = msg.payload;\n\nconst blockTypes = (env.get('blockTypes') || '').split(',').filter(t => t);\n// console.log('extract', text, blockTypes)\nmsg.payload = extractCodeBlocks(text, blockTypes);\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
@@ -1817,7 +1838,8 @@
         "y": 80,
         "wires": [
             []
-        ]
+        ],
+        "info": "This function node extracts code blocks from a string of text using a regular expression, where the code blocks are denoted by the \"```\" markdown syntax. If \"blockTypes\" are specified, it only extracts the particular types listed. The extracted code blocks are returned as an array of objects, where each object has a \"type\" and \"content\" property."
     },
     {
         "id": "9d93e67707347e32",
@@ -1855,7 +1877,7 @@
         "id": "869689982e74b4dc",
         "type": "function",
         "z": "f8d5a5a4f2b87c52",
-        "name": "get result",
+        "name": "\"JsonToNodeRedFlow\"",
         "func": "msg.payload = msg.payload\n                .filter(({type}) => ['json','javascript'].indexOf(type) >= 0)\n\nfunction preprocessJson(jsonString) {\n  // Regex to match unescaped double quotes and backslashes\n  const regex = /(?:\\\\[\\\\\"]|[^\\\\\"])*\"|\\\\./g;\n\n  // Preprocess the JSON string\n  const preprocessedJsonString = jsonString.replace(regex, (match) => {\n    // If the match is a double quote or a backslash, escape it\n    if (match === '\"' || match === '\\\\') {\n      return '\\\\' + match;\n    }\n    return match;\n  });\n\n  return preprocessedJsonString;\n}\n\nconst potentials = msg.payload\nmsg.payload = null;\nfor (const {content} of potentials){\n  try {\n    const obj = JSON.parse(content)\n    if (Array.isArray(obj) && obj.every(v => v.id && v.type)){\n      // is likely a node-red flow\n      if (msg.payload) {\n        throw new Error('multiple potential node-red flows detected, we need exactly one.')\n      } else {\n        msg.payload = JSON.stringify(obj)\n      }\n    }\n  } catch (e) {\n    //ignore\n  }\n}\n\nif (!msg.payload){\n  throw new Error('no valid node-red flows detected, remember: must be inside a github flavored markdown block and follow the JSON schema')\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -1868,13 +1890,14 @@
             [
                 "b2728fc75e03f928"
             ]
-        ]
+        ],
+        "info": "This is a function node that receives a message and selects JSON and Javascript types from it. The node looks for valid JSON structures to identify a potential node-red flow and returns the flow as a string. The node uses a regex to preprocess the given JSON string, and throws an error if there are no valid node-red flows detected or more than one potential flow is detected. Finally, it outputs the message including the identified flow."
     },
     {
         "id": "25e9760c313f1739",
         "type": "json",
         "z": "f8d5a5a4f2b87c52",
-        "name": "parse",
+        "name": "\"JSON Parse\"",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -1884,13 +1907,14 @@
             [
                 "6f3eb41d26f826f2"
             ]
-        ]
+        ],
+        "info": "This is a \"json\" node that parses a JSON formatted message payload, allowing downstream nodes to manipulate the parsed object instead of the raw JSON string. The parsed output object is passed on to the next node in the flow."
     },
     {
         "id": "2c5ea07fe592c94f",
         "type": "template",
         "z": "f8d5a5a4f2b87c52",
-        "name": "fix error",
+        "name": "Handlebars template node.",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -1903,13 +1927,14 @@
             [
                 "90655d2d5bb817cc"
             ]
-        ]
+        ],
+        "info": "This is a template node that takes a message in the `payload` field, applies a Handlebars/Mustache template to it, and outputs a string formatted using the supplied template. It also includes a custom error message which is used when the input message is rejected. The resulting formatted message is sent to the next node in the flow."
     },
     {
         "id": "06989b788e021dca",
         "type": "catch",
         "z": "f8d5a5a4f2b87c52",
-        "name": "empty/multiple",
+        "name": "Catch Node",
         "scope": [
             "869689982e74b4dc"
         ],
@@ -1920,13 +1945,14 @@
             [
                 "2c5ea07fe592c94f"
             ]
-        ]
+        ],
+        "info": "This is a \"catch\" node in Node-RED, used for detecting and handling errors that occur during the execution of the flow. It has been configured to catch empty messages and multiple messages, and when an error of this type occurs, it will emit the empty or multiple message to the next node in the flow through its output wires."
     },
     {
         "id": "719bb2e65b5f411f",
         "type": "catch",
         "z": "f8d5a5a4f2b87c52",
-        "name": "schema failure",
+        "name": "Schema Catch node.",
         "scope": [
             "25e9760c313f1739"
         ],
@@ -1937,7 +1963,8 @@
             [
                 "2c5ea07fe592c94f"
             ]
-        ]
+        ],
+        "info": "This is a Catch node in Node-RED that catches schema failures and prevents them from breaking the flow. When a schema failure is caught, it sends a message out through the wire connected to the output port of this node."
     },
     {
         "id": "b2728fc75e03f928",
@@ -1969,7 +1996,7 @@
         "id": "384314168ce8ee86",
         "type": "change",
         "z": "f8d5a5a4f2b87c52",
-        "name": "temp 0.3",
+        "name": "Fixed-Temp.",
         "rules": [
             {
                 "t": "set",
@@ -1990,13 +2017,14 @@
             [
                 "64d95ba33b6a42ce"
             ]
-        ]
+        ],
+        "info": "This is a Change node that sets the temperature property of the incoming message to a fixed value of 0.3. The modified message is then sent to its output wire."
     },
     {
         "id": "6f3eb41d26f826f2",
         "type": "change",
         "z": "f8d5a5a4f2b87c52",
-        "name": "clear schema",
+        "name": "\"Clear Schema\"",
         "rules": [
             {
                 "t": "delete",
@@ -2018,7 +2046,8 @@
         "y": 500,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a change node that deletes the \"schema\" and \"schemaString\" properties from the incoming message object."
     },
     {
         "id": "912fae5cd133c953",
@@ -2070,7 +2099,7 @@
         "id": "12256771ca410bc7",
         "type": "template",
         "z": "1254546b0e9fb57c",
-        "name": "format meta instructions",
+        "name": "Handlebars Template Node",
         "field": "format",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2081,13 +2110,14 @@
         "y": 120,
         "wires": [
             []
-        ]
+        ],
+        "info": "This node is a Template node that takes in a message and uses Handlebars syntax to format the message and output it as a string. It also includes schemaString as an optional input that will be used to further format the message with reference to a JSON schema. The resulting string is output as a message to the next node in the flow."
     },
     {
         "id": "d973d3ca1dc6855f",
         "type": "template",
         "z": "f6dd154f310aa615",
-        "name": "expert engineer",
+        "name": "\"Expert Engineer Template\"",
         "field": "persona",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2098,7 +2128,8 @@
         "y": 40,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a Template node, which takes in a message and uses a handlebars syntax template to create a new message output with the specified data structure. The message will contain information about an expert software engineer's persona and their proficiency in a specific programming language."
     },
     {
         "id": "287a8289c0d9a5d0",
@@ -2115,7 +2146,7 @@
         "id": "63dba49296c3a9e4",
         "type": "template",
         "z": "9f31d45ecb1d3482",
-        "name": "set validation schema",
+        "name": "JSON schema validator.",
         "field": "schema",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2128,13 +2159,14 @@
             [
                 "cf072eee9e78f126"
             ]
-        ]
+        ],
+        "info": "This is a node that sets a JSON schema for validation. When a message is received, it will validate the message against the JSON schema and if it passes, it will output the original message."
     },
     {
         "id": "cf072eee9e78f126",
         "type": "change",
         "z": "9f31d45ecb1d3482",
-        "name": "",
+        "name": "JSON Schema Stringifier.",
         "rules": [
             {
                 "t": "set",
@@ -2153,13 +2185,14 @@
         "y": 100,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a Change node that sets a message property called \"schemaString\" to the JSON string version of another property called \"schema\"."
     },
     {
         "id": "31d816170cfa7a8f",
         "type": "template",
         "z": "13d4ac7b7c9898ae",
-        "name": "codeblock",
+        "name": "\"Codeblock Template\"",
         "field": "format",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2170,13 +2203,14 @@
         "y": 100,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a Template node that uses the handlebars syntax to format messages as Github Flavored Markdown code blocks, with an appropriate language label. The formatted message is sent as a string output."
     },
     {
         "id": "bb67c6f583a80cc4",
         "type": "template",
         "z": "a5f18db0d45889f2",
-        "name": "flow",
+        "name": "\"Flow Template\"",
         "field": "format",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2187,7 +2221,8 @@
         "y": 80,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a template node that outputs a valid node-red array, suitable for import, with an example included. The output is a Handlebars template that can be parsed and used as needed."
     },
     {
         "id": "7da9bb553d44f56a",
@@ -2206,7 +2241,7 @@
         "id": "c306926b9536fe15",
         "type": "template",
         "z": "f16c08b0c74d892d",
-        "name": "set task to payload",
+        "name": "Template Node.",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2217,7 +2252,8 @@
         "y": 40,
         "wires": [
             []
-        ]
+        ],
+        "info": "This node is a Template node type in Node-RED. It takes in a message and sets the message payload to a pre-defined template using handlebars/mustache syntax. The template includes values for persona, requirements, and format. The resulting message with the templated payload is then sent out to the required output."
     },
     {
         "id": "f89c539d2436d4b8",
@@ -2284,7 +2320,7 @@
         "id": "15470b359beaf8ad",
         "type": "change",
         "z": "b53b3b7e24a3e4e7",
-        "name": "set language",
+        "name": "Change Language Node.",
         "rules": [
             {
                 "t": "set",
@@ -2305,7 +2341,8 @@
             [
                 "69c4727b24bef714"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node in Node-RED that sets the value of a message property \"language\" to the string \"node-red and javascript\"."
     },
     {
         "id": "006a7cb1b7f3bec3",
@@ -2321,7 +2358,7 @@
         "id": "69979c46ebfcda56",
         "type": "template",
         "z": "b53b3b7e24a3e4e7",
-        "name": "set review",
+        "name": "\"Template\"",
         "field": "review",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2334,13 +2371,14 @@
             [
                 "8b97ebde3ffd9ecc"
             ]
-        ]
+        ],
+        "info": "This is a Template node that generates a text message using the Handlebars syntax, and sets the output message payload with this text."
     },
     {
         "id": "76bd320aab4ecae2",
         "type": "template",
         "z": "3624ea24a7bdeaa4",
-        "name": "node-red review",
+        "name": "Template node.",
         "field": "review",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2351,13 +2389,14 @@
         "y": 40,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a Template node that uses Handlebars syntax to generate a string output for the `msg` object. The generated string asks a set of questions related to node-red review, which can be customized by editing the handlebars template."
     },
     {
         "id": "d0475e52f2f9d8e9",
         "type": "function",
         "z": "8843d7f92416211de9ebb963ff4ce28125932878",
-        "name": "transform nodes",
+        "name": "Subflow Grouping Node.",
         "func": "var subflows = msg.payload.reduce(function(acc, node) {\n    if (node.type === \"subflow\") {\n        acc[node.id] = { id: node.id, nodes: [node] };\n    } else if (node.z && acc[node.z]) {\n        acc[node.z].nodes.push(node);\n    }\n    return acc;\n}, {});\n\nvar result = Object.values(subflows).map(\n    function(subflow) {\n        return {id: subflow.id,type: \"subflow\",nodes: JSON.parse(JSON.stringify(subflow.nodes))};\n    }\n);\nmsg.payload = JSON.stringify(result);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -2368,7 +2407,8 @@
         "y": 140,
         "wires": [
             []
-        ]
+        ],
+        "info": "This function node transforms nodes by grouping them into subflows. Nodes with a property \"z\" that matches the id of a subflow node in msg.payload are assigned to that subflow. The output is a JSON string representation of the subflow hierarchy and its nodes."
     },
     {
         "id": "cf791c6d0c28776a",
@@ -2385,7 +2425,7 @@
         "id": "417ff54d16e93866",
         "type": "template",
         "z": "bf9fecd68e29a50a",
-        "name": "set payload",
+        "name": "Handlebars Template Node",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2398,7 +2438,8 @@
             [
                 "d127214359ceeb96"
             ]
-        ]
+        ],
+        "info": "This is a Template node that sets the value of the \"payload\" property in the incoming message using a Handlebars template. The node outputs a string that is the result of rendering the template with the incoming message as context. The output is sent to the next node in the flow via the wired connection."
     },
     {
         "id": "64cb2cf8b2438912",
@@ -2437,7 +2478,7 @@
         "id": "4d88bceb18e53451",
         "type": "change",
         "z": "bf9fecd68e29a50a",
-        "name": "",
+        "name": "Set Analysis Node.",
         "rules": [
             {
                 "t": "set",
@@ -2458,7 +2499,8 @@
             [
                 "c7cbd7f5c3cbdaa8"
             ]
-        ]
+        ],
+        "info": "This is a change node that sets the value of the \"analysis\" property in the message to the value of the incoming \"payload\" property, and then sends the modified message to its output."
     },
     {
         "id": "cfc30e5be9fe3f3e",
@@ -2515,7 +2557,7 @@
         "id": "54aae0f36c581409",
         "type": "template",
         "z": "48101654b91252fc",
-        "name": "",
+        "name": "handlebars-template-node",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2528,7 +2570,8 @@
             [
                 "3e0c33f17172fc85"
             ]
-        ]
+        ],
+        "info": "This template node is designed to generate a string of text using handlebars syntax, which will be placed in the `payload` property of the `msg` object. The generated text will prompt the user to analyze and rate a presented input on a scale of 0 to 10. The `msg` object will then be sent to the next node in the flow through the `wires` property."
     },
     {
         "id": "3e0c33f17172fc85",
@@ -2581,7 +2624,7 @@
         "id": "f6821c700cf97b2f",
         "type": "change",
         "z": "48101654b91252fc",
-        "name": "",
+        "name": "\"Set analysis to payload\"",
         "rules": [
             {
                 "t": "set",
@@ -2602,7 +2645,8 @@
             [
                 "9bd6b5f18d3a0ecc"
             ]
-        ]
+        ],
+        "info": "This is a change node that sets the value of the \"analysis\" field in the message to the value of the \"payload\" field in the message. The updated message is then passed on to the next node in the flow."
     },
     {
         "id": "92fd8467775c1835",
@@ -2621,7 +2665,7 @@
         "id": "d1331f209c505041",
         "type": "split",
         "z": "bfe4dee01d61e0c2",
-        "name": "",
+        "name": "Split node.",
         "splt": "\\n",
         "spltType": "str",
         "arraySplt": 1,
@@ -2634,13 +2678,14 @@
             [
                 "92fd8467775c1835"
             ]
-        ]
+        ],
+        "info": "This is a \"split\" node in Node-RED that takes an input string and splits it into multiple messages using a specified delimiter. The delimiter can be a new line or a fixed length value and the separated messages are sent out through the output wires."
     },
     {
         "id": "73176ac6586b6585",
         "type": "join",
         "z": "bfe4dee01d61e0c2",
-        "name": "",
+        "name": "Auto Join Node.",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -2656,13 +2701,14 @@
         "y": 160,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a \"join\" node in Node-RED. It can combine messages based on their topics into a single message. The \"build\" property specifies that the joined message will be an object, and the \"payload\" property specifies that the payload of each message will contribute to the joined message. The \"joiner\" property specifies that a newline character will be used to separate the payloads in the joined message. The \"mode\" property is set to \"auto\", which means the node will automatically configure itself based on the messages it receives."
     },
     {
         "id": "de2f72edd32ba706",
         "type": "template",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "Template Node.",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2675,7 +2721,8 @@
             [
                 "eefbfc8dd8aecccf"
             ]
-        ]
+        ],
+        "info": "The template node is used to format and inject variables into a string using a handlebars/mustache syntax. This specific node produces a text output by combining a context, a payload, and an analysis together in a template string."
     },
     {
         "id": "eefbfc8dd8aecccf",
@@ -2695,7 +2742,7 @@
         "id": "99961076a36af9ed",
         "type": "join",
         "z": "657c8f0e9df6242e",
-        "name": "recombine",
+        "name": "\"Join\"",
         "mode": "custom",
         "build": "string",
         "property": "payload",
@@ -2718,13 +2765,14 @@
                 "04a9a0c8084ec082",
                 "036e8e789347f95f"
             ]
-        ]
+        ],
+        "info": "This is a join node in Node-RED that waits for multiple input messages, combines their payloads into a single message, and sends this combined message to its output. The mode can be customized to concatenate messages into a string or array. The key can be specified if the join mode is set to key/value. It can also be set to accumulate or reduce the messages. Finally, it is possible to set a timeout value after which the node will automatically send the combined message, even if it is not complete."
     },
     {
         "id": "627a5403fe4f266f",
         "type": "batch",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "Batch-Count node.",
         "mode": "count",
         "count": "2",
         "overlap": "1",
@@ -2737,13 +2785,14 @@
             [
                 "a401ef68997c6b2a"
             ]
-        ]
+        ],
+        "info": "This is a batch node that collects messages and releases them in batches after a set count is reached. The node has a counting mode where it releases a batch after a specific number of messages has been reached. It also has a time mode where it releases a batch after a set interval of time has passed. The node can also be configured to overlap batches so that one or more messages from a subsequent batch are included in the current batch. The node will not release empty batches unless explicitly allowed. The node can be connected to one or more output wires where it will send the batches of messages."
     },
     {
         "id": "081d39183e2323d2",
         "type": "split",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "\"Splitter\"",
         "splt": "2000",
         "spltType": "len",
         "arraySplt": 1,
@@ -2756,13 +2805,14 @@
             [
                 "6f07e77c85840df0"
             ]
-        ]
+        ],
+        "info": "This is a node that splits incoming messages into smaller messages based on a specified length (2,000 in this case) and sends them to a single output. The split can be based on the length of the message or the number of items within an array in the message. The resulting smaller messages have an optional suffix added to their topic or payload as specified by the user."
     },
     {
         "id": "a401ef68997c6b2a",
         "type": "join",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "\"Auto-Join\"",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -2784,13 +2834,14 @@
             [
                 "0c3087c33362c56c"
             ]
-        ]
+        ],
+        "info": "This is a \"join\" node that combines messages with the same topic into a single message. The mode is set to \"auto\", which means the node will keep accumulating messages until it is triggered to send an output message. The build property is set to \"object\", meaning it will create an output object with keys equal to the topic and values equal to the combined payloads. The output message will be sent to the single wire connected to it."
     },
     {
         "id": "1bf095ea109bae31",
         "type": "change",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "Set Boolean node.",
         "rules": [
             {
                 "t": "set",
@@ -2812,13 +2863,14 @@
                 "627a5403fe4f266f",
                 "1b0a1216ae61c7a3"
             ]
-        ]
+        ],
+        "info": "This is a change node that sets a boolean property \"willComplete\" in the incoming message \"msg\" to true. The modified message is then sent to two output nodes."
     },
     {
         "id": "e00be323f0003974",
         "type": "switch",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "\"Sum Switch\"",
         "property": "parts.count",
         "propertyType": "msg",
         "rules": [
@@ -2843,13 +2895,14 @@
             [
                 "627a5403fe4f266f"
             ]
-        ]
+        ],
+        "info": "This is a switch node that inspects a property called \"parts.count\" on an input message. If the value of the property is equal to the sum of the property \"parts.index\" and 1 (calculated using JSONata), the node will output the message to its first output. If the rule is not true, it will output the message to the second output."
     },
     {
         "id": "0c3087c33362c56c",
         "type": "change",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "\"Complete\"",
         "rules": [
             {
                 "t": "set",
@@ -2870,13 +2923,14 @@
             [
                 "8d02872f841e29bf"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node that takes an input message and sets the \"complete\" property of the message payload to the string \"willComplete\". The modified message is then passed to the node's output."
     },
     {
         "id": "036e8e789347f95f",
         "type": "switch",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "\"Length Switch Node\"",
         "property": "payload.length",
         "propertyType": "msg",
         "rules": [
@@ -2902,13 +2956,14 @@
                 "1eb0bc16cb04fae2",
                 "92ac0da2b13b0b14"
             ]
-        ]
+        ],
+        "info": "This is a switch node that examines the length of the payload property of incoming messages. If the payload length is less than or equal to 2000, it will output the message to the first output. Otherwise, the message will be sent to the second output."
     },
     {
         "id": "e94dc57b47a49387",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "done",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2919,13 +2974,14 @@
         "statusType": "auto",
         "x": 490,
         "y": 460,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node that displays the payload received from the connected node on the debug sidebar but will not show anything on the console. It does not modify the payload in any way and simply outputs it to aid in debugging flows."
     },
     {
         "id": "4efd493223b29ffe",
         "type": "catch",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "Error Catch Node.",
         "scope": null,
         "uncaught": false,
         "x": 260,
@@ -2934,13 +2990,14 @@
             [
                 "4962c2ab1cf86f48"
             ]
-        ]
+        ],
+        "info": "This is a \"catch\" node in Node-RED\" which is used to catch errors that occur within the flow. When an error is caught, it will output a message on its defined output wire."
     },
     {
         "id": "4962c2ab1cf86f48",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "summarizer error",
+        "name": "Debug-Print Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2951,13 +3008,14 @@
         "statusType": "auto",
         "x": 450,
         "y": 560,
-        "wires": []
+        "wires": [],
+        "info": "This is a Debug node that can be used to print information to the debug console in Node-RED. It is named \"summarizer error\" and is currently active. When an input is received by the node, it will output the message to the console, but not to the Node-RED sidebar or status. The node has no outputs."
     },
     {
         "id": "1b0a1216ae61c7a3",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "complete msg",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2968,7 +3026,8 @@
         "statusType": "auto",
         "x": 1040,
         "y": 160,
-        "wires": []
+        "wires": [],
+        "info": "This is a Debug node in Node-RED. It will output the entire message object to the debug console, including the message ID. It is useful for debugging a flow and analyzing the input and output of a node."
     },
     {
         "id": "6f07e77c85840df0",
@@ -2987,7 +3046,7 @@
         "id": "8d02872f841e29bf",
         "type": "change",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "setWillComplete",
         "rules": [
             {
                 "t": "set",
@@ -3008,13 +3067,14 @@
             [
                 "6f07e77c85840df0"
             ]
-        ]
+        ],
+        "info": "This node is a \"change\" node that sets a property called \"willComplete\" on the incoming message to a boolean value of \"false\"."
     },
     {
         "id": "04a9a0c8084ec082",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "combined",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3025,13 +3085,14 @@
         "statusType": "auto",
         "x": 500,
         "y": 400,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED. It will display the received messages on the debug sidebar, but will not send them to the next node in the flow."
     },
     {
         "id": "1ccb9174383664e1",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "chunk",
+        "name": "Debug.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3042,13 +3103,14 @@
         "statusType": "auto",
         "x": 490,
         "y": 360,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node that will output the message payload to the console log. The behavior of the node can be toggled on and off via the \"active\" setting. The node can also output messages to the debug sidebar and/or status field if configured to do so."
     },
     {
         "id": "92ac0da2b13b0b14",
         "type": "debug",
         "z": "657c8f0e9df6242e",
-        "name": "cycle",
+        "name": "debug",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3059,13 +3121,14 @@
         "statusType": "auto",
         "x": 370,
         "y": 520,
-        "wires": []
+        "wires": [],
+        "info": "This is a Debug node. It displays messages on the debug sidebar of the Node-RED editor. When the message passes through this node, it will be displayed in the debug sidebar, and it will not be passed to other nodes."
     },
     {
         "id": "684254331f69bb61",
         "type": "json",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "JSON to String node.",
         "property": "payload",
         "action": "str",
         "pretty": false,
@@ -3075,13 +3138,14 @@
             [
                 "f8bdadc87267634b"
             ]
-        ]
+        ],
+        "info": "This node takes a message payload and converts it into a string representation of a JSON object."
     },
     {
         "id": "887bb48be4e86542",
         "type": "change",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "Set-Complete Node.",
         "rules": [
             {
                 "t": "set",
@@ -3102,13 +3166,14 @@
             [
                 "036e8e789347f95f"
             ]
-        ]
+        ],
+        "info": "This is a `change` node that modifies an incoming message by setting the value of `complete` property to `false`. The modified message is then sent to the node's output wires."
     },
     {
         "id": "40663c267e076c78",
         "type": "change",
         "z": "657c8f0e9df6242e",
-        "name": "",
+        "name": "\"False Properties\"",
         "rules": [
             {
                 "t": "set",
@@ -3136,13 +3201,14 @@
             [
                 "e00be323f0003974"
             ]
-        ]
+        ],
+        "info": "This node is a Change node that sets two properties in the incoming message to false - \"willComplete\" and \"complete\". The resulting message is then outputted to the connected wire."
     },
     {
         "id": "f8bdadc87267634b",
         "type": "function",
         "z": "657c8f0e9df6242e",
-        "name": "function 3",
+        "name": "\"Substring Logger\"",
         "func": "msg.payload = msg.payload.substring(0, msg.payload.length / 5)\nnode.log(\"msg.payload.length \"+ msg.payload.length  );\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -3155,7 +3221,8 @@
             [
                 "081d39183e2323d2"
             ]
-        ]
+        ],
+        "info": "This is a Function node that takes the input message payload and returns a new message with the same payload, but only the first 20% of the original payload as a string. It also logs the length of the modified payload."
     },
     {
         "id": "b8a97edc759eb948",
@@ -3174,7 +3241,7 @@
         "id": "36b8184a08d13132",
         "type": "function",
         "z": "d66a7c662b619014",
-        "name": "assemble payloads",
+        "name": "assemble-payloads",
         "func": "msg.payload = msg.full.data.choices.map(({message},i) => \n`---OPTION ${i} START---\\n${message.content}\\n---OPTION ${i} END---\\n`).join('')\n\nmsg.payload = `Here are ${msg.full.data.choices.length} options:\\n${msg.payload}`\n\nmsg.history[msg.history.length - 1].content = msg.payload;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -3187,13 +3254,14 @@
             [
                 "56543d4e523ebe7f"
             ]
-        ]
+        ],
+        "info": "This is a function node that takes an input message containing an array of choices with messages and assembles them into a string. It then outputs the message with a new \"payload\" property that contains the combined string of all the choices, along with some additional information. Finally, the function updates the last entry in the message history with this new payload value."
     },
     {
         "id": "56543d4e523ebe7f",
         "type": "template",
         "z": "d66a7c662b619014",
-        "name": "",
+        "name": "Template node.",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -3206,7 +3274,8 @@
             [
                 "e5607ee4eaaa50d5"
             ]
-        ]
+        ],
+        "info": "The Template node takes a Mustache/Handlebars template and uses it to generate a new message based on the input message and flow context. It then passes the resulting message to the next node in the flow. In this specific example, it generates a new message containing the text \"Please compare and evaluate the options, and synthesize them into a single best answer\"."
     },
     {
         "id": "fec09085fa1a30ec",
@@ -3225,7 +3294,7 @@
         "id": "8e5d03e6e7f3bb64",
         "type": "change",
         "z": "d66a7c662b619014",
-        "name": "",
+        "name": "\"Env2Msg\"",
         "rules": [
             {
                 "t": "set",
@@ -3246,13 +3315,14 @@
             [
                 "b8a97edc759eb948"
             ]
-        ]
+        ],
+        "info": "This is a Change node in Node-RED that sets the value of the message property \"n\" to the value of the environment variable \"n\". The modified message is then sent to the output wire."
     },
     {
         "id": "e5607ee4eaaa50d5",
         "type": "change",
         "z": "d66a7c662b619014",
-        "name": "",
+        "name": "\"Delete-Key\"",
         "rules": [
             {
                 "t": "delete",
@@ -3271,7 +3341,8 @@
             [
                 "fec09085fa1a30ec"
             ]
-        ]
+        ],
+        "info": "This change node removes the key/value pair with the key 'n' from the message payload."
     },
     {
         "id": "a57074888a023788",
@@ -3320,7 +3391,7 @@
         "id": "bccea17a75c2795e",
         "type": "function",
         "z": "788598196e86646c",
-        "name": "set system message into history",
+        "name": "\"System Message to History\"",
         "func": "msg.history = msg.history || []\nif (!msg.system){\n    return msg;\n}\n\nif (msg.history[0] && msg.history[0].role === 'system'){\n    msg.history = msg.history.slice(1)\n}\n\n\nmsg.history = [{\n    role: 'system',\n    content: msg.system\n}].concat(msg.history);\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -3331,13 +3402,14 @@
         "y": 120,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a function node that sets a system message into the message history. It checks if the input message has a \"system\" value and if it does, it adds it to the message history. It also keeps a history of the last messages that were added with a \"system\" role, and removes the oldest one if there are more than one. The resulting message is passed forward with the updated message history."
     },
     {
         "id": "8b156f3f879bad59",
         "type": "file in",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "File In node.",
         "filename": "/data/projects/red-gpt-project/flows.json",
         "filenameType": "str",
         "format": "utf8",
@@ -3351,13 +3423,14 @@
             [
                 "cf9ef8b14dd35b82"
             ]
-        ]
+        ],
+        "info": "This is a file input node that reads the contents of a file in utf8 format and sends the data to the specified output wire. The file path and name are defined in the node's configuration."
     },
     {
         "id": "cf9ef8b14dd35b82",
         "type": "json",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "JSON parser.",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -3367,13 +3440,14 @@
             [
                 "ad78713cb0a6df80"
             ]
-        ]
+        ],
+        "info": "This is a JSON node in Node-RED which can be used to parse JSON strings. It takes in a payload and outputs it to a different node for further processing."
     },
     {
         "id": "ad78713cb0a6df80",
         "type": "split",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"Split\"",
         "splt": "\\n",
         "spltType": "str",
         "arraySplt": 1,
@@ -3381,37 +3455,19 @@
         "stream": false,
         "addname": "",
         "x": 230,
-        "y": 180,
+        "y": 140,
         "wires": [
             [
                 "352b07a97db83983"
             ]
-        ]
-    },
-    {
-        "id": "846729d5f0dd8306",
-        "type": "template",
-        "z": "0da2717d76f314c6",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{{{payload}}}",
-        "output": "str",
-        "x": 240,
-        "y": 460,
-        "wires": [
-            [
-                "3e54165e7294db19"
-            ]
-        ]
+        ],
+        "info": "This is a split node which takes in a string and splits it into multiple message objects based on a specified delimiter (\"\\n\" in this case). Each separated message is then passed on to the next connected node."
     },
     {
         "id": "80e5304f2999ce6b",
         "type": "join",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"Join\" node.",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -3429,29 +3485,31 @@
             [
                 "7cbbf9d31cb04d05"
             ]
-        ]
+        ],
+        "info": "This is a \"join\" node in Node-RED that concatenates messages from multiple inputs into a single message. The node can be configured to join messages based on a common topic or on a specified number of messages. It can also be set to output the concatenated messages as an array or an object."
     },
     {
         "id": "080cad2872ab96ce",
         "type": "json",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "JSON node.",
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 230,
+        "x": 250,
         "y": 420,
         "wires": [
             [
-                "846729d5f0dd8306"
+                "3e54165e7294db19"
             ]
-        ]
+        ],
+        "info": "This is a JSON node, which converts the input message payload into a JSON formatted string. The formatted string is then sent to the single output connected to it."
     },
     {
         "id": "4c1404f306ef020a",
         "type": "file",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"File Writer\"",
         "filename": "/data/flowinfo.json",
         "filenameType": "str",
         "appendNewline": true,
@@ -3462,13 +3520,14 @@
         "y": 860,
         "wires": [
             []
-        ]
+        ],
+        "info": "The \"file\" node writes a JSON object to a specified file location on the filesystem. The file can be either overwritten or appended to, depending on the configuration. The node has no input wires and sends no output wires."
     },
     {
         "id": "7cbbf9d31cb04d05",
         "type": "json",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"JSON converter\"",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -3478,7 +3537,8 @@
             [
                 "4c1404f306ef020a"
             ]
-        ]
+        ],
+        "info": "This is a JSON node that takes in data as input and converts it into a JSON object. It then passes the output, the JSON object, to the next node in the flow."
     },
     {
         "id": "3e54165e7294db19",
@@ -3489,7 +3549,7 @@
         "y": 500,
         "wires": [
             [
-                "a7b4d25950105f75"
+                "72e95d8de98b7b98"
             ]
         ]
     },
@@ -3502,7 +3562,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou will analyze it and respond with a terse description of what the node does.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nFocus on the general behavior, not the specific implementation.\nfor function nodes, focus on describing the function\nfor other nodes, assume we already are familiar with the type of node, try and describe what it's doing at a higher level based on the configuration\n",
         "output": "str",
         "x": 280,
         "y": 340,
@@ -3530,7 +3590,7 @@
         "id": "c003a05da5c1d6b6",
         "type": "switch",
         "z": "0da2717d76f314c6",
-        "name": "ignore types",
+        "name": "\"Type Ignore Switch\"",
         "property": "payload.type",
         "propertyType": "msg",
         "rules": [
@@ -3556,13 +3616,14 @@
             [
                 "8c111b3dbf792ca6"
             ]
-        ]
+        ],
+        "info": "This switch node directs the input messages to two different output wires based on whether the message property \"payload.type\" matches a regular expression containing specific strings or not. It ignores messages with values such as \"link\", \"subflow\", \"junction\", \"tab\" and \"status\" and sends them through the first output wire, and passes all other messages through the second output wire."
     },
     {
         "id": "352b07a97db83983",
         "type": "change",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"Change Message Node\"",
         "rules": [
             {
                 "t": "set",
@@ -3570,6 +3631,16 @@
                 "pt": "msg",
                 "to": "payload",
                 "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.info",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.name",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -3583,13 +3654,14 @@
             [
                 "c003a05da5c1d6b6"
             ]
-        ]
+        ],
+        "info": "This is a Change node that sets the value of the \"node\" property in the message object to the value of the \"payload\" property. The new message is then passed on to the node connected to its output."
     },
     {
         "id": "a7b4d25950105f75",
         "type": "change",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "ChangeNode.",
         "rules": [
             {
                 "t": "set",
@@ -3610,46 +3682,13 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 540,
-        "wires": [
-            [
-                "6f0b43126a3d3089"
-            ]
-        ]
-    },
-    {
-        "id": "6f0b43126a3d3089",
-        "type": "change",
-        "z": "0da2717d76f314c6",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "$string(node)",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "system",
-                "pt": "msg",
-                "to": "The user is about to provide you with a brief description of a node-red node. your job is to provide a short name for it. you may use up to 5 words. Respond with ONLY the name.",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 260,
         "y": 580,
         "wires": [
             [
                 "50495c457b07dafa"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node that modifies the incoming message object before passing it to the next node. It sets the `node.info` property of the message to the value of the `payload` property, and deletes the `history` property if it exists. Then it sends the modified message to the output wire."
     },
     {
         "id": "abc59e2895a6bd61",
@@ -3668,7 +3707,7 @@
         "id": "3501eb14ac590776",
         "type": "change",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"Set-Node-Name\"",
         "rules": [
             {
                 "t": "set",
@@ -3683,19 +3722,20 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 280,
+        "x": 270,
         "y": 700,
         "wires": [
             [
                 "c372f6322d121463"
             ]
-        ]
+        ],
+        "info": "This is a change node that sets the message property `node.name` to the message payload. The modified message is then passed on to the next node connected to its output wire."
     },
     {
         "id": "c372f6322d121463",
         "type": "change",
         "z": "0da2717d76f314c6",
-        "name": "",
+        "name": "\"Set Payload\"",
         "rules": [
             {
                 "t": "set",
@@ -3716,13 +3756,14 @@
             [
                 "80e5304f2999ce6b"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node in Node-RED. It sets the payload of the input message to the string \"node\" and passes it on to the next node."
     },
     {
         "id": "8c111b3dbf792ca6",
         "type": "switch",
         "z": "0da2717d76f314c6",
-        "name": "ignore info",
+        "name": "\"ignore-info-switch\"",
         "property": "payload.info",
         "propertyType": "msg",
         "rules": [
@@ -3745,7 +3786,8 @@
             [
                 "408fdd3b394de382"
             ]
-        ]
+        ],
+        "info": "This is a \"Switch\" node that evaluates the value of `msg.payload.info`. \n\nIf `msg.payload.info` is not empty, the node will output to the first output (the top one).\n\nIf `msg.payload.info` is empty, the node will output to the second output (the bottom one)."
     },
     {
         "id": "50495c457b07dafa",
@@ -3759,6 +3801,26 @@
                 "abc59e2895a6bd61"
             ]
         ]
+    },
+    {
+        "id": "72e95d8de98b7b98",
+        "type": "template",
+        "z": "0da2717d76f314c6",
+        "name": "set system message",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to come up with names for node red flows\nThe user will provide you with a description of a node.\nYou will analyze it and respond with a short name that will help convey it's purpose when displayed in the visual node-red editor.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nexample of good names:\n- set msg.payload to the json string of msg.nodes\n- route based on msg.error.message\n- compress history\nexamples of bad names:\n- change msg.payload \n- msg.error.message switch node\n- change history array node.\n\nyou must respond only with the name, omitting quotation marks.",
+        "output": "str",
+        "x": 280,
+        "y": 540,
+        "wires": [
+            [
+                "a7b4d25950105f75"
+            ]
+        ],
+        "info": "test it hey hey"
     },
     {
         "id": "414ddee1287efb66",
@@ -3784,7 +3846,7 @@
         "id": "733c94970d337f9c",
         "type": "inject",
         "z": "941765e8bb2c32d6",
-        "name": "set task props",
+        "name": "inject node.",
         "props": [
             {
                 "p": "min_tokens",
@@ -3812,13 +3874,14 @@
             [
                 "a701ddb8190d147a"
             ]
-        ]
+        ],
+        "info": "This is an \"inject\" node in Node-RED that immediately sends a message with predefined properties when it receives a trigger signal, such as a button press. The message includes the properties \"min_tokens\", \"temperature\", and \"topic\" with their respective values of \"2000\", \"0.7\", and an empty string (since \"vt\":\"str\" means the value is of string type), and is sent to the next node connected to its output."
     },
     {
         "id": "c13f6114b4ebbbcc",
         "type": "template",
         "z": "941765e8bb2c32d6",
-        "name": "requirements",
+        "name": "SubflowByType",
         "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
@@ -3831,13 +3894,14 @@
             [
                 "414ddee1287efb66"
             ]
-        ]
+        ],
+        "info": "This is a node that takes an array of node objects with specific properties, and transforms them into an array of new objects that are grouped by their 'subflow' type. Each new object has an id and a deep clone of the subflow node, and all nodes with the subflow's 'id' as their 'z' property. The output is a valid, syntactically correct JSON string that can be used to import the subflow."
     },
     {
         "id": "99b359093fa5ee99",
         "type": "debug",
         "z": "941765e8bb2c32d6",
-        "name": "debug 1",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3848,7 +3912,8 @@
         "statusType": "auto",
         "x": 120,
         "y": 280,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED that outputs the payload of incoming messages to the debug sidebar. It can be activated or deactivated and can also output to the status bar."
     },
     {
         "id": "a701ddb8190d147a",
@@ -3867,7 +3932,7 @@
         "id": "ffc06a5a5bbea58f",
         "type": "batch",
         "z": "941765e8bb2c32d6",
-        "name": "",
+        "name": "Batcher.",
         "mode": "count",
         "count": 10,
         "overlap": 0,
@@ -3878,13 +3943,14 @@
         "y": 180,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a batch node that collects and groups incoming messages into batches of a fixed count or size. The number of messages in each batch is specified by the \"count\" parameter, and the batches are emitted at a fixed interval set by \"interval\". If there are not enough messages to form a complete batch, the node will wait until more messages arrive, unless \"allowEmptySequence\" is set to true. The grouped messages are then sent out of the node. The \"mode\" parameter determines whether the batches are formed based on the count of messages or the size of their payload."
     },
     {
         "id": "8c1cba224d949d09",
         "type": "delay",
         "z": "e961334cde89144c",
-        "name": "gpt4 limit",
+        "name": "\"GPT4 Limit Delay\"",
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
@@ -3904,13 +3970,14 @@
                 "1d0773bcf3416404",
                 "56380579ca248c30"
             ]
-        ]
+        ],
+        "info": "This is a `delay` node that waits for a specified time interval or rate before forwarding an incoming message. This node limits the input rate to 13 messages per second, which can be further adjusted with random fluctuations. It has two output wires. If the `drop` option is enabled, this node may drop incoming messages if they arrive too quickly."
     },
     {
         "id": "4b735d4be9323117",
         "type": "delay",
         "z": "e961334cde89144c",
-        "name": "turbo limit",
+        "name": "\"Turbo Limit\"",
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
@@ -3930,13 +3997,14 @@
                 "1d0773bcf3416404",
                 "56380579ca248c30"
             ]
-        ]
+        ],
+        "info": "This delay node called \"turbo limit\" slows down the rate of messages flowing through it. It emits each incoming message after a random delay that is configured to be between 5 and 20 seconds. The time between each message is configured to be a fixed rate of 1 message per 5 seconds. It has an option to drop messages if the queue is full and an option to allow multiple messages with the same timestamp to be sent through without losing one."
     },
     {
         "id": "b98332fdc0290246",
         "type": "switch",
         "z": "e961334cde89144c",
-        "name": "",
+        "name": "Topic-based Switch Node",
         "property": "topic",
         "propertyType": "msg",
         "rules": [
@@ -3963,7 +4031,8 @@
             [
                 "4b735d4be9323117"
             ]
-        ]
+        ],
+        "info": "This is a switch node that routes messages based on their topic property. If the topic property is equal to \"gpt4\", it will send the message to the first output. If the topic property is equal to \"turbo\", it will send the message to the second output. It has two outputs and the option to repair messages is turned off."
     },
     {
         "id": "f2342d49916a4e23",
@@ -3994,7 +4063,7 @@
         "id": "1d0773bcf3416404",
         "type": "chatgpt",
         "z": "e961334cde89144c",
-        "name": "",
+        "name": "\"OpenAI chatbot node\"",
         "Organization": " ",
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
@@ -4005,13 +4074,14 @@
                 "56380579ca248c30",
                 "d2ee1fb0b75e93b6"
             ]
-        ]
+        ],
+        "info": "This is a custom node called \"chatgpt\" that appears to integrate with the OpenAI API. It likely allows users to create a chat interface and leverage the power of GPT (Generative Pre-trained Transformer) models to generate responses. The node has configuration parameters such as the organization name, a topic, and a base URL to connect to the OpenAI API. The node also has two output wires, suggesting it may output a response to either one or both wires."
     },
     {
         "id": "09ae223c8021bfb1",
         "type": "catch",
         "z": "e961334cde89144c",
-        "name": "",
+        "name": "\"Catch Node\"",
         "scope": [
             "1d0773bcf3416404"
         ],
@@ -4022,13 +4092,14 @@
             [
                 "45d0a3a5f2e2b024"
             ]
-        ]
+        ],
+        "info": "This is a Catch node in Node-RED. It is used to catch errors that may occur during the execution of the flow, within the specified scope. When an error is caught, it can be passed on to subsequent nodes for handling. By default, it catches all errors within the current flow."
     },
     {
         "id": "56380579ca248c30",
         "type": "file",
         "z": "e961334cde89144c",
-        "name": "",
+        "name": "\"File\"",
         "filename": "/data/gptlog.txt",
         "filenameType": "str",
         "appendNewline": true,
@@ -4039,13 +4110,14 @@
         "y": 320,
         "wires": [
             []
-        ]
+        ],
+        "info": "This is a \"file\" node in node-red that writes data to a file specified by the given file path and name. The node can either append new data to the end of an existing file or overwrite an existing file with new data. The node does not create the directory if it does not already exist. The node does not encode the data in any specific format. The node has no outputs and just writes the input data to the specified file."
     },
     {
         "id": "dd2038bc71721c1f",
         "type": "change",
         "z": "e961334cde89144c",
-        "name": "",
+        "name": "Delete Error Node",
         "rules": [
             {
                 "t": "delete",
@@ -4064,13 +4136,14 @@
             [
                 "b98332fdc0290246"
             ]
-        ]
+        ],
+        "info": "This is a \"Change\" node that deletes the \"error\" property from the incoming message object. The modified message is then sent out to the next node connected to it."
     },
     {
         "id": "b722eb5e7dd70f13",
         "type": "switch",
         "z": "e961334cde89144c",
-        "name": "known errors",
+        "name": "Known Errors Switch",
         "property": "error.message",
         "propertyType": "msg",
         "rules": [
@@ -4127,7 +4200,8 @@
             [
                 "742d10fb144f3c99"
             ]
-        ]
+        ],
+        "info": "This is a switch node that checks for known error messages in the input message's error.message property. If the error message matches any of the given values, the node will route the message to the corresponding output. If the error message does not match any of them, the node will route the message to the \"else\" output. The node has 6 outputs in total."
     },
     {
         "id": "d2ee1fb0b75e93b6",
@@ -4146,7 +4220,7 @@
         "id": "2d60fcbd28eb92c7",
         "type": "change",
         "z": "e961334cde89144c",
-        "name": "clear max_tokens",
+        "name": "\"clear max_tokens\"",
         "rules": [
             {
                 "t": "delete",
@@ -4165,7 +4239,8 @@
             [
                 "d5f444de1f8ceabb"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node in node-red that removes the \"max_tokens\" property from the incoming message object. The modified message is then outputted to the next node connected to its output."
     },
     {
         "id": "d5f444de1f8ceabb",
@@ -4191,7 +4266,7 @@
         "id": "5d459fc8-eec7-4ace-94e5-b653c47e5061",
         "type": "function",
         "z": "e961334cde89144c",
-        "name": "ensure token headroom",
+        "name": "Token Headroom Node",
         "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    node.log('token sum: ' + sum);\n    if (env.auto4\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -4209,7 +4284,8 @@
             [
                 "b98332fdc0290246"
             ]
-        ]
+        ],
+        "info": "This function node ensures that there is enough space for a GPT-3 token, filters the message history, and calculates the maximum number of tokens allowed, and sets the `msg.max_tokens` property accordingly. Additionally, it checks whether the `msg.topic` is `gpt4` and automatically switches to `gpt4` if there is not enough headroom in `turbo`. The max token limit is 8192 for `gpt4` and 4096 for `turbo`."
     },
     {
         "id": "b636b9ea5bf45435",
@@ -4240,7 +4316,7 @@
         "id": "cb040ea047dc84fb",
         "type": "function",
         "z": "e961334cde89144c",
-        "name": "fix token overage",
+        "name": "Token Overage Fixer.",
         "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else {\n    //we fucked\n    throw new Error('token overage')\n}\n\nmsg.history.pop()\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -4253,13 +4329,14 @@
             [
                 "dd2038bc71721c1f"
             ]
-        ]
+        ],
+        "info": "This is a function node that extracts various values from a string contained in the input message, performs a calculation using those values and then sets properties on the output message based on the result of the calculation. If the calculation results in an error, then an error  will be thrown."
     },
     {
         "id": "e66c7e2b9c2807aa",
         "type": "debug",
         "z": "e961334cde89144c",
-        "name": "unknown error",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -4270,13 +4347,14 @@
         "statusType": "auto",
         "x": 880,
         "y": 100,
-        "wires": []
+        "wires": [],
+        "info": "This is a Debug Node, which is used for testing and debugging purposes in Node-RED. When a message passes through this node, it will display the message payload, along with other properties, such as the flow ID and timestamp, in the debug tab of the Node-RED editor. It can be used to examine the structure and content of a message as it flows through a flow."
     },
     {
         "id": "45d0a3a5f2e2b024",
         "type": "function",
         "z": "e961334cde89144c",
-        "name": "clean history",
+        "name": "\"clean-history\"",
         "func": "if (msg.history){\n    const seen = new Set()\n    msg.history = msg.history.filter(item => {\n        if (seen.has(item.content)){\n            return false;\n        }\n        seen.add(item.content)\n        return true;\n    })\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -4290,13 +4368,14 @@
                 "b722eb5e7dd70f13",
                 "dd3b4001dfae1c23"
             ]
-        ]
+        ],
+        "info": "This is a function node that removes duplicate entries from a history array in the input data object of the message. It does this by creating a Set of unique content, and then filters out any duplicate content in the history array. The filtered message is then passed to the two connected nodes."
     },
     {
         "id": "dd3b4001dfae1c23",
         "type": "debug",
         "z": "e961334cde89144c",
-        "name": "all errors",
+        "name": "Node Name: Debug Node.",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -4307,13 +4386,14 @@
         "statusType": "auto",
         "x": 600,
         "y": 60,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED that prints all incoming messages to the console output log. It has an option to send the message to the sidebar instead of the console, and another option to send a status message to indicate its current state. The node can be activated or deactivated. It has no outputs and is typically used for debugging and troubleshooting purposes."
     },
     {
         "id": "742d10fb144f3c99",
         "type": "switch",
         "z": "e961334cde89144c",
-        "name": "ignore duplicates",
+        "name": "error message switch node",
         "property": "error.message",
         "propertyType": "msg",
         "rules": [
@@ -4342,13 +4422,14 @@
             [
                 "e66c7e2b9c2807aa"
             ]
-        ]
+        ],
+        "info": "This is a switch node that checks the value of the \"error.message\" property in the incoming message. There are three rules that dictate which output to forward the message to: If the message contains the string \"That model is currently overloaded with other requests\", it goes to the first output; If the message is equal to the string \"400\", it goes to the second output; For all other messages, it goes to the third output. The \"ignore duplicates\" name suggests that this node is likely used to filter out or handle repeated error messages."
     },
     {
         "id": "d65872b05ad84bb5",
         "type": "catch",
         "z": "e961334cde89144c",
-        "name": "",
+        "name": "Error Catcher.",
         "scope": null,
         "uncaught": true,
         "x": 640,
@@ -4357,13 +4438,14 @@
             [
                 "e66c7e2b9c2807aa"
             ]
-        ]
+        ],
+        "info": "The \"catch\" node is used to handle errors that occur within the flow. It allows you to catch errors and route them to another flow for further processing or logging. In this specific case, the node is configured to catch uncaught errors and send them to the \"e66c7e2b9c2807aa\" node."
     },
     {
         "id": "0e15e195386e7615",
         "type": "delay",
         "z": "e961334cde89144c",
-        "name": "rate limit delay",
+        "name": "\"RateLimitDelay\"",
         "pauseType": "delay",
         "timeout": "1",
         "timeoutUnits": "minutes",
@@ -4382,13 +4464,25 @@
             [
                 "dd2038bc71721c1f"
             ]
+        ],
+        "info": "This is a delay node with rate limiting capabilities. It delays any incoming messages by a specified amount of time (1 minute in this case) and allows a maximum rate of 1 message per second. The node can also introduce a random delay of 1 to 5 seconds between messages. The \"drop\" and \"allowrate\" options toggle whether messages will be dropped or queued up respectively if the maximum rate is exceeded. The node has one output."
+    },
+    {
+        "id": "278361a6a29eb45b",
+        "type": "subflow:d295481a52b8fd83",
+        "z": "e961334cde89144c",
+        "name": "",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            []
         ]
     },
     {
         "id": "f4f6fa24ca217587",
         "type": "json",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "JSON Extract Node.",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -4398,13 +4492,14 @@
             [
                 "ed65351c21590e04"
             ]
-        ]
+        ],
+        "info": "This is a JSON node that takes a message object as input and extracts its payload property, which it then outputs to the next node in the flow."
     },
     {
         "id": "ed65351c21590e04",
         "type": "change",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Rule setter.",
         "rules": [
             {
                 "t": "set",
@@ -4467,13 +4562,14 @@
             [
                 "8d53a1abefddfbf2"
             ]
-        ]
+        ],
+        "info": "The `change` node sets several properties in the message payload based on pre-defined rules and sends the updated message to its output."
     },
     {
         "id": "8d53a1abefddfbf2",
         "type": "template",
         "z": "f297cec495c6b8be",
-        "name": "wrap requirements",
+        "name": "Template Wrapper.",
         "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
@@ -4486,7 +4582,8 @@
             [
                 "65d8c0dd542c67cc"
             ]
-        ]
+        ],
+        "info": "This is a `template` node that generates a message to be sent downstream. It takes the message from the `requirements` field and concatenates it with a message in a specific format. The resulting string is then passed to the next node."
     },
     {
         "id": "922590827a20da6a",
@@ -4505,7 +4602,7 @@
         "id": "62612d04c38cb1a4",
         "type": "function",
         "z": "f297cec495c6b8be",
-        "name": "test",
+        "name": "\"Assertion Test Function Node\"",
         "func": "console.assert = (bool) => { if (!bool) throw new Error('assert!') }\n\ntry{\n    console.log('payload:', msg.payload)\n    console.log('test:', msg.testString)\n    const test = new Function('console',msg.payload + '\\n' + msg.testString)\n    test(console)\n    msg.pass = true;\n} catch (e) {\n    msg.testError = e.message;\n    msg.pass = false;\n}\n\nmsg.payload = {\n    flow: msg.flow || 'chatgpt',\n    model: msg.topic,\n    pass: msg.pass,\n    task: msg.task_id\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -4518,13 +4615,14 @@
             [
                 "084093a3278f4f92"
             ]
-        ]
+        ],
+        "info": "This is a Function node with a name \"test\". It logs the input payload and a \"testString\" property of the input message object to the console, then compiles the payload and testString into a function using the Function constructor. It invokes the new function with the console object and stores the result of the assertion in a \"pass\" property of the output message object. If the assertion fails, it catches the error and stores the error message in a \"testError\" property of the output message object. Finally, it returns an output message object with properties \"flow\", \"model\", \"pass\", and \"task\", which are passed in from the input message object."
     },
     {
         "id": "b8010df720742aef",
         "type": "join",
         "z": "f297cec495c6b8be",
-        "name": "sum test passes",
+        "name": "\"Auto-sum join\"",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -4547,13 +4645,14 @@
                 "4d96dd6356493577",
                 "75992a64fd9b37f1"
             ]
-        ]
+        ],
+        "info": "This is a \"join\" node that will accumulate messages and join them together into one message, separated by newline characters. It will wait for all input messages to arrive before outputting the joined message. The input messages will be combined using the \"reduce\" function, which here is adding up the values of the \"pass\" properties in each message. The resulting sum will be divided by the number of input messages, so that the output message will contain the average of the \"pass\" values."
     },
     {
         "id": "183a83919e31ea2f",
         "type": "template",
         "z": "f297cec495c6b8be",
-        "name": "humaneval",
+        "name": "\"template\"",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -4566,13 +4665,14 @@
             [
                 "68aa97abce13538f"
             ]
-        ]
+        ],
+        "info": "This is a Template node in Node-RED that takes a payload message, applies a Handlebars template to it, and outputs the resulting string. The specific template to be applied is defined by the user. The output is then sent to the next node in the flow via a wire."
     },
     {
         "id": "d7ff3df8b8bca72b",
         "type": "switch",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "\"Index Switch\"",
         "property": "parts.index",
         "propertyType": "msg",
         "rules": [
@@ -4591,13 +4691,14 @@
             [
                 "f4f6fa24ca217587"
             ]
-        ]
+        ],
+        "info": "This is a \"switch\" node which takes an input message and checks the value of the \"parts.index\" property. If it's less than 1000, then the message is passed to its output wire, otherwise nothing is outputted."
     },
     {
         "id": "4d94c61aec9614a2",
         "type": "inject",
         "z": "f297cec495c6b8be",
-        "name": "set task props",
+        "name": "\"Inject\"",
         "props": [
             {
                 "p": "language",
@@ -4616,13 +4717,14 @@
             [
                 "183a83919e31ea2f"
             ]
-        ]
+        ],
+        "info": "This is an \"inject\" node which injects a message into the flow with specified properties as defined in the \"props\" array. In this case, it triggers the sending of a message to the node connected through the output wire with a \"language\" property set to \"javascript\"."
     },
     {
         "id": "2d59b8905d9a2034",
         "type": "split",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Split node.",
         "splt": "\\n",
         "spltType": "str",
         "arraySplt": 1,
@@ -4635,13 +4737,14 @@
             [
                 "d7ff3df8b8bca72b"
             ]
-        ]
+        ],
+        "info": "This is a \"split\" node in Node-RED. It splits incoming messages into multiple messages based on the specified delimiter."
     },
     {
         "id": "30bf3f577ffc38e2",
         "type": "catch",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Error Catch Node",
         "scope": [
             "922590827a20da6a"
         ],
@@ -4652,13 +4755,14 @@
             [
                 "922590827a20da6a"
             ]
-        ]
+        ],
+        "info": "This is a catch node in Node-RED. It is used to catch errors that occur in any downstream nodes on the same flow. Once an error is caught, it can be handled in a variety of ways depending on the user's specific requirements."
     },
     {
         "id": "a596c13563210cd3",
         "type": "file",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "file writer.",
         "filename": "/data/bench.json",
         "filenameType": "str",
         "appendNewline": true,
@@ -4671,13 +4775,14 @@
             [
                 "75992a64fd9b37f1"
             ]
-        ]
+        ],
+        "info": "This node saves the input payload as a string in the specified file path. If the file already exists, it will be overwritten. The node can also create a new file if the specified file path does not exist. The encoding can be set to the desired format, and a newline can be appended to the payload before it's written to the file. The output of this node is the input payload."
     },
     {
         "id": "75992a64fd9b37f1",
         "type": "debug",
         "z": "f297cec495c6b8be",
-        "name": "debug 4",
+        "name": "Debug 4.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -4688,7 +4793,8 @@
         "statusType": "auto",
         "x": 880,
         "y": 660,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED, which displays messages passing through the associated wires during runtime for debugging purposes."
     },
     {
         "id": "6ccea9b424e51207",
@@ -4707,7 +4813,7 @@
         "id": "b3dc275d4210ec42",
         "type": "change",
         "z": "f297cec495c6b8be",
-        "name": "force gpt4",
+        "name": "\"Force GPT4 Change\"",
         "rules": [
             {
                 "t": "set",
@@ -4728,13 +4834,14 @@
             [
                 "32d8cfeb8705d916"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node which takes an input message and modifies its \"topic\" property to be the string \"gpt4\". The modified message is then output to the node's single output wire."
     },
     {
         "id": "355dc2522a499301",
         "type": "change",
         "z": "f297cec495c6b8be",
-        "name": "force gpt4",
+        "name": "\"Force GPT4\"",
         "rules": [
             {
                 "t": "set",
@@ -4755,7 +4862,8 @@
             [
                 "90bfb9ae3c54bda3"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node in Node-RED that modifies the incoming message by setting its topic to \"gpt4\". The modified message is then passed on to the next node connected to the output wires."
     },
     {
         "id": "49f531afe4600028",
@@ -4781,7 +4889,7 @@
         "id": "f98edf899c38d504",
         "type": "function",
         "z": "f297cec495c6b8be",
-        "name": "get result",
+        "name": "\"Filter JavaScript Code Block\"",
         "func": "console.log('parsed code:', msg.parts)\nmsg.payload = msg.payload\n                .filter(({type}) => ['javascript'].indexOf(type) >= 0)\n\nif (msg.payload.length > 1){\n  msg.payload = `throw new Error('multiple code-blocks detected in your response, please respond with only the complete solution')`\n  return [null, msg]\n} else if (msg.payload.length < 1){\n  msg.payload = `throw new Error('no code blocks detected, please obey the formatting instructions and return your answer inside a markdown code block.')`\n  return [null, msg]\n} else {\n  msg.payload = msg.payload[0].content; \n  return [msg, null]\n}",
         "outputs": 2,
         "noerr": 0,
@@ -4797,7 +4905,8 @@
             [
                 "62612d04c38cb1a4"
             ]
-        ]
+        ],
+        "info": "This is a Function node that filters out any non-JavaScript parts in its input message payload and returns the first JavaScript code block as the new message payload. If there are no code blocks in the input message or there are multiple code blocks, the node will throw an error. The filtered JavaScript code block is then passed as message payload to both of its output wires."
     },
     {
         "id": "62355c1dd139219c",
@@ -4842,7 +4951,7 @@
         "id": "90bfb9ae3c54bda3",
         "type": "change",
         "z": "f297cec495c6b8be",
-        "name": "tag smartgpt",
+        "name": "\"Tag Flow with smartgpt\"",
         "rules": [
             {
                 "t": "set",
@@ -4863,13 +4972,14 @@
             [
                 "922590827a20da6a"
             ]
-        ]
+        ],
+        "info": "The \"change\" node with the ID \"90bfb9ae3c54bda3\" adds a new property to the message object with the key \"flow\" and value \"smartgpt\". Then, it passes the modified message to the node with the ID \"922590827a20da6a\" through the wires."
     },
     {
         "id": "1e835fdc3f636679",
         "type": "catch",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "catch node",
         "scope": [
             "6ccea9b424e51207"
         ],
@@ -4880,13 +4990,14 @@
             [
                 "6ccea9b424e51207"
             ]
-        ]
+        ],
+        "info": "This is a Catch node that is used to catch any errors that occur within the flow of the linked node (indicated by the \"scope\" property). If an error occurs, it will send the error message to the output wire. This can be useful for debugging and handling errors within a specific part of the flow."
     },
     {
         "id": "b0fd40f4cbec0c92",
         "type": "split",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Split node.",
         "splt": "\\n",
         "spltType": "str",
         "arraySplt": 1,
@@ -4899,13 +5010,14 @@
             [
                 "aa85c030e8d55e76"
             ]
-        ]
+        ],
+        "info": "This node splits an input message into separate messages based on a specified delimiter. The delimiter can be a string or a specific length of characters, and the output messages can be sent as an array or independently."
     },
     {
         "id": "aa85c030e8d55e76",
         "type": "switch",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Index Switch Node.",
         "property": "parts.index",
         "propertyType": "msg",
         "rules": [
@@ -4948,13 +5060,14 @@
             [
                 "32d8cfeb8705d916"
             ]
-        ]
+        ],
+        "info": "This is a switch node that looks at the value of `msg.parts.index`, which could be of type string. The node checks the value and sends the message to one of the four outputs based on the equality condition met by the rule."
     },
     {
         "id": "65d8c0dd542c67cc",
         "type": "function",
         "z": "f297cec495c6b8be",
-        "name": "clone",
+        "name": "\"Clone Payload Four Times\"",
         "func": "msg.payload = [msg.payload, msg.payload, msg.payload, msg.payload]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -4967,13 +5080,14 @@
             [
                 "aec1f52637b20998"
             ]
-        ]
+        ],
+        "info": "This is a function node that takes a message payload and creates a new message payload with the input message payload cloned four times in an array. The new message is then output to the next node in the flow."
     },
     {
         "id": "084093a3278f4f92",
         "type": "join",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "\"Auto Join Node\"",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -4996,13 +5110,14 @@
                 "29c04591edb50ab3",
                 "75992a64fd9b37f1"
             ]
-        ]
+        ],
+        "info": "This is a Join node that creates an object from the message payloads, joins them together using a delimiter `\\\\n`. The accumulated objects are then sent out when either the count or timeout condition is met."
     },
     {
         "id": "aec1f52637b20998",
         "type": "change",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Set Sequence Node.",
         "rules": [
             {
                 "t": "set",
@@ -5024,13 +5139,14 @@
             [
                 "b0fd40f4cbec0c92"
             ]
-        ]
+        ],
+        "info": "This is a \"change\" node in Node-RED that takes in a message and sets a new property \"sequence\" in the message object, with a value of \"parts\". This new property is then passed on to the next connected node."
     },
     {
         "id": "29c04591edb50ab3",
         "type": "change",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "Set Parts Node.",
         "rules": [
             {
                 "t": "set",
@@ -5051,13 +5167,14 @@
             [
                 "b8010df720742aef"
             ]
-        ]
+        ],
+        "info": "This is a change node that sets the `parts` attribute of the incoming message payload to the string value `\"sequence\"`. The modified message is then passed on to the next node in the flow."
     },
     {
         "id": "4d96dd6356493577",
         "type": "json",
         "z": "f297cec495c6b8be",
-        "name": "",
+        "name": "json-to-string",
         "property": "payload",
         "action": "str",
         "pretty": true,
@@ -5067,13 +5184,14 @@
             [
                 "a596c13563210cd3"
             ]
-        ]
+        ],
+        "info": "This is a JSON node that takes a payload as input and converts it to a string. The output will still be in JSON format, but as a string rather than a JSON object."
     },
     {
         "id": "68aa97abce13538f",
         "type": "function",
         "z": "f297cec495c6b8be",
-        "name": "split",
+        "name": "Split Node.",
         "func": "msg.payload = msg.payload.split('\\n').filter(_ => _)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -5086,7 +5204,8 @@
             [
                 "2d59b8905d9a2034"
             ]
-        ]
+        ],
+        "info": "This is a function node that splits the incoming message payload by newlines, removes any empty strings from the resulting array, and passes along the modified payload to the next node."
     },
     {
         "id": "1f104ae03f736fc7",
@@ -5105,7 +5224,7 @@
         "id": "b433c835d854e271",
         "type": "file in",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "File-In",
         "filename": "/data/projects/red-gpt-project/flows.json",
         "filenameType": "str",
         "format": "utf8",
@@ -5119,13 +5238,14 @@
             [
                 "3fb29f9dbf599fa0"
             ]
-        ]
+        ],
+        "info": "This is a \"file in\" node. It reads the contents of a file specified in the node configuration and outputs the content as a message to the next node in the flow."
     },
     {
         "id": "3fb29f9dbf599fa0",
         "type": "json",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"JSON Convert\"",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -5135,13 +5255,14 @@
             [
                 "fd82d1078959f5bb"
             ]
-        ]
+        ],
+        "info": "This is a JSON node that is used to convert data into JSON format. It receives input data via the \"payload\" property and outputs the JSON formatted result."
     },
     {
         "id": "3fc0a9eb4623c177",
         "type": "inject",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "Inject Node.",
         "props": [
             {
                 "p": "payload"
@@ -5179,13 +5300,14 @@
             [
                 "b433c835d854e271"
             ]
-        ]
+        ],
+        "info": "This is an \"inject\" node that sends a message with predefined properties (payload, topic, temperature, language, and min_tokens) when triggered by an inject button or event. The message is sent to the node with ID \"b433c835d854e271\" for further processing."
     },
     {
         "id": "d97a19209a785803",
         "type": "json",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "JSON-pass node",
         "property": "payload",
         "action": "",
         "pretty": false,
@@ -5195,13 +5317,14 @@
             [
                 "6ee86c3a03682354"
             ]
-        ]
+        ],
+        "info": "This is a JSON node that takes the payload from the input message and passes it on to the next node in the flow. It can also optionally format the output as a pretty-printed string."
     },
     {
         "id": "6ee86c3a03682354",
         "type": "split",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "Split Node.",
         "splt": "\\n",
         "spltType": "str",
         "arraySplt": 1,
@@ -5214,13 +5337,14 @@
             [
                 "761e9408e6850b23"
             ]
-        ]
+        ],
+        "info": "This is a \"split\" node in Node-RED. It splits a message payload into separate message parts using a specific delimiter or separator. In this case, the delimiter is a new line character (\"\\n\"). The output messages are sent out through the single wire attached to the node's output."
     },
     {
         "id": "761e9408e6850b23",
         "type": "function",
         "z": "064c17312433ce15",
-        "name": "sort eligible for doc",
+        "name": "Sort-Eligible-For-Doc.",
         "func": "if (msg.payload.nodes.filter(node => node.id === msg.payload.id).pop().info) {\n    return [null,msg];\n}\n\nconst undocd = msg.payload.nodes.filter(node => {\n    if (!node.type.startsWith('subflow:')) return false;\n\n    const z = node.type.split(':')[1]\n    const subflow = msg.flows.filter(node => node.id === z).pop()\n    if (subflow.info) return false;\n    return true;\n})\n\n\n\nif (undocd.length){\n    return [null, msg];\n}\n\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
@@ -5236,13 +5360,14 @@
             [
                 "2e410a19acc23c63"
             ]
-        ]
+        ],
+        "info": "This function node is checking if the current node and all the subflow nodes it is connected to have a property called \"info\" in the node configuration. If any node is eligible for documentation, it sends the message to the output 1. If all nodes have \"info\" defined, it sends the message to output 2."
     },
     {
         "id": "bf4826fb44e15c5e",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"Set Flows from Payload\"",
         "rules": [
             {
                 "t": "set",
@@ -5264,13 +5389,14 @@
             [
                 "1f104ae03f736fc7"
             ]
-        ]
+        ],
+        "info": "This is a node that changes a property of a message it receives. Specifically, it sets the \"flows\" property of the message to the \"payload\" property of the same message. The modified message is then sent to the node connected to its output wires."
     },
     {
         "id": "17c4c2465ba4c355",
         "type": "template",
         "z": "064c17312433ce15",
-        "name": "documentation",
+        "name": "\"Doc Generator\"",
         "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
@@ -5283,13 +5409,14 @@
             [
                 "5ac8e1eb22d9be16"
             ]
-        ]
+        ],
+        "info": "This is a node of type \"template\", which generates a custom text message based on its input. The message will contain some basic information about a provided node-red subflow, and request a brief html document describing it, focused on its inputs, outputs, and details. The example given describes a \"read file\" subflow, and demonstrates the desired structure of the provided html document."
     },
     {
         "id": "dae7e91edc72c83d",
         "type": "json",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "JSON Extract Node",
         "property": "payload.nodes",
         "action": "str",
         "pretty": false,
@@ -5299,13 +5426,14 @@
             [
                 "5412bb9f8505ec2d"
             ]
-        ]
+        ],
+        "info": "This is a \"json\" node that takes an input message, extracts the \"nodes\" property from its payload (which is expected to be in the form of a JSON object), and converts it to a string (if it isn't already a string). The modified message is then passed to its output."
     },
     {
         "id": "5db7cfe60d82dc48",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "done",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5316,13 +5444,14 @@
         "statusType": "auto",
         "x": 530,
         "y": 780,
-        "wires": []
+        "wires": [],
+        "info": "This is a \"Debug\" node that can be used to output message data to a debug console or status display in the Node-RED editor. It is set to \"active\" and will emit any incoming messages to its output wires."
     },
     {
         "id": "5412bb9f8505ec2d",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "Subflow Payload Node Changer",
         "rules": [
             {
                 "t": "set",
@@ -5350,13 +5479,14 @@
             [
                 "651c8b081f5d322f"
             ]
-        ]
+        ],
+        "info": "This is a change node that sets the message's subflow property to the payload, and sets the message's payload property to the nodes property of the payload."
     },
     {
         "id": "16e7fb7b2bc1fd73",
         "type": "template",
         "z": "064c17312433ce15",
-        "name": "schema in",
+        "name": "\"Schema Generator\"",
         "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
@@ -5369,13 +5499,14 @@
             [
                 "04838b8e66b73717"
             ]
-        ]
+        ],
+        "info": "This is a Template node that takes a message object and applies a Handlebars template to it to produce a string output. The output is a draft-06 JSON schema representing the expected input message format based on the properties used and set in the node's upstream flows. The node discards anything from \"env.get\" as they go elsewhere."
     },
     {
         "id": "1c58af75659287c4",
         "type": "template",
         "z": "064c17312433ce15",
-        "name": "schema out",
+        "name": "\"Schema Out\"",
         "field": "requirements",
         "fieldType": "msg",
         "format": "handlebars",
@@ -5388,13 +5519,14 @@
             [
                 "1a45745cdcdcc2a0"
             ]
-        ]
+        ],
+        "info": "This is a Template node that takes in a message object and uses a handlebars template to generate a string output. The output string includes information about a subflow and some facts about it, and it requests a response in the form of a JSON schema that represents the expected output message format. Properties observed in the flow will be included in the schema, and anything identified as coming from \"env.get\" will be ignored."
     },
     {
         "id": "1a45745cdcdcc2a0",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"Schema-Output-Delete\"",
         "rules": [
             {
                 "t": "set",
@@ -5420,13 +5552,14 @@
             [
                 "6d9fb5aa70b87fab"
             ]
-        ]
+        ],
+        "info": "This is a Change node. It updates the `msg.key` property to the value `outputSchema` and deletes the `msg.format` property. The updated message is then outputted to the single wire connected to it."
     },
     {
         "id": "04838b8e66b73717",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"Schema-Setter\"",
         "rules": [
             {
                 "t": "set",
@@ -5452,13 +5585,14 @@
             [
                 "7933d60af84f3844"
             ]
-        ]
+        ],
+        "info": "This is a change node. It sets the \"key\" property of the incoming message to the string \"inputSchema\", then deletes the \"format\" property. The modified message is then passed to the node's output."
     },
     {
         "id": "5ac8e1eb22d9be16",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"Modify\"",
         "rules": [
             {
                 "t": "set",
@@ -5484,13 +5618,14 @@
             [
                 "bb3eea2eeff7495c"
             ]
-        ]
+        ],
+        "info": "This is a Change node that modifies the message payload by setting the value of the \"key\" property to \"info\" and deleting the \"format\" property. The modified message is then passed on to the next node in the flow."
     },
     {
         "id": "faec021f67110605",
         "type": "function",
         "z": "064c17312433ce15",
-        "name": "clone",
+        "name": "Cloner.",
         "func": "msg.payload = [msg.payload, msg.payload, msg.payload]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -5503,13 +5638,14 @@
             [
                 "9021cf925783a560"
             ]
-        ]
+        ],
+        "info": "This is a function node that takes in a message payload and clones it three times before sending it to the next node."
     },
     {
         "id": "7ec6901fd576cd8c",
         "type": "function",
         "z": "064c17312433ce15",
-        "name": "mux payload",
+        "name": "\"mux payload\"",
         "func": "msg.parseError = msg.parseError || 0\nif (!msg.payload[0] || msg.payload.length > 1){\n    msg.payload = `I was unable to parse your output, please wrap your final result inside a codeblock according to github flavored markdown.`\n    msg.parseError++\n    if (msg.parseError > 3){\n        return [msg, null]\n    }\n}\nlet value;\ntry {\n    value = msg.key === 'info' ? msg.payload : JSON.parse(msg.payload);\n} catch (e){\n    msg.parseError++\n    //ignore\n    msg.payload = 'I was unable to parse your output, please ensure you are giving me a valid JSON schema inside a single markdown code block'\n    if (msg.parseError > 3) {\n        return [msg, null]\n    }\n}\n\n\nmsg.payload = {\n    key: msg.key,\n    id: msg.subflow.id,\n    value\n}\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
@@ -5525,13 +5661,14 @@
             [
                 "add40d01a5910b28"
             ]
-        ]
+        ],
+        "info": "This is a function node that takes in a message object and parses its payload, storing the result in a new object. If the payload is empty or contains more than one value, an error message is returned. If the payload is not a valid JSON, there will also be an error message. Otherwise, the parsed payload is stored in a new payload object along with the keys of the original message object, and passed to the next node in the flow."
     },
     {
         "id": "678fd0992d3a0f8a",
         "type": "split",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "Split node.",
         "splt": "\\n",
         "spltType": "str",
         "arraySplt": 1,
@@ -5544,13 +5681,14 @@
             [
                 "a47dc97cf90527f1"
             ]
-        ]
+        ],
+        "info": "This is a \"split\" node that takes an input string and splits it into separate messages based on a specified delimiter. In this case, the delimiter is a newline character \"\\n\". The resulting messages are then passed to the next node for further processing."
     },
     {
         "id": "49c6cd17167fda13",
         "type": "switch",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"Switch by Index Node\"",
         "property": "parts.index",
         "propertyType": "msg",
         "rules": [
@@ -5585,13 +5723,14 @@
             [
                 "56eeed36b16f302e"
             ]
-        ]
+        ],
+        "info": "This is a switch node which examines the value of the \"parts.index\" property of the input message and routes it to one of three outputs based on whether the value is equal to 0, 1, or 2."
     },
     {
         "id": "9021cf925783a560",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "sequence setter",
         "rules": [
             {
                 "t": "set",
@@ -5613,13 +5752,14 @@
             [
                 "678fd0992d3a0f8a"
             ]
-        ]
+        ],
+        "info": "This node is called \"change\" and is used to modify the content of the input message. In this specific case, it sets the value of `msg.sequence` to the value of `msg.parts`. Once this modification is complete, the node sends the modified message to the next node connected to it."
     },
     {
         "id": "3a05ecf93cf9ab5d",
         "type": "change",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "Set parts to sequence node.",
         "rules": [
             {
                 "t": "set",
@@ -5640,13 +5780,14 @@
             [
                 "2e410a19acc23c63"
             ]
-        ]
+        ],
+        "info": "This is a \"Change\" node, which changes the message payload according to the specified rules. In this case, it sets the `parts` property of the message to the value of `sequence`. The modified message is then sent to the next node in the flow."
     },
     {
         "id": "2e410a19acc23c63",
         "type": "join",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "Auto-Join Node.",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -5665,13 +5806,14 @@
                 "2cd00d0c53ecf4fb",
                 "53ef31f6afecb1f0"
             ]
-        ]
+        ],
+        "info": "This is a \"join\" node in node-red that combines messages with the same topic into a single message. The node can output the messages as a single array or join them into an object. The \"accumulate\" option can be set to true to accumulate messages until a timeout is reached."
     },
     {
         "id": "add40d01a5910b28",
         "type": "join",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "\"Topic-based Join Node\"",
         "mode": "auto",
         "build": "object",
         "property": "payload",
@@ -5694,13 +5836,14 @@
                 "3a05ecf93cf9ab5d",
                 "8a22d3df8f823101"
             ]
-        ]
+        ],
+        "info": "This is a \"join\" node that combines multiple messages into a single message based on a common topic. The combined messages are output as an array or object, depending on the configuration. The \"joiner\" parameter determines how the messages are concatenated in the final output. There is also an option to accumulate messages over time, and a timeout parameter that can be used to automatically release accumulated messages. The node has two output wires for sending the joined output."
     },
     {
         "id": "2cd00d0c53ecf4fb",
         "type": "function",
         "z": "064c17312433ce15",
-        "name": "merge docs",
+        "name": "\"Merge Docs\"",
         "func": "msg.payload.filter(Array.isArray).forEach(arr => {\n    arr.forEach(item => {\n        if (item && item.id && item.key && item.value !== undefined) {\n            console.log('item', item)\n            let flow = msg.flows.find(flow => flow.id === item.id);\n            if (flow) {\n                flow[item.key] = item.value;\n            }\n        }\n    });\n});\n\nmsg.payload = msg.flows;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -5713,13 +5856,14 @@
             [
                 "0b0814f0b4085a24"
             ]
-        ]
+        ],
+        "info": "This is a function node that takes in a message object with a payload property consisting of an array of objects. It searches for objects with specific properties (id, key, value) and assigns the value to the corresponding key in the message flows object. The node then sends the updated flows object as its payload to its output."
     },
     {
         "id": "965d9cce35236045",
         "type": "file",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "File node.",
         "filename": "/data/projects/red-gpt-project/flows.dox.json",
         "filenameType": "str",
         "appendNewline": true,
@@ -5732,13 +5876,14 @@
             [
                 "5db7cfe60d82dc48"
             ]
-        ]
+        ],
+        "info": "This is a \"file\" node in node-red. It writes data to a file specified by the user and can overwrite the existing file contents if specified. The filename can be either a static string or can be dynamic, specified by a previous node in the flow. The \"appendNewline\" property adds a new line character at the end of each write operation. If specified, it can create a new directory and the \"encoding\" property specifies the character encoding used for writing to the file. The node outputs the data written to the file, passed through \"wires.\""
     },
     {
         "id": "0b0814f0b4085a24",
         "type": "json",
         "z": "064c17312433ce15",
-        "name": "",
+        "name": "JSON to String Converter.",
         "property": "payload",
         "action": "str",
         "pretty": true,
@@ -5748,13 +5893,14 @@
             [
                 "965d9cce35236045"
             ]
-        ]
+        ],
+        "info": "This node is a JSON node that converts a JSON object in the input message payload to a string. The output will be a string message with the JSON data."
     },
     {
         "id": "5c0a5b90e1f9a2a9",
         "type": "catch",
         "z": "064c17312433ce15",
-        "name": "confgpt",
+        "name": "\"Catch node named confgpt\"",
         "scope": [
             "afdc81229134a1c7"
         ],
@@ -5766,13 +5912,14 @@
                 "b561ced84cd69718",
                 "add40d01a5910b28"
             ]
-        ]
+        ],
+        "info": "This is a Catch node in node-red. It is named \"confgpt\" and is set to catch errors specifically within the scope of another node with an ID of afdc81229134a1c7. When an error is caught, it will send the error message to two different output nodes."
     },
     {
         "id": "b561ced84cd69718",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "documentation",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5783,13 +5930,14 @@
         "statusType": "auto",
         "x": 240,
         "y": 480,
-        "wires": []
+        "wires": [],
+        "info": "This is a node that displays messages in the debug sidebar of the Node-RED user interface. It receives messages from its input and forwards them to the debug sidebar. It has options to send messages to the debug console instead, or to the status bar. It is often used for debugging and troubleshooting flows."
     },
     {
         "id": "36739576145f65c6",
         "type": "catch",
         "z": "064c17312433ce15",
-        "name": "confgpt",
+        "name": "Catch node.",
         "scope": null,
         "uncaught": true,
         "x": 110,
@@ -5798,13 +5946,14 @@
             [
                 "cd54a881ed9ca306"
             ]
-        ]
+        ],
+        "info": "This is a Catch node. It is used to catch any unhandled errors or runtime exceptions that occur during flow execution. When an exception is caught, the node outputs an error message containing details of the error to connected nodes. The \"scope\" property is set to null, indicating that the node will catch errors from all nodes in the flow. The \"name\" property is set to \"confgpt\", which is likely a reference to some element in the application."
     },
     {
         "id": "cd54a881ed9ca306",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "all doc errors",
+        "name": "Node Name: \"Debug Node\"",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5815,7 +5964,8 @@
         "statusType": "auto",
         "x": 310,
         "y": 680,
-        "wires": []
+        "wires": [],
+        "info": "This is a \"Debug\" node which is used for debugging purposes within a Node-RED flow. It will output any messages it receives to the console or sidebar depending on the settings, making it easier to track down errors in the flow. In this particular instance, this debug node is set to output all messages it receives without applying any filtering criteria."
     },
     {
         "id": "55ed6ffd1603d999",
@@ -5834,7 +5984,7 @@
         "id": "651c8b081f5d322f",
         "type": "template",
         "z": "064c17312433ce15",
-        "name": "set context",
+        "name": "Template Node",
         "field": "context",
         "fieldType": "msg",
         "format": "handlebars",
@@ -5847,13 +5997,14 @@
             [
                 "55ed6ffd1603d999"
             ]
-        ]
+        ],
+        "info": "This is a node that sets the `context` property of the incoming message to a specific string template using handlebars syntax. The resulting message is then passed to the node(s) connected to its output."
     },
     {
         "id": "a47dc97cf90527f1",
         "type": "function",
         "z": "064c17312433ce15",
-        "name": "function 2",
+        "name": "\"Clone History Array Function\"",
         "func": "msg.history = JSON.parse(JSON.stringify(msg.history || []))\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
@@ -5866,13 +6017,14 @@
             [
                 "49c6cd17167fda13"
             ]
-        ]
+        ],
+        "info": "This is a function node that declares a function named \"function 2\". The function deep clones the input message's \"history\" array (as long as it exists)  and returns the message object unchanged. The cloned \"history\" array is then available in subsequent nodes."
     },
     {
         "id": "8a22d3df8f823101",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "debug 5",
+        "name": "Debug 5 Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5882,13 +6034,14 @@
         "statusType": "auto",
         "x": 780,
         "y": 540,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED. It displays messages on the debug sidebar and/or status bar of the Node-RED editor. The message can come from any previous node in the flow that is connected to this debug node."
     },
     {
         "id": "53ef31f6afecb1f0",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "debug 6",
+        "name": "Debug Node",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5898,7 +6051,8 @@
         "statusType": "auto",
         "x": 780,
         "y": 620,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED. It is used to display messages in the debug sidebar of the editor. The messages can be sent from the output of another node in the flow. This node has a toggle option to output the message to the console or the status bar."
     },
     {
         "id": "f9ed70c1b56a8ed7",
@@ -5917,7 +6071,7 @@
         "id": "272d17a387e30363",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "debug 8",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5927,13 +6081,14 @@
         "statusType": "auto",
         "x": 900,
         "y": 20,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node that can be used to display the message properties in the debug tab of the Node-RED editor or in the sidebar of the dashboard. When a message is passed to it, it will output the message payload and other optional fields in the debug panel. It does not modify the message or pass it on to any downstream nodes."
     },
     {
         "id": "6561f76ff8addfbc",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "debug 10",
+        "name": "\"Debug 10 Node\"",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -5944,13 +6099,14 @@
         "statusType": "auto",
         "x": 1010,
         "y": 120,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node in Node-RED, which can be used to display a message payload and/or status in the debug sidebar, the debug tab of the editor, or the console. In this specific example, the debug node is named \"debug 10\", and is currently active. When a message arrives at the node, it will output the message payload to either the sidebar or the console, depending on the node settings. The setting to \"Complete\" specifies that the entire message payload will be outputted. The node does not modify the message in any way and simply provides a mechanism for debugging and monitoring data flowing through the connected nodes."
     },
     {
         "id": "fe14d1df072c2e42",
         "type": "debug",
         "z": "064c17312433ce15",
-        "name": "debug 11",
+        "name": "Debug 11.",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -5961,7 +6117,8 @@
         "statusType": "auto",
         "x": 950,
         "y": 160,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node that displays the message payload on the console or sidebar. It is commonly used for debugging and testing flow behavior."
     },
     {
         "id": "cd4c326a3811b3e0",
@@ -5980,7 +6137,7 @@
         "id": "fd82d1078959f5bb",
         "type": "template",
         "z": "064c17312433ce15",
-        "name": "set context",
+        "name": "Template Node.",
         "field": "context",
         "fieldType": "msg",
         "format": "handlebars",
@@ -5993,13 +6150,14 @@
             [
                 "cd4c326a3811b3e0"
             ]
-        ]
+        ],
+        "info": "The template node sets a msg context to a handlebars template outputting a string message."
     },
     {
         "id": "3f4b4b20e1f7bbd2",
         "type": "inject",
         "z": "eeba88e77478c844",
-        "name": "",
+        "name": "\"Inject\"",
         "props": [
             {
                 "p": "payload"
@@ -6037,13 +6195,14 @@
             [
                 "ef960b97bda8d6fb"
             ]
-        ]
+        ],
+        "info": "This is an inject node that generates a date and sends it downstream, along with several properties in the message object including topic, temperature, language, and min_tokens."
     },
     {
         "id": "7685c12228ceb9c0",
         "type": "debug",
         "z": "eeba88e77478c844",
-        "name": "debug 12",
+        "name": "Debug Node",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -6054,13 +6213,14 @@
         "statusType": "auto",
         "x": 300,
         "y": 220,
-        "wires": []
+        "wires": [],
+        "info": "This is a debug node that outputs the entire message to the debug sidebar. It is active and has no impact on the status bar."
     },
     {
         "id": "a474ad0b3977327b",
         "type": "debug",
         "z": "eeba88e77478c844",
-        "name": "debug 13",
+        "name": "Debug Node.",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -6071,7 +6231,8 @@
         "statusType": "auto",
         "x": 580,
         "y": 540,
-        "wires": []
+        "wires": [],
+        "info": "This is a Debug node in Node-RED that can be used to display the content of the message on the debug sidebar. It has the option to output the message payload to the console or status bar."
     },
     {
         "id": "ef960b97bda8d6fb",
