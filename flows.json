@@ -7280,7 +7280,7 @@
             "270dcc5c3ccf3876"
         ],
         "linkType": "static",
-        "timeout": "30",
+        "timeout": "3600",
         "x": 780,
         "y": 980,
         "wires": [
