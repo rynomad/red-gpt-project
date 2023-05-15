@@ -4437,7 +4437,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
+        "x": 710,
         "y": 160,
         "wires": [
             [
@@ -7460,7 +7460,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYou are also an expert in fuzz testing.\nThe user will provide you with a detailed description of a node-red subflow, as well as JSON schemas for the input and output messages.\n\nrespond with a JSON array containing two objects:\n- first, a sample input according to the input schema\n- second, the expected output according to the output schema and the description of how the subflow works\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '['",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYou are also an expert in fuzz testing.\nThe user will provide you with a detailed description of a node-red subflow, as well as JSON schemas for the input and output messages.\n\nrespond with a JSON array containing 10 subarrays:\n- each subarray should contain two objects:\n    - first, a sample input according to the input schema\n    - second, the expected output according to the output schema and the description of how the subflow works\n\nthese pairs you generate will be used to fuzz test the flow, so you should include a variety of samples that cover different cases.\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '['",
         "output": "str",
         "x": 160,
         "y": 220,
