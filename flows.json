@@ -4136,7 +4136,7 @@
                 "vt": "str"
             },
             {
-                "t": "eq",
+                "t": "cont",
                 "v": "Rate limit reached",
                 "vt": "str"
             },
@@ -4376,7 +4376,7 @@
         "repair": false,
         "outputs": 3,
         "x": 890,
-        "y": 60,
+        "y": 260,
         "wires": [
             [],
             [],
@@ -4405,19 +4405,19 @@
         "type": "delay",
         "z": "e961334cde89144c",
         "name": "rate limit delay",
-        "pauseType": "delay",
+        "pauseType": "random",
         "timeout": "1",
         "timeoutUnits": "minutes",
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
+        "randomFirst": "30",
+        "randomLast": "120",
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 680,
+        "x": 720,
         "y": 160,
         "wires": [
             [
