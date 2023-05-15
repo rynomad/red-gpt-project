@@ -6932,7 +6932,7 @@
         "name": "doc debugger",
         "active": true,
         "tosidebar": true,
-        "console": false,
+        "console": true,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
@@ -7231,7 +7231,8 @@
         "y": 400,
         "wires": [
             [
-                "902c148d976a5ff0"
+                "902c148d976a5ff0",
+                "cc46762e4b716a08"
             ]
         ]
     }
