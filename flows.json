@@ -3474,7 +3474,7 @@
         "type": "function",
         "z": "788598196e86646c",
         "name": "set system message into history",
-        "func": "msg.history = msg.history || []\nif (!msg.system){\n    return msg;\n}\n\nif (msg.history[0] && msg.history[0].role === 'system'){\n    msg.history = msg.history.slice(1)\n}\n\n\nmsg.history = [{\n    role: 'system',\n    content: msg.system\n}].concat(msg.history);\n\nreturn msg;",
+        "func": "msg.history = [{\n    role: 'system',\n    content: msg.system\n}]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4335,7 +4335,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
+        "x": 960,
         "y": 100,
         "wires": []
     },
