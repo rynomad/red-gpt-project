@@ -3943,8 +3943,8 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "5",
+        "rate": "15",
+        "nbRateUnits": "60",
         "rateUnits": "second",
         "randomFirst": "5",
         "randomLast": "20",
@@ -6344,7 +6344,7 @@
         "y": 260,
         "wires": [
             [
-                "d3d8cb380e40deea"
+                "0a8097753cbc1cf4"
             ],
             [
                 "bf7d4c2d39fa90ca"
@@ -6602,7 +6602,7 @@
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow.\n\nrespond with a user focused description of the subflow with the following structure:\n- A brief description of the functionality of the subflow as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.",
         "output": "str",
         "x": 950,
-        "y": 540,
+        "y": 500,
         "wires": [
             [
                 "b3c1417704b4555c"
@@ -6735,7 +6735,7 @@
         "to": "",
         "reg": false,
         "x": 940,
-        "y": 500,
+        "y": 460,
         "wires": [
             [
                 "b0fd7fa108cd260f"
@@ -6747,7 +6747,7 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "parse",
-        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return msg;\n} \n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(message.content);\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    msg.payload = payload;\n    return msg;\n} \n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(message.content);\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6963,14 +6963,14 @@
         "id": "c008dae24103c0c1",
         "type": "change",
         "z": "eeba88e77478c844",
-        "name": "try 5 times",
+        "name": "try 3 times",
         "rules": [
             {
                 "t": "set",
                 "p": "n",
                 "pt": "msg",
-                "to": "5",
-                "tot": "str"
+                "to": "3",
+                "tot": "num"
             }
         ],
         "action": "",
@@ -7062,7 +7062,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 950,
-        "y": 580,
+        "y": 540,
         "wires": [
             [
                 "606d1f8ad57a1a47"
@@ -7122,10 +7122,10 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 940,
-        "y": 620,
+        "y": 580,
         "wires": [
             [
-                "048dc877cecba570"
+                "832d0e24668fb24e"
             ]
         ]
     },
@@ -7152,6 +7152,58 @@
         "wires": [
             [
                 "fa37baf5d5d210ae"
+            ]
+        ]
+    },
+    {
+        "id": "0a8097753cbc1cf4",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "[]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 300,
+        "wires": [
+            [
+                "d3d8cb380e40deea"
+            ]
+        ]
+    },
+    {
+        "id": "832d0e24668fb24e",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "clear history",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "history",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 620,
+        "wires": [
+            [
+                "048dc877cecba570"
             ]
         ]
     }
