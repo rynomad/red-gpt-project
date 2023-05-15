@@ -6431,10 +6431,10 @@
         "stream": false,
         "addname": "",
         "x": 610,
-        "y": 500,
+        "y": 540,
         "wires": [
             [
-                "90c1f1acf3c261e8"
+                "e95ef67408de2621"
             ]
         ]
     },
@@ -6639,31 +6639,6 @@
         ]
     },
     {
-        "id": "90c1f1acf3c261e8",
-        "type": "change",
-        "z": "eeba88e77478c844",
-        "name": "clear history",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "history",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 630,
-        "y": 540,
-        "wires": [
-            [
-                "e95ef67408de2621"
-            ]
-        ]
-    },
-    {
         "id": "a6a16491f928d8e9",
         "type": "change",
         "z": "eeba88e77478c844",
@@ -6749,7 +6724,7 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "parse",
-        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    msg.payload = payload;\n    return msg;\n} \n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(message.content);\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    msg.payload = payload;\n    return msg;\n} \nfunction extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6813,8 +6788,8 @@
         "y": 460,
         "wires": [
             [
-                "1153fce15251a548",
-                "c1e8d10dd7e3cd69"
+                "c1e8d10dd7e3cd69",
+                "90c1f1acf3c261e8"
             ]
         ]
     },
@@ -7239,7 +7214,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
+        "x": 790,
         "y": 420,
         "wires": []
     },
@@ -7264,16 +7239,48 @@
         ]
     },
     {
+        "id": "90c1f1acf3c261e8",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "clear history",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "history",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "subflow.description",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "1153fce15251a548"
+            ]
+        ]
+    },
+    {
         "id": "270dcc5c3ccf3876",
         "type": "link in",
         "z": "8dfc33ccdf4bd813",
         "name": "link in 2",
         "links": [],
-        "x": 185,
-        "y": 80,
+        "x": 75,
+        "y": 60,
         "wires": [
             [
-                "5edf8f327eee67c4"
+                "a55e8e5fafc718c6"
             ]
         ]
     },
@@ -7284,8 +7291,8 @@
         "name": "link out 2",
         "mode": "link",
         "links": [],
-        "x": 445,
-        "y": 160,
+        "x": 575,
+        "y": 60,
         "wires": []
     },
     {
@@ -7297,7 +7304,7 @@
         "y": 200,
         "wires": [
             [
-                "80d1647716ac9376"
+                "c11ad7c7e95eedfc"
             ]
         ]
     },
@@ -7306,11 +7313,11 @@
         "type": "template",
         "z": "8dfc33ccdf4bd813",
         "name": "",
-        "field": "payload",
+        "field": "system",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "This is the payload: {{payload}} !",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYou are also an expert in fuzz testing.\nThe user will provide you with a detailed description of a node-red subflow, as well as JSON schemas for the input and output messages.\n\nrespond with a JSON array containing two objects:\n- first, a sample input according to the input schema\n- second, the expected output according to the output schema and the description of how the subflow works\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '['",
         "output": "str",
         "x": 300,
         "y": 160,
@@ -7326,9 +7333,166 @@
         "z": "8dfc33ccdf4bd813",
         "name": "",
         "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "0b9c110f138ef376"
+            ]
+        ]
+    },
+    {
+        "id": "c11ad7c7e95eedfc",
+        "type": "template",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "# Description:\n{{{subflow.description}}}\n\n# Input Schema:\n{{{subflow.inputSchema}}}\n\n# Output Schema:\n{{{subflow.outputSchema}}}",
+        "output": "str",
+        "x": 300,
         "y": 240,
         "wires": [
-            []
+            [
+                "df9f3f1188d91ec6"
+            ]
+        ]
+    },
+    {
+        "id": "df9f3f1188d91ec6",
+        "type": "change",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "n",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "temperature",
+                "pt": "msg",
+                "to": "0.6",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "80d1647716ac9376"
+            ]
+        ]
+    },
+    {
+        "id": "0b9c110f138ef376",
+        "type": "function",
+        "z": "8dfc33ccdf4bd813",
+        "name": "parse tests",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('[');\n    const lastIndex = str.lastIndexOf(']');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nconst tests = []\n\nfor (const {message: {content}} of msg.full.data.choices){\n    try {\n        const test = JSON.parse(extractJsonString(content))\n        tests.push(test)\n    } catch (e) {\n        // ignore\n    }\n}\nmsg.payload = JSON.stringify(tests, null, 4);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "1bdf14738901767b"
+            ]
+        ]
+    },
+    {
+        "id": "1bdf14738901767b",
+        "type": "file",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "filename": "",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "b74d4d377fba494c"
+            ]
+        ]
+    },
+    {
+        "id": "fac0ecacc82b5e1b",
+        "type": "file in",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "filename": "",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 420,
+        "y": 60,
+        "wires": [
+            [
+                "b74d4d377fba494c"
+            ]
+        ]
+    },
+    {
+        "id": "a55e8e5fafc718c6",
+        "type": "change",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "$join([\"/data/fuzz/\", subflow.id, \".json\"])",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 210,
+        "y": 60,
+        "wires": [
+            [
+                "fac0ecacc82b5e1b"
+            ]
+        ]
+    },
+    {
+        "id": "20873be0e001b1bd",
+        "type": "catch",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "scope": [
+            "fac0ecacc82b5e1b"
+        ],
+        "uncaught": false,
+        "x": 290,
+        "y": 120,
+        "wires": [
+            [
+                "5edf8f327eee67c4"
+            ]
         ]
     }
 ]
