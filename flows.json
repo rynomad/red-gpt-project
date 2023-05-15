@@ -1233,18 +1233,6 @@
         ]
     },
     {
-        "id": "8a7f8620b0c53ac6",
-        "type": "junction",
-        "z": "eeba88e77478c844",
-        "x": 500,
-        "y": 840,
-        "wires": [
-            [
-                "bcedaf9d77b92544"
-            ]
-        ]
-    },
-    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -3942,8 +3930,8 @@
         "y": 280,
         "wires": [
             [
-                "1d0773bcf3416404",
-                "56380579ca248c30"
+                "56380579ca248c30",
+                "88777962fcded1b0"
             ]
         ]
     },
@@ -3968,8 +3956,8 @@
         "y": 280,
         "wires": [
             [
-                "1d0773bcf3416404",
-                "56380579ca248c30"
+                "56380579ca248c30",
+                "88777962fcded1b0"
             ]
         ]
     },
@@ -4028,7 +4016,7 @@
         "mode": "return",
         "links": [],
         "x": 605,
-        "y": 480,
+        "y": 560,
         "wires": []
     },
     {
@@ -4040,7 +4028,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 400,
-        "y": 340,
+        "y": 420,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4076,7 +4064,7 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 760,
+        "x": 1000,
         "y": 320,
         "wires": [
             []
@@ -4163,7 +4151,7 @@
                 "c8ed6299a7db1bac"
             ],
             [
-                "0e15e195386e7615"
+                "3518c753fac83bd6"
             ],
             [
                 "742d10fb144f3c99"
@@ -4176,7 +4164,7 @@
         "z": "e961334cde89144c",
         "name": "minify JSON in history",
         "x": 440,
-        "y": 400,
+        "y": 480,
         "wires": [
             [
                 "2d60fcbd28eb92c7"
@@ -4201,7 +4189,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 440,
+        "y": 520,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -4221,7 +4209,7 @@
             }
         ],
         "x": 410,
-        "y": 480,
+        "y": 560,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -4390,9 +4378,9 @@
         "type": "catch",
         "z": "e961334cde89144c",
         "name": "",
-        "scope": null,
-        "uncaught": true,
-        "x": 640,
+        "scope": [],
+        "uncaught": false,
+        "x": 610,
         "y": 20,
         "wires": [
             [
@@ -4401,27 +4389,65 @@
         ]
     },
     {
-        "id": "0e15e195386e7615",
-        "type": "delay",
+        "id": "3518c753fac83bd6",
+        "type": "function",
         "z": "e961334cde89144c",
-        "name": "rate limit delay",
-        "pauseType": "random",
-        "timeout": "1",
-        "timeoutUnits": "minutes",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "30",
-        "randomLast": "120",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
+        "name": "set rate limit",
+        "func": "flow.set(\"rate_limit_encountered\", true);\nnode.status({ fill: \"red\", shape: \"dot\", text: \"Rate limit encountered\" });\nsetTimeout(() => {\n    flow.set(\"rate_limit_encountered\", true);\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"Rate limit expired\" });\n})\nreturn msg;",
         "outputs": 1,
-        "x": 720,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
         "y": 160,
         "wires": [
             [
                 "dd2038bc71721c1f"
+            ]
+        ]
+    },
+    {
+        "id": "88777962fcded1b0",
+        "type": "function",
+        "z": "e961334cde89144c",
+        "name": "rate limit hit checker",
+        "func": "var rateLimitEncountered = flow.get(\"rate_limit_encountered\") || false;\nif (rateLimitEncountered) {\n    // If a rate limit has been encountered, pause for 30 seconds\n    msg.delay = 30000;\n} \n// Reset the rate limit encountered flag\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 340,
+        "wires": [
+            [
+                "c005622c337802e1"
+            ]
+        ]
+    },
+    {
+        "id": "c005622c337802e1",
+        "type": "delay",
+        "z": "e961334cde89144c",
+        "name": "rate limit hit queue",
+        "pauseType": "delayv",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "13",
+        "rateUnits": "second",
+        "randomFirst": "5",
+        "randomLast": "20",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 430,
+        "y": 380,
+        "wires": [
+            [
+                "1d0773bcf3416404"
             ]
         ]
     },
@@ -6719,8 +6745,8 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "parse",
-        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return [msg,null];\n} \n\n\nfor (const {content} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(content);\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn [msg, null];",
-        "outputs": 2,
+        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return msg;\n} \n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(message.content);\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -6735,9 +6761,6 @@
         "wires": [
             [
                 "61560e628468ae50"
-            ],
-            [
-                "8a7f8620b0c53ac6"
             ]
         ]
     },
@@ -6861,7 +6884,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 670,
-        "y": 1020,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -6875,7 +6898,7 @@
         "action": "",
         "pretty": true,
         "x": 610,
-        "y": 980,
+        "y": 1020,
         "wires": [
             [
                 "5e15f1532da6cf0c"
