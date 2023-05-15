@@ -4015,7 +4015,7 @@
         "name": "link out 1",
         "mode": "return",
         "links": [],
-        "x": 605,
+        "x": 855,
         "y": 580,
         "wires": []
     },
@@ -4064,7 +4064,7 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 1000,
+        "x": 840,
         "y": 320,
         "wires": [
             []
@@ -4270,8 +4270,8 @@
         "type": "function",
         "z": "e961334cde89144c",
         "name": "fix token overage",
-        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else {\n    //we fucked\n    throw new Error('token overage')\n}\n\nmsg.history.pop()\n\n\nreturn msg;",
-        "outputs": 1,
+        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else if (values.tokensInCompletion > overage) {\n    msg.max_tokens = values.tokensInCompletion - overage;\n} else {\n    // bail\n    msg.payload = 'unrecoverable token overage'\n    return [msg, null];\n}\n\nmsg.history.pop()\n\n\nreturn [null,msg];",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -4279,6 +4279,9 @@
         "x": 930,
         "y": 160,
         "wires": [
+            [
+                "9f4d0154bcaa5bdb"
+            ],
             [
                 "dd2038bc71721c1f"
             ]
@@ -4363,8 +4366,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 890,
-        "y": 260,
+        "x": 750,
+        "y": 240,
         "wires": [
             [],
             [],
@@ -6935,8 +6938,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1040,
-        "y": 40,
+        "x": 1160,
+        "y": 220,
         "wires": []
     },
     {
@@ -6998,7 +7001,7 @@
         "y": 360,
         "wires": [
             [
-                "7792dd5704da3bef"
+                "3b681d970737419d"
             ]
         ]
     },
@@ -7204,6 +7207,31 @@
         "wires": [
             [
                 "048dc877cecba570"
+            ]
+        ]
+    },
+    {
+        "id": "3b681d970737419d",
+        "type": "switch",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "property": "payload.length",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "4000",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 910,
+        "y": 400,
+        "wires": [
+            [
+                "902c148d976a5ff0"
             ]
         ]
     }
