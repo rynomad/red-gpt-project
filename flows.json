@@ -6719,12 +6719,17 @@
         "type": "function",
         "z": "eeba88e77478c844",
         "name": "parse",
-        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return [msg,null];\n} \n\ntry {\n    for (const str of )\n    payload.content = JSON.parse(msg.payload);\n} catch (e) {\n    if (msg.parseError){\n        msg.payload = payload;\n        return [null, msg];\n    }\n    msg.payload = 'I was unable to parse the JSON, please respond ONLY with the JSON.'\n    msg.parseError = true;\n    return [null, msg]\n}\n\nmsg.payload = payload;\nreturn [msg, null];",
+        "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.value = msg.payload;\n    return [msg,null];\n} \n\n\nfor (const {content} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(content);\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn [msg, null];",
         "outputs": 2,
-        "noerr": 2,
+        "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
+        "libs": [
+            {
+                "var": "ajv",
+                "module": "ajv"
+            }
+        ],
         "x": 610,
         "y": 820,
         "wires": [
