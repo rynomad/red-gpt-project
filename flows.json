@@ -6378,8 +6378,7 @@
         "y": 820,
         "wires": [
             [
-                "66d78473b89ee5af",
-                "3c36033b04287338"
+                "66d78473b89ee5af"
             ]
         ]
     },
@@ -6815,7 +6814,8 @@
         "y": 460,
         "wires": [
             [
-                "1153fce15251a548"
+                "1153fce15251a548",
+                "c1e8d10dd7e3cd69"
             ]
         ]
     },
@@ -6835,7 +6835,8 @@
         "y": 860,
         "wires": [
             [
-                "d3d8cb380e40deea"
+                "d3d8cb380e40deea",
+                "3c36033b04287338"
             ]
         ]
     },
@@ -6864,6 +6865,13 @@
                 "pt": "msg",
                 "to": "flows",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "parts",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -7216,7 +7224,7 @@
         "id": "3c36033b04287338",
         "type": "debug",
         "z": "eeba88e77478c844",
-        "name": "chunk",
+        "name": "chunk out",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -7225,8 +7233,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 820,
+        "x": 970,
+        "y": 860,
         "wires": []
     },
     {
@@ -7244,6 +7252,23 @@
         "statusType": "auto",
         "x": 940,
         "y": 900,
+        "wires": []
+    },
+    {
+        "id": "c1e8d10dd7e3cd69",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "name": "chunk in",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 420,
         "wires": []
     }
 ]
