@@ -4016,7 +4016,7 @@
         "mode": "return",
         "links": [],
         "x": 605,
-        "y": 560,
+        "y": 580,
         "wires": []
     },
     {
@@ -4028,7 +4028,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 400,
-        "y": 420,
+        "y": 440,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4164,7 +4164,7 @@
         "z": "e961334cde89144c",
         "name": "minify JSON in history",
         "x": 440,
-        "y": 480,
+        "y": 500,
         "wires": [
             [
                 "2d60fcbd28eb92c7"
@@ -4189,7 +4189,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 520,
+        "y": 540,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -4209,7 +4209,7 @@
             }
         ],
         "x": 410,
-        "y": 560,
+        "y": 580,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -4378,9 +4378,9 @@
         "type": "catch",
         "z": "e961334cde89144c",
         "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 610,
+        "scope": null,
+        "uncaught": true,
+        "x": 640,
         "y": 20,
         "wires": [
             [
@@ -6456,7 +6456,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a json string of a node-red subflow.\n\nanalyze the subflow and respond with a detailed description of:\n- all necessary and optional properties on incoming messages.\n- all properties that may exist on outgoing messages\n- all environment variables that may be set on instances of the subflow\n- the wiring order of nodes in the subflow, including description of what happens at each node.\n\norganize your response in sections.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a json string of a node-red subflow.\n\nanalyze the subflow and respond with a detailed description of:\n- all necessary and optional properties on incoming messages.\n- all properties that may exist on outgoing messages\n- all environment variables that may be set on instances of the subflow\n- the wiring order of all nodes in the subflow\n- a description of the configureation of all nodes in the subflow\n- an analysis of javascript inside any nodes of the 'function' type\n- A synthesis of the above into an summary description of the purpose of the subflow\n\norganize your response in sections.",
         "output": "str",
         "x": 660,
         "y": 300,
