@@ -6409,8 +6409,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 610,
-        "y": 860,
+        "x": 530,
+        "y": 980,
         "wires": [
             [
                 "21298cafe54f941c"
@@ -6428,8 +6428,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 1100,
+        "x": 570,
+        "y": 1220,
         "wires": [
             [
                 "e3296a3158dbf064"
@@ -6597,7 +6597,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a JSON schema to validate incoming messages to the subflow.\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a thorough JSON schema to validate incoming messages to the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
         "x": 450,
         "y": 700,
@@ -6617,7 +6617,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a JSON schema to validate outgoing messages from the subflow.\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a JSON schema to validate outgoing messages from the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
         "x": 640,
         "y": 700,
@@ -6640,7 +6640,7 @@
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow.\n\nrespond with a user focused description of the subflow with the following structure:\n- A brief description of the functionality of the subflow as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.",
         "output": "str",
         "x": 950,
-        "y": 500,
+        "y": 620,
         "wires": [
             [
                 "b3c1417704b4555c"
@@ -6666,11 +6666,11 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "eeba88e77478c844",
         "name": "",
-        "x": 620,
+        "x": 540,
         "y": 780,
         "wires": [
             [
-                "fa37baf5d5d210ae"
+                "7b5a3f0b1690ca11"
             ]
         ]
     },
@@ -6748,7 +6748,7 @@
         "to": "",
         "reg": false,
         "x": 940,
-        "y": 460,
+        "y": 580,
         "wires": [
             [
                 "b0fd7fa108cd260f"
@@ -6771,8 +6771,8 @@
                 "module": "ajv"
             }
         ],
-        "x": 610,
-        "y": 820,
+        "x": 530,
+        "y": 940,
         "wires": [
             [
                 "61560e628468ae50"
@@ -6799,8 +6799,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 610,
-        "y": 1060,
+        "x": 530,
+        "y": 1180,
         "wires": [
             [
                 "57c769c25e9556c1",
@@ -6841,8 +6841,8 @@
                 "type": "str"
             }
         ],
-        "x": 620,
-        "y": 1020,
+        "x": 540,
+        "y": 1140,
         "wires": [
             [
                 "d3d8cb380e40deea",
@@ -6882,8 +6882,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
-        "y": 1140,
+        "x": 560,
+        "y": 1260,
         "wires": [
             [
                 "a56164e07e433c62"
@@ -6901,8 +6901,8 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 700,
-        "y": 1220,
+        "x": 620,
+        "y": 1340,
         "wires": [
             []
         ]
@@ -6915,8 +6915,8 @@
         "property": "payload",
         "action": "",
         "pretty": true,
-        "x": 610,
-        "y": 1180,
+        "x": 530,
+        "y": 1300,
         "wires": [
             [
                 "5e15f1532da6cf0c"
@@ -7059,7 +7059,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 950,
-        "y": 540,
+        "y": 660,
         "wires": [
             [
                 "606d1f8ad57a1a47"
@@ -7078,7 +7078,7 @@
         "template": "You are an html formatter.\nThe user will present you with a piece of documentation\n\nyou must respond with an html representation of the document\n\nhere is an example for css and structure reference:\n\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n\n\nrespond with ONLY the valid HTML, without preamble or postscript. the first character in your respose should be '<'",
         "output": "str",
         "x": 930,
-        "y": 700,
+        "y": 820,
         "wires": [
             [
                 "02fd2ca519599bb4"
@@ -7106,7 +7106,7 @@
         "to": "",
         "reg": false,
         "x": 950,
-        "y": 660,
+        "y": 780,
         "wires": [
             [
                 "264931e378e4a5a7"
@@ -7119,7 +7119,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 940,
-        "y": 580,
+        "y": 700,
         "wires": [
             [
                 "832d0e24668fb24e"
@@ -7132,7 +7132,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 950,
-        "y": 740,
+        "y": 860,
         "wires": [
             [
                 "8712dd2d74b9b5a4"
@@ -7145,7 +7145,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 940,
-        "y": 780,
+        "y": 900,
         "wires": [
             [
                 "fa37baf5d5d210ae"
@@ -7171,8 +7171,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 300,
+        "x": 860,
+        "y": 220,
         "wires": [
             [
                 "d3d8cb380e40deea"
@@ -7197,7 +7197,7 @@
         "to": "",
         "reg": false,
         "x": 950,
-        "y": 620,
+        "y": 740,
         "wires": [
             [
                 "048dc877cecba570"
@@ -7317,8 +7317,8 @@
         ],
         "linkType": "static",
         "timeout": "3600",
-        "x": 780,
-        "y": 980,
+        "x": 700,
+        "y": 1100,
         "wires": [
             [
                 "86ea0d6eee03b684"
@@ -7336,8 +7336,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 900,
+        "x": 540,
+        "y": 1020,
         "wires": [
             [
                 "c47606ac18919c0b"
@@ -7355,8 +7355,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 610,
-        "y": 940,
+        "x": 530,
+        "y": 1060,
         "wires": [
             [
                 "ff0a2ec529815265"
@@ -7385,8 +7385,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 610,
-        "y": 980,
+        "x": 530,
+        "y": 1100,
         "wires": [
             [
                 "6eac5f43186e685d"
@@ -7410,8 +7410,65 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 940,
-        "y": 980,
+        "y": 1040,
         "wires": []
+    },
+    {
+        "id": "7b5a3f0b1690ca11",
+        "type": "template",
+        "z": "eeba88e77478c844",
+        "name": "system input",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an expert in JSON schema.\nThe user will provide you with multiple JSON schemas corresponding to an input message.\nYour job is to judge which is the most thorough\n\nrespond with a copy of the most thorough schema.\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
+        "output": "str",
+        "x": 550,
+        "y": 820,
+        "wires": [
+            [
+                "6eed1c925de3d5cc"
+            ]
+        ],
+        "info": "test it hey hey"
+    },
+    {
+        "id": "6eed1c925de3d5cc",
+        "type": "function",
+        "z": "eeba88e77478c844",
+        "name": "combine options",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nconst options = []\nfor (const { message } of msg.full.data.choices) {\n    try {\n        const content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(content);\n        options.push(content);\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = options.map((schema,i) => \n`---OPTION ${i} START---\n${JSON.stringify(schema)}\n---OPTION ${i} END---`).join('\\n')\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "ajv",
+                "module": "ajv"
+            }
+        ],
+        "x": 570,
+        "y": 860,
+        "wires": [
+            [
+                "0daab422e6bba4dc"
+            ]
+        ]
+    },
+    {
+        "id": "0daab422e6bba4dc",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 540,
+        "y": 900,
+        "wires": [
+            [
+                "fa37baf5d5d210ae"
+            ]
+        ]
     },
     {
         "id": "270dcc5c3ccf3876",
