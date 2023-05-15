@@ -3811,7 +3811,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to come up with names for node red flows\nThe user will provide you with a description of a node.\nYou will analyze it and respond with a short name that will help convey it's purpose when displayed in the visual node-red editor.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nexample of good names:\n- set msg.payload to the json string of msg.nodes\n- route based on msg.error.message\n- compress history\nexamples of bad names:\n- change msg.payload \n- msg.error.message switch node\n- change history array node.\n\nyou must respond only with the name, omitting quotation marks.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to come up with names for node red flows\nThe user will provide you with a description of a node.\nYou will analyze it and respond with a short name that will help convey it's purpose when displayed in the visual node-red editor.\nYou should assume that the audience already knows that it's a node-red node, and what type it is.\nexample of good names:\n- set msg.payload to the json string of msg.nodes\n- route based on msg.error.message\n- compress history\nexamples of bad names:\n- change msg.payload \n- msg.error.message switch node\n- change history array node.\n\nyou must respond only with the name, omitting quotation marks.\nthe name should be 10 words maximum.",
         "output": "str",
         "x": 280,
         "y": 540,
