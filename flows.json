@@ -4380,7 +4380,7 @@
         "name": "",
         "scope": [],
         "uncaught": false,
-        "x": 640,
+        "x": 610,
         "y": 20,
         "wires": [
             [
@@ -6458,7 +6458,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a json string of a node-red subflow.\n\nanalyze the subflow and respond with a detailed description of:\n- all necessary and optional properties on incoming messages.\n- all properties that may exist on outgoing messages\n- all environment variables that may be set on instances of the subflow\n- the wiring order of nodes in the subflow, including description of what happens at each node.\n\norganize your response in sections.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a json string of a node-red subflow.\n\nanalyze the subflow and respond with a detailed description of:\n- a description of every node in the subflow, including input and output.\n  - the name or id of the node\n  - the type of the node, \n    - if the node is a function node, include an analysis of the javascript in the \"func\" property\n  - how the node is configured \n  - the node(s) it recieves messages from.\n  - the node(s) it sends messages to.\n- all environment variables that may be set on instances of the subflow\n- all necessary and optional properties on incoming messages.\n- all properties that may exist on outgoing messages\n\nfinally, end with a summary description of the subflow, based on the detailed information you've gathered.\n\norganize your response in sections.",
         "output": "str",
         "x": 660,
         "y": 300,
