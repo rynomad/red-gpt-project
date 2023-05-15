@@ -7447,7 +7447,7 @@
         "y": 260,
         "wires": [
             [
-                "c11ad7c7e95eedfc"
+                "cae35b9534a7dbbd"
             ]
         ]
     },
@@ -7476,7 +7476,7 @@
         "z": "8dfc33ccdf4bd813",
         "name": "",
         "x": 160,
-        "y": 380,
+        "y": 420,
         "wires": [
             [
                 "0b9c110f138ef376"
@@ -7495,7 +7495,7 @@
         "template": "# Description:\n{{{subflow.description}}}\n\n# Input Schema:\n{{{subflow.inputSchema}}}\n\n# Output Schema:\n{{{subflow.outputSchema}}}",
         "output": "str",
         "x": 160,
-        "y": 300,
+        "y": 340,
         "wires": [
             [
                 "df9f3f1188d91ec6"
@@ -7529,7 +7529,7 @@
         "to": "",
         "reg": false,
         "x": 180,
-        "y": 340,
+        "y": 380,
         "wires": [
             [
                 "80d1647716ac9376"
@@ -7548,7 +7548,7 @@
         "finalize": "",
         "libs": [],
         "x": 170,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "1bdf14738901767b"
@@ -7567,7 +7567,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 160,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "e459a940eb380922"
@@ -7643,7 +7643,7 @@
         "type": "function",
         "z": "8dfc33ccdf4bd813",
         "name": "function 5",
-        "func": "const hasNecessary = msg.payload.reduce((a, i) => a && i.content, true)\nif (hasNecessary){\n    return [null, msg];\n} else {\n    return [msg,null];\n}",
+        "func": "const hasNecessary = msg.payload.reduce((a, i) => a && i.content, true)\nif (hasNecessary){\n    for (const {key, content} of msg.payload){\n        msg.subflow[key] = content\n    }\n    return [null, msg];\n} else {\n    return [msg,null];\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -7657,6 +7657,38 @@
             ],
             [
                 "a55e8e5fafc718c6"
+            ]
+        ]
+    },
+    {
+        "id": "cae35b9534a7dbbd",
+        "type": "json",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "property": "subflow.inputSchema",
+        "action": "",
+        "pretty": false,
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "eff3c180b0ce527b"
+            ]
+        ]
+    },
+    {
+        "id": "eff3c180b0ce527b",
+        "type": "json",
+        "z": "8dfc33ccdf4bd813",
+        "name": "",
+        "property": "subflow.outputSchema",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "c11ad7c7e95eedfc"
             ]
         ]
     }
