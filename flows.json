@@ -6599,13 +6599,13 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with an HTML representation of the description as follows:\n- begin with a brief description of the functionality\n- then an \"Input\" section describing the input message requirements and how they're used\n- then an \"Output\" section describing the output message properties and what they are\n- finally, a \"Details\" section with instructions on how to use any environment variables, as well as any other information that woulnd't fit at the beginning.\n\nuse this example for a style reference:\n\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n```\n\n\nrespond with ONLY the valid HTML, without preamble or postscript. the first character in your respose should be '<'",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow.\n\nrespond with a user focused description of the subflow with the following structure:\n- A brief description of the functionality of the subflow as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.",
         "output": "str",
-        "x": 830,
-        "y": 700,
+        "x": 950,
+        "y": 540,
         "wires": [
             [
-                "88e3d673a22d3c22"
+                "b3c1417704b4555c"
             ]
         ],
         "info": "test it hey hey"
@@ -6615,7 +6615,7 @@
         "type": "subflow:788598196e86646c",
         "z": "eeba88e77478c844",
         "name": "",
-        "x": 730,
+        "x": 630,
         "y": 740,
         "wires": [
             [
@@ -6734,8 +6734,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
-        "y": 660,
+        "x": 940,
+        "y": 500,
         "wires": [
             [
                 "b0fd7fa108cd260f"
@@ -6978,7 +6978,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 530,
+        "x": 450,
         "y": 740,
         "wires": [
             [
@@ -7064,7 +7064,7 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "1",
+        "rate": "5",
         "nbRateUnits": "1000000",
         "rateUnits": "second",
         "randomFirst": "1",
@@ -7078,6 +7078,105 @@
         "wires": [
             [
                 "bf7d4c2d39fa90ca"
+            ]
+        ]
+    },
+    {
+        "id": "b3c1417704b4555c",
+        "type": "subflow:788598196e86646c",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 950,
+        "y": 580,
+        "wires": [
+            [
+                "606d1f8ad57a1a47"
+            ]
+        ]
+    },
+    {
+        "id": "264931e378e4a5a7",
+        "type": "template",
+        "z": "eeba88e77478c844",
+        "name": "format",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are an html formatter.\nThe user will present you with a piece of documentation\n\nyou must respond with an html representation of the document\n\nhere is an example for css and structure reference:\n\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n\n\nrespond with ONLY the valid HTML, without preamble or postscript. the first character in your respose should be '<'",
+        "output": "str",
+        "x": 930,
+        "y": 700,
+        "wires": [
+            [
+                "02fd2ca519599bb4"
+            ]
+        ],
+        "info": "test it hey hey"
+    },
+    {
+        "id": "048dc877cecba570",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "set userdoc",
+        "rules": [
+            {
+                "t": "set",
+                "p": "userdoc",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 660,
+        "wires": [
+            [
+                "264931e378e4a5a7"
+            ]
+        ]
+    },
+    {
+        "id": "606d1f8ad57a1a47",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 940,
+        "y": 620,
+        "wires": [
+            [
+                "048dc877cecba570"
+            ]
+        ]
+    },
+    {
+        "id": "02fd2ca519599bb4",
+        "type": "subflow:788598196e86646c",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 950,
+        "y": 740,
+        "wires": [
+            [
+                "8712dd2d74b9b5a4"
+            ]
+        ]
+    },
+    {
+        "id": "8712dd2d74b9b5a4",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "x": 940,
+        "y": 780,
+        "wires": [
+            [
+                "fa37baf5d5d210ae"
             ]
         ]
     }
