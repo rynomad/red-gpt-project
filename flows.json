@@ -7014,8 +7014,8 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "msg.subflow.nodes",
-                "tot": "str"
+                "to": "subflow.nodes",
+                "tot": "msg"
             }
         ],
         "action": "",
