@@ -6075,7 +6075,7 @@
         "y": 60,
         "wires": [
             [
-                "8b156f3f879bad59"
+                "3b147a7b7e72bed7"
             ]
         ]
     },
@@ -6450,7 +6450,7 @@
         "y": 340,
         "wires": [
             [
-                "7792dd5704da3bef"
+                "bc94ddf8ede5ecfd"
             ]
         ]
     },
@@ -6926,10 +6926,12 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 190,
-        "y": 460,
+        "x": 410,
+        "y": 60,
         "wires": [
-            []
+            [
+                "c0024d1c868deb0b"
+            ]
         ]
     },
     {
@@ -6956,6 +6958,76 @@
         "wires": [
             [
                 "88e3d673a22d3c22"
+            ]
+        ]
+    },
+    {
+        "id": "d65c5ff31e709ef9",
+        "type": "json",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 890,
+        "y": 360,
+        "wires": [
+            [
+                "7792dd5704da3bef"
+            ]
+        ]
+    },
+    {
+        "id": "bc94ddf8ede5ecfd",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "subflow",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 280,
+        "wires": [
+            [
+                "9e19b0f0cfec7c48"
+            ]
+        ]
+    },
+    {
+        "id": "9e19b0f0cfec7c48",
+        "type": "change",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.subflow.nodes",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 320,
+        "wires": [
+            [
+                "d65c5ff31e709ef9"
             ]
         ]
     }
