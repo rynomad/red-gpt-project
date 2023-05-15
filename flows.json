@@ -4393,7 +4393,7 @@
         "type": "function",
         "z": "e961334cde89144c",
         "name": "set rate limit",
-        "func": "flow.set(\"rate_limit_encountered\", true);\nnode.status({ fill: \"red\", shape: \"dot\", text: \"Rate limit encountered\" });\nsetTimeout(() => {\n    flow.set(\"rate_limit_encountered\", true);\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"Rate limit expired\" });\n})\nreturn msg;",
+        "func": "flow.set(\"rate_limit_encountered\", true);\nnode.status({ fill: \"red\", shape: \"dot\", text: \"Rate limit encountered\" });\nsetTimeout(() => {\n    flow.set(\"rate_limit_encountered\", false);\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"Rate limit expired\" });\n})\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
