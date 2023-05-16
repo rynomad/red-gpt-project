@@ -1403,12 +1403,13 @@
             "3518c753fac83bd6",
             "c8ed6299a7db1bac",
             "cc62956c3b81303f",
-            "e65ce5e8e7852e8e"
+            "e65ce5e8e7852e8e",
+            "140b2019757a5c1a"
         ],
         "x": 394,
         "y": 279,
         "w": 452,
-        "h": 249.5
+        "h": 302
     },
     {
         "id": "f391c50d5db87eaa",
@@ -5681,7 +5682,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 730,
-        "y": 480,
+        "y": 520,
         "wires": []
     },
     {
@@ -5834,6 +5835,22 @@
         "wires": [
             [
                 "d2ee1fb0b75e93b6"
+            ]
+        ]
+    },
+    {
+        "id": "140b2019757a5c1a",
+        "type": "catch",
+        "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
+        "name": "",
+        "scope": null,
+        "uncaught": true,
+        "x": 520,
+        "y": 540,
+        "wires": [
+            [
+                "e66c7e2b9c2807aa"
             ]
         ]
     },
