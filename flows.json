@@ -8381,6 +8381,13 @@
                 "tot": "msg"
             },
             {
+                "t": "set",
+                "p": "node.description",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
                 "t": "delete",
                 "p": "history",
                 "pt": "msg"
