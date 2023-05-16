@@ -1360,16 +1360,6 @@
         ]
     },
     {
-        "id": "b8ab9e5dfc01c8b4",
-        "type": "junction",
-        "z": "eeba88e77478c844",
-        "x": 660,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "e459a940eb380922",
         "type": "junction",
         "z": "8dfc33ccdf4bd813",
