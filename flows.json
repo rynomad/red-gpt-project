@@ -4682,7 +4682,7 @@
         "type": "function",
         "z": "411e0c8d5e99f249",
         "name": "hash msg",
-        "func": "function computeSHA256(obj) {\n    const jsonString = jsonStringifySafe(obj);\n    const hash = crypto.createHash('sha256');\n    hash.update(jsonString);\n    return hash.digest('hex');\n}\n\nmsg.hash = undefined;\nmsg.hash = computeSHA256(msg);\n\n\n\nreturn msg;",
+        "func": "function computeSHA256(_obj) {\n    const {history, temperature, payload, n, max_tokens} = _obj\n    const obj = { history, temperature, payload, n, max_tokens };\n    const jsonString = jsonStringifySafe(obj);\n    const hash = crypto.createHash('sha256');\n    hash.update(jsonString);\n    return hash.digest('hex');\n}\n\nmsg.hash = undefined;\nmsg.hash = computeSHA256(msg);\n\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
