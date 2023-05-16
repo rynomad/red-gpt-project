@@ -8946,7 +8946,7 @@
         "z": "eeba88e77478c844",
         "g": "f7178adeaceda352",
         "name": "function doc",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
