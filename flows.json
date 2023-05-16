@@ -1565,12 +1565,11 @@
             "0dc88fbb1e7d8a7d",
             "84ac9bcf508717e9",
             "87f661e4d4efc5c4",
-            "90dbd16a6272716d",
-            "ceadc3276d980050"
+            "90dbd16a6272716d"
         ],
         "x": 448,
         "y": 328,
-        "w": 898,
+        "w": 864,
         "h": 1059
     },
     {
@@ -1656,7 +1655,8 @@
             "86ab4ec6100a8634",
             "d3a22aa601d47859",
             "763888ff65c3b5cc",
-            "244956339585c478"
+            "244956339585c478",
+            "94717d300902b787"
         ],
         "x": 654,
         "y": 354,
@@ -8620,7 +8620,8 @@
         "y": 460,
         "wires": [
             [
-                "149e5cf088fd6f36"
+                "149e5cf088fd6f36",
+                "94717d300902b787"
             ],
             [
                 "bf7d4c2d39fa90ca"
@@ -8649,8 +8650,7 @@
         "y": 420,
         "wires": [
             [
-                "244956339585c478",
-                "ceadc3276d980050"
+                "244956339585c478"
             ]
         ]
     },
@@ -8877,21 +8877,21 @@
         "wires": []
     },
     {
-        "id": "ceadc3276d980050",
+        "id": "94717d300902b787",
         "type": "debug",
         "z": "eeba88e77478c844",
-        "g": "d98aa00cb0e639fe",
-        "name": "debug 12",
+        "g": "87f661e4d4efc5c4",
+        "name": "log delay",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1240,
-        "y": 420,
+        "x": 1020,
+        "y": 480,
         "wires": []
     },
     {
