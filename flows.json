@@ -7723,7 +7723,7 @@
         "id": "902c148d976a5ff0",
         "type": "debug",
         "z": "eeba88e77478c844",
-        "name": "doc debugger",
+        "name": "doc error",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -7732,7 +7732,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
+        "x": 590,
         "y": 60,
         "wires": []
     },
@@ -8487,7 +8487,7 @@
         "wires": [
             [
                 "b619ecd827a40d17",
-                "902c148d976a5ff0"
+                "b1075f20d54f61f0"
             ]
         ]
     },
@@ -8936,6 +8936,23 @@
         "statusType": "auto",
         "x": 930,
         "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b1075f20d54f61f0",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "name": "doc debugger",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "parts.index",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 520,
         "wires": []
     },
     {
