@@ -1448,13 +1448,12 @@
         "nodes": [
             "5d459fc8-eec7-4ace-94e5-b653c47e5061",
             "b636b9ea5bf45435",
-            "a355772753b77403",
-            "1d6ca6abcbe1a045"
+            "a355772753b77403"
         ],
-        "x": 234,
+        "x": 254,
         "y": 39,
-        "w": 212,
-        "h": 167
+        "w": 192,
+        "h": 162
     },
     {
         "id": "cef1df36791a4d09",
@@ -1472,13 +1471,115 @@
             "d2ee1fb0b75e93b6",
             "2d60fcbd28eb92c7",
             "d5f444de1f8ceabb",
-            "199a0f0b9465c0f4",
-            "1477ec6422657eb3"
+            "199a0f0b9465c0f4"
         ],
-        "x": 134,
+        "x": 194,
         "y": 299,
-        "w": 312,
+        "w": 252,
         "h": 202
+    },
+    {
+        "id": "39169e3f338d15eb",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "e25ccfeb3fc90b18",
+        "name": "info",
+        "style": {
+            "stroke": "#777777",
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "9c9950e4acd7fd46",
+            "b0fd7fa108cd260f",
+            "b3c1417704b4555c",
+            "606d1f8ad57a1a47",
+            "048dc877cecba570",
+            "264931e378e4a5a7",
+            "02fd2ca519599bb4",
+            "8712dd2d74b9b5a4"
+        ],
+        "x": 874,
+        "y": 399,
+        "w": 192,
+        "h": 362
+    },
+    {
+        "id": "3c5a438a4ce6bc37",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "e25ccfeb3fc90b18",
+        "name": "schemas",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "cfc30936557757fa",
+            "a6a16491f928d8e9",
+            "0e180a35fb2b1b7b",
+            "6e8a7fd523247b5d",
+            "c008dae24103c0c1",
+            "88e3d673a22d3c22",
+            "bcedaf9d77b92544",
+            "7b5a3f0b1690ca11",
+            "6eed1c925de3d5cc",
+            "0daab422e6bba4dc"
+        ],
+        "x": 434,
+        "y": 399,
+        "w": 392,
+        "h": 362
+    },
+    {
+        "id": "5bc27646deb5dff2",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "e25ccfeb3fc90b18",
+        "name": "merge properties",
+        "style": {
+            "fill": "#e3f3d3",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "5e15f1532da6cf0c",
+            "fa37baf5d5d210ae",
+            "a9a4aa9e75fae5a9",
+            "2b905c87f6ea5340"
+        ],
+        "x": 574,
+        "y": 779,
+        "w": 332,
+        "h": 202
+    },
+    {
+        "id": "e25ccfeb3fc90b18",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "39169e3f338d15eb",
+            "3c5a438a4ce6bc37",
+            "5bc27646deb5dff2",
+            "f1c8febaa30f5ae0",
+            "04701d65f0532579",
+            "ae33fa5b7bc337a6"
+        ],
+        "x": 408,
+        "y": 373,
+        "w": 718,
+        "h": 634
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -1654,7 +1755,7 @@
         "id": "727f976298cfc490",
         "type": "junction",
         "z": "e961334cde89144c",
-        "x": 160,
+        "x": 260,
         "y": 280,
         "wires": [
             [
@@ -1678,7 +1779,7 @@
         "id": "ccf1e2dee73ee384",
         "type": "junction",
         "z": "e961334cde89144c",
-        "x": 160,
+        "x": 200,
         "y": 220,
         "wires": [
             [
@@ -1696,6 +1797,19 @@
         "wires": [
             [
                 "b722eb5e7dd70f13"
+            ]
+        ]
+    },
+    {
+        "id": "f1c8febaa30f5ae0",
+        "type": "junction",
+        "z": "eeba88e77478c844",
+        "g": "e25ccfeb3fc90b18",
+        "x": 500,
+        "y": 780,
+        "wires": [
+            [
+                "fa37baf5d5d210ae"
             ]
         ]
     },
@@ -5610,8 +5724,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 160,
+        "x": 1040,
+        "y": 60,
         "wires": []
     },
     {
@@ -7507,6 +7621,7 @@
         "id": "5e15f1532da6cf0c",
         "type": "file",
         "z": "eeba88e77478c844",
+        "g": "5bc27646deb5dff2",
         "name": "",
         "filename": "/data/flow.node_info.subflows.json",
         "filenameType": "str",
@@ -7514,8 +7629,8 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 700,
-        "y": 920,
+        "x": 740,
+        "y": 940,
         "wires": [
             [
                 "04701d65f0532579"
@@ -7558,7 +7673,7 @@
         "id": "0a8097753cbc1cf4",
         "type": "change",
         "z": "eeba88e77478c844",
-        "name": "",
+        "name": "mock payload",
         "rules": [
             {
                 "t": "set",
@@ -7585,6 +7700,7 @@
         "id": "04701d65f0532579",
         "type": "debug",
         "z": "eeba88e77478c844",
+        "g": "e25ccfeb3fc90b18",
         "name": "done",
         "active": true,
         "tosidebar": true,
@@ -7594,8 +7710,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 920,
+        "x": 1020,
+        "y": 940,
         "wires": []
     },
     {
@@ -7635,7 +7751,7 @@
         "z": "eeba88e77478c844",
         "name": "",
         "x": 630,
-        "y": 260,
+        "y": 300,
         "wires": [
             [
                 "e95ef67408de2621"
@@ -7669,8 +7785,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 610,
-        "y": 300,
+        "x": 490,
+        "y": 340,
         "wires": [
             [
                 "9c9950e4acd7fd46"
@@ -7687,6 +7803,7 @@
         "id": "9c9950e4acd7fd46",
         "type": "change",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "tag info",
         "rules": [
             {
@@ -7702,8 +7819,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 920,
-        "y": 360,
+        "x": 960,
+        "y": 440,
         "wires": [
             [
                 "b0fd7fa108cd260f"
@@ -7714,6 +7831,7 @@
         "id": "cfc30936557757fa",
         "type": "change",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "tag output",
         "rules": [
             {
@@ -7729,8 +7847,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 630,
-        "y": 360,
+        "x": 710,
+        "y": 440,
         "wires": [
             [
                 "0e180a35fb2b1b7b"
@@ -7741,6 +7859,7 @@
         "id": "a6a16491f928d8e9",
         "type": "change",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "tag input",
         "rules": [
             {
@@ -7756,8 +7875,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 360,
+        "x": 520,
+        "y": 440,
         "wires": [
             [
                 "6e8a7fd523247b5d"
@@ -7768,6 +7887,7 @@
         "id": "b0fd7fa108cd260f",
         "type": "template",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "system info",
         "field": "system",
         "fieldType": "msg",
@@ -7775,8 +7895,8 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow.\n\nrespond with a user focused description of the subflow with the following structure:\n- A brief description of the functionality of the subflow as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.\n\nplease respond only with the user focused description, without preamble or postscript",
         "output": "str",
-        "x": 930,
-        "y": 400,
+        "x": 970,
+        "y": 480,
         "wires": [
             [
                 "b3c1417704b4555c"
@@ -7788,6 +7908,7 @@
         "id": "0e180a35fb2b1b7b",
         "type": "template",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "system output",
         "field": "system",
         "fieldType": "msg",
@@ -7795,8 +7916,8 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a JSON schema to validate outgoing messages from the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 640,
-        "y": 400,
+        "x": 720,
+        "y": 480,
         "wires": [
             [
                 "c008dae24103c0c1"
@@ -7808,6 +7929,7 @@
         "id": "6e8a7fd523247b5d",
         "type": "template",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "system input",
         "field": "system",
         "fieldType": "msg",
@@ -7815,8 +7937,8 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a thorough JSON schema to validate incoming messages to the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 450,
-        "y": 400,
+        "x": 530,
+        "y": 480,
         "wires": [
             [
                 "c008dae24103c0c1"
@@ -7828,9 +7950,10 @@
         "id": "b3c1417704b4555c",
         "type": "subflow:788598196e86646c",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "",
-        "x": 930,
-        "y": 440,
+        "x": 970,
+        "y": 520,
         "wires": [
             [
                 "606d1f8ad57a1a47"
@@ -7841,6 +7964,7 @@
         "id": "c008dae24103c0c1",
         "type": "change",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "try 5 times",
         "rules": [
             {
@@ -7856,8 +7980,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 440,
+        "x": 630,
+        "y": 520,
         "wires": [
             [
                 "88e3d673a22d3c22"
@@ -7868,9 +7992,10 @@
         "id": "606d1f8ad57a1a47",
         "type": "subflow:237429fb2a5a7712",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "",
-        "x": 920,
-        "y": 480,
+        "x": 960,
+        "y": 560,
         "wires": [
             [
                 "048dc877cecba570"
@@ -7881,9 +8006,10 @@
         "id": "88e3d673a22d3c22",
         "type": "subflow:788598196e86646c",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "",
-        "x": 550,
-        "y": 480,
+        "x": 630,
+        "y": 560,
         "wires": [
             [
                 "bcedaf9d77b92544"
@@ -7894,9 +8020,10 @@
         "id": "bcedaf9d77b92544",
         "type": "subflow:237429fb2a5a7712",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "",
-        "x": 540,
-        "y": 520,
+        "x": 620,
+        "y": 600,
         "wires": [
             [
                 "7b5a3f0b1690ca11"
@@ -7907,6 +8034,7 @@
         "id": "048dc877cecba570",
         "type": "change",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "set userdoc",
         "rules": [
             {
@@ -7922,8 +8050,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 930,
-        "y": 520,
+        "x": 970,
+        "y": 600,
         "wires": [
             [
                 "264931e378e4a5a7"
@@ -7934,6 +8062,7 @@
         "id": "7b5a3f0b1690ca11",
         "type": "template",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "system input",
         "field": "system",
         "fieldType": "msg",
@@ -7941,8 +8070,8 @@
         "syntax": "mustache",
         "template": "You are an expert in JSON schema.\nThe user will provide you with multiple JSON schemas corresponding to an input message.\nYour job is to judge which is the most thorough\n\nrespond with a copy of the most thorough schema.\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 550,
-        "y": 560,
+        "x": 630,
+        "y": 640,
         "wires": [
             [
                 "6eed1c925de3d5cc"
@@ -7954,6 +8083,7 @@
         "id": "264931e378e4a5a7",
         "type": "template",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "format",
         "field": "system",
         "fieldType": "msg",
@@ -7961,8 +8091,8 @@
         "syntax": "mustache",
         "template": "You are an html formatter.\nThe user will present you with a piece of documentation\n\nyou must respond with an html representation of the document\n\nhere is an example for css and structure reference:\n\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n\n\nrespond with ONLY the valid HTML, without preamble or postscript. the first character in your respose should be '<'",
         "output": "str",
-        "x": 910,
-        "y": 560,
+        "x": 950,
+        "y": 640,
         "wires": [
             [
                 "02fd2ca519599bb4"
@@ -7974,6 +8104,7 @@
         "id": "6eed1c925de3d5cc",
         "type": "function",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "combine options",
         "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nconst options = []\nfor (const { message } of msg.full.data.choices) {\n    try {\n        const content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(content);\n        options.push(content);\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = options.map((schema,i) => \n`---OPTION ${i} START---\n${JSON.stringify(schema)}\n---OPTION ${i} END---`).join('\\n')\n\nreturn msg;",
         "outputs": 1,
@@ -7986,8 +8117,8 @@
                 "module": "ajv"
             }
         ],
-        "x": 570,
-        "y": 600,
+        "x": 650,
+        "y": 680,
         "wires": [
             [
                 "0daab422e6bba4dc"
@@ -7998,9 +8129,10 @@
         "id": "02fd2ca519599bb4",
         "type": "subflow:788598196e86646c",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "",
-        "x": 930,
-        "y": 600,
+        "x": 970,
+        "y": 680,
         "wires": [
             [
                 "8712dd2d74b9b5a4"
@@ -8011,12 +8143,13 @@
         "id": "0daab422e6bba4dc",
         "type": "subflow:237429fb2a5a7712",
         "z": "eeba88e77478c844",
+        "g": "3c5a438a4ce6bc37",
         "name": "",
-        "x": 540,
-        "y": 640,
+        "x": 620,
+        "y": 720,
         "wires": [
             [
-                "fa37baf5d5d210ae"
+                "f1c8febaa30f5ae0"
             ]
         ]
     },
@@ -8024,12 +8157,13 @@
         "id": "8712dd2d74b9b5a4",
         "type": "subflow:237429fb2a5a7712",
         "z": "eeba88e77478c844",
+        "g": "39169e3f338d15eb",
         "name": "",
-        "x": 920,
-        "y": 640,
+        "x": 960,
+        "y": 720,
         "wires": [
             [
-                "fa37baf5d5d210ae"
+                "f1c8febaa30f5ae0"
             ]
         ]
     },
@@ -8037,6 +8171,7 @@
         "id": "fa37baf5d5d210ae",
         "type": "function",
         "z": "eeba88e77478c844",
+        "g": "5bc27646deb5dff2",
         "name": "normalize key/content",
         "func": "const payload = {\n    id: msg.subflow.id,\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.content = msg.payload;\n    msg.payload = payload;\n    return msg;\n} \nfunction extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
@@ -8049,8 +8184,8 @@
                 "module": "ajv"
             }
         ],
-        "x": 660,
-        "y": 680,
+        "x": 700,
+        "y": 820,
         "wires": [
             [
                 "a9a4aa9e75fae5a9"
@@ -8058,120 +8193,16 @@
         ]
     },
     {
-        "id": "ff0a2ec529815265",
-        "type": "switch",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "property": "parts.index",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 610,
-        "y": 800,
-        "wires": [
-            [
-                "6eac5f43186e685d"
-            ],
-            [
-                "0162f1c9bb9f0dbb"
-            ]
-        ]
-    },
-    {
-        "id": "6eac5f43186e685d",
-        "type": "link call",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "links": [
-            "270dcc5c3ccf3876"
-        ],
-        "linkType": "static",
-        "timeout": "3600",
-        "x": 820,
-        "y": 800,
-        "wires": [
-            [
-                "86ea0d6eee03b684"
-            ]
-        ]
-    },
-    {
-        "id": "86ea0d6eee03b684",
-        "type": "debug",
-        "z": "eeba88e77478c844",
-        "name": "fuzz out",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 980,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "3c36033b04287338",
-        "type": "debug",
-        "z": "eeba88e77478c844",
-        "name": "chunk out",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 990,
-        "y": 840,
-        "wires": []
-    },
-    {
         "id": "a9a4aa9e75fae5a9",
         "type": "subflow:3007bc4599c68441",
         "z": "eeba88e77478c844",
+        "g": "5bc27646deb5dff2",
         "name": "",
-        "x": 620,
-        "y": 720,
+        "x": 670,
+        "y": 860,
         "wires": [
             [
-                "89649cb08cf5cd70"
-            ]
-        ]
-    },
-    {
-        "id": "89649cb08cf5cd70",
-        "type": "subflow:d158fb9598ddc8a1",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "env": [
-            {
-                "name": "quantity",
-                "value": "2",
-                "type": "str"
-            }
-        ],
-        "x": 630,
-        "y": 760,
-        "wires": [
-            [
-                "ff0a2ec529815265"
+                "2b905c87f6ea5340"
             ]
         ]
     },
@@ -8194,8 +8225,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 830,
-        "y": 220,
+        "x": 670,
+        "y": 260,
         "wires": [
             [
                 "59dbcd23223ecfd4"
@@ -8219,12 +8250,13 @@
         "id": "ae33fa5b7bc337a6",
         "type": "link in",
         "z": "eeba88e77478c844",
+        "g": "e25ccfeb3fc90b18",
         "name": "join subflows",
         "links": [
             "3e49c350cebc834c"
         ],
         "x": 505,
-        "y": 880,
+        "y": 900,
         "wires": [
             [
                 "2b905c87f6ea5340"
@@ -8235,33 +8267,13 @@
         "id": "2b905c87f6ea5340",
         "type": "subflow:85c03d0a20f04b60",
         "z": "eeba88e77478c844",
+        "g": "5bc27646deb5dff2",
         "name": "",
-        "x": 630,
-        "y": 880,
+        "x": 670,
+        "y": 900,
         "wires": [
             [
                 "5e15f1532da6cf0c"
-            ]
-        ]
-    },
-    {
-        "id": "0162f1c9bb9f0dbb",
-        "type": "subflow:a25be0e127fc9e24",
-        "z": "eeba88e77478c844",
-        "name": "",
-        "env": [
-            {
-                "name": "key",
-                "value": "parts",
-                "type": "str"
-            }
-        ],
-        "x": 620,
-        "y": 840,
-        "wires": [
-            [
-                "2b905c87f6ea5340",
-                "3c36033b04287338"
             ]
         ]
     },
