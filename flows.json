@@ -1695,7 +1695,7 @@
         "x": 54,
         "y": 99,
         "w": 392,
-        "h": 402
+        "h": 442
     },
     {
         "id": "d93e257c176bb0a5",
@@ -8265,6 +8265,21 @@
         "rules": [
             {
                 "t": "eq",
+                "v": "junction",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "tab",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "comment",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
                 "v": "subflow",
                 "vt": "str"
             },
@@ -8284,10 +8299,19 @@
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
+        "outputs": 7,
         "x": 130,
-        "y": 440,
+        "y": 460,
         "wires": [
+            [
+                "7fbe99868dadc648"
+            ],
+            [
+                "7fbe99868dadc648"
+            ],
+            [
+                "7fbe99868dadc648"
+            ],
             [
                 "3fbb22fa17ec34e4"
             ],
@@ -8441,7 +8465,7 @@
         "links": [
             "fba28f405a72bc42"
         ],
-        "x": 305,
+        "x": 385,
         "y": 380,
         "wires": []
     },
@@ -8455,8 +8479,8 @@
         "links": [
             "67bc5d832df81340"
         ],
-        "x": 305,
-        "y": 460,
+        "x": 385,
+        "y": 500,
         "wires": []
     },
     {
@@ -8486,8 +8510,8 @@
         "links": [
             "c6ddec5c7bd294ce"
         ],
-        "x": 365,
-        "y": 440,
+        "x": 385,
+        "y": 460,
         "wires": []
     },
     {
@@ -8500,7 +8524,7 @@
         "links": [
             "84ac9bcf508717e9"
         ],
-        "x": 305,
+        "x": 385,
         "y": 420,
         "wires": []
     },
@@ -8672,7 +8696,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "sort eligible for doc",
-        "func": "const type = msg.payload[0].type;\nconst _node = node;\nfor (const node of msg.payload) {\n    if (node.type === type){\n        continue;\n    } else if (node.type.indexOf('subflow:') === 0) {\n        const definitionID = node.type.split(':').pop()\n        const definition = getSubflowDefinition(definitionID)\n        if (!definition.description) {\n            // _node.warn('ignoring no desc: ' + node.id)\n            return [msg, null]\n        }\n        node.description = definition.description;\n    } else if (node.type === 'group') {\n        if (!node.description) {\n            return [msg, null]\n        }\n    } else {\n        if (!node.info) {\n            return [msg, null];\n        }\n    }\n}\n\nreturn [null, msg];\n\nfunction getSubflowDefinition(id) {\n    const flows = flow.get('flows');\n    for (const node of flows) {\n        if (node.id === id) {\n            return node;\n        }\n    }\n}",
+        "func": "const type = msg.payload[0].type;\nconst _node = node;\nfor (const node of msg.payload) {\n    if (node.type === type){\n        continue;\n    } else if (node.type.indexOf('subflow:') === 0) {\n        const definitionID = node.type.split(':').pop()\n        const definition = getSubflowDefinition(definitionID)\n        if (!definition.description) {\n            // _node.warn('ignoring no desc: ' + node.id)\n            return [msg, null]\n        }\n        node.description = definition.description;\n    } else if (node.type === 'group') {\n        if (!node.description) {\n            return [msg, null]\n        }\n    } else if (['junction','comment','tab'].indexOf(node.type) === -1){\n        if (!node.info) {\n            return [msg, null];\n        }\n    }\n}\n\nreturn [null, msg];\n\nfunction getSubflowDefinition(id) {\n    const flows = flow.get('flows');\n    for (const node of flows) {\n        if (node.id === id) {\n            return node;\n        }\n    }\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
