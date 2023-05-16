@@ -8974,7 +8974,7 @@
         "tosidebar": true,
         "console": true,
         "tostatus": false,
-        "complete": "parts.index",
+        "complete": "node",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
