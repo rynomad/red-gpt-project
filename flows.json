@@ -8915,7 +8915,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "log delay",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
