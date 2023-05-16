@@ -8847,7 +8847,8 @@
         "y": 1320,
         "wires": [
             [
-                "90dbd16a6272716d"
+                "90dbd16a6272716d",
+                "f8c7b0b4d7308197"
             ]
         ]
     },
@@ -9018,6 +9019,23 @@
         "statusType": "auto",
         "x": 330,
         "y": 260,
+        "wires": []
+    },
+    {
+        "id": "f8c7b0b4d7308197",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "name": "subflows and groups",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "node",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 1440,
         "wires": []
     },
     {
