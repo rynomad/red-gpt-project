@@ -6896,8 +6896,8 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 880,
-        "y": 40,
+        "x": 1120,
+        "y": 60,
         "wires": [
             [
                 "902c148d976a5ff0"
@@ -6917,8 +6917,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1060,
-        "y": 40,
+        "x": 1280,
+        "y": 60,
         "wires": []
     },
     {
