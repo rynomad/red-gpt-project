@@ -1495,12 +1495,13 @@
             "7cbbf9d31cb04d05",
             "04701d65f0532579",
             "fba28f405a72bc42",
-            "83d6617f69790dd5"
+            "83d6617f69790dd5",
+            "b619ecd827a40d17"
         ],
         "x": 54,
         "y": 539,
         "w": 352,
-        "h": 242
+        "h": 282
     },
     {
         "id": "f7178adeaceda352",
@@ -7579,7 +7580,7 @@
         "count": "",
         "reduceRight": false,
         "x": 190,
-        "y": 620,
+        "y": 660,
         "wires": [
             [
                 "7cbbf9d31cb04d05"
@@ -7599,7 +7600,7 @@
         "overwriteFile": "true",
         "encoding": "none",
         "x": 260,
-        "y": 700,
+        "y": 740,
         "wires": [
             [
                 "04701d65f0532579"
@@ -7616,7 +7617,7 @@
         "action": "str",
         "pretty": true,
         "x": 190,
-        "y": 660,
+        "y": 700,
         "wires": [
             [
                 "4c1404f306ef020a"
@@ -8181,7 +8182,7 @@
             {
                 "t": "set",
                 "p": "flows",
-                "pt": "msg",
+                "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
             }
@@ -8262,7 +8263,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 200,
-        "y": 740,
+        "y": 780,
         "wires": []
     },
     {
@@ -8481,7 +8482,7 @@
         "y": 580,
         "wires": [
             [
-                "80e5304f2999ce6b"
+                "b619ecd827a40d17"
             ]
         ]
     },
@@ -8585,7 +8586,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "gather nodes",
-        "func": "const nodes = [\n    msg.node\n]\n\nif (msg.node.type === 'group'){\n    for (const id of msg.node.nodes) {\n        const node = msg.flows.filter(node => node.id === id)[0]\n        nodes.push(node)\n    }\n} else if (msg.node.type === 'subflow') {\n    for (const node of msg.flows) {\n        if (node.z === msg.node.id) {\n            nodes.push(node)\n        }\n    }\n}\n\n\n\nmsg.payload = JSON.parse(JSON.stringify(nodes))\nmsg.nodes = msg.payload;\nreturn msg;\n",
+        "func": "const nodes = [\n    msg.node\n]\n\nif (msg.node.type === 'group'){\n    for (const id of msg.node.nodes) {\n        const node = flow.get('flows').filter(node => node.id === id)[0]\n        nodes.push(node)\n    }\n} else if (msg.node.type === 'subflow') {\n    for (const node of msg.flows) {\n        if (node.z === msg.node.id) {\n            nodes.push(node)\n        }\n    }\n}\n\n\n\nmsg.payload = JSON.parse(JSON.stringify(nodes))\nmsg.nodes = msg.payload;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8893,6 +8894,26 @@
         "x": 1020,
         "y": 480,
         "wires": []
+    },
+    {
+        "id": "b619ecd827a40d17",
+        "type": "function",
+        "z": "eeba88e77478c844",
+        "g": "1f25593ab1ca5615",
+        "name": "insert node into context",
+        "func": "const flows = flow.get('flows').map(node => {\n    if (node.id === msg.node.id){\n        return msg.node\n    }\n\n    return node;\n})\n\nflow.set('flows', flows);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 620,
+        "wires": [
+            [
+                "80e5304f2999ce6b"
+            ]
+        ]
     },
     {
         "id": "270dcc5c3ccf3876",
