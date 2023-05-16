@@ -1569,9 +1569,9 @@
             "87f661e4d4efc5c4",
             "90dbd16a6272716d"
         ],
-        "x": 468,
+        "x": 448,
         "y": 328,
-        "w": 864,
+        "w": 884,
         "h": 1059
     },
     {
@@ -1626,12 +1626,13 @@
             "0daab422e6bba4dc",
             "b59e9d87cb236291",
             "ca5c4b601f4e38bb",
-            "ec635034eef78b6a"
+            "ec635034eef78b6a",
+            "7b8357666dc05bd2"
         ],
-        "x": 494,
+        "x": 474,
         "y": 799,
         "w": 492,
-        "h": 362
+        "h": 402
     },
     {
         "id": "87f661e4d4efc5c4",
@@ -7895,7 +7896,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 870,
+        "x": 850,
         "y": 840,
         "wires": [
             [
@@ -7923,7 +7924,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
+        "x": 620,
         "y": 840,
         "wires": [
             [
@@ -7964,7 +7965,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a JSON schema to validate outgoing messages from the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 880,
+        "x": 860,
         "y": 880,
         "wires": [
             [
@@ -7985,7 +7986,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a thorough JSON schema to validate incoming messages to the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 630,
+        "x": 610,
         "y": 880,
         "wires": [
             [
@@ -8014,7 +8015,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 790,
+        "x": 770,
         "y": 920,
         "wires": [
             [
@@ -8042,7 +8043,7 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "",
-        "x": 790,
+        "x": 770,
         "y": 960,
         "wires": [
             [
@@ -8056,7 +8057,7 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "",
-        "x": 780,
+        "x": 760,
         "y": 1000,
         "wires": [
             [
@@ -8104,7 +8105,7 @@
         "syntax": "mustache",
         "template": "You are an expert in JSON schema.\nThe user will provide you with multiple JSON schemas corresponding to an input message.\nYour job is to judge which is the most thorough\n\nrespond with a copy of the most thorough schema.\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 790,
+        "x": 770,
         "y": 1040,
         "wires": [
             [
@@ -8140,7 +8141,7 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "combine options",
-        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nconst options = []\nfor (const { message } of msg.full.data.choices) {\n    try {\n        const content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(content);\n        options.push(content);\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = options.map((schema,i) => \n`---OPTION ${i} START---\n${JSON.stringify(schema)}\n---OPTION ${i} END---`).join('\\n')\n\nreturn msg;",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nconst options = []\nfor (const { message } of msg.full.data.choices) {\n    const string = extractJsonString(message.content)\n    try {\n        const content = JSON.parse(string);\n        ajv.compile(content);\n        options.push(content);\n    } catch (e) {\n        node.warn('ignoring bad message: ' + string)\n        node.warn(e.message)\n        // ignore\n    }\n}\n\nmsg.payload = options.map((schema,i) => \n`---OPTION ${i} START---\n${JSON.stringify(schema)}\n---OPTION ${i} END---`).join('\\n')\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8151,11 +8152,12 @@
                 "module": "ajv"
             }
         ],
-        "x": 810,
+        "x": 790,
         "y": 1080,
         "wires": [
             [
-                "0daab422e6bba4dc"
+                "0daab422e6bba4dc",
+                "52f977f02c8f65df"
             ]
         ]
     },
@@ -8179,11 +8181,11 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "",
-        "x": 780,
+        "x": 760,
         "y": 1120,
         "wires": [
             [
-                "ec635034eef78b6a"
+                "7b8357666dc05bd2"
             ]
         ]
     },
@@ -8197,8 +8199,7 @@
         "y": 1120,
         "wires": [
             [
-                "1acd06752cd9811e",
-                "52f977f02c8f65df"
+                "1acd06752cd9811e"
             ]
         ]
     },
@@ -8741,7 +8742,7 @@
         "links": [
             "86ab4ec6100a8634"
         ],
-        "x": 535,
+        "x": 515,
         "y": 840,
         "wires": [
             [
@@ -8758,7 +8759,7 @@
         "links": [
             "d3a22aa601d47859"
         ],
-        "x": 765,
+        "x": 745,
         "y": 840,
         "wires": [
             [
@@ -8825,8 +8826,8 @@
         "links": [
             "97640565b3603875"
         ],
-        "x": 935,
-        "y": 1120,
+        "x": 925,
+        "y": 1160,
         "wires": []
     },
     {
@@ -9057,6 +9058,31 @@
         "x": 1430,
         "y": 1240,
         "wires": []
+    },
+    {
+        "id": "7b8357666dc05bd2",
+        "type": "function",
+        "z": "eeba88e77478c844",
+        "g": "0dc88fbb1e7d8a7d",
+        "name": "combine options",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nmsg.payload = {\n    key: msg.tag\n}\n\nfor (const { message } of msg.full.data.choices) {\n    const string = extractJsonString(message.content)\n    try {\n        const content = JSON.parse(string);\n        ajv.compile(content);\n        msg.payload.content = content;\n        return msg;\n    } catch (e) {\n        node.warn('ignoring bad message: ' + string)\n        node.warn(e.message)\n        // ignore\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "ajv",
+                "module": "ajv"
+            }
+        ],
+        "x": 770,
+        "y": 1160,
+        "wires": [
+            [
+                "ec635034eef78b6a"
+            ]
+        ]
     },
     {
         "id": "270dcc5c3ccf3876",
