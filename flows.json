@@ -1286,7 +1286,12 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "status": {
+            "x": 160,
+            "y": 30,
+            "wires": []
+        }
     },
     {
         "id": "28a00f5c49227e1c",
@@ -4526,7 +4531,7 @@
         "type": "function",
         "z": "80a84193bc2e4430",
         "name": "parse hit",
-        "func": "return JSON.parse(msg.payload);",
+        "func": "let hits = flow.get('hits') || 0\nhits++\nflow.set('hits', hits)\nnode.status({ fill: \"green\", shape: \"dot\", text: `${hits}` });\nreturn JSON.parse(msg.payload);",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5485,13 +5490,6 @@
         "type": "subflow:80a84193bc2e4430",
         "z": "e961334cde89144c",
         "name": "",
-        "env": [
-            {
-                "name": "cacheName",
-                "value": "gpt",
-                "type": "str"
-            }
-        ],
         "x": 410,
         "y": 260,
         "wires": [
