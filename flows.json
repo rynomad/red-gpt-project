@@ -4887,7 +4887,8 @@
         "z": "80a84193bc2e4430",
         "name": "cache miss",
         "scope": [
-            "a7cf5100c8c7fecb"
+            "a7cf5100c8c7fecb",
+            "f74815a576c072c6"
         ],
         "uncaught": false,
         "x": 270,
