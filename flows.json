@@ -1688,11 +1688,12 @@
             "3fbb22fa17ec34e4",
             "8697b44a8370bc2a",
             "e529869f40e67cec",
-            "496544489779fd2a"
+            "496544489779fd2a",
+            "97f2373daf2bd0cc"
         ],
         "x": 54,
         "y": 99,
-        "w": 372,
+        "w": 392,
         "h": 402
     },
     {
@@ -7604,7 +7605,8 @@
         "y": 260,
         "wires": [
             [
-                "9a75803b6cd59345"
+                "9a75803b6cd59345",
+                "97f2373daf2bd0cc"
             ]
         ]
     },
@@ -8922,7 +8924,7 @@
         "z": "eeba88e77478c844",
         "g": "1f25593ab1ca5615",
         "name": "insert node into context",
-        "func": "const flows = flow.get('flows').map(_node => {\n    if (_node.id === msg.node.id){\n        node.log('insert ' + node.id)\n        return msg.node\n    }\n\n    return node;\n})\n\nflow.set('flows', flows);\n\nreturn msg;",
+        "func": "const flows = flow.get('flows').map(_node => {\n    if (_node.id === msg.node.id){\n        node.log('insert ' + node.id)\n        return msg.node;\n    }\n\n    return _node;\n})\n\nflow.set('flows', flows);\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8990,6 +8992,24 @@
                 "ad78713cb0a6df80"
             ]
         ]
+    },
+    {
+        "id": "97f2373daf2bd0cc",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "g": "ef4838b57d8a8292",
+        "name": "doc error",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload.id",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 260,
+        "wires": []
     },
     {
         "id": "270dcc5c3ccf3876",
