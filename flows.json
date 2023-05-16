@@ -1281,8 +1281,8 @@
         "env": [
             {
                 "name": "cacheName",
-                "type": "env",
-                "value": "cacheName"
+                "type": "str",
+                "value": "gpt"
             }
         ],
         "meta": {},
@@ -1296,7 +1296,7 @@
         "category": "",
         "in": [
             {
-                "x": 180,
+                "x": 220,
                 "y": 160,
                 "wires": [
                     {
@@ -1317,7 +1317,13 @@
                 ]
             }
         ],
-        "env": [],
+        "env": [
+            {
+                "name": "cacheName",
+                "type": "str",
+                "value": "gpt"
+            }
+        ],
         "meta": {},
         "color": "#DDAA99"
     },
@@ -4954,7 +4960,7 @@
         "name": "link in 1",
         "links": [],
         "x": 65,
-        "y": 200,
+        "y": 220,
         "wires": [
             [
                 "b636b9ea5bf45435"
@@ -5194,7 +5200,7 @@
             }
         ],
         "x": 170,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "a355772753b77403"
@@ -5219,7 +5225,7 @@
             }
         ],
         "x": 210,
-        "y": 200,
+        "y": 220,
         "wires": [
             [
                 "5d459fc8-eec7-4ace-94e5-b653c47e5061"
@@ -5410,7 +5416,9 @@
         "x": 430,
         "y": 460,
         "wires": [
-            []
+            [
+                "1d0773bcf3416404"
+            ]
         ]
     },
     {
@@ -5484,8 +5492,15 @@
         "type": "subflow:80a84193bc2e4430",
         "z": "e961334cde89144c",
         "name": "",
+        "env": [
+            {
+                "name": "cacheName",
+                "value": "gpt",
+                "type": "str"
+            }
+        ],
         "x": 410,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
