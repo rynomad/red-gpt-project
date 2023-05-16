@@ -1519,11 +1519,12 @@
             "944ac83066925c0c",
             "1aab229baa275120",
             "c6ddec5c7bd294ce",
-            "3bd4d0e7955f70cc"
+            "3bd4d0e7955f70cc",
+            "19f0c2acb9f72112"
         ],
-        "x": 454,
+        "x": 474,
         "y": 99,
-        "w": 332,
+        "w": 572,
         "h": 202
     },
     {
@@ -8296,9 +8297,9 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red function node.\nYou must analyze it and respond with a brief description of what the node or subflow does.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red function node.\nYou must analyze it and respond with a brief description of what the function does.",
         "output": "str",
-        "x": 640,
+        "x": 660,
         "y": 140,
         "wires": [
             [
@@ -8313,11 +8314,12 @@
         "z": "eeba88e77478c844",
         "g": "f7178adeaceda352",
         "name": "",
-        "x": 610,
+        "x": 630,
         "y": 180,
         "wires": [
             [
-                "944ac83066925c0c"
+                "944ac83066925c0c",
+                "19f0c2acb9f72112"
             ]
         ]
     },
@@ -8327,7 +8329,7 @@
         "z": "eeba88e77478c844",
         "g": "f7178adeaceda352",
         "name": "",
-        "x": 600,
+        "x": 620,
         "y": 220,
         "wires": [
             [
@@ -8360,7 +8362,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
+        "x": 640,
         "y": 260,
         "wires": [
             [
@@ -8405,7 +8407,7 @@
         "links": [
             "4a10e423688295dc"
         ],
-        "x": 495,
+        "x": 515,
         "y": 140,
         "wires": [
             [
@@ -8496,7 +8498,7 @@
         "links": [
             "fba28f405a72bc42"
         ],
-        "x": 745,
+        "x": 765,
         "y": 260,
         "wires": []
     },
@@ -8606,7 +8608,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "sort eligible for doc",
-        "func": "const type = msg.payload[0].type;\n\nfor (const node of msg.payload) {\n    if (node.type === type){\n        continue;\n    } else if (node.type.indexOf('subflow:') === 0) {\n        const definitionID = node.type.split(':').pop()\n        const definition = getSubflowDefinition(definitionID)\n        if (!definition.description) {\n            return [msg, null]\n        }\n    } else if (['function','group'].indexOf(node.type) > -1) {\n        if (!node.description) {\n            return [msg, null]\n        }\n    }\n}\n\nreturn [null, msg];\n\nfunction getSubflowDefinition(id) {\n    for (const node of msg.flows) {\n        if (node.id === id) {\n            return node;\n        }\n    }\n}",
+        "func": "const type = msg.payload[0].type;\n\nfor (const node of msg.payload) {\n    if (node.type === type){\n        continue;\n    } else if (node.type.indexOf('subflow:') === 0) {\n        const definitionID = node.type.split(':').pop()\n        const definition = getSubflowDefinition(definitionID)\n        if (!definition.description) {\n            return [msg, null]\n        }\n        node.description = definition.description;\n    } else if (['function','group'].indexOf(node.type) > -1) {\n        if (!node.description) {\n            return [msg, null]\n        }\n    }\n}\n\nreturn [null, msg];\n\nfunction getSubflowDefinition(id) {\n    for (const node of msg.flows) {\n        if (node.id === id) {\n            return node;\n        }\n    }\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -8914,6 +8916,24 @@
                 "80e5304f2999ce6b"
             ]
         ]
+    },
+    {
+        "id": "19f0c2acb9f72112",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "g": "f7178adeaceda352",
+        "name": "function doc",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 180,
+        "wires": []
     },
     {
         "id": "270dcc5c3ccf3876",
