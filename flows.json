@@ -1681,14 +1681,14 @@
             "cf9ef8b14dd35b82",
             "ad78713cb0a6df80",
             "9a75803b6cd59345",
-            "bbdb7b7688c2e4d2",
             "695eb4b6b7f37008",
             "7fbe99868dadc648",
             "873a38de083427d1",
             "4a10e423688295dc",
             "3fbb22fa17ec34e4",
             "8697b44a8370bc2a",
-            "e529869f40e67cec"
+            "e529869f40e67cec",
+            "496544489779fd2a"
         ],
         "x": 54,
         "y": 99,
@@ -7584,7 +7584,7 @@
         "y": 180,
         "wires": [
             [
-                "bbdb7b7688c2e4d2"
+                "496544489779fd2a"
             ]
         ]
     },
@@ -8215,34 +8215,6 @@
         "wires": [
             [
                 "59dbcd23223ecfd4"
-            ]
-        ]
-    },
-    {
-        "id": "bbdb7b7688c2e4d2",
-        "type": "change",
-        "z": "eeba88e77478c844",
-        "g": "ef4838b57d8a8292",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "flows",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 220,
-        "wires": [
-            [
-                "ad78713cb0a6df80"
             ]
         ]
     },
@@ -8998,6 +8970,26 @@
         "x": 360,
         "y": 520,
         "wires": []
+    },
+    {
+        "id": "496544489779fd2a",
+        "type": "function",
+        "z": "eeba88e77478c844",
+        "g": "ef4838b57d8a8292",
+        "name": "function 9",
+        "func": "flow.set('flows', msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "ad78713cb0a6df80"
+            ]
+        ]
     },
     {
         "id": "270dcc5c3ccf3876",
