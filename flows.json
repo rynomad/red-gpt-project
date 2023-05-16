@@ -4480,7 +4480,9 @@
         "type": "catch",
         "z": "80a84193bc2e4430",
         "name": "cache miss",
-        "scope": null,
+        "scope": [
+            "a7cf5100c8c7fecb"
+        ],
         "uncaught": false,
         "x": 270,
         "y": 220,
