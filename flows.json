@@ -4649,6 +4649,11 @@
             },
             {
                 "t": "cont",
+                "v": "socket hang up",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
                 "v": "Rate limit reached",
                 "vt": "str"
             },
@@ -4658,12 +4663,15 @@
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 6,
+        "outputs": 7,
         "x": 410,
         "y": 140,
         "wires": [
             [
                 "cb040ea047dc84fb"
+            ],
+            [
+                "c8ed6299a7db1bac"
             ],
             [
                 "c8ed6299a7db1bac"
