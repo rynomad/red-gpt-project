@@ -4451,7 +4451,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 580,
-        "y": 280,
+        "y": 400,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4477,7 +4477,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 400,
-        "y": 280,
+        "y": 400,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4508,7 +4508,7 @@
         "repair": false,
         "outputs": 2,
         "x": 390,
-        "y": 240,
+        "y": 360,
         "wires": [
             [
                 "8c1cba224d949d09"
@@ -4539,8 +4539,8 @@
         "name": "link out 1",
         "mode": "return",
         "links": [],
-        "x": 855,
-        "y": 580,
+        "x": 975,
+        "y": 560,
         "wires": []
     },
     {
@@ -4552,7 +4552,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 400,
-        "y": 440,
+        "y": 580,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4589,7 +4589,7 @@
         "overwriteFile": "false",
         "encoding": "none",
         "x": 800,
-        "y": 340,
+        "y": 400,
         "wires": [
             []
         ]
@@ -4614,9 +4614,7 @@
         "x": 420,
         "y": 200,
         "wires": [
-            [
-                "b98332fdc0290246"
-            ]
+            []
         ]
     },
     {
@@ -4696,7 +4694,7 @@
         "z": "e961334cde89144c",
         "name": "minify JSON in history",
         "x": 440,
-        "y": 500,
+        "y": 640,
         "wires": [
             [
                 "2d60fcbd28eb92c7"
@@ -4721,7 +4719,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 540,
+        "y": 680,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -4741,7 +4739,7 @@
             }
         ],
         "x": 410,
-        "y": 580,
+        "y": 720,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -4767,9 +4765,7 @@
         "x": 170,
         "y": 220,
         "wires": [
-            [
-                "b98332fdc0290246"
-            ]
+            []
         ]
     },
     {
@@ -4954,7 +4950,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "c005622c337802e1"
@@ -4979,12 +4975,183 @@
         "allowrate": false,
         "outputs": 1,
         "x": 430,
-        "y": 380,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "32af23ccef06dd55",
+        "type": "function",
+        "z": "e961334cde89144c",
+        "name": "function 6",
+        "func": "function computeSHA256(obj) {\n    const jsonString = jsonStringifySafe(obj);\n    const hash = crypto.createHash('sha256');\n    hash.update(jsonString);\n    return hash.digest('hex');\n}\n\nif (fs.existsSync('./'))\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            },
+            {
+                "var": "jsonStringifySafe",
+                "module": "json-stringify-safe"
+            },
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 120,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80eb58f6db13f19f",
+        "type": "change",
+        "z": "e961334cde89144c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "$join([\"/data/gptCache/\", hash])",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 240,
         "wires": [
             [
-                "1d0773bcf3416404"
+                "a7cf5100c8c7fecb"
             ]
         ]
+    },
+    {
+        "id": "a7cf5100c8c7fecb",
+        "type": "file in",
+        "z": "e961334cde89144c",
+        "name": "check cache",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "c72c15347dbb29d6"
+            ]
+        ]
+    },
+    {
+        "id": "4a5541ab32ac31e0",
+        "type": "catch",
+        "z": "e961334cde89144c",
+        "name": "cache miss",
+        "scope": [
+            "a7cf5100c8c7fecb"
+        ],
+        "uncaught": false,
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "c72c15347dbb29d6",
+        "type": "json",
+        "z": "e961334cde89144c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b962013a8e078a3",
+        "type": "inject",
+        "z": "e961334cde89144c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1180,
+        "y": 300,
+        "wires": [
+            [
+                "d06041be62a3c31d"
+            ]
+        ]
+    },
+    {
+        "id": "d06041be62a3c31d",
+        "type": "function",
+        "z": "e961334cde89144c",
+        "name": "function 7",
+        "func": "node.log(msg._msgid)\nreturn {};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 360,
+        "wires": [
+            [
+                "1a32fda84b9b64ef"
+            ]
+        ]
+    },
+    {
+        "id": "1a32fda84b9b64ef",
+        "type": "debug",
+        "z": "e961334cde89144c",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "_msgid",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 400,
+        "wires": []
     },
     {
         "id": "f4f6fa24ca217587",
