@@ -9048,7 +9048,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "node",
+        "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
