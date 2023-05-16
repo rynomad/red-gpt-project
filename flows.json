@@ -1382,11 +1382,39 @@
         "color": "#DDAA99"
     },
     {
+        "id": "d7affcdf704b9b54",
+        "type": "group",
+        "z": "e961334cde89144c",
+        "name": "api error recovery",
+        "style": {
+            "stroke": "#ff0000",
+            "fill": "#ffefbf",
+            "label": true
+        },
+        "nodes": [
+            "09ae223c8021bfb1",
+            "dd2038bc71721c1f",
+            "b722eb5e7dd70f13",
+            "cb040ea047dc84fb",
+            "e66c7e2b9c2807aa",
+            "45d0a3a5f2e2b024",
+            "742d10fb144f3c99",
+            "3518c753fac83bd6",
+            "c8ed6299a7db1bac",
+            "36f5f1a19842920a"
+        ],
+        "x": 774,
+        "y": 639,
+        "w": 652,
+        "h": 289.5
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
-        "x": 520,
-        "y": 160,
+        "g": "d7affcdf704b9b54",
+        "x": 1000,
+        "y": 760,
         "wires": [
             [
                 "dd2038bc71721c1f"
@@ -4903,7 +4931,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 580,
-        "y": 360,
+        "y": 520,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4929,7 +4957,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 400,
-        "y": 360,
+        "y": 520,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4960,7 +4988,7 @@
         "repair": false,
         "outputs": 2,
         "x": 390,
-        "y": 320,
+        "y": 480,
         "wires": [
             [
                 "8c1cba224d949d09"
@@ -4977,7 +5005,7 @@
         "name": "link in 1",
         "links": [],
         "x": 65,
-        "y": 220,
+        "y": 380,
         "wires": [
             [
                 "b636b9ea5bf45435"
@@ -4991,8 +5019,8 @@
         "name": "link out 1",
         "mode": "return",
         "links": [],
-        "x": 975,
-        "y": 560,
+        "x": 1175,
+        "y": 580,
         "wires": []
     },
     {
@@ -5004,7 +5032,7 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 400,
-        "y": 520,
+        "y": 680,
         "wires": [
             [
                 "56380579ca248c30",
@@ -5016,13 +5044,14 @@
         "id": "09ae223c8021bfb1",
         "type": "catch",
         "z": "e961334cde89144c",
-        "name": "",
+        "g": "d7affcdf704b9b54",
+        "name": "catch gpt errors",
         "scope": [
             "1d0773bcf3416404"
         ],
         "uncaught": false,
-        "x": 390,
-        "y": 40,
+        "x": 880,
+        "y": 680,
         "wires": [
             [
                 "45d0a3a5f2e2b024"
@@ -5040,8 +5069,8 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 800,
-        "y": 400,
+        "x": 860,
+        "y": 480,
         "wires": [
             []
         ]
@@ -5050,6 +5079,7 @@
         "id": "dd2038bc71721c1f",
         "type": "change",
         "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
         "name": "",
         "rules": [
             {
@@ -5063,11 +5093,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 720,
-        "y": 260,
+        "x": 1260,
+        "y": 760,
         "wires": [
             [
-                "b98332fdc0290246"
+                "36f5f1a19842920a"
             ]
         ]
     },
@@ -5075,15 +5105,11 @@
         "id": "b722eb5e7dd70f13",
         "type": "switch",
         "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
         "name": "known errors",
         "property": "error.message",
         "propertyType": "msg",
         "rules": [
-            {
-                "t": "cont",
-                "v": "maximum context length",
-                "vt": "str"
-            },
             {
                 "t": "cont",
                 "v": "429",
@@ -5110,18 +5136,20 @@
                 "vt": "str"
             },
             {
+                "t": "cont",
+                "v": "maximum context length",
+                "vt": "str"
+            },
+            {
                 "t": "else"
             }
         ],
         "checkall": "false",
         "repair": false,
         "outputs": 7,
-        "x": 410,
-        "y": 160,
+        "x": 890,
+        "y": 800,
         "wires": [
-            [
-                "cb040ea047dc84fb"
-            ],
             [
                 "c8ed6299a7db1bac"
             ],
@@ -5138,6 +5166,9 @@
                 "3518c753fac83bd6"
             ],
             [
+                "cb040ea047dc84fb"
+            ],
+            [
                 "742d10fb144f3c99"
             ]
         ]
@@ -5148,7 +5179,7 @@
         "z": "e961334cde89144c",
         "name": "minify JSON in history",
         "x": 440,
-        "y": 620,
+        "y": 780,
         "wires": [
             [
                 "2d60fcbd28eb92c7"
@@ -5173,7 +5204,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 660,
+        "y": 820,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -5193,7 +5224,7 @@
             }
         ],
         "x": 410,
-        "y": 700,
+        "y": 860,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -5217,7 +5248,7 @@
             }
         ],
         "x": 170,
-        "y": 260,
+        "y": 420,
         "wires": [
             [
                 "a355772753b77403"
@@ -5242,7 +5273,7 @@
             }
         ],
         "x": 210,
-        "y": 220,
+        "y": 380,
         "wires": [
             [
                 "5d459fc8-eec7-4ace-94e5-b653c47e5061"
@@ -5253,29 +5284,29 @@
         "id": "cb040ea047dc84fb",
         "type": "function",
         "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
         "name": "fix token overage",
-        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else if (values.tokensInCompletion > overage) {\n    msg.max_tokens = values.tokensInCompletion - overage;\n} else {\n    // bail\n    msg.payload = 'unrecoverable token overage'\n    return [msg, null];\n}\n\nmsg.history.pop()\n\n\nreturn [null,msg];",
+        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else if (values.tokensInCompletion > overage) {\n    msg.max_tokens = values.tokensInCompletion - overage;\n} else {\n    // bail\n    msg.payload = 'unrecoverable token overage'\n    return [null,msg];\n}\n\nmsg.history.pop()\n\n\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 200,
+        "x": 1090,
+        "y": 820,
         "wires": [
             [
-                "9f4d0154bcaa5bdb"
-            ],
-            [
                 "dd2038bc71721c1f"
-            ]
+            ],
+            []
         ]
     },
     {
         "id": "e66c7e2b9c2807aa",
         "type": "debug",
         "z": "e961334cde89144c",
-        "name": "unknown error",
+        "g": "d7affcdf704b9b54",
+        "name": "fatal",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5284,14 +5315,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 100,
+        "x": 1250,
+        "y": 880,
         "wires": []
     },
     {
         "id": "45d0a3a5f2e2b024",
         "type": "function",
         "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
         "name": "clean history",
         "func": "if (msg.history){\n    const seen = new Set()\n    msg.history = msg.history.filter(item => {\n        if (seen.has(item.content)){\n            return false;\n        }\n        seen.add(item.content)\n        return true;\n    })\n}\nreturn msg;",
         "outputs": 1,
@@ -5299,36 +5331,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 80,
+        "x": 890,
+        "y": 720,
         "wires": [
             [
-                "b722eb5e7dd70f13",
-                "dd3b4001dfae1c23"
+                "b722eb5e7dd70f13"
             ]
         ]
-    },
-    {
-        "id": "dd3b4001dfae1c23",
-        "type": "debug",
-        "z": "e961334cde89144c",
-        "name": "all errors",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 600,
-        "y": 60,
-        "wires": []
     },
     {
         "id": "742d10fb144f3c99",
         "type": "switch",
         "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
         "name": "ignore duplicates",
         "property": "error.message",
         "propertyType": "msg",
@@ -5350,26 +5365,11 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 750,
-        "y": 120,
+        "x": 910,
+        "y": 880,
         "wires": [
             [],
             [],
-            [
-                "e66c7e2b9c2807aa"
-            ]
-        ]
-    },
-    {
-        "id": "d65872b05ad84bb5",
-        "type": "catch",
-        "z": "e961334cde89144c",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 610,
-        "y": 20,
-        "wires": [
             [
                 "e66c7e2b9c2807aa"
             ]
@@ -5379,6 +5379,7 @@
         "id": "3518c753fac83bd6",
         "type": "function",
         "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
         "name": "set rate limit",
         "func": "flow.set(\"rate_limit_encountered\", true);\nnode.status({ fill: \"red\", shape: \"dot\", text: \"Rate limit encountered\" });\nsetTimeout(() => {\n    flow.set(\"rate_limit_encountered\", false);\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"Rate limit expired\" });\n})\nreturn msg;",
         "outputs": 1,
@@ -5386,8 +5387,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 200,
+        "x": 1070,
+        "y": 780,
         "wires": [
             [
                 "dd2038bc71721c1f"
@@ -5406,7 +5407,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 420,
+        "y": 580,
         "wires": [
             [
                 "c005622c337802e1"
@@ -5431,7 +5432,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 430,
-        "y": 460,
+        "y": 620,
         "wires": [
             [
                 "1d0773bcf3416404"
@@ -5510,7 +5511,7 @@
         "z": "e961334cde89144c",
         "name": "",
         "x": 410,
-        "y": 260,
+        "y": 420,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -5526,12 +5527,55 @@
         "z": "e961334cde89144c",
         "name": "",
         "x": 400,
-        "y": 580,
+        "y": 740,
         "wires": [
             [
                 "d2ee1fb0b75e93b6"
             ]
         ]
+    },
+    {
+        "id": "d65872b05ad84bb5",
+        "type": "catch",
+        "z": "e961334cde89144c",
+        "name": "",
+        "scope": [],
+        "uncaught": false,
+        "x": 1530,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6f41daa58979321",
+        "type": "link in",
+        "z": "e961334cde89144c",
+        "name": "link in 3",
+        "links": [
+            "36f5f1a19842920a"
+        ],
+        "x": 175,
+        "y": 480,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "36f5f1a19842920a",
+        "type": "link out",
+        "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "f6f41daa58979321"
+        ],
+        "x": 1385,
+        "y": 760,
+        "wires": []
     },
     {
         "id": "f4f6fa24ca217587",
