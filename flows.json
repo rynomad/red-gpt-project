@@ -1546,7 +1546,7 @@
             "97640565b3603875",
             "cf28e4a3eb7a131c"
         ],
-        "x": 694,
+        "x": 714,
         "y": 1199,
         "w": 372,
         "h": 162
@@ -1569,7 +1569,7 @@
             "87f661e4d4efc5c4",
             "90dbd16a6272716d"
         ],
-        "x": 448,
+        "x": 468,
         "y": 328,
         "w": 864,
         "h": 1059
@@ -1597,7 +1597,7 @@
             "1acd06752cd9811e",
             "b3c1417704b4555c"
         ],
-        "x": 1004,
+        "x": 1024,
         "y": 799,
         "w": 282,
         "h": 362
@@ -1628,7 +1628,7 @@
             "ca5c4b601f4e38bb",
             "ec635034eef78b6a"
         ],
-        "x": 474,
+        "x": 494,
         "y": 799,
         "w": 492,
         "h": 362
@@ -1660,7 +1660,7 @@
             "244956339585c478",
             "94717d300902b787"
         ],
-        "x": 654,
+        "x": 674,
         "y": 354,
         "w": 472,
         "h": 407
@@ -1920,7 +1920,7 @@
         "type": "junction",
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
-        "x": 1100,
+        "x": 1120,
         "y": 380,
         "wires": [
             [
@@ -7684,7 +7684,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a json string of a node-red subflow.\n\nanalyze the subflow and respond with a detailed description of:\n- a description of every node in the subflow, including input and output.\n  - the name or id of the node\n  - the type of the node, \n    - if the node is a function node, include an analysis of the javascript in the \"func\" property\n  - how the node is configured \n  - the node(s) it recieves messages from.\n    - Note: nodes do not list in their own JSON what nodes they recieve messages from. you'll have to inspect the other nodes for output id that matches the node\n  - the node(s) it sends messages to.\n- all environment variables that may be set on instances of the subflow\n- all necessary and optional properties on incoming messages.\n- all properties that may exist on outgoing messages\n- all properties that are touched during the flow\n\nfinally, end with a summary description of the subflow, based on the detailed information you've gathered.\n\norganize your response in sections.",
         "output": "str",
-        "x": 780,
+        "x": 800,
         "y": 500,
         "wires": [
             [
@@ -7699,7 +7699,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "",
-        "x": 750,
+        "x": 770,
         "y": 540,
         "wires": [
             [
@@ -7742,7 +7742,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "",
-        "x": 740,
+        "x": 760,
         "y": 580,
         "wires": [
             [
@@ -7788,7 +7788,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "",
-        "x": 750,
+        "x": 770,
         "y": 660,
         "wires": [
             [
@@ -7824,7 +7824,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 730,
+        "x": 750,
         "y": 700,
         "wires": [
             [
@@ -7858,7 +7858,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1140,
+        "x": 1160,
         "y": 840,
         "wires": [
             [
@@ -7886,7 +7886,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 850,
+        "x": 870,
         "y": 840,
         "wires": [
             [
@@ -7914,7 +7914,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
+        "x": 640,
         "y": 840,
         "wires": [
             [
@@ -7934,7 +7934,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow.\n\nrespond with a user focused description of the subflow with the following structure:\n- A brief description of the functionality of the subflow as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.\n\nplease respond only with the user focused description, without preamble or postscript",
         "output": "str",
-        "x": 1150,
+        "x": 1170,
         "y": 880,
         "wires": [
             [
@@ -7955,7 +7955,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a JSON schema to validate outgoing messages from the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 860,
+        "x": 880,
         "y": 880,
         "wires": [
             [
@@ -7976,7 +7976,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed description of a node-red subflow.\n\nrespond with a thorough JSON schema to validate incoming messages to the subflow:\n- make sure that it includes all required properties\n- make sure that it includes any optional properties that are present in the flow\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 610,
+        "x": 630,
         "y": 880,
         "wires": [
             [
@@ -8005,7 +8005,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
+        "x": 790,
         "y": 920,
         "wires": [
             [
@@ -8019,7 +8019,7 @@
         "z": "eeba88e77478c844",
         "g": "ced0597ce1f434c4",
         "name": "",
-        "x": 1140,
+        "x": 1160,
         "y": 960,
         "wires": [
             [
@@ -8033,7 +8033,7 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "",
-        "x": 770,
+        "x": 790,
         "y": 960,
         "wires": [
             [
@@ -8047,7 +8047,7 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "",
-        "x": 760,
+        "x": 780,
         "y": 1000,
         "wires": [
             [
@@ -8075,7 +8075,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1150,
+        "x": 1170,
         "y": 1000,
         "wires": [
             [
@@ -8095,7 +8095,7 @@
         "syntax": "mustache",
         "template": "You are an expert in JSON schema.\nThe user will provide you with multiple JSON schemas corresponding to an input message.\nYour job is to judge which is the most thorough\n\nrespond with a copy of the most thorough schema.\n\nrespond with ONLY the valid JSON text, without preamble or postscript.\nthe first character in your response should be '{'",
         "output": "str",
-        "x": 770,
+        "x": 790,
         "y": 1040,
         "wires": [
             [
@@ -8116,7 +8116,7 @@
         "syntax": "mustache",
         "template": "You are an html formatter.\nThe user will present you with a piece of documentation\n\nyou must respond with an html representation of the document\n\nhere is an example for css and structure reference:\n\n<p>Reads the contents of a file as either a string or binary buffer.</p>\n<h3>Inputs</h3>\n<dl class=\"message-properties\">\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>The name of the file to be read can be provided in the node configuration, or as a message property. \n        By default it will use <code>msg.filename</code> but this can be customised in the node.\n    </dd>\n</dl>\n<h3>Outputs</h3>\n<dl class=\"message-properties\">\n    <dt>payload <span class=\"property-type\">string | buffer</span></dt>\n    <dd>The contents of the file as either a string or binary buffer.</dd>\n    <dt class=\"optional\">filename <span class=\"property-type\">string</span></dt>\n    <dd>If not configured in the node, this optional property sets the name of the file to be read.</dd>\n</dl>\n<h3>Details</h3>\n<p>The filename should be an absolute path, otherwise it will be relative to\nthe working directory of the Node-RED process.</p>\n<p>On Windows, path separators may need to be escaped, for example: <code>\\\\Users\\\\myUser</code>.</p>\n<p>Optionally, a text file can be split into lines, outputting one message per line, or a binary file\nsplit into smaller buffer chunks - the chunk size being operating system dependant, but typically 64k (Linux/Mac) or 41k (Windows).</p>\n<p>When split into multiple messages, each message will have a <code>parts</code>\nproperty set, forming a complete message sequence.</p>\n<p>Encoding of input data can be specified from list of encodings if output format is string.</p>\n<p>Errors should be caught and handled using a Catch node.</p>\n\n\nrespond with ONLY the valid HTML, without preamble or postscript. the first character in your respose should be '<'",
         "output": "str",
-        "x": 1130,
+        "x": 1150,
         "y": 1040,
         "wires": [
             [
@@ -8142,7 +8142,7 @@
                 "module": "ajv"
             }
         ],
-        "x": 790,
+        "x": 810,
         "y": 1080,
         "wires": [
             [
@@ -8156,7 +8156,7 @@
         "z": "eeba88e77478c844",
         "g": "ced0597ce1f434c4",
         "name": "",
-        "x": 1150,
+        "x": 1170,
         "y": 1080,
         "wires": [
             [
@@ -8170,7 +8170,7 @@
         "z": "eeba88e77478c844",
         "g": "0dc88fbb1e7d8a7d",
         "name": "",
-        "x": 760,
+        "x": 780,
         "y": 1120,
         "wires": [
             [
@@ -8184,7 +8184,7 @@
         "z": "eeba88e77478c844",
         "g": "ced0597ce1f434c4",
         "name": "",
-        "x": 1140,
+        "x": 1160,
         "y": 1120,
         "wires": [
             [
@@ -8212,7 +8212,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 790,
+        "x": 810,
         "y": 620,
         "wires": [
             [
@@ -8472,7 +8472,7 @@
         "links": [
             "3fbb22fa17ec34e4"
         ],
-        "x": 535,
+        "x": 555,
         "y": 420,
         "wires": [
             [
@@ -8581,7 +8581,7 @@
                 "module": "ajv"
             }
         ],
-        "x": 940,
+        "x": 960,
         "y": 1240,
         "wires": [
             [
@@ -8595,7 +8595,7 @@
         "z": "eeba88e77478c844",
         "g": "5bc27646deb5dff2",
         "name": "",
-        "x": 910,
+        "x": 930,
         "y": 1280,
         "wires": [
             [
@@ -8615,7 +8615,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
+        "x": 770,
         "y": 420,
         "wires": [
             [
@@ -8640,7 +8640,7 @@
                 "module": "gpt-3-encoder"
             }
         ],
-        "x": 770,
+        "x": 790,
         "y": 460,
         "wires": [
             [
@@ -8670,7 +8670,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1020,
+        "x": 1040,
         "y": 420,
         "wires": [
             [
@@ -8688,7 +8688,7 @@
         "links": [
             "b59e9d87cb236291"
         ],
-        "x": 985,
+        "x": 1005,
         "y": 680,
         "wires": []
     },
@@ -8702,7 +8702,7 @@
         "links": [
             "ca5c4b601f4e38bb"
         ],
-        "x": 925,
+        "x": 945,
         "y": 700,
         "wires": []
     },
@@ -8716,7 +8716,7 @@
         "links": [
             "ca17dfeec586fc35"
         ],
-        "x": 985,
+        "x": 1005,
         "y": 720,
         "wires": []
     },
@@ -8729,7 +8729,7 @@
         "links": [
             "86ab4ec6100a8634"
         ],
-        "x": 515,
+        "x": 535,
         "y": 840,
         "wires": [
             [
@@ -8746,7 +8746,7 @@
         "links": [
             "d3a22aa601d47859"
         ],
-        "x": 745,
+        "x": 765,
         "y": 840,
         "wires": [
             [
@@ -8763,7 +8763,7 @@
         "links": [
             "763888ff65c3b5cc"
         ],
-        "x": 1045,
+        "x": 1065,
         "y": 840,
         "wires": [
             [
@@ -8781,7 +8781,7 @@
         "links": [
             "97640565b3603875"
         ],
-        "x": 1245,
+        "x": 1265,
         "y": 1120,
         "wires": []
     },
@@ -8795,7 +8795,7 @@
             "1acd06752cd9811e",
             "ec635034eef78b6a"
         ],
-        "x": 775,
+        "x": 795,
         "y": 1240,
         "wires": [
             [
@@ -8813,7 +8813,7 @@
         "links": [
             "97640565b3603875"
         ],
-        "x": 915,
+        "x": 935,
         "y": 1120,
         "wires": []
     },
@@ -8834,7 +8834,7 @@
                 "module": "ajv"
             }
         ],
-        "x": 910,
+        "x": 930,
         "y": 1320,
         "wires": [
             [
@@ -8878,7 +8878,7 @@
         "z": "eeba88e77478c844",
         "g": "ced0597ce1f434c4",
         "name": "",
-        "x": 1150,
+        "x": 1170,
         "y": 920,
         "wires": [
             [
@@ -8896,7 +8896,7 @@
         "links": [
             "fba28f405a72bc42"
         ],
-        "x": 1165,
+        "x": 1185,
         "y": 1320,
         "wires": []
     },
@@ -8914,7 +8914,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
+        "x": 1040,
         "y": 480,
         "wires": []
     },
