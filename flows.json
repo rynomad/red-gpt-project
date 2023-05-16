@@ -8659,7 +8659,7 @@
         "g": "87f661e4d4efc5c4",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "30",
         "timeoutUnits": "seconds",
         "rate": "1",
         "nbRateUnits": "1",
