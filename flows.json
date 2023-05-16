@@ -1240,6 +1240,127 @@
         "color": "#DDAA99"
     },
     {
+        "id": "80a84193bc2e4430",
+        "type": "subflow",
+        "name": "check cache",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "a4edc57e00ce9ee8"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 440,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "a7cf5100c8c7fecb",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 440,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "7ad188968d3bb2cf",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "cacheName",
+                "type": "env",
+                "value": "cacheName"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "28a00f5c49227e1c",
+        "type": "subflow",
+        "name": "set cache",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "a1a125392352c133"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 500,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "470b923644652c32",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "411e0c8d5e99f249",
+        "type": "subflow",
+        "name": "get cache path",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 120,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "32af23ccef06dd55"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 500,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "80eb58f6db13f19f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "cacheName",
+                "type": "env",
+                "value": "cacheName"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
@@ -4314,6 +4435,247 @@
         ]
     },
     {
+        "id": "a7cf5100c8c7fecb",
+        "type": "file in",
+        "z": "80a84193bc2e4430",
+        "name": "cache hit",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 260,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f7b65bbb6bfb6669",
+        "type": "catch",
+        "z": "80a84193bc2e4430",
+        "name": "cache miss",
+        "scope": null,
+        "uncaught": false,
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "7ad188968d3bb2cf"
+            ]
+        ]
+    },
+    {
+        "id": "7ad188968d3bb2cf",
+        "type": "change",
+        "z": "80a84193bc2e4430",
+        "name": "remove errors",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "error",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "_error",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4edc57e00ce9ee8",
+        "type": "subflow:411e0c8d5e99f249",
+        "z": "80a84193bc2e4430",
+        "name": "",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "a7cf5100c8c7fecb"
+            ]
+        ]
+    },
+    {
+        "id": "07443dbd076220b3",
+        "type": "file",
+        "z": "28a00f5c49227e1c",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "1c2d4b76a7e0d513"
+            ]
+        ]
+    },
+    {
+        "id": "470b923644652c32",
+        "type": "change",
+        "z": "28a00f5c49227e1c",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "filename",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "hash",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1a125392352c133",
+        "type": "subflow:411e0c8d5e99f249",
+        "z": "28a00f5c49227e1c",
+        "name": "",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "5e6bb07d897ef6c2"
+            ]
+        ]
+    },
+    {
+        "id": "5e6bb07d897ef6c2",
+        "type": "function",
+        "z": "28a00f5c49227e1c",
+        "name": "function 8",
+        "func": "msg.payload = jsonStringifySafe(msg)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "jsonStringifySafe",
+                "module": "json-stringify-safe"
+            }
+        ],
+        "x": 340,
+        "y": 200,
+        "wires": [
+            [
+                "2254ae343f93c143"
+            ]
+        ]
+    },
+    {
+        "id": "2254ae343f93c143",
+        "type": "subflow:520a10812173e701",
+        "z": "28a00f5c49227e1c",
+        "name": "",
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "07443dbd076220b3"
+            ]
+        ]
+    },
+    {
+        "id": "1c2d4b76a7e0d513",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "28a00f5c49227e1c",
+        "name": "",
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "470b923644652c32"
+            ]
+        ]
+    },
+    {
+        "id": "32af23ccef06dd55",
+        "type": "function",
+        "z": "411e0c8d5e99f249",
+        "name": "hash msg",
+        "func": "function computeSHA256(obj) {\n    const jsonString = jsonStringifySafe(obj);\n    const hash = crypto.createHash('sha256');\n    hash.update(jsonString);\n    return hash.digest('hex');\n}\n\nmsg.hash = msg.hash || computeSHA256(msg);\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            },
+            {
+                "var": "jsonStringifySafe",
+                "module": "json-stringify-safe"
+            },
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "80eb58f6db13f19f"
+            ]
+        ]
+    },
+    {
+        "id": "80eb58f6db13f19f",
+        "type": "change",
+        "z": "411e0c8d5e99f249",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "$join([\"/data/gptCache/\", $env('cacheName'),\"/\", hash])",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "414ddee1287efb66",
         "type": "subflow:b53b3b7e24a3e4e7",
         "z": "941765e8bb2c32d6",
@@ -4451,7 +4813,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 580,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4477,7 +4839,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 400,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "56380579ca248c30",
@@ -4508,7 +4870,7 @@
         "repair": false,
         "outputs": 2,
         "x": 390,
-        "y": 360,
+        "y": 320,
         "wires": [
             [
                 "8c1cba224d949d09"
@@ -4525,7 +4887,7 @@
         "name": "link in 1",
         "links": [],
         "x": 65,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "b636b9ea5bf45435"
@@ -4552,11 +4914,11 @@
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
         "x": 400,
-        "y": 580,
+        "y": 520,
         "wires": [
             [
                 "56380579ca248c30",
-                "d2ee1fb0b75e93b6"
+                "199a0f0b9465c0f4"
             ]
         ]
     },
@@ -4611,10 +4973,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 200,
+        "x": 720,
+        "y": 260,
         "wires": [
-            []
+            [
+                "b98332fdc0290246"
+            ]
         ]
     },
     {
@@ -4663,7 +5027,7 @@
         "repair": false,
         "outputs": 7,
         "x": 410,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "cb040ea047dc84fb"
@@ -4694,7 +5058,7 @@
         "z": "e961334cde89144c",
         "name": "minify JSON in history",
         "x": 440,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "2d60fcbd28eb92c7"
@@ -4719,7 +5083,7 @@
         "to": "",
         "reg": false,
         "x": 430,
-        "y": 680,
+        "y": 660,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -4739,7 +5103,7 @@
             }
         ],
         "x": 410,
-        "y": 720,
+        "y": 700,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -4763,9 +5127,11 @@
             }
         ],
         "x": 170,
-        "y": 220,
+        "y": 240,
         "wires": [
-            []
+            [
+                "a355772753b77403"
+            ]
         ]
     },
     {
@@ -4786,7 +5152,7 @@
             }
         ],
         "x": 210,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "5d459fc8-eec7-4ace-94e5-b653c47e5061"
@@ -4805,7 +5171,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -4895,7 +5261,7 @@
         "repair": false,
         "outputs": 3,
         "x": 750,
-        "y": 240,
+        "y": 120,
         "wires": [
             [],
             [],
@@ -4931,7 +5297,7 @@
         "finalize": "",
         "libs": [],
         "x": 710,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "dd2038bc71721c1f"
@@ -4950,7 +5316,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 460,
+        "y": 420,
         "wires": [
             [
                 "c005622c337802e1"
@@ -4975,115 +5341,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 430,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "32af23ccef06dd55",
-        "type": "function",
-        "z": "e961334cde89144c",
-        "name": "function 6",
-        "func": "function computeSHA256(obj) {\n    const jsonString = jsonStringifySafe(obj);\n    const hash = crypto.createHash('sha256');\n    hash.update(jsonString);\n    return hash.digest('hex');\n}\n\nif (fs.existsSync('./'))\n\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            },
-            {
-                "var": "jsonStringifySafe",
-                "module": "json-stringify-safe"
-            },
-            {
-                "var": "fs",
-                "module": "fs"
-            }
-        ],
-        "x": 120,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "80eb58f6db13f19f",
-        "type": "change",
-        "z": "e961334cde89144c",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "$join([\"/data/gptCache/\", hash])",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 430,
-        "y": 240,
-        "wires": [
-            [
-                "a7cf5100c8c7fecb"
-            ]
-        ]
-    },
-    {
-        "id": "a7cf5100c8c7fecb",
-        "type": "file in",
-        "z": "e961334cde89144c",
-        "name": "check cache",
-        "filename": "filename",
-        "filenameType": "msg",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 410,
-        "y": 280,
-        "wires": [
-            [
-                "c72c15347dbb29d6"
-            ]
-        ]
-    },
-    {
-        "id": "4a5541ab32ac31e0",
-        "type": "catch",
-        "z": "e961334cde89144c",
-        "name": "cache miss",
-        "scope": [
-            "a7cf5100c8c7fecb"
-        ],
-        "uncaught": false,
-        "x": 170,
-        "y": 360,
-        "wires": [
-            [
-                "b98332fdc0290246"
-            ]
-        ]
-    },
-    {
-        "id": "c72c15347dbb29d6",
-        "type": "json",
-        "z": "e961334cde89144c",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 570,
-        "y": 280,
+        "y": 460,
         "wires": [
             []
         ]
@@ -5153,6 +5411,35 @@
         "x": 1200,
         "y": 400,
         "wires": []
+    },
+    {
+        "id": "a355772753b77403",
+        "type": "subflow:80a84193bc2e4430",
+        "z": "e961334cde89144c",
+        "name": "",
+        "x": 410,
+        "y": 240,
+        "wires": [
+            [
+                "9f4d0154bcaa5bdb"
+            ],
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "199a0f0b9465c0f4",
+        "type": "subflow:28a00f5c49227e1c",
+        "z": "e961334cde89144c",
+        "name": "",
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "d2ee1fb0b75e93b6"
+            ]
+        ]
     },
     {
         "id": "f4f6fa24ca217587",
