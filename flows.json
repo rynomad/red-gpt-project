@@ -7411,7 +7411,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "turbo",
-        "x": 160,
+        "x": 130,
         "y": 60,
         "wires": [
             [
