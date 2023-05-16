@@ -8835,7 +8835,7 @@
         "z": "eeba88e77478c844",
         "g": "5bc27646deb5dff2",
         "name": "merge values",
-        "func": "for (const {key, value} of msg.payload){\n    msg.node[key] = value;\n}\n\nreturn msg;",
+        "func": "for (const {key, content} of msg.payload){\n    msg.node[key] = content;\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
