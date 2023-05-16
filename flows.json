@@ -1519,12 +1519,11 @@
             "944ac83066925c0c",
             "1aab229baa275120",
             "c6ddec5c7bd294ce",
-            "3bd4d0e7955f70cc",
-            "19f0c2acb9f72112"
+            "3bd4d0e7955f70cc"
         ],
         "x": 474,
         "y": 99,
-        "w": 572,
+        "w": 332,
         "h": 202
     },
     {
@@ -1713,12 +1712,11 @@
             "8c2c821cdc05f88c",
             "6b61f3a6beb801e5",
             "67bc5d832df81340",
-            "eaa56c15e37f5e2f",
-            "fa223567d09ce75a"
+            "eaa56c15e37f5e2f"
         ],
-        "x": 1074,
+        "x": 834,
         "y": 99,
-        "w": 572,
+        "w": 332,
         "h": 202
     },
     {
@@ -5859,7 +5857,8 @@
         "y": 180,
         "wires": [
             [
-                "c005622c337802e1"
+                "c005622c337802e1",
+                "bffe7bc9e0ce40e8"
             ]
         ]
     },
@@ -5935,6 +5934,23 @@
                 "e66c7e2b9c2807aa"
             ]
         ]
+    },
+    {
+        "id": "bffe7bc9e0ce40e8",
+        "type": "debug",
+        "z": "e961334cde89144c",
+        "name": "fatal",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 180,
+        "wires": []
     },
     {
         "id": "f4f6fa24ca217587",
@@ -7966,7 +7982,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow.\n\nrespond with a user focused description of the subflow with the following structure:\n- A brief description of the functionality of the subflow as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.\n\nplease respond only with the user focused description, without preamble or postscript",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nThe user will provide you with a detailed analysis of a node-red subflow or group.\n\nrespond with a user focused description of the subflow/group with the following structure:\n- A brief description of the functionality of the subflow/group as a whole\n- An \"Input\" section describing the input message requirements and how they're used\n- An \"Output\" section describing the output message properties and what they are\n- A \"Details\" section with instructions on how to use any environment variables, as well as any other relevant information for someone who wishes to use the subflow.\n\nplease respond only with the user focused description, without preamble or postscript",
         "output": "str",
         "x": 1170,
         "y": 880,
@@ -8094,7 +8110,7 @@
         "type": "change",
         "z": "eeba88e77478c844",
         "g": "ced0597ce1f434c4",
-        "name": "set userdoc",
+        "name": "",
         "rules": [
             {
                 "t": "set",
@@ -8109,7 +8125,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1170,
+        "x": 1190,
         "y": 1000,
         "wires": [
             [
@@ -8382,7 +8398,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red function node.\nYou must analyze it and respond with a brief description of what the function does.",
+        "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red function node.\nYou must analyze the func property and respond with a brief description of what the javascript function does in the context of the node",
         "output": "str",
         "x": 660,
         "y": 140,
@@ -8403,8 +8419,7 @@
         "y": 180,
         "wires": [
             [
-                "944ac83066925c0c",
-                "19f0c2acb9f72112"
+                "944ac83066925c0c"
             ]
         ]
     },
@@ -8418,8 +8433,7 @@
         "y": 220,
         "wires": [
             [
-                "1aab229baa275120",
-                "19f0c2acb9f72112"
+                "1aab229baa275120"
             ]
         ]
     },
@@ -9005,24 +9019,6 @@
         ]
     },
     {
-        "id": "19f0c2acb9f72112",
-        "type": "debug",
-        "z": "eeba88e77478c844",
-        "g": "f7178adeaceda352",
-        "name": "function doc",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 930,
-        "y": 180,
-        "wires": []
-    },
-    {
         "id": "b1075f20d54f61f0",
         "type": "debug",
         "z": "eeba88e77478c844",
@@ -9141,7 +9137,7 @@
         "syntax": "mustache",
         "template": "You are an expert in node-red, flow based programming, and javascript.\nYour job is to write documentation.\nThe user will provide you with a json string of a node-red node.\nYou must analyze it and respond with a brief description of what the node does.",
         "output": "str",
-        "x": 1260,
+        "x": 1020,
         "y": 140,
         "wires": [
             [
@@ -9156,12 +9152,11 @@
         "z": "eeba88e77478c844",
         "g": "d93e257c176bb0a5",
         "name": "",
-        "x": 1230,
+        "x": 990,
         "y": 180,
         "wires": [
             [
-                "8c2c821cdc05f88c",
-                "fa223567d09ce75a"
+                "8c2c821cdc05f88c"
             ]
         ]
     },
@@ -9171,12 +9166,11 @@
         "z": "eeba88e77478c844",
         "g": "d93e257c176bb0a5",
         "name": "",
-        "x": 1220,
+        "x": 980,
         "y": 220,
         "wires": [
             [
-                "6b61f3a6beb801e5",
-                "fa223567d09ce75a"
+                "6b61f3a6beb801e5"
             ]
         ]
     },
@@ -9205,7 +9199,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1240,
+        "x": 1000,
         "y": 260,
         "wires": [
             [
@@ -9222,7 +9216,7 @@
         "links": [
             "873a38de083427d1"
         ],
-        "x": 1115,
+        "x": 875,
         "y": 140,
         "wires": [
             [
@@ -9240,26 +9234,8 @@
         "links": [
             "fba28f405a72bc42"
         ],
-        "x": 1365,
+        "x": 1125,
         "y": 260,
-        "wires": []
-    },
-    {
-        "id": "fa223567d09ce75a",
-        "type": "debug",
-        "z": "eeba88e77478c844",
-        "g": "d93e257c176bb0a5",
-        "name": "function doc",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1530,
-        "y": 180,
         "wires": []
     },
     {
