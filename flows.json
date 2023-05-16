@@ -8197,7 +8197,8 @@
         "y": 1120,
         "wires": [
             [
-                "1acd06752cd9811e"
+                "1acd06752cd9811e",
+                "52f977f02c8f65df"
             ]
         ]
     },
@@ -8579,7 +8580,7 @@
         "z": "eeba88e77478c844",
         "g": "5bc27646deb5dff2",
         "name": "normalize key/content",
-        "func": "const payload = {\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.content = msg.payload;\n    msg.payload = payload;\n    return msg;\n} \nfunction extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
+        "func": "const payload = {\n    key: msg.tag\n}\nif (msg.tag === 'info'){\n    payload.content = msg.payload;\n    msg.payload = payload;\n    return msg;\n} \nfunction extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\n\nfor (const {message} of msg.full.data.choices){\n    try {\n        payload.content = JSON.parse(extractJsonString(message.content));\n        ajv.compile(payload.content);\n        break;\n    } catch (e) {\n        payload.content = undefined;\n        // ignore\n    }\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8954,7 +8955,7 @@
         "z": "eeba88e77478c844",
         "g": "f7178adeaceda352",
         "name": "function doc",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -9026,7 +9027,7 @@
         "type": "debug",
         "z": "eeba88e77478c844",
         "name": "subflows and groups",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -9036,6 +9037,23 @@
         "statusType": "auto",
         "x": 1000,
         "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "52f977f02c8f65df",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "name": "subflows and groups info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "node",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 1080,
         "wires": []
     },
     {
