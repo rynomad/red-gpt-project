@@ -8595,7 +8595,8 @@
         "y": 1240,
         "wires": [
             [
-                "a9a4aa9e75fae5a9"
+                "a9a4aa9e75fae5a9",
+                "52f977f02c8f65df"
             ]
         ]
     },
@@ -9052,8 +9053,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1450,
-        "y": 1080,
+        "x": 1430,
+        "y": 1240,
         "wires": []
     },
     {
