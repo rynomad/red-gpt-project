@@ -1389,7 +1389,8 @@
         "style": {
             "stroke": "#ff0000",
             "fill": "#ffefbf",
-            "label": true
+            "label": true,
+            "color": "#000000"
         },
         "nodes": [
             "09ae223c8021bfb1",
@@ -1401,20 +1402,117 @@
             "742d10fb144f3c99",
             "3518c753fac83bd6",
             "c8ed6299a7db1bac",
-            "36f5f1a19842920a"
+            "36f5f1a19842920a",
+            "cc62956c3b81303f"
         ],
-        "x": 774,
-        "y": 639,
-        "w": 652,
-        "h": 289.5
+        "x": 414,
+        "y": 279,
+        "w": 512,
+        "h": 309.5
+    },
+    {
+        "id": "f391c50d5db87eaa",
+        "type": "group",
+        "z": "e961334cde89144c",
+        "name": "queue",
+        "style": {
+            "stroke": "#0070c0",
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "8c1cba224d949d09",
+            "4b735d4be9323117",
+            "b98332fdc0290246",
+            "88777962fcded1b0",
+            "c005622c337802e1",
+            "99c1dda7a428e8ec",
+            "671ee64206a3373e"
+        ],
+        "x": 414,
+        "y": 19,
+        "w": 482,
+        "h": 222
+    },
+    {
+        "id": "0e6093de46259473",
+        "type": "group",
+        "z": "e961334cde89144c",
+        "name": "preprocess",
+        "style": {
+            "label": true,
+            "color": "#000000",
+            "stroke": "#a4a4a4",
+            "fill": "#e3f3d3"
+        },
+        "nodes": [
+            "5d459fc8-eec7-4ace-94e5-b653c47e5061",
+            "b636b9ea5bf45435",
+            "a355772753b77403",
+            "701148b22986a50e",
+            "b4a2d04d42503cb8",
+            "f2342d49916a4e23"
+        ],
+        "x": 34,
+        "y": 19,
+        "w": 342,
+        "h": 222
+    },
+    {
+        "id": "cef1df36791a4d09",
+        "type": "group",
+        "z": "e961334cde89144c",
+        "name": "postprocess",
+        "style": {
+            "label": true,
+            "stroke": "#a4a4a4",
+            "fill": "#e3f3d3",
+            "color": "#000000"
+        },
+        "nodes": [
+            "d2ee1fb0b75e93b6",
+            "2d60fcbd28eb92c7",
+            "d5f444de1f8ceabb",
+            "199a0f0b9465c0f4",
+            "2e369d48df52cc14",
+            "9f4d0154bcaa5bdb"
+        ],
+        "x": 34,
+        "y": 379,
+        "w": 342,
+        "h": 202
+    },
+    {
+        "id": "557759eee672f611",
+        "type": "group",
+        "z": "e961334cde89144c",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "1d0773bcf3416404",
+            "97c1d4749949361d",
+            "b47b231762856df5"
+        ],
+        "x": 34,
+        "y": 279,
+        "w": 342,
+        "h": 82
     },
     {
         "id": "c8ed6299a7db1bac",
         "type": "junction",
         "z": "e961334cde89144c",
         "g": "d7affcdf704b9b54",
-        "x": 1000,
-        "y": 760,
+        "x": 620,
+        "y": 400,
         "wires": [
             [
                 "dd2038bc71721c1f"
@@ -1562,6 +1660,19 @@
         "wires": [
             [
                 "b74d4d377fba494c"
+            ]
+        ]
+    },
+    {
+        "id": "cc62956c3b81303f",
+        "type": "junction",
+        "z": "e961334cde89144c",
+        "g": "d7affcdf704b9b54",
+        "x": 840,
+        "y": 440,
+        "wires": [
+            [
+                "dd2038bc71721c1f"
             ]
         ]
     },
@@ -4917,6 +5028,7 @@
         "id": "8c1cba224d949d09",
         "type": "delay",
         "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
         "name": "gpt4 limit",
         "pauseType": "rate",
         "timeout": "5",
@@ -4930,11 +5042,10 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 580,
-        "y": 520,
+        "x": 780,
+        "y": 100,
         "wires": [
             [
-                "56380579ca248c30",
                 "88777962fcded1b0"
             ]
         ]
@@ -4943,6 +5054,7 @@
         "id": "4b735d4be9323117",
         "type": "delay",
         "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
         "name": "turbo limit",
         "pauseType": "rate",
         "timeout": "5",
@@ -4956,11 +5068,10 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 400,
-        "y": 520,
+        "x": 600,
+        "y": 100,
         "wires": [
             [
-                "56380579ca248c30",
                 "88777962fcded1b0"
             ]
         ]
@@ -4969,6 +5080,7 @@
         "id": "b98332fdc0290246",
         "type": "switch",
         "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -4987,8 +5099,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 390,
-        "y": 480,
+        "x": 590,
+        "y": 60,
         "wires": [
             [
                 "8c1cba224d949d09"
@@ -5002,10 +5114,11 @@
         "id": "f2342d49916a4e23",
         "type": "link in",
         "z": "e961334cde89144c",
-        "name": "link in 1",
+        "g": "0e6093de46259473",
+        "name": "gpt in",
         "links": [],
-        "x": 65,
-        "y": 380,
+        "x": 75,
+        "y": 60,
         "wires": [
             [
                 "b636b9ea5bf45435"
@@ -5016,27 +5129,28 @@
         "id": "9f4d0154bcaa5bdb",
         "type": "link out",
         "z": "e961334cde89144c",
-        "name": "link out 1",
+        "g": "cef1df36791a4d09",
+        "name": "gpt out",
         "mode": "return",
         "links": [],
-        "x": 1175,
-        "y": 580,
+        "x": 335,
+        "y": 540,
         "wires": []
     },
     {
         "id": "1d0773bcf3416404",
         "type": "chatgpt",
         "z": "e961334cde89144c",
+        "g": "557759eee672f611",
         "name": "",
         "Organization": " ",
         "topic": "__EMPTY__",
         "BaseUrl": "https://api.openai.com",
-        "x": 400,
-        "y": 680,
+        "x": 200,
+        "y": 320,
         "wires": [
             [
-                "56380579ca248c30",
-                "199a0f0b9465c0f4"
+                "b47b231762856df5"
             ]
         ]
     },
@@ -5050,29 +5164,12 @@
             "1d0773bcf3416404"
         ],
         "uncaught": false,
-        "x": 880,
-        "y": 680,
+        "x": 520,
+        "y": 320,
         "wires": [
             [
                 "45d0a3a5f2e2b024"
             ]
-        ]
-    },
-    {
-        "id": "56380579ca248c30",
-        "type": "file",
-        "z": "e961334cde89144c",
-        "name": "",
-        "filename": "/data/gptlog.txt",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 860,
-        "y": 480,
-        "wires": [
-            []
         ]
     },
     {
@@ -5093,8 +5190,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1260,
-        "y": 760,
+        "x": 740,
+        "y": 400,
         "wires": [
             [
                 "36f5f1a19842920a"
@@ -5147,8 +5244,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 7,
-        "x": 890,
-        "y": 800,
+        "x": 530,
+        "y": 440,
         "wires": [
             [
                 "c8ed6299a7db1bac"
@@ -5177,9 +5274,10 @@
         "id": "d2ee1fb0b75e93b6",
         "type": "subflow:f9e0ec91.e767e",
         "z": "e961334cde89144c",
+        "g": "cef1df36791a4d09",
         "name": "minify JSON in history",
-        "x": 440,
-        "y": 780,
+        "x": 240,
+        "y": 460,
         "wires": [
             [
                 "2d60fcbd28eb92c7"
@@ -5190,6 +5288,7 @@
         "id": "2d60fcbd28eb92c7",
         "type": "change",
         "z": "e961334cde89144c",
+        "g": "cef1df36791a4d09",
         "name": "clear max_tokens",
         "rules": [
             {
@@ -5203,8 +5302,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 430,
-        "y": 820,
+        "x": 230,
+        "y": 500,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -5215,6 +5314,7 @@
         "id": "d5f444de1f8ceabb",
         "type": "subflow:a25be0e127fc9e24",
         "z": "e961334cde89144c",
+        "g": "cef1df36791a4d09",
         "name": "restore topic",
         "env": [
             {
@@ -5223,8 +5323,8 @@
                 "type": "str"
             }
         ],
-        "x": 410,
-        "y": 860,
+        "x": 210,
+        "y": 540,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -5235,6 +5335,7 @@
         "id": "5d459fc8-eec7-4ace-94e5-b653c47e5061",
         "type": "function",
         "z": "e961334cde89144c",
+        "g": "0e6093de46259473",
         "name": "ensure token headroom",
         "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    node.log('token sum: ' + sum);\n    if (env.auto4\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
         "outputs": 1,
@@ -5247,8 +5348,8 @@
                 "module": "gpt-3-encoder"
             }
         ],
-        "x": 170,
-        "y": 420,
+        "x": 230,
+        "y": 100,
         "wires": [
             [
                 "a355772753b77403"
@@ -5259,6 +5360,7 @@
         "id": "b636b9ea5bf45435",
         "type": "subflow:520a10812173e701",
         "z": "e961334cde89144c",
+        "g": "0e6093de46259473",
         "name": "stash topic",
         "env": [
             {
@@ -5272,8 +5374,8 @@
                 "type": "bool"
             }
         ],
-        "x": 210,
-        "y": 380,
+        "x": 190,
+        "y": 60,
         "wires": [
             [
                 "5d459fc8-eec7-4ace-94e5-b653c47e5061"
@@ -5286,19 +5388,21 @@
         "z": "e961334cde89144c",
         "g": "d7affcdf704b9b54",
         "name": "fix token overage",
-        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else if (values.tokensInCompletion > overage) {\n    msg.max_tokens = values.tokensInCompletion - overage;\n} else {\n    // bail\n    msg.payload = 'unrecoverable token overage'\n    return [null,msg];\n}\n\nmsg.history.pop()\n\n\nreturn [msg,null];",
+        "func": "function extractNumbersFromString(str) {\n    const regex = /\\d+/g; // Regular expression to match one or more digits\n    const matches = str.match(regex); // Extract all numbers from the string\n\n    const result = {\n        maximumContextLength: parseInt(matches[0]),\n        requestedTokens: parseInt(matches[1]),\n        tokensInMessages: parseInt(matches[2]),\n        tokensInCompletion: parseInt(matches[3])\n    };\n\n    return result;\n}\n\nconst values = extractNumbersFromString(msg.error.message);\nconsole.log('values', values)\nconst overage = values.tokensInCompletion - (values.requestedTokens - values.maximumContextLength);\nif (values.tokensInCompletion - msg.min_tokens < overage) {\n    // we just miscalculated, but we're still good\n    msg.max_tokens = values.tokensInCompletion - overage\n} else if (msg.auto4 && msg.topic === 'turbo') {\n    // upgrade model\n    msg.topic = 'gpt4'\n} else if (values.tokensInCompletion > overage) {\n    msg.max_tokens = values.tokensInCompletion - overage;\n} else {\n    // bail\n    msg.payload = 'unrecoverable token overage'\n    return [null, msg];\n}\n\nmsg.history.pop()\n\n\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1090,
-        "y": 820,
+        "x": 750,
+        "y": 480,
         "wires": [
             [
-                "dd2038bc71721c1f"
+                "cc62956c3b81303f"
             ],
-            []
+            [
+                "e66c7e2b9c2807aa"
+            ]
         ]
     },
     {
@@ -5315,8 +5419,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1250,
-        "y": 880,
+        "x": 750,
+        "y": 540,
         "wires": []
     },
     {
@@ -5331,8 +5435,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 720,
+        "x": 530,
+        "y": 360,
         "wires": [
             [
                 "b722eb5e7dd70f13"
@@ -5365,8 +5469,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 910,
-        "y": 880,
+        "x": 550,
+        "y": 540,
         "wires": [
             [],
             [],
@@ -5387,11 +5491,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1070,
-        "y": 780,
+        "x": 730,
+        "y": 440,
         "wires": [
             [
-                "dd2038bc71721c1f"
+                "cc62956c3b81303f"
             ]
         ]
     },
@@ -5399,6 +5503,7 @@
         "id": "88777962fcded1b0",
         "type": "function",
         "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
         "name": "rate limit hit checker",
         "func": "var rateLimitEncountered = flow.get(\"rate_limit_encountered\") || false;\nif (rateLimitEncountered) {\n    // If a rate limit has been encountered, pause for 30 seconds\n    msg.delay = 30000;\n} \n// Reset the rate limit encountered flag\nreturn msg;\n",
         "outputs": 1,
@@ -5406,8 +5511,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 580,
+        "x": 640,
+        "y": 160,
         "wires": [
             [
                 "c005622c337802e1"
@@ -5418,6 +5523,7 @@
         "id": "c005622c337802e1",
         "type": "delay",
         "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
         "name": "rate limit hit queue",
         "pauseType": "delayv",
         "timeout": "1",
@@ -5431,93 +5537,28 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 430,
-        "y": 620,
+        "x": 630,
+        "y": 200,
         "wires": [
             [
-                "1d0773bcf3416404"
+                "671ee64206a3373e"
             ]
         ]
-    },
-    {
-        "id": "4b962013a8e078a3",
-        "type": "inject",
-        "z": "e961334cde89144c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1180,
-        "y": 300,
-        "wires": [
-            [
-                "d06041be62a3c31d",
-                "1a32fda84b9b64ef"
-            ]
-        ]
-    },
-    {
-        "id": "d06041be62a3c31d",
-        "type": "function",
-        "z": "e961334cde89144c",
-        "name": "function 7",
-        "func": "node.log(msg._msgid)\nreturn {payload: 'stuff', prop: 'other'};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1220,
-        "y": 360,
-        "wires": [
-            [
-                "1a32fda84b9b64ef"
-            ]
-        ]
-    },
-    {
-        "id": "1a32fda84b9b64ef",
-        "type": "debug",
-        "z": "e961334cde89144c",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1200,
-        "y": 400,
-        "wires": []
     },
     {
         "id": "a355772753b77403",
         "type": "subflow:80a84193bc2e4430",
         "z": "e961334cde89144c",
+        "g": "0e6093de46259473",
         "name": "",
-        "x": 410,
-        "y": 420,
+        "x": 190,
+        "y": 140,
         "wires": [
             [
-                "9f4d0154bcaa5bdb"
+                "701148b22986a50e"
             ],
             [
-                "b98332fdc0290246"
+                "b4a2d04d42503cb8"
             ]
         ]
     },
@@ -5525,41 +5566,13 @@
         "id": "199a0f0b9465c0f4",
         "type": "subflow:28a00f5c49227e1c",
         "z": "e961334cde89144c",
+        "g": "cef1df36791a4d09",
         "name": "",
-        "x": 400,
-        "y": 740,
+        "x": 200,
+        "y": 420,
         "wires": [
             [
                 "d2ee1fb0b75e93b6"
-            ]
-        ]
-    },
-    {
-        "id": "d65872b05ad84bb5",
-        "type": "catch",
-        "z": "e961334cde89144c",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 1530,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f6f41daa58979321",
-        "type": "link in",
-        "z": "e961334cde89144c",
-        "name": "link in 3",
-        "links": [
-            "36f5f1a19842920a"
-        ],
-        "x": 175,
-        "y": 480,
-        "wires": [
-            [
-                "b98332fdc0290246"
             ]
         ]
     },
@@ -5571,10 +5584,119 @@
         "name": "link out 3",
         "mode": "link",
         "links": [
-            "f6f41daa58979321"
+            "99c1dda7a428e8ec"
         ],
-        "x": 1385,
-        "y": 760,
+        "x": 885,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "99c1dda7a428e8ec",
+        "type": "link in",
+        "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
+        "name": "queue input",
+        "links": [
+            "b4a2d04d42503cb8",
+            "36f5f1a19842920a"
+        ],
+        "x": 455,
+        "y": 60,
+        "wires": [
+            [
+                "b98332fdc0290246"
+            ]
+        ]
+    },
+    {
+        "id": "671ee64206a3373e",
+        "type": "link out",
+        "z": "e961334cde89144c",
+        "g": "f391c50d5db87eaa",
+        "name": "queue out",
+        "mode": "link",
+        "links": [
+            "97c1d4749949361d"
+        ],
+        "x": 855,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "701148b22986a50e",
+        "type": "link out",
+        "z": "e961334cde89144c",
+        "g": "0e6093de46259473",
+        "name": "postprocessing",
+        "mode": "link",
+        "links": [
+            "2e369d48df52cc14"
+        ],
+        "x": 335,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b4a2d04d42503cb8",
+        "type": "link out",
+        "z": "e961334cde89144c",
+        "g": "0e6093de46259473",
+        "name": "queue",
+        "mode": "link",
+        "links": [
+            "99c1dda7a428e8ec"
+        ],
+        "x": 335,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2e369d48df52cc14",
+        "type": "link in",
+        "z": "e961334cde89144c",
+        "g": "cef1df36791a4d09",
+        "name": "postprocess input",
+        "links": [
+            "701148b22986a50e",
+            "b47b231762856df5"
+        ],
+        "x": 75,
+        "y": 420,
+        "wires": [
+            [
+                "199a0f0b9465c0f4"
+            ]
+        ]
+    },
+    {
+        "id": "97c1d4749949361d",
+        "type": "link in",
+        "z": "e961334cde89144c",
+        "g": "557759eee672f611",
+        "name": "gpt dispatch",
+        "links": [
+            "671ee64206a3373e"
+        ],
+        "x": 75,
+        "y": 320,
+        "wires": [
+            [
+                "1d0773bcf3416404"
+            ]
+        ]
+    },
+    {
+        "id": "b47b231762856df5",
+        "type": "link out",
+        "z": "e961334cde89144c",
+        "g": "557759eee672f611",
+        "name": "got gpt response",
+        "mode": "link",
+        "links": [
+            "2e369d48df52cc14"
+        ],
+        "x": 335,
+        "y": 320,
         "wires": []
     },
     {
