@@ -4697,7 +4697,7 @@
                 "t": "set",
                 "p": "filename",
                 "pt": "msg",
-                "to": "$join([\"/data/gptCache/\", $env('cacheName'),\"/\", hash])",
+                "to": "$join([\"/data/cache/\", $env('cacheName'),\"/\", hash])",
                 "tot": "jsonata"
             }
         ],
