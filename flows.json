@@ -8904,7 +8904,7 @@
         "z": "eeba88e77478c844",
         "g": "1f25593ab1ca5615",
         "name": "insert node into context",
-        "func": "const flows = flow.get('flows').map(node => {\n    if (node.id === msg.node.id){\n        node.warn('insert ' + node.id)\n        return msg.node\n    }\n\n    return node;\n})\n\nflow.set('flows', flows);\n\nreturn msg;",
+        "func": "const flows = flow.get('flows').map(_node => {\n    if (_node.id === msg.node.id){\n        node.warn('insert ' + node.id)\n        return msg.node\n    }\n\n    return node;\n})\n\nflow.set('flows', flows);\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
