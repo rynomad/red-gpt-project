@@ -8607,7 +8607,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "gather nodes",
-        "func": "const nodes = [\n    msg.node\n]\n\nconst flows = flow.get('flows')\nif (msg.node.type === 'group'){\n    for (const id of msg.node.nodes) {\n        node.log('find id ' + id);\n        const _node = flows.filter(node => node.id === id)[0]\n        nodes.push(_node)\n    }\n} else if (msg.node.type === 'subflow') {\n    for (const node of flows) {\n        if (node.z === msg.node.id) {\n            nodes.push(node)\n        }\n    }\n}\n\n\n\nmsg.payload = JSON.parse(JSON.stringify(nodes))\nmsg.nodes = msg.payload;\nreturn msg;\n",
+        "func": "const nodes = [\n    msg.node\n]\n\nconst flows = flow.get('flows')\nif (msg.node.type === 'group'){\n    for (const id of msg.node.nodes) {\n        node.log('find id ' + id);\n        const _node = flows.filter(_node => {\n            node.log('check id ' + id + ':' + _node.id)\n            return _node.id == id\n        })[0]\n        nodes.push(_node)\n    }\n} else if (msg.node.type === 'subflow') {\n    for (const node of flows) {\n        if (node.z === msg.node.id) {\n            nodes.push(node)\n        }\n    }\n}\n\n\n\nmsg.payload = JSON.parse(JSON.stringify(nodes))\nmsg.nodes = msg.payload;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
