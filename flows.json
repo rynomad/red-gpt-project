@@ -1658,11 +1658,12 @@
             "d3a22aa601d47859",
             "763888ff65c3b5cc",
             "244956339585c478",
-            "94717d300902b787"
+            "94717d300902b787",
+            "5d9143ec61b8e625"
         ],
         "x": 674,
         "y": 354,
-        "w": 472,
+        "w": 512,
         "h": 407
     },
     {
@@ -8647,7 +8648,7 @@
         "z": "eeba88e77478c844",
         "g": "87f661e4d4efc5c4",
         "name": "sort eligible for doc",
-        "func": "const type = msg.payload[0].type;\nconst _node = node;\nfor (const node of msg.payload) {\n    if (node.type === type){\n        continue;\n    } else if (node.type.indexOf('subflow:') === 0) {\n        const definitionID = node.type.split(':').pop()\n        const definition = getSubflowDefinition(definitionID)\n        if (!definition.description) {\n            _node.warn('ignoring no desc: ' + node.id)\n            return [msg, null]\n        }\n        node.description = definition.description;\n    } else if (node.type === 'group') {\n        if (!node.description) {\n            return [msg, null]\n        }\n    } else if (node.type === 'function'){\n        if (!node.info) {\n            return [msg, null];\n        }\n    }\n}\n\nreturn [null, msg];\n\nfunction getSubflowDefinition(id) {\n    const flows = flow.get('flows');\n    for (const node of flows) {\n        if (node.id === id) {\n            return node;\n        }\n    }\n}",
+        "func": "const type = msg.payload[0].type;\nconst _node = node;\nfor (const node of msg.payload) {\n    if (node.type === type){\n        continue;\n    } else if (node.type.indexOf('subflow:') === 0) {\n        const definitionID = node.type.split(':').pop()\n        const definition = getSubflowDefinition(definitionID)\n        if (!definition.description) {\n            // _node.warn('ignoring no desc: ' + node.id)\n            return [msg, null]\n        }\n        node.description = definition.description;\n    } else if (node.type === 'group') {\n        if (!node.description) {\n            return [msg, null]\n        }\n    } else if (node.type === 'function'){\n        if (!node.info) {\n            return [msg, null];\n        }\n    }\n}\n\nreturn [null, msg];\n\nfunction getSubflowDefinition(id) {\n    const flows = flow.get('flows');\n    for (const node of flows) {\n        if (node.id === id) {\n            return node;\n        }\n    }\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -8666,7 +8667,8 @@
                 "94717d300902b787"
             ],
             [
-                "bf7d4c2d39fa90ca"
+                "bf7d4c2d39fa90ca",
+                "5d9143ec61b8e625"
             ]
         ]
     },
@@ -9058,6 +9060,24 @@
         "statusType": "auto",
         "x": 1430,
         "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "5d9143ec61b8e625",
+        "type": "debug",
+        "z": "eeba88e77478c844",
+        "g": "87f661e4d4efc5c4",
+        "name": "log docing",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "node",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 580,
         "wires": []
     },
     {
