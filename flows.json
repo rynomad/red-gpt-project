@@ -6283,7 +6283,7 @@
         "z": "e961334cde89144c",
         "g": "d7affcdf704b9b54",
         "name": "all errors",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
