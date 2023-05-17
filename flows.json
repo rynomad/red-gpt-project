@@ -1390,6 +1390,53 @@
         "color": "#DDAA99"
     },
     {
+        "id": "fa051e8fa93f0606",
+        "type": "subflow",
+        "name": "extract JSON",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "de9c866dc06a5c7f"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 440,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "de9c866dc06a5c7f",
+                        "port": 0
+                    },
+                    {
+                        "id": "34b4e8be348de698",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 440,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "c980ecca2fade1fc",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "d7affcdf704b9b54",
         "type": "group",
         "z": "e961334cde89144c",
@@ -1776,7 +1823,7 @@
         "style": {
             "label": true,
             "color": "#000000",
-            "fill": "#d1d1d1"
+            "fill": "#ffffbf"
         },
         "nodes": [
             "e40ab9d4c95613e7",
@@ -1796,7 +1843,7 @@
         "name": "get article contents",
         "style": {
             "label": true,
-            "fill": "#bfbfbf",
+            "fill": "#dbcbe7",
             "color": "#000000"
         },
         "nodes": [
@@ -1832,10 +1879,81 @@
             "582214b94cca9b80",
             "e3eb371c9c6a90b7"
         ],
-        "x": 394,
-        "y": 459,
+        "x": 414,
+        "y": 699,
         "w": 452,
         "h": 162
+    },
+    {
+        "id": "5ce7aa6b7480812d",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "Get Publication and Date",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "440e59fe168c1cab",
+            "fdc292998637cddc",
+            "6a5b18780ac49544",
+            "f9332dc80c23e5c0",
+            "f786a9803de32950",
+            "b4942f1b657178c0",
+            "283887287f632b0d",
+            "56cf3483348667e0",
+            "19bafe626da5146a",
+            "794b422d4f001ac9",
+            "c31ac9c206f80d68",
+            "7a9225acff5b33ea"
+        ],
+        "x": 934,
+        "y": 219,
+        "w": 552,
+        "h": 322
+    },
+    {
+        "id": "87416ad3dde25082",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "split attributes",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "48bf295b6a8d8784",
+            "a910593a291ec8e6",
+            "56985a305923010c",
+            "a964fd19931c7f56",
+            "42c8c53cc172e877"
+        ],
+        "x": 874,
+        "y": 59,
+        "w": 342,
+        "h": 142
+    },
+    {
+        "id": "bdeb547ea6889d89",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "join attributes",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true
+        },
+        "nodes": [
+            "35e4bc34206438a5",
+            "dab64a431d43ce8e",
+            "958c815d44fbd306",
+            "25b03942f12d6faa"
+        ],
+        "x": 634,
+        "y": 499,
+        "w": 352,
+        "h": 122
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -2066,6 +2184,19 @@
         "wires": [
             [
                 "27c5b82991ce39e0"
+            ]
+        ]
+    },
+    {
+        "id": "283887287f632b0d",
+        "type": "junction",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "x": 1220,
+        "y": 340,
+        "wires": [
+            [
+                "6a5b18780ac49544"
             ]
         ]
     },
@@ -2969,7 +3100,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
+        "x": 300,
         "y": 500,
         "wires": [
             []
@@ -5365,6 +5496,53 @@
             [
                 "80eb58f6db13f19f"
             ]
+        ]
+    },
+    {
+        "id": "de9c866dc06a5c7f",
+        "type": "function",
+        "z": "fa051e8fa93f0606",
+        "name": "extract string",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nfor (const option of msg.full.data.choices){\n    try {\n        msg.payload = JSON.stringify(JSON.parse(extractJsonString(option.message)))\n        return [null, msg];\n    } catch (e) {\n        //ignore\n    }\n}\n\nmsg.payload = 'unable to parse JSON. please reformat your response as a valid JSON string';\nreturn [msg,null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [],
+            [
+                "c980ecca2fade1fc"
+            ]
+        ]
+    },
+    {
+        "id": "c980ecca2fade1fc",
+        "type": "json",
+        "z": "fa051e8fa93f0606",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 290,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34b4e8be348de698",
+        "type": "catch",
+        "z": "fa051e8fa93f0606",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 300,
+        "y": 40,
+        "wires": [
+            []
         ]
     },
     {
@@ -9830,7 +10008,7 @@
         "name": "link out 17",
         "mode": "link",
         "links": [
-            "0c938588de937a83"
+            "42c8c53cc172e877"
         ],
         "x": 625,
         "y": 140,
@@ -9952,7 +10130,7 @@
         "z": "d8fea17acfe5c911",
         "g": "8d3ad295cc727f06",
         "name": "clean contents",
-        "func": "\nmsg.payload = msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\") + `\\n`;\n\nreturn msg;",
+        "func": "\nmsg.payload = {\n    article: msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\") + `\\n`\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -9992,7 +10170,7 @@
         "g": "8d3ad295cc727f06",
         "name": "link in 12",
         "links": [
-            "f6b106073a7d41ac"
+            "a964fd19931c7f56"
         ],
         "x": 435,
         "y": 260,
@@ -10009,9 +10187,7 @@
         "g": "8d3ad295cc727f06",
         "name": "link out 18",
         "mode": "link",
-        "links": [
-            "e3eb371c9c6a90b7"
-        ],
+        "links": [],
         "x": 715,
         "y": 380,
         "wires": []
@@ -10028,8 +10204,8 @@
         "syntax": "mustache",
         "template": "The user will provide you with a news article.\n\nExtract all the factual claims from the article -- including all date and numerical facts -- and enumerate them in a list. Claims that are included in the original article as a quote, indirectly or directly, should remain attributed to the source. After each claim, add a ranking from 0 to 9 indicating how central the claim is to understanding the news event and relevant context, where 9 is most central and 0 least central. The ranking should be in square brackets, with no label. When done, write “THE END”.\n\nbegin your answer with \"Let’s work this out step by step to make sure we get the right answer:\"",
         "output": "str",
-        "x": 540,
-        "y": 500,
+        "x": 560,
+        "y": 740,
         "wires": [
             [
                 "35611ad2cb429f12"
@@ -10042,8 +10218,8 @@
         "z": "d8fea17acfe5c911",
         "g": "70fcf5b7bc000afb",
         "name": "",
-        "x": 550,
-        "y": 540,
+        "x": 570,
+        "y": 780,
         "wires": [
             [
                 "25aadfc07cd42046"
@@ -10056,8 +10232,8 @@
         "z": "d8fea17acfe5c911",
         "g": "70fcf5b7bc000afb",
         "name": "",
-        "x": 540,
-        "y": 580,
+        "x": 560,
+        "y": 820,
         "wires": [
             [
                 "582214b94cca9b80"
@@ -10078,8 +10254,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 540,
+        "x": 770,
+        "y": 780,
         "wires": []
     },
     {
@@ -10089,14 +10265,375 @@
         "g": "70fcf5b7bc000afb",
         "name": "link in 13",
         "links": [
-            "9b154273046a68f7"
+            "25b03942f12d6faa"
         ],
-        "x": 435,
-        "y": 500,
+        "x": 455,
+        "y": 740,
         "wires": [
             [
                 "273ca1d933a96ef7"
             ]
         ]
+    },
+    {
+        "id": "48bf295b6a8d8784",
+        "type": "subflow:d158fb9598ddc8a1",
+        "z": "d8fea17acfe5c911",
+        "g": "87416ad3dde25082",
+        "name": "",
+        "x": 1050,
+        "y": 100,
+        "wires": [
+            [
+                "a910593a291ec8e6"
+            ]
+        ]
+    },
+    {
+        "id": "35e4bc34206438a5",
+        "type": "subflow:3007bc4599c68441",
+        "z": "d8fea17acfe5c911",
+        "g": "bdeb547ea6889d89",
+        "name": "",
+        "x": 790,
+        "y": 540,
+        "wires": [
+            [
+                "958c815d44fbd306"
+            ]
+        ]
+    },
+    {
+        "id": "a910593a291ec8e6",
+        "type": "switch",
+        "z": "d8fea17acfe5c911",
+        "g": "87416ad3dde25082",
+        "name": "",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1030,
+        "y": 140,
+        "wires": [
+            [
+                "56985a305923010c"
+            ],
+            [
+                "a964fd19931c7f56"
+            ]
+        ]
+    },
+    {
+        "id": "56985a305923010c",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "87416ad3dde25082",
+        "name": "link out 19",
+        "mode": "link",
+        "links": [
+            "f9332dc80c23e5c0"
+        ],
+        "x": 1175,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a964fd19931c7f56",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "87416ad3dde25082",
+        "name": "link out 20",
+        "mode": "link",
+        "links": [
+            "0c938588de937a83"
+        ],
+        "x": 1175,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "42c8c53cc172e877",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "87416ad3dde25082",
+        "name": "link in 14",
+        "links": [
+            "f6b106073a7d41ac"
+        ],
+        "x": 915,
+        "y": 100,
+        "wires": [
+            [
+                "48bf295b6a8d8784"
+            ]
+        ]
+    },
+    {
+        "id": "440e59fe168c1cab",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The user will provide you with a url.\n\nrespond with a JSON object containing the keys \"publication\" and \"date\", filled in based on the url.\n\nif you cannot infer the date, leave it blank.\n\nreturn only the JSON, without preamble or postscript.",
+        "output": "str",
+        "x": 1080,
+        "y": 260,
+        "wires": [
+            [
+                "19bafe626da5146a"
+            ]
+        ]
+    },
+    {
+        "id": "fdc292998637cddc",
+        "type": "subflow:788598196e86646c",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "x": 1090,
+        "y": 340,
+        "wires": [
+            [
+                "b4942f1b657178c0"
+            ]
+        ]
+    },
+    {
+        "id": "6a5b18780ac49544",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "x": 1080,
+        "y": 420,
+        "wires": [
+            [
+                "f786a9803de32950"
+            ]
+        ]
+    },
+    {
+        "id": "f9332dc80c23e5c0",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "link in 15",
+        "links": [
+            "56985a305923010c"
+        ],
+        "x": 975,
+        "y": 260,
+        "wires": [
+            [
+                "440e59fe168c1cab"
+            ]
+        ]
+    },
+    {
+        "id": "f786a9803de32950",
+        "type": "subflow:fa051e8fa93f0606",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "x": 1090,
+        "y": 460,
+        "wires": [
+            [
+                "283887287f632b0d",
+                "c31ac9c206f80d68"
+            ],
+            [
+                "794b422d4f001ac9"
+            ]
+        ]
+    },
+    {
+        "id": "b4942f1b657178c0",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "n",
+                "pt": "msg",
+                "to": "3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 380,
+        "wires": [
+            [
+                "6a5b18780ac49544"
+            ]
+        ]
+    },
+    {
+        "id": "56cf3483348667e0",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "link out 21",
+        "mode": "link",
+        "links": [],
+        "x": 1265,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "dab64a431d43ce8e",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "bdeb547ea6889d89",
+        "name": "link in 16",
+        "links": [],
+        "x": 675,
+        "y": 540,
+        "wires": [
+            [
+                "35e4bc34206438a5"
+            ]
+        ]
+    },
+    {
+        "id": "958c815d44fbd306",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "g": "bdeb547ea6889d89",
+        "name": "merge responses",
+        "func": "for (const obj of msg.payload){\n    for (const key in obj){\n        msg[key] = obj[key]\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 580,
+        "wires": [
+            [
+                "25b03942f12d6faa"
+            ]
+        ]
+    },
+    {
+        "id": "25b03942f12d6faa",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "bdeb547ea6889d89",
+        "name": "link out 22",
+        "mode": "link",
+        "links": [
+            "e3eb371c9c6a90b7"
+        ],
+        "x": 945,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "19bafe626da5146a",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "set schema",
+        "field": "schema",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "{\n  \"$schema\": \"http://json-schema.org/draft-06/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"publication\": {\n      \"type\": \"string\"\n    },\n    \"date\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\"\n    }\n  },\n  \"required\": [\"publication\"]\n}",
+        "output": "json",
+        "x": 1090,
+        "y": 300,
+        "wires": [
+            [
+                "fdc292998637cddc"
+            ]
+        ]
+    },
+    {
+        "id": "794b422d4f001ac9",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "schema",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 500,
+        "wires": [
+            [
+                "56cf3483348667e0"
+            ]
+        ]
+    },
+    {
+        "id": "c31ac9c206f80d68",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "parse failure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1350,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7a9225acff5b33ea",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "parse failure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1370,
+        "y": 500,
+        "wires": []
     }
 ]
