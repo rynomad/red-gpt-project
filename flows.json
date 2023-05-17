@@ -10466,7 +10466,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "publication and date",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10631,7 +10631,7 @@
         "z": "d8fea17acfe5c911",
         "g": "bdeb547ea6889d89",
         "name": "preprocessed",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -11306,7 +11306,7 @@
         "z": "d8fea17acfe5c911",
         "g": "7e409e7a7eca06f0",
         "name": "reduce",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -11659,7 +11659,6 @@
         "y": 780,
         "wires": [
             [
-                "5c8905d96713e876",
                 "a78386ef55a00222"
             ]
         ]
@@ -11732,7 +11731,7 @@
         "z": "d8fea17acfe5c911",
         "g": "88af64da0772ea3e",
         "name": "completed",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -11778,7 +11777,8 @@
         "y": 820,
         "wires": [
             [
-                "9abe61faf3de8fed"
+                "9abe61faf3de8fed",
+                "5c8905d96713e876"
             ]
         ]
     },
