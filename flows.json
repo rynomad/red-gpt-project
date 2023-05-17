@@ -6760,8 +6760,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 660,
+        "x": 1120,
+        "y": 460,
         "wires": []
     },
     {
