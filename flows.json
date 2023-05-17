@@ -1594,30 +1594,6 @@
         "h": 202
     },
     {
-        "id": "5bc27646deb5dff2",
-        "type": "group",
-        "z": "eeba88e77478c844",
-        "g": "d98aa00cb0e639fe",
-        "name": "postprocess",
-        "style": {
-            "fill": "#e3f3d3",
-            "label": true,
-            "color": "#000000",
-            "label-position": "ne"
-        },
-        "nodes": [
-            "fa37baf5d5d210ae",
-            "a9a4aa9e75fae5a9",
-            "940f5d5f10860b2b",
-            "97640565b3603875",
-            "cf28e4a3eb7a131c"
-        ],
-        "x": 714,
-        "y": 1199,
-        "w": 372,
-        "h": 162
-    },
-    {
         "id": "d98aa00cb0e639fe",
         "type": "group",
         "z": "eeba88e77478c844",
@@ -1640,98 +1616,6 @@
         "y": 328,
         "w": 864,
         "h": 1073
-    },
-    {
-        "id": "ced0597ce1f434c4",
-        "type": "group",
-        "z": "eeba88e77478c844",
-        "g": "d98aa00cb0e639fe",
-        "name": "info",
-        "style": {
-            "fill": "#bfdbef",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "9c9950e4acd7fd46",
-            "b0fd7fa108cd260f",
-            "606d1f8ad57a1a47",
-            "048dc877cecba570",
-            "264931e378e4a5a7",
-            "02fd2ca519599bb4",
-            "8712dd2d74b9b5a4",
-            "ca17dfeec586fc35",
-            "1acd06752cd9811e",
-            "b3c1417704b4555c"
-        ],
-        "x": 1024,
-        "y": 799,
-        "w": 282,
-        "h": 362
-    },
-    {
-        "id": "0dc88fbb1e7d8a7d",
-        "type": "group",
-        "z": "eeba88e77478c844",
-        "g": "d98aa00cb0e639fe",
-        "name": "schemas",
-        "style": {
-            "fill": "#bfdbef",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "cfc30936557757fa",
-            "a6a16491f928d8e9",
-            "0e180a35fb2b1b7b",
-            "6e8a7fd523247b5d",
-            "c008dae24103c0c1",
-            "88e3d673a22d3c22",
-            "bcedaf9d77b92544",
-            "7b5a3f0b1690ca11",
-            "6eed1c925de3d5cc",
-            "0daab422e6bba4dc",
-            "b59e9d87cb236291",
-            "ca5c4b601f4e38bb",
-            "ec635034eef78b6a"
-        ],
-        "x": 494,
-        "y": 799,
-        "w": 492,
-        "h": 362
-    },
-    {
-        "id": "87f661e4d4efc5c4",
-        "type": "group",
-        "z": "eeba88e77478c844",
-        "g": "d98aa00cb0e639fe",
-        "name": "preprocess",
-        "style": {
-            "fill": "#ffffbf",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "bf7d4c2d39fa90ca",
-            "9b387c61d994431e",
-            "7792dd5704da3bef",
-            "59dbcd23223ecfd4",
-            "e95ef67408de2621",
-            "0ea75df7d4ee86bd",
-            "27c5b82991ce39e0",
-            "9a82ffcaf81e87b6",
-            "149e5cf088fd6f36",
-            "86ab4ec6100a8634",
-            "d3a22aa601d47859",
-            "763888ff65c3b5cc",
-            "244956339585c478",
-            "94717d300902b787",
-            "5d9143ec61b8e625"
-        ],
-        "x": 674,
-        "y": 354,
-        "w": 492,
-        "h": 407
     },
     {
         "id": "ef4838b57d8a8292",
@@ -1833,6 +1717,195 @@
         "y": 219,
         "w": 252,
         "h": 322
+    },
+    {
+        "id": "fd8ce360fc73cf16",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "Write article",
+        "style": {
+            "fill": "#ffffff",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "7e409e7a7eca06f0",
+            "b651702235fdbc29",
+            "cb70c47d28df92c2",
+            "2ddb7664816d8620"
+        ],
+        "x": 554,
+        "y": 893,
+        "w": 962,
+        "h": 439
+    },
+    {
+        "id": "70d3949bbb93a4fa",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "Get Attributes for each url",
+        "style": {
+            "fill": "#ffffff",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "42c8c53cc172e877",
+            "5acdae929bdba67e",
+            "5ce7aa6b7480812d",
+            "87416ad3dde25082",
+            "bdeb547ea6889d89",
+            "8d3ad295cc727f06",
+            "70fcf5b7bc000afb",
+            "50bc25540ab03be0"
+        ],
+        "x": 538,
+        "y": 53,
+        "w": 1204,
+        "h": 814
+    },
+    {
+        "id": "88af64da0772ea3e",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "format as html",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "ae7958be39f67e3e",
+            "9abe61faf3de8fed",
+            "a37fd11fa2672df6",
+            "9b72d4ba1c260df2",
+            "3a30d45ecb5106c2",
+            "c314d9d6cf468ba1",
+            "30230815a3748042",
+            "9f024826b28091fa",
+            "55714efa3a6b8cda",
+            "5c8905d96713e876",
+            "a78386ef55a00222"
+        ],
+        "x": 154,
+        "y": 539,
+        "w": 292,
+        "h": 462
+    },
+    {
+        "id": "5bc27646deb5dff2",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "d98aa00cb0e639fe",
+        "name": "postprocess",
+        "style": {
+            "fill": "#e3f3d3",
+            "label": true,
+            "color": "#000000",
+            "label-position": "ne"
+        },
+        "nodes": [
+            "fa37baf5d5d210ae",
+            "a9a4aa9e75fae5a9",
+            "97640565b3603875",
+            "cf28e4a3eb7a131c"
+        ],
+        "x": 754,
+        "y": 1199,
+        "w": 332,
+        "h": 162
+    },
+    {
+        "id": "ced0597ce1f434c4",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "d98aa00cb0e639fe",
+        "name": "info",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "9c9950e4acd7fd46",
+            "b0fd7fa108cd260f",
+            "606d1f8ad57a1a47",
+            "048dc877cecba570",
+            "264931e378e4a5a7",
+            "02fd2ca519599bb4",
+            "8712dd2d74b9b5a4",
+            "ca17dfeec586fc35",
+            "1acd06752cd9811e",
+            "b3c1417704b4555c"
+        ],
+        "x": 1024,
+        "y": 799,
+        "w": 282,
+        "h": 362
+    },
+    {
+        "id": "0dc88fbb1e7d8a7d",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "d98aa00cb0e639fe",
+        "name": "schemas",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "cfc30936557757fa",
+            "a6a16491f928d8e9",
+            "0e180a35fb2b1b7b",
+            "6e8a7fd523247b5d",
+            "c008dae24103c0c1",
+            "88e3d673a22d3c22",
+            "bcedaf9d77b92544",
+            "7b5a3f0b1690ca11",
+            "6eed1c925de3d5cc",
+            "0daab422e6bba4dc",
+            "b59e9d87cb236291",
+            "ca5c4b601f4e38bb",
+            "ec635034eef78b6a"
+        ],
+        "x": 494,
+        "y": 799,
+        "w": 492,
+        "h": 362
+    },
+    {
+        "id": "87f661e4d4efc5c4",
+        "type": "group",
+        "z": "eeba88e77478c844",
+        "g": "d98aa00cb0e639fe",
+        "name": "preprocess",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "bf7d4c2d39fa90ca",
+            "9b387c61d994431e",
+            "7792dd5704da3bef",
+            "59dbcd23223ecfd4",
+            "e95ef67408de2621",
+            "0ea75df7d4ee86bd",
+            "27c5b82991ce39e0",
+            "9a82ffcaf81e87b6",
+            "149e5cf088fd6f36",
+            "86ab4ec6100a8634",
+            "d3a22aa601d47859",
+            "763888ff65c3b5cc",
+            "244956339585c478",
+            "94717d300902b787",
+            "5d9143ec61b8e625"
+        ],
+        "x": 674,
+        "y": 354,
+        "w": 492,
+        "h": 407
     },
     {
         "id": "5ce7aa6b7480812d",
@@ -2021,80 +2094,6 @@
         "y": 919,
         "w": 262,
         "h": 242
-    },
-    {
-        "id": "fd8ce360fc73cf16",
-        "type": "group",
-        "z": "d8fea17acfe5c911",
-        "name": "Write article",
-        "style": {
-            "fill": "#ffffff",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "7e409e7a7eca06f0",
-            "b651702235fdbc29",
-            "cb70c47d28df92c2",
-            "2ddb7664816d8620"
-        ],
-        "x": 554,
-        "y": 893,
-        "w": 962,
-        "h": 439
-    },
-    {
-        "id": "70d3949bbb93a4fa",
-        "type": "group",
-        "z": "d8fea17acfe5c911",
-        "name": "Get Attributes for each url",
-        "style": {
-            "fill": "#ffffff",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "42c8c53cc172e877",
-            "5acdae929bdba67e",
-            "5ce7aa6b7480812d",
-            "87416ad3dde25082",
-            "bdeb547ea6889d89",
-            "8d3ad295cc727f06",
-            "70fcf5b7bc000afb",
-            "50bc25540ab03be0"
-        ],
-        "x": 538,
-        "y": 53,
-        "w": 1204,
-        "h": 814
-    },
-    {
-        "id": "88af64da0772ea3e",
-        "type": "group",
-        "z": "d8fea17acfe5c911",
-        "name": "format as html",
-        "style": {
-            "fill": "#bfdbef",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "ae7958be39f67e3e",
-            "9abe61faf3de8fed",
-            "a37fd11fa2672df6",
-            "9b72d4ba1c260df2",
-            "3a30d45ecb5106c2",
-            "c314d9d6cf468ba1",
-            "30230815a3748042",
-            "9f024826b28091fa",
-            "55714efa3a6b8cda",
-            "5c8905d96713e876",
-            "a78386ef55a00222"
-        ],
-        "x": 154,
-        "y": 539,
-        "w": 292,
-        "h": 462
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -10100,7 +10099,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "plain",
-        "template": "[\n    \"https://www.cnn.com/2023/05/16/tech/sam-altman-openai-congress/index.html\",\n    \"https://apnews.com/article/chatgpt-openai-ceo-sam-altman-congress-73ff96c6571f38ad5fd68b3072722790\",\n    \"https://www.wsj.com/articles/chatgpts-sam-altman-faces-senate-panel-examining-artificial-intelligence-4bb6942a\",\n    \"https://www.nytimes.com/2023/05/16/technology/openai-altman-artificial-intelligence-regulation.html\",\n    \"https://voicebot.ai/2023/05/16/openai-ceo-sam-altman-urges-congress-to-create-ai-regulation-at-senate-hearing/\"\n]",
+        "template": "[\n\"https://www.rawstory.com/irs-whistleblower-who-alleged-political-interference-in-hunter-biden-investigation-taken-off-case-report\",\n\"https://www.washingtonexaminer.com/news/crime/entire-irs-investigative-team-removed-hunter-biden-case\",\n\"https://www.cbsnews.com/news/irs-whistleblower-hunter-biden-investigation-removed-from-probe-his-attorneys-say\",\n\"https://thehill.com/blogs/blog-briefing-room/4008576-attorneys-say-irs-whistleblower-being-removed-from-hunter-biden-probe\",\n\"https://www.washingtontimes.com/news/2023/may/15/irs-removes-entire-investigative-team-hunter-biden\"\n]",
         "output": "str",
         "x": 260,
         "y": 120,
