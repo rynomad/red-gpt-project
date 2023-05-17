@@ -1883,7 +1883,8 @@
             "b4942f1b657178c0",
             "d8e32f59bb54b6f0",
             "90ad11fbbe016cce",
-            "5bf08439273e5659"
+            "5bf08439273e5659",
+            "ee5fff505e151786"
         ],
         "x": 1034,
         "y": 239,
@@ -10250,7 +10251,8 @@
         "name": "link out 19",
         "mode": "link",
         "links": [
-            "f9332dc80c23e5c0"
+            "f9332dc80c23e5c0",
+            "73d02e04aecca8a2"
         ],
         "x": 995,
         "y": 140,
@@ -10297,7 +10299,8 @@
         "y": 440,
         "wires": [
             [
-                "6a5b18780ac49544"
+                "6a5b18780ac49544",
+                "ee5fff505e151786"
             ]
         ]
     },
@@ -10373,7 +10376,8 @@
         "name": "link in 16",
         "links": [
             "56cf3483348667e0",
-            "9b154273046a68f7"
+            "9b154273046a68f7",
+            "cb509fac9735f5bc"
         ],
         "x": 1295,
         "y": 120,
@@ -10922,6 +10926,24 @@
         "statusType": "auto",
         "x": 850,
         "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ee5fff505e151786",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "gpt inbound",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 440,
         "wires": []
     }
 ]
