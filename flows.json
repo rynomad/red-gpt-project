@@ -1817,12 +1817,14 @@
             "859a0d853fe93bee",
             "a1d1239323426235",
             "2da46581aab59cf8",
-            "1c2e9301080aadf2"
+            "1c2e9301080aadf2",
+            "b268329dd336d0cf",
+            "32ceb9f8b30507ba"
         ],
         "x": 174,
         "y": 199,
         "w": 262,
-        "h": 162
+        "h": 242
     },
     {
         "id": "5ce7aa6b7480812d",
@@ -1948,8 +1950,8 @@
             "b152fa833e7a6d1b",
             "f6b106073a7d41ac"
         ],
-        "x": 154,
-        "y": 419,
+        "x": 174,
+        "y": 479,
         "w": 272,
         "h": 162
     },
@@ -10099,14 +10101,14 @@
         "g": "e80b85ec598376ea",
         "name": "",
         "url": "/unspin",
-        "method": "post",
+        "method": "get",
         "upload": false,
         "swaggerDoc": "",
         "x": 270,
         "y": 240,
         "wires": [
             [
-                "2da46581aab59cf8"
+                "b268329dd336d0cf"
             ]
         ]
     },
@@ -10907,8 +10909,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 290,
-        "y": 460,
+        "x": 310,
+        "y": 520,
         "wires": [
             [
                 "7cb574dd68247c82"
@@ -10927,8 +10929,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 290,
-        "y": 500,
+        "x": 310,
+        "y": 560,
         "wires": [
             [
                 "f6b106073a7d41ac"
@@ -10945,8 +10947,8 @@
             "dcfceb735e4ceb30",
             "1c2e9301080aadf2"
         ],
-        "x": 195,
-        "y": 460,
+        "x": 215,
+        "y": 520,
         "wires": [
             [
                 "e40ab9d4c95613e7"
@@ -10963,8 +10965,8 @@
         "links": [
             "42c8c53cc172e877"
         ],
-        "x": 385,
-        "y": 540,
+        "x": 405,
+        "y": 600,
         "wires": []
     },
     {
@@ -11478,7 +11480,7 @@
         "type": "switch",
         "z": "d8fea17acfe5c911",
         "name": "",
-        "property": "req",
+        "property": "res",
         "propertyType": "msg",
         "rules": [
             {
@@ -11488,10 +11490,12 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 170,
-        "y": 620,
+        "x": 130,
+        "y": 720,
         "wires": [
-            []
+            [
+                "9abe61faf3de8fed"
+            ]
         ]
     },
     {
@@ -11501,8 +11505,8 @@
         "name": "send article",
         "statusCode": "200",
         "headers": {},
-        "x": 270,
-        "y": 700,
+        "x": 150,
+        "y": 760,
         "wires": []
     },
     {
@@ -11536,7 +11540,7 @@
             }
         ],
         "x": 250,
-        "y": 320,
+        "y": 400,
         "wires": [
             [
                 "066788cbeb12a5d7",
@@ -11551,7 +11555,7 @@
         "g": "e80b85ec598376ea",
         "name": "",
         "x": 250,
-        "y": 280,
+        "y": 360,
         "wires": [
             [
                 "a1d1239323426235"
@@ -11569,7 +11573,95 @@
             "b152fa833e7a6d1b"
         ],
         "x": 395,
-        "y": 320,
+        "y": 400,
         "wires": []
+    },
+    {
+        "id": "a37fd11fa2672df6",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "env": [
+            {
+                "name": "key",
+                "value": "res",
+                "type": "str"
+            }
+        ],
+        "x": 140,
+        "y": 640,
+        "wires": [
+            [
+                "9b72d4ba1c260df2"
+            ]
+        ]
+    },
+    {
+        "id": "9b72d4ba1c260df2",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "env": [
+            {
+                "name": "key",
+                "value": "req",
+                "type": "str"
+            }
+        ],
+        "x": 140,
+        "y": 680,
+        "wires": [
+            [
+                "ae7958be39f67e3e"
+            ]
+        ]
+    },
+    {
+        "id": "b268329dd336d0cf",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "g": "e80b85ec598376ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.urls",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "32ceb9f8b30507ba"
+            ]
+        ]
+    },
+    {
+        "id": "32ceb9f8b30507ba",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "g": "e80b85ec598376ea",
+        "name": "split csv",
+        "func": "msg.payload = msg.payload.split(',')\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 320,
+        "wires": [
+            [
+                "2da46581aab59cf8"
+            ]
+        ]
     }
 ]
