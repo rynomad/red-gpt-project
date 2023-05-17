@@ -10099,7 +10099,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "plain",
-        "template": "[\n\"https://www.rawstory.com/irs-whistleblower-who-alleged-political-interference-in-hunter-biden-investigation-taken-off-case-report\",\n\"https://www.washingtonexaminer.com/news/crime/entire-irs-investigative-team-removed-hunter-biden-case\",\n\"https://www.cbsnews.com/news/irs-whistleblower-hunter-biden-investigation-removed-from-probe-his-attorneys-say\",\n\"https://thehill.com/blogs/blog-briefing-room/4008576-attorneys-say-irs-whistleblower-being-removed-from-hunter-biden-probe\",\n\"https://www.washingtontimes.com/news/2023/may/15/irs-removes-entire-investigative-team-hunter-biden\"\n]",
+        "template": "[\n\"https://www.rawstory.com/irs-whistleblower-who-alleged-political-interference-in-hunter-biden-investigation-taken-off-case-report\",\n\"https://www.washingtonexaminer.com/news/crime/entire-irs-investigative-team-removed-hunter-biden-case\",\n\"https://www.cbsnews.com/news/irs-whistleblower-hunter-biden-investigation-removed-from-probe-his-attorneys-say\",\n\"https://www.washingtontimes.com/news/2023/may/15/irs-removes-entire-investigative-team-hunter-biden\"\n]",
         "output": "str",
         "x": 260,
         "y": 120,
