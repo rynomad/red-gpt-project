@@ -10251,7 +10251,8 @@
         "y": 440,
         "wires": [
             [
-                "6a5b18780ac49544"
+                "6a5b18780ac49544",
+                "7a9225acff5b33ea"
             ]
         ]
     },
@@ -10387,7 +10388,8 @@
         "y": 280,
         "wires": [
             [
-                "b4942f1b657178c0"
+                "b4942f1b657178c0",
+                "7a9225acff5b33ea"
             ]
         ]
     },
@@ -10442,7 +10444,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "publication and date",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
