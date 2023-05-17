@@ -9846,7 +9846,7 @@
         "name": "",
         "property": "payload",
         "outproperty": "payload",
-        "tag": "article, div.article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
+        "tag": "article, div.Article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
         "ret": "text",
         "as": "single",
         "x": 860,
