@@ -1537,9 +1537,9 @@
             "199a0f0b9465c0f4"
         ],
         "x": 114,
-        "y": 299,
+        "y": 319,
         "w": 252,
-        "h": 162
+        "h": 202
     },
     {
         "id": "1f25593ab1ca5615",
@@ -5992,7 +5992,7 @@
         "g": "cef1df36791a4d09",
         "name": "minify JSON in history",
         "x": 240,
-        "y": 380,
+        "y": 400,
         "wires": [
             [
                 "d5f444de1f8ceabb"
@@ -6013,7 +6013,7 @@
             }
         ],
         "x": 210,
-        "y": 420,
+        "y": 480,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
@@ -6026,7 +6026,7 @@
         "z": "e961334cde89144c",
         "g": "0e6093de46259473",
         "name": "headroom",
-        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\nif (!msg.max_tokens) {\n    let sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\n    sum += encode(msg.payload).length;\n    sum += 300; // give the encoder some wiggle room\n    node.log('token sum: ' + sum);\n    if (env.auto4\n    && (msg.topic !== 'gpt4') \n    // @ts-ignore\n    && (4096 - sum < (msg.min_tokens || 0))) {\n        msg.topic = 'gpt4'\n    }\n\n    // if (env.get('auto4')\n    // && (msg.topic == 'gpt4')\n    // && (4096 - sum > (msg.min_tokens || 0))){\n    //     msg.topic = 'turbo';\n    // }\n    \n    msg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n}\n\nreturn msg;",
+        "func": "const encode = gpt3Encoder.encode;\nmsg.topic = msg.topic || 'turbo';\n\nlet sum = (msg.history || []).filter(e => e).reduce((acc, cur) => acc + encode(cur.content).length, 0);\nsum += encode(msg.payload).length;\nsum += 300; // give the encoder some wiggle room\nnode.log('token sum: ' + sum);\nif (env.auto4\n&& (msg.topic !== 'gpt4') \n// @ts-ignore\n&& (4096 - sum < (msg.min_tokens || 0))) {\n    msg.topic = 'gpt4'\n}\n\n// if (env.get('auto4')\n// && (msg.topic == 'gpt4')\n// && (4096 - sum > (msg.min_tokens || 0))){\n//     msg.topic = 'turbo';\n// }\n\nmsg.max_tokens = ((msg.topic === 'gpt4') ? 8192 : 4096) - sum;\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6258,7 +6258,7 @@
         "g": "cef1df36791a4d09",
         "name": "",
         "x": 200,
-        "y": 340,
+        "y": 360,
         "wires": [
             [
                 "d2ee1fb0b75e93b6"
