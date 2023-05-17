@@ -1907,12 +1907,14 @@
             "7a9225acff5b33ea",
             "440e59fe168c1cab",
             "b4942f1b657178c0",
-            "d8e32f59bb54b6f0"
+            "d8e32f59bb54b6f0",
+            "90ad11fbbe016cce",
+            "5bf08439273e5659"
         ],
         "x": 894,
         "y": 239,
         "w": 592,
-        "h": 322
+        "h": 402
     },
     {
         "id": "87416ad3dde25082",
@@ -2195,7 +2197,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "x": 1200,
-        "y": 400,
+        "y": 440,
         "wires": [
             [
                 "6a5b18780ac49544"
@@ -10412,7 +10414,7 @@
         "g": "5ce7aa6b7480812d",
         "name": "",
         "x": 1050,
-        "y": 400,
+        "y": 440,
         "wires": [
             [
                 "6a5b18780ac49544"
@@ -10426,11 +10428,11 @@
         "g": "5ce7aa6b7480812d",
         "name": "",
         "x": 1040,
-        "y": 440,
+        "y": 480,
         "wires": [
             [
-                "f786a9803de32950",
-                "d8e32f59bb54b6f0"
+                "d8e32f59bb54b6f0",
+                "5bf08439273e5659"
             ]
         ]
     },
@@ -10458,7 +10460,7 @@
         "g": "5ce7aa6b7480812d",
         "name": "",
         "x": 1050,
-        "y": 480,
+        "y": 560,
         "wires": [
             [
                 "283887287f632b0d",
@@ -10480,7 +10482,7 @@
             "dab64a431d43ce8e"
         ],
         "x": 1255,
-        "y": 520,
+        "y": 600,
         "wires": []
     },
     {
@@ -10541,7 +10543,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "set schema",
-        "field": "schema",
+        "field": "schemaString",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "plain",
@@ -10550,7 +10552,9 @@
         "x": 1050,
         "y": 280,
         "wires": [
-            []
+            [
+                "b4942f1b657178c0"
+            ]
         ]
     },
     {
@@ -10572,7 +10576,7 @@
         "to": "",
         "reg": false,
         "x": 1070,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "56cf3483348667e0",
@@ -10595,7 +10599,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1310,
-        "y": 420,
+        "y": 520,
         "wires": []
     },
     {
@@ -10613,7 +10617,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1340,
-        "y": 480,
+        "y": 560,
         "wires": []
     },
     {
@@ -10629,7 +10633,7 @@
         "template": "The user will provide you with a url.\n\nrespond with a JSON object containing the keys \"publication\" and \"date\", filled in based on the url.\n\nif you cannot infer the date, leave it blank.\n\nreturn only the JSON, without preamble or postscript.\n\nabide by the following JSON schema:\n{{{schemaString}}}",
         "output": "str",
         "x": 1080,
-        "y": 360,
+        "y": 400,
         "wires": [
             [
                 "fdc292998637cddc"
@@ -10667,7 +10671,7 @@
         "y": 320,
         "wires": [
             [
-                "440e59fe168c1cab"
+                "90ad11fbbe016cce"
             ]
         ]
     },
@@ -10679,7 +10683,7 @@
         "scope": null,
         "uncaught": false,
         "x": 960,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "9bfddc2c087a2f37"
@@ -10700,7 +10704,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1130,
-        "y": 620,
+        "y": 680,
         "wires": []
     },
     {
@@ -10718,7 +10722,49 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1290,
-        "y": 380,
+        "y": 480,
         "wires": []
+    },
+    {
+        "id": "90ad11fbbe016cce",
+        "type": "subflow:520a10812173e701",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "stash schema",
+        "env": [
+            {
+                "name": "key",
+                "value": "schema",
+                "type": "str"
+            }
+        ],
+        "x": 1060,
+        "y": 360,
+        "wires": [
+            [
+                "440e59fe168c1cab"
+            ]
+        ]
+    },
+    {
+        "id": "5bf08439273e5659",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "env": [
+            {
+                "name": "key",
+                "value": "schema",
+                "type": "str"
+            }
+        ],
+        "x": 1040,
+        "y": 520,
+        "wires": [
+            [
+                "f786a9803de32950"
+            ]
+        ]
     }
 ]
