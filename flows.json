@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "b82d52604ecd4650",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "8dfc33ccdf4bd813",
         "type": "tab",
         "label": "Flow 2",
@@ -1267,7 +1275,7 @@
         "out": [
             {
                 "x": 400,
-                "y": 480,
+                "y": 520,
                 "wires": [
                     {
                         "id": "7ad188968d3bb2cf",
@@ -6125,7 +6133,7 @@
         "type": "debug",
         "z": "e961334cde89144c",
         "g": "d7affcdf704b9b54",
-        "name": "fatal",
+        "name": "fatal error",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -6134,7 +6142,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
+        "x": 740,
         "y": 560,
         "wires": []
     },
@@ -6230,8 +6238,7 @@
         "y": 180,
         "wires": [
             [
-                "c005622c337802e1",
-                "bffe7bc9e0ce40e8"
+                "c005622c337802e1"
             ]
         ]
     },
@@ -6307,23 +6314,6 @@
                 "e66c7e2b9c2807aa"
             ]
         ]
-    },
-    {
-        "id": "bffe7bc9e0ce40e8",
-        "type": "debug",
-        "z": "e961334cde89144c",
-        "name": "fatal",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "3a835cedf0f6e272",
