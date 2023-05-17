@@ -1366,9 +1366,6 @@
                 "wires": [
                     {
                         "id": "19da1f8da33d41e4"
-                    },
-                    {
-                        "id": "32fb479c646a89c0"
                     }
                 ]
             }
@@ -5555,23 +5552,6 @@
                 "80eb58f6db13f19f"
             ]
         ]
-    },
-    {
-        "id": "32fb479c646a89c0",
-        "type": "debug",
-        "z": "411e0c8d5e99f249",
-        "name": "get hash",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 240,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "de9c866dc06a5c7f",
