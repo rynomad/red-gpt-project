@@ -11239,7 +11239,7 @@
         "type": "function",
         "z": "d8fea17acfe5c911",
         "name": "get next",
-        "func": "if (!msg.first){\n    msg.first = msg.toReduce.shift();\n}\n\nif (!msg.toReduce.length){\n    return [null, msg]\n}\n\nmsg.next = msg.toReduce.shift()\n\nreturn [msg, null];",
+        "func": "if (!msg.first){\n    msg.first = msg.toReduce.shift();\n}\n\nif (!msg.toReduce.length){\n    return [msg,null]\n}\n\nmsg.next = msg.toReduce.shift()\n\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
