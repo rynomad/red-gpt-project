@@ -2249,7 +2249,7 @@
         "type": "junction",
         "z": "d8fea17acfe5c911",
         "x": 540,
-        "y": 1080,
+        "y": 1120,
         "wires": [
             [
                 "f015f23c12d7f594"
@@ -11315,7 +11315,7 @@
         "y": 1040,
         "wires": [
             [
-                "e980abdeacc89946"
+                "1cd3d16aa4fafc83"
             ]
         ]
     },
@@ -11335,5 +11335,24 @@
         "x": 850,
         "y": 960,
         "wires": []
+    },
+    {
+        "id": "1cd3d16aa4fafc83",
+        "type": "file",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "filename": "/data/reductions.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 690,
+        "y": 1080,
+        "wires": [
+            [
+                "e980abdeacc89946"
+            ]
+        ]
     }
 ]
