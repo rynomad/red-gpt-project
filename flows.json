@@ -5526,7 +5526,7 @@
         "z": "fa051e8fa93f0606",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
         "x": 290,
         "y": 120,
@@ -5544,8 +5544,27 @@
         "x": 300,
         "y": 40,
         "wires": [
-            []
+            [
+                "3ab7a49818751449"
+            ]
         ]
+    },
+    {
+        "id": "3ab7a49818751449",
+        "type": "debug",
+        "z": "fa051e8fa93f0606",
+        "name": "extract json error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 20,
+        "wires": []
     },
     {
         "id": "414ddee1287efb66",
