@@ -9914,7 +9914,7 @@
         "type": "function",
         "z": "d8fea17acfe5c911",
         "name": "clean contents",
-        "func": "\nmsg.payload = msg.payload.replace(/^\\s*[\\r\\n]/gm, \"\\n\");\n\nreturn msg;",
+        "func": "\nmsg.payload = msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\");\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
