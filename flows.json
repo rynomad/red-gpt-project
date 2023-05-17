@@ -10974,7 +10974,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "parts.index",
+        "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
