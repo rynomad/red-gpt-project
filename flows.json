@@ -11542,6 +11542,11 @@
                 "name": "key",
                 "value": "res",
                 "type": "str"
+            },
+            {
+                "name": "clone",
+                "value": "false",
+                "type": "bool"
             }
         ],
         "x": 250,
@@ -11559,6 +11564,13 @@
         "z": "d8fea17acfe5c911",
         "g": "e80b85ec598376ea",
         "name": "",
+        "env": [
+            {
+                "name": "clone",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
         "x": 250,
         "y": 360,
         "wires": [
