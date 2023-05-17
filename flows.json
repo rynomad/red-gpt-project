@@ -2078,11 +2078,12 @@
             "87416ad3dde25082",
             "bdeb547ea6889d89",
             "8d3ad295cc727f06",
-            "70fcf5b7bc000afb"
+            "70fcf5b7bc000afb",
+            "066788cbeb12a5d7"
         ],
-        "x": 548,
+        "x": 494,
         "y": 53,
-        "w": 1204,
+        "w": 1258,
         "h": 814
     },
     {
@@ -10095,7 +10096,8 @@
         "y": 120,
         "wires": [
             [
-                "dcfceb735e4ceb30"
+                "dcfceb735e4ceb30",
+                "066788cbeb12a5d7"
             ]
         ]
     },
@@ -11520,6 +11522,7 @@
         "id": "066788cbeb12a5d7",
         "type": "debug",
         "z": "d8fea17acfe5c911",
+        "g": "70d3949bbb93a4fa",
         "name": "debug 12",
         "active": true,
         "tosidebar": true,
@@ -11529,8 +11532,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 260,
+        "x": 580,
+        "y": 200,
         "wires": []
     },
     {
