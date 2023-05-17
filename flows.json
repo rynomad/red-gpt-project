@@ -10673,7 +10673,7 @@
         "id": "9bfddc2c087a2f37",
         "type": "debug",
         "z": "d8fea17acfe5c911",
-        "name": "debug 12",
+        "name": "error",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -10682,7 +10682,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
+        "x": 1130,
         "y": 620,
         "wires": []
     },
