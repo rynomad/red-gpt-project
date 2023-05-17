@@ -48,6 +48,14 @@
         "env": []
     },
     {
+        "id": "d8fea17acfe5c911",
+        "type": "tab",
+        "label": "News Unspun",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d295481a52b8fd83",
         "type": "subflow",
         "name": "squash history",
@@ -1663,7 +1671,7 @@
         ],
         "x": 674,
         "y": 354,
-        "w": 512,
+        "w": 492,
         "h": 407
     },
     {
@@ -1719,6 +1727,67 @@
         "y": 99,
         "w": 332,
         "h": 202
+    },
+    {
+        "id": "629254ef17813dda",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "dev trigger",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "2b4bc09831965db0",
+            "22b8786b7ce49e69",
+            "dcfceb735e4ceb30"
+        ],
+        "x": 94,
+        "y": 19,
+        "w": 252,
+        "h": 122
+    },
+    {
+        "id": "e80b85ec598376ea",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "api input",
+        "style": {
+            "stroke": "#777777",
+            "label": true,
+            "color": "#000000",
+            "fill": "#bfdbef"
+        },
+        "nodes": [
+            "859a0d853fe93bee",
+            "1c2e9301080aadf2"
+        ],
+        "x": 94,
+        "y": 179,
+        "w": 252,
+        "h": 82
+    },
+    {
+        "id": "5040a12394bce377",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "parse and split urls",
+        "style": {
+            "label": true,
+            "color": "#000000",
+            "fill": "#d1d1d1"
+        },
+        "nodes": [
+            "e40ab9d4c95613e7",
+            "7cb574dd68247c82",
+            "b152fa833e7a6d1b",
+            "f6b106073a7d41ac"
+        ],
+        "x": 454,
+        "y": 59,
+        "w": 272,
+        "h": 122
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -8995,7 +9064,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1040,
-        "y": 480,
+        "y": 460,
         "wires": []
     },
     {
@@ -9123,8 +9192,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1070,
-        "y": 580,
+        "x": 1050,
+        "y": 500,
         "wires": []
     },
     {
@@ -9238,6 +9307,16 @@
         ],
         "x": 1125,
         "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c66f742d062aaec3",
+        "type": "comment",
+        "z": "eeba88e77478c844",
+        "name": "",
+        "info": "<button>click me</button>",
+        "x": 900,
+        "y": 60,
         "wires": []
     },
     {
@@ -9542,6 +9621,291 @@
         "statusType": "auto",
         "x": 680,
         "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2b4bc09831965db0",
+        "type": "inject",
+        "z": "d8fea17acfe5c911",
+        "g": "629254ef17813dda",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 60,
+        "wires": [
+            [
+                "22b8786b7ce49e69"
+            ]
+        ]
+    },
+    {
+        "id": "22b8786b7ce49e69",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "g": "629254ef17813dda",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "[\n    \"https://www.cnn.com/2023/05/16/tech/sam-altman-openai-congress/index.html\",\n    \"https://apnews.com/article/chatgpt-openai-ceo-sam-altman-congress-73ff96c6571f38ad5fd68b3072722790\",\n    \"https://www.wsj.com/articles/chatgpts-sam-altman-faces-senate-panel-examining-artificial-intelligence-4bb6942a\",\n    \"https://www.nytimes.com/2023/05/16/technology/openai-altman-artificial-intelligence-regulation.html\",\n    \"https://voicebot.ai/2023/05/16/openai-ceo-sam-altman-urges-congress-to-create-ai-regulation-at-senate-hearing/\"\n]",
+        "output": "str",
+        "x": 200,
+        "y": 100,
+        "wires": [
+            [
+                "dcfceb735e4ceb30"
+            ]
+        ]
+    },
+    {
+        "id": "859a0d853fe93bee",
+        "type": "http in",
+        "z": "d8fea17acfe5c911",
+        "g": "e80b85ec598376ea",
+        "name": "",
+        "url": "/unspin",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "1c2e9301080aadf2"
+            ]
+        ]
+    },
+    {
+        "id": "1c2e9301080aadf2",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "e80b85ec598376ea",
+        "name": "link out 15",
+        "mode": "link",
+        "links": [
+            "b152fa833e7a6d1b"
+        ],
+        "x": 305,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "dcfceb735e4ceb30",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "629254ef17813dda",
+        "name": "link out 16",
+        "mode": "link",
+        "links": [
+            "b152fa833e7a6d1b"
+        ],
+        "x": 305,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e40ab9d4c95613e7",
+        "type": "json",
+        "z": "d8fea17acfe5c911",
+        "g": "5040a12394bce377",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 590,
+        "y": 100,
+        "wires": [
+            [
+                "7cb574dd68247c82"
+            ]
+        ]
+    },
+    {
+        "id": "7cb574dd68247c82",
+        "type": "split",
+        "z": "d8fea17acfe5c911",
+        "g": "5040a12394bce377",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "f6b106073a7d41ac",
+                "490cd1eb33a07949"
+            ]
+        ]
+    },
+    {
+        "id": "b152fa833e7a6d1b",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "5040a12394bce377",
+        "name": "link in 11",
+        "links": [
+            "dcfceb735e4ceb30",
+            "1c2e9301080aadf2"
+        ],
+        "x": 495,
+        "y": 100,
+        "wires": [
+            [
+                "e40ab9d4c95613e7"
+            ]
+        ]
+    },
+    {
+        "id": "f6b106073a7d41ac",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "5040a12394bce377",
+        "name": "link out 17",
+        "mode": "link",
+        "links": [],
+        "x": 685,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "a956e88ac1d87f03",
+        "type": "http request",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "e845e68972eb0d2b",
+                "44ef6586beec5788"
+            ]
+        ]
+    },
+    {
+        "id": "490cd1eb33a07949",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "a956e88ac1d87f03"
+            ]
+        ]
+    },
+    {
+        "id": "e845e68972eb0d2b",
+        "type": "html",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "property": "payload",
+        "outproperty": "payload",
+        "tag": "article, div.article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
+        "ret": "text",
+        "as": "single",
+        "x": 860,
+        "y": 360,
+        "wires": [
+            [
+                "d7b1e2e892972a8c"
+            ]
+        ]
+    },
+    {
+        "id": "a40397b314b4f671",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "https://archive.is/{{{payload}}}",
+        "output": "str",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7b1e2e892972a8c",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "name": "extraction",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "44ef6586beec5788",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "name": "raw",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 320,
         "wires": []
     }
 ]
