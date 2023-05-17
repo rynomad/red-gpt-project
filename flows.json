@@ -10651,5 +10651,36 @@
                 "440e59fe168c1cab"
             ]
         ]
+    },
+    {
+        "id": "f60cf601821f5e78",
+        "type": "catch",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 960,
+        "y": 620,
+        "wires": [
+            [
+                "9bfddc2c087a2f37"
+            ]
+        ]
+    },
+    {
+        "id": "9bfddc2c087a2f37",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 620,
+        "wires": []
     }
 ]
