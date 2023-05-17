@@ -2086,12 +2086,13 @@
             "30230815a3748042",
             "9f024826b28091fa",
             "55714efa3a6b8cda",
-            "5c8905d96713e876"
+            "5c8905d96713e876",
+            "a78386ef55a00222"
         ],
         "x": 144,
         "y": 499,
         "w": 302,
-        "h": 402
+        "h": 462
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -11440,7 +11441,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 330,
-        "y": 820,
+        "y": 880,
         "wires": []
     },
     {
@@ -11663,8 +11664,8 @@
         "y": 780,
         "wires": [
             [
-                "9abe61faf3de8fed",
-                "5c8905d96713e876"
+                "5c8905d96713e876",
+                "a78386ef55a00222"
             ]
         ]
     },
@@ -11763,7 +11764,27 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 330,
-        "y": 860,
+        "y": 920,
         "wires": []
+    },
+    {
+        "id": "a78386ef55a00222",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
+        "name": "function 10",
+        "func": "function parseCodeBlockWithHTML(inputString) {\n    const codeBlockRegex = /^```html([\\s\\S]*?)^```/gm;\n    const matches = inputString.matchAll(codeBlockRegex);\n    const codeBlocks = [];\n\n    for (const match of matches) {\n        const code = match[1].trim();\n        codeBlocks.push(code);\n    }\n\n    return codeBlocks;\n}\n\nmsg.payload = parseCodeBlockWithHTML(msg.payload).pop()\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 820,
+        "wires": [
+            [
+                "9abe61faf3de8fed"
+            ]
+        ]
     }
 ]
