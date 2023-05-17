@@ -2245,6 +2245,18 @@
         ]
     },
     {
+        "id": "e980abdeacc89946",
+        "type": "junction",
+        "z": "d8fea17acfe5c911",
+        "x": 540,
+        "y": 1080,
+        "wires": [
+            [
+                "f015f23c12d7f594"
+            ]
+        ]
+    },
+    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
@@ -10896,10 +10908,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "You are a world class veteran reporter at a leading national news publication. \n\nThe user will provide you of factual claims extracted from {{{articles.length}}} different publications about one single news event. At the end of each claim in square brackets is a digit from 0 to 9 indicating how central the claim is to the news event, where 9 is most central and 0 least central.\nTurn the list into a unified news article, of approximately 1,000 words. \nThe piece:\n\n[1] should be written in a way that helps the reader build intuition about the topic.\n[2] must be extremely clear, engaging and easy to follow, even for a reader with little to no context\n[3] must strictly avoid any extrapolation and sensational language, as well as the passive voice wherever possible\n[4] must lead with the most important fact and include all numerical and essential factual claims relevant to the news event, while avoiding repetition. At a minimum, all claims rated 3 and above must be included, as well as any claim that is made by more than 2 publications.\n[5] must provide color, depth and not be generic: to this aim, include as many specific details and examples as possible, highlight the different perspectives of various stakeholders, as well as any unique or surprising claims or aspects of the news. \n[6] must cite the origin of each fact or factual claim by listing in square brackets the initials of the publication(s) that reported it. So for example, if a claim was made by the BBC, the annotation would look like this: [B]. If it was made by the BBC and the Guardian, it would be [B,G]. \n[7] must start with a list of all the publications from which the claims were sourced in alphabetical order, with the publication’s full acronym or initials in brackets next to each. Example: “Sources: CNN[CNN], Epoch Times[ET], Huffington Post[HP], Independent[I], Washington Times [WT]”.\n[8] should be organized around the following sections: “What happened”, “Why it matters”, “The big picture”, “The politics/ What people are saying” and “Timeline”.  The Timeline section should consist of a chronological list of all relevant dates to the event, both past and upcoming. If applicable, also include a “Conflict” section, where you describe any conflicts or disagreements between the publications, as well as any interesting differences in how they covered the event.\n\nWhen done, write \"THE END\".\n\nTo start with, write the headline, sub-header, sources and \"What Happened\" and \"Why It matters\" sections. We will get to the other sections later.\n",
+        "template": "You are a world class veteran reporter at a leading national news publication. \n\nThe user will provide you of factual claims extracted from {{{articles.length}}} different publications about one single news event. At the end of each claim i parentheticals are the sources that reported the claim, as well as a digit from 0 to 9 indicating how central the claim is to the news event as reported by that source, where 9 is most central and 0 least central.\nTurn the list into a unified news article, of approximately 1,000 words. \nThe piece:\n\n[1] should be written in a way that helps the reader build intuition about the topic.\n[2] must be extremely clear, engaging and easy to follow, even for a reader with little to no context\n[3] must strictly avoid any extrapolation and sensational language, as well as the passive voice wherever possible\n[4] must lead with the most important fact and include all numerical and essential factual claims relevant to the news event, while avoiding repetition. At a minimum, all claims rated 3 and above must be included, as well as any claim that is made by more than 2 publications.\n[5] must provide color, depth and not be generic: to this aim, include as many specific details and examples as possible, highlight the different perspectives of various stakeholders, as well as any unique or surprising claims or aspects of the news. \n[6] must cite the origin of each fact or factual claim by listing in square brackets the initials of the publication(s) that reported it. So for example, if a claim was made by the BBC, the annotation would look like this: [B]. If it was made by the BBC and the Guardian, it would be [B,G]. \n[7] must start with a list of all the publications from which the claims were sourced in alphabetical order, with the publication’s full acronym or initials in brackets next to each. Example: “Sources: CNN[CNN], Epoch Times[ET], Huffington Post[HP], Independent[I], Washington Times [WT]”.\n[8] should be organized around the following sections: “What happened”, “Why it matters”, “The big picture”, “The politics/ What people are saying” and “Timeline”.  The Timeline section should consist of a chronological list of all relevant dates to the event, both past and upcoming. If applicable, also include a “Conflict” section, where you describe any conflicts or disagreements between the publications, as well as any interesting differences in how they covered the event.\n\nWhen done, write \"THE END\".\n\nTo start with, write the headline, sub-header, sources and \"What Happened\" and \"Why It matters\" sections. We will get to the other sections later.\n",
         "output": "str",
-        "x": 660,
-        "y": 880,
+        "x": 1020,
+        "y": 840,
         "wires": [
             [
                 "c4c784546a06a06d"
@@ -11089,33 +11101,6 @@
         ]
     },
     {
-        "id": "eb249d6c1eef9869",
-        "type": "change",
-        "z": "d8fea17acfe5c911",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "articles",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 800,
-        "wires": [
-            [
-                "580aab1f23197f05"
-            ]
-        ]
-    },
-    {
         "id": "580aab1f23197f05",
         "type": "change",
         "z": "d8fea17acfe5c911",
@@ -11125,8 +11110,8 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "$join($map(articles,function($v, $i, $a) {\t  \"---ARTICLE \" & $i & \"---\\nPublication: \" & $v.publication & \"\\nDate: \" & ($v.date ? $v.date : 'N/A') & \"\\nFacts: \" & ($v.facts ? $v.facts : 'N/A') & \"\\n\"\t}))\t\t",
-                "tot": "jsonata"
+                "to": "next.facts\t",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -11135,10 +11120,10 @@
         "to": "",
         "reg": false,
         "x": 680,
-        "y": 840,
+        "y": 880,
         "wires": [
             [
-                "a0c16b59aa0c1bee"
+                "9b33a84e6a27f65a"
             ]
         ]
     },
@@ -11147,8 +11132,8 @@
         "type": "subflow:788598196e86646c",
         "z": "d8fea17acfe5c911",
         "name": "",
-        "x": 670,
-        "y": 920,
+        "x": 1030,
+        "y": 880,
         "wires": [
             [
                 "ab29d7fb67edb592"
@@ -11160,8 +11145,8 @@
         "type": "subflow:237429fb2a5a7712",
         "z": "d8fea17acfe5c911",
         "name": "",
-        "x": 660,
-        "y": 960,
+        "x": 1020,
+        "y": 920,
         "wires": [
             [
                 "4ed6b57ea0151e33"
@@ -11181,8 +11166,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 960,
+        "x": 1020,
+        "y": 1000,
         "wires": []
     },
     {
@@ -11196,11 +11181,140 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 680,
-        "y": 1000,
+        "x": 1040,
+        "y": 960,
         "wires": [
             [
                 "75b2658da846838b"
+            ]
+        ]
+    },
+    {
+        "id": "9b33a84e6a27f65a",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "You are a world class veteran reporter at a leading national news publication. \n\n{{#reduction}}\nBelow is a list of facts reported in one or more news articles about the same event.\n\n{{{reduction}}}\n{{/reduction}}\n{{^reduction}}\nBelow is a list of facts reported in an article published by {{{first.publication}}} on {{{first.date}}}.\n\n{{{first.facts}}}\n{{/reduction}}\n\nThe number associated with each fact represents it's centrality to the story as presented by the source.\n\nThe user will provide you with factual claims extracted from another article by {{{next.publication}}} published on {{{next.date}}}\n\nRespond with a merged list of facts, with parentheticals next to each listing which publications it appears in and the centrality score\n\nfor example:\n- the final tally of the election was 100 to 107 (CNN, 7), (AP News, 8)\n\nThe exact wording of the facts is likely to differ, but that's OK, as long as the core substance is the same, you may consider two fact listings to be mergable.\nGive only the list of combined facts, without preamble or postscript.",
+        "output": "str",
+        "x": 660,
+        "y": 920,
+        "wires": [
+            [
+                "84fe043c49e3ee6e"
+            ]
+        ]
+    },
+    {
+        "id": "84fe043c49e3ee6e",
+        "type": "subflow:788598196e86646c",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "x": 670,
+        "y": 960,
+        "wires": [
+            [
+                "459914e23bb6ffc3"
+            ]
+        ]
+    },
+    {
+        "id": "459914e23bb6ffc3",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "x": 660,
+        "y": 1000,
+        "wires": [
+            [
+                "bc3414b809bcf9b1"
+            ]
+        ]
+    },
+    {
+        "id": "f015f23c12d7f594",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "name": "get next",
+        "func": "if (!msg.first){\n    msg.first = msg.toReduce.shift().facts;\n}\n\nif (!msg.toReduce.length){\n    return [null, msg]\n}\n\nmsg.next = msg.payload.shift()\n\nreturn [msg, null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 840,
+        "wires": [
+            [
+                "a0c16b59aa0c1bee"
+            ],
+            [
+                "580aab1f23197f05"
+            ]
+        ]
+    },
+    {
+        "id": "eb249d6c1eef9869",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "articles",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "toReduce",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 800,
+        "wires": [
+            [
+                "f015f23c12d7f594"
+            ]
+        ]
+    },
+    {
+        "id": "bc3414b809bcf9b1",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reduction",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 1040,
+        "wires": [
+            [
+                "e980abdeacc89946"
             ]
         ]
     }
