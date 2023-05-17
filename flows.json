@@ -11475,7 +11475,9 @@
         "g": "fd8ce360fc73cf16",
         "name": "link out 25",
         "mode": "link",
-        "links": [],
+        "links": [
+            "3a30d45ecb5106c2"
+        ],
         "x": 1475,
         "y": 1040,
         "wires": []
@@ -11499,7 +11501,7 @@
         "y": 920,
         "wires": [
             [
-                "9abe61faf3de8fed"
+                "c314d9d6cf468ba1"
             ]
         ]
     },
@@ -11511,7 +11513,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 270,
-        "y": 960,
+        "y": 1080,
         "wires": []
     },
     {
@@ -11678,6 +11680,67 @@
         "wires": [
             [
                 "2da46581aab59cf8"
+            ]
+        ]
+    },
+    {
+        "id": "3a30d45ecb5106c2",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "name": "link in 19",
+        "links": [
+            "2ddb7664816d8620"
+        ],
+        "x": 125,
+        "y": 840,
+        "wires": [
+            [
+                "a37fd11fa2672df6"
+            ]
+        ]
+    },
+    {
+        "id": "c314d9d6cf468ba1",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "plain",
+        "template": "You are an expert web designer specializing on news stories. \n\nThe user will give you an article they have written.\n\nYour job is to turn it into a well formatted HTML page for viewing\n\nFirst, briefly give an overview of your design approach, describing what you will do to give the page a good aesthetic\n\nFinish your response with a github flavored markdown code block containing a full html web page containing the article.\n\nYou may use any CDN hosted stylesheets you want as long as you make sure to import them in the <head> of the document.",
+        "output": "str",
+        "x": 260,
+        "y": 960,
+        "wires": [
+            [
+                "30230815a3748042"
+            ]
+        ]
+    },
+    {
+        "id": "30230815a3748042",
+        "type": "subflow:788598196e86646c",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "x": 270,
+        "y": 1000,
+        "wires": [
+            [
+                "9f024826b28091fa"
+            ]
+        ]
+    },
+    {
+        "id": "9f024826b28091fa",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "x": 260,
+        "y": 1040,
+        "wires": [
+            [
+                "9abe61faf3de8fed"
             ]
         ]
     }
