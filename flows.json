@@ -11097,9 +11097,9 @@
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "package.facts",
                 "pt": "msg",
-                "to": "package",
+                "to": "payload",
                 "tot": "msg"
             }
         ],
@@ -11108,7 +11108,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 280,
+        "x": 300,
         "y": 680,
         "wires": [
             [
