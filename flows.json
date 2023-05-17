@@ -1800,12 +1800,13 @@
         "nodes": [
             "2b4bc09831965db0",
             "22b8786b7ce49e69",
-            "dcfceb735e4ceb30"
+            "dcfceb735e4ceb30",
+            "6a9ed2cdd37c2209"
         ],
         "x": 154,
         "y": 39,
         "w": 252,
-        "h": 122
+        "h": 162
     },
     {
         "id": "e80b85ec598376ea",
@@ -1870,7 +1871,7 @@
         "type": "group",
         "z": "d8fea17acfe5c911",
         "g": "70d3949bbb93a4fa",
-        "name": "split attributes",
+        "name": "preprocess",
         "style": {
             "fill": "#ffffbf",
             "label": true,
@@ -1881,11 +1882,12 @@
             "a910593a291ec8e6",
             "56985a305923010c",
             "a964fd19931c7f56",
-            "9a2f6508548b5a82"
+            "9a2f6508548b5a82",
+            "356a5ab69f22d8ea"
         ],
         "x": 654,
         "y": 79,
-        "w": 452,
+        "w": 472,
         "h": 162
     },
     {
@@ -1940,27 +1942,6 @@
         "h": 242
     },
     {
-        "id": "5040a12394bce377",
-        "type": "group",
-        "z": "d8fea17acfe5c911",
-        "name": "parse and split urls",
-        "style": {
-            "label": true,
-            "color": "#000000",
-            "fill": "#ffffbf"
-        },
-        "nodes": [
-            "e40ab9d4c95613e7",
-            "7cb574dd68247c82",
-            "b152fa833e7a6d1b",
-            "f6b106073a7d41ac"
-        ],
-        "x": 174,
-        "y": 479,
-        "w": 272,
-        "h": 162
-    },
-    {
         "id": "70fcf5b7bc000afb",
         "type": "group",
         "z": "d8fea17acfe5c911",
@@ -1998,7 +1979,6 @@
             "color": "#000000"
         },
         "nodes": [
-            "c9af214efe546052",
             "9b33a84e6a27f65a",
             "84fe043c49e3ee6e",
             "459914e23bb6ffc3",
@@ -2014,7 +1994,7 @@
         "x": 654,
         "y": 919,
         "w": 432,
-        "h": 427
+        "h": 387
     },
     {
         "id": "b651702235fdbc29",
@@ -2059,7 +2039,7 @@
         "x": 554,
         "y": 893,
         "w": 962,
-        "h": 479
+        "h": 439
     },
     {
         "id": "70d3949bbb93a4fa",
@@ -2079,7 +2059,8 @@
             "bdeb547ea6889d89",
             "8d3ad295cc727f06",
             "70fcf5b7bc000afb",
-            "066788cbeb12a5d7"
+            "066788cbeb12a5d7",
+            "50bc25540ab03be0"
         ],
         "x": 494,
         "y": 53,
@@ -2337,7 +2318,7 @@
         "z": "d8fea17acfe5c911",
         "g": "7e409e7a7eca06f0",
         "x": 680,
-        "y": 1320,
+        "y": 1280,
         "wires": [
             [
                 "f015f23c12d7f594"
@@ -10096,8 +10077,7 @@
         "y": 120,
         "wires": [
             [
-                "dcfceb735e4ceb30",
-                "066788cbeb12a5d7"
+                "6a9ed2cdd37c2209"
             ]
         ]
     },
@@ -10127,10 +10107,12 @@
         "name": "link out 16",
         "mode": "link",
         "links": [
-            "b152fa833e7a6d1b"
+            "b152fa833e7a6d1b",
+            "b9f92d4b3de542a8",
+            "42c8c53cc172e877"
         ],
         "x": 365,
-        "y": 120,
+        "y": 160,
         "wires": []
     },
     {
@@ -10147,10 +10129,9 @@
             }
         ],
         "x": 750,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
-                "a910593a291ec8e6",
                 "9a2f6508548b5a82"
             ]
         ]
@@ -10194,7 +10175,7 @@
         "repair": false,
         "outputs": 2,
         "x": 730,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "56985a305923010c"
@@ -10215,7 +10196,7 @@
             "f9332dc80c23e5c0",
             "73d02e04aecca8a2"
         ],
-        "x": 875,
+        "x": 895,
         "y": 160,
         "wires": []
     },
@@ -10229,7 +10210,7 @@
         "links": [
             "0c938588de937a83"
         ],
-        "x": 875,
+        "x": 895,
         "y": 200,
         "wires": []
     },
@@ -10240,13 +10221,16 @@
         "g": "70d3949bbb93a4fa",
         "name": "link in 14",
         "links": [
-            "f6b106073a7d41ac"
+            "f6b106073a7d41ac",
+            "402fc7cbb0535ded",
+            "dcfceb735e4ceb30",
+            "1c2e9301080aadf2"
         ],
         "x": 615,
         "y": 120,
         "wires": [
             [
-                "48bf295b6a8d8784"
+                "356a5ab69f22d8ea"
             ]
         ]
     },
@@ -10644,7 +10628,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
+        "x": 980,
         "y": 120,
         "wires": []
     },
@@ -10866,31 +10850,6 @@
         "wires": []
     },
     {
-        "id": "c9af214efe546052",
-        "type": "join",
-        "z": "d8fea17acfe5c911",
-        "g": "7e409e7a7eca06f0",
-        "name": "",
-        "mode": "auto",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": "false",
-        "timeout": "",
-        "count": "",
-        "reduceRight": false,
-        "x": 790,
-        "y": 960,
-        "wires": [
-            [
-                "eb249d6c1eef9869"
-            ]
-        ]
-    },
-    {
         "id": "cb70c47d28df92c2",
         "type": "link in",
         "z": "d8fea17acfe5c911",
@@ -10903,78 +10862,9 @@
         "y": 960,
         "wires": [
             [
-                "c9af214efe546052"
+                "eb249d6c1eef9869"
             ]
         ]
-    },
-    {
-        "id": "e40ab9d4c95613e7",
-        "type": "json",
-        "z": "d8fea17acfe5c911",
-        "g": "5040a12394bce377",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 310,
-        "y": 520,
-        "wires": [
-            [
-                "7cb574dd68247c82"
-            ]
-        ]
-    },
-    {
-        "id": "7cb574dd68247c82",
-        "type": "split",
-        "z": "d8fea17acfe5c911",
-        "g": "5040a12394bce377",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 310,
-        "y": 560,
-        "wires": [
-            [
-                "f6b106073a7d41ac"
-            ]
-        ]
-    },
-    {
-        "id": "b152fa833e7a6d1b",
-        "type": "link in",
-        "z": "d8fea17acfe5c911",
-        "g": "5040a12394bce377",
-        "name": "link in 11",
-        "links": [
-            "dcfceb735e4ceb30",
-            "1c2e9301080aadf2"
-        ],
-        "x": 215,
-        "y": 520,
-        "wires": [
-            [
-                "e40ab9d4c95613e7"
-            ]
-        ]
-    },
-    {
-        "id": "f6b106073a7d41ac",
-        "type": "link out",
-        "z": "d8fea17acfe5c911",
-        "g": "5040a12394bce377",
-        "name": "link out 17",
-        "mode": "link",
-        "links": [
-            "42c8c53cc172e877"
-        ],
-        "x": 405,
-        "y": 600,
-        "wires": []
     },
     {
         "id": "a0c16b59aa0c1bee",
@@ -11128,8 +11018,8 @@
         "y": 760,
         "wires": [
             [
-                "5acdae929bdba67e",
-                "582214b94cca9b80"
+                "582214b94cca9b80",
+                "50bc25540ab03be0"
             ]
         ]
     },
@@ -11258,7 +11148,7 @@
         "template": "Publication: {{{next.publication}}}\nDate: {{{next.date}}}\nFacts:\n{{{next.facts}}}",
         "output": "str",
         "x": 810,
-        "y": 1120,
+        "y": 1080,
         "wires": [
             [
                 "84fe043c49e3ee6e"
@@ -11272,7 +11162,7 @@
         "g": "7e409e7a7eca06f0",
         "name": "",
         "x": 810,
-        "y": 1160,
+        "y": 1120,
         "wires": [
             [
                 "459914e23bb6ffc3",
@@ -11287,7 +11177,7 @@
         "g": "7e409e7a7eca06f0",
         "name": "",
         "x": 800,
-        "y": 1200,
+        "y": 1160,
         "wires": [
             [
                 "bc3414b809bcf9b1"
@@ -11307,7 +11197,7 @@
         "finalize": "",
         "libs": [],
         "x": 800,
-        "y": 1040,
+        "y": 1000,
         "wires": [
             [
                 "7f675bee69add766"
@@ -11346,7 +11236,7 @@
         "to": "",
         "reg": false,
         "x": 820,
-        "y": 1000,
+        "y": 960,
         "wires": [
             [
                 "f015f23c12d7f594"
@@ -11374,7 +11264,7 @@
         "to": "",
         "reg": false,
         "x": 830,
-        "y": 1240,
+        "y": 1200,
         "wires": [
             [
                 "1cd3d16aa4fafc83"
@@ -11396,7 +11286,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 1160,
+        "y": 1120,
         "wires": []
     },
     {
@@ -11412,7 +11302,7 @@
         "overwriteFile": "false",
         "encoding": "none",
         "x": 830,
-        "y": 1280,
+        "y": 1240,
         "wires": [
             [
                 "e980abdeacc89946"
@@ -11432,7 +11322,7 @@
         "template": "You are an intern at a world class news organization.\nYou have been tasked with aggregating lists of facts from multiple sources into a single list, with each fact annotated to include which sources it appeared in, and how central it was to the article written by that source.\n\n{{#reduction}}\nHere is your work so far:\n\n{{{reduction}}}\n{{/reduction}}\n\nThe user will provide you with factual claims extracted from an article.\nAt the end of each claim in square brackets is a digit from 0 to 9 indicating how central the claim is to the news event, where 9 is most central and 0 least central.\nRespond with a merged list of your work so far combined with the facts from the new article:\nYou must put a parenthetical next to each listing which publications it appears in and the centrality score\nGive only the combined list of facts, without preamble or postscript.",
         "output": "str",
         "x": 810,
-        "y": 1080,
+        "y": 1040,
         "wires": [
             [
                 "9b33a84e6a27f65a"
@@ -11450,7 +11340,7 @@
             "93f28b8a242cc779"
         ],
         "x": 985,
-        "y": 1040,
+        "y": 1000,
         "wires": []
     },
     {
@@ -11597,7 +11487,9 @@
         "name": "link out 15",
         "mode": "link",
         "links": [
-            "b152fa833e7a6d1b"
+            "b152fa833e7a6d1b",
+            "b9f92d4b3de542a8",
+            "42c8c53cc172e877"
         ],
         "x": 395,
         "y": 400,
@@ -11749,6 +11641,69 @@
         "wires": [
             [
                 "9abe61faf3de8fed"
+            ]
+        ]
+    },
+    {
+        "id": "6a9ed2cdd37c2209",
+        "type": "json",
+        "z": "d8fea17acfe5c911",
+        "g": "629254ef17813dda",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "dcfceb735e4ceb30",
+                "066788cbeb12a5d7"
+            ]
+        ]
+    },
+    {
+        "id": "356a5ab69f22d8ea",
+        "type": "split",
+        "z": "d8fea17acfe5c911",
+        "g": "87416ad3dde25082",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 730,
+        "y": 120,
+        "wires": [
+            [
+                "48bf295b6a8d8784"
+            ]
+        ]
+    },
+    {
+        "id": "50bc25540ab03be0",
+        "type": "join",
+        "z": "d8fea17acfe5c911",
+        "g": "70d3949bbb93a4fa",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 1570,
+        "y": 760,
+        "wires": [
+            [
+                "5acdae929bdba67e"
             ]
         ]
     }
