@@ -9807,8 +9807,8 @@
         "y": 320,
         "wires": [
             [
-                "e845e68972eb0d2b",
-                "44ef6586beec5788"
+                "44ef6586beec5788",
+                "e845e68972eb0d2b"
             ]
         ]
     },
@@ -9843,17 +9843,18 @@
         "id": "e845e68972eb0d2b",
         "type": "html",
         "z": "d8fea17acfe5c911",
-        "name": "",
+        "name": "get contents",
         "property": "payload",
         "outproperty": "payload",
         "tag": "article, div.Article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
         "ret": "text",
         "as": "single",
-        "x": 860,
+        "x": 590,
         "y": 360,
         "wires": [
             [
-                "d7b1e2e892972a8c"
+                "d7b1e2e892972a8c",
+                "78856da8c78fcb8c"
             ]
         ]
     },
@@ -9878,7 +9879,7 @@
         "id": "d7b1e2e892972a8c",
         "type": "debug",
         "z": "d8fea17acfe5c911",
-        "name": "extraction",
+        "name": "extracted",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -9887,7 +9888,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1300,
+        "x": 800,
         "y": 360,
         "wires": []
     },
@@ -9906,6 +9907,42 @@
         "statusType": "auto",
         "x": 790,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "78856da8c78fcb8c",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "name": "clean contents",
+        "func": "\nmsg.payload = msg.payload.replace(/^\\s*[\\r\\n]/gm, \"\\n\");\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "d804b639537d61b3"
+            ]
+        ]
+    },
+    {
+        "id": "d804b639537d61b3",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "name": "cleaned",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 400,
         "wires": []
     }
 ]
