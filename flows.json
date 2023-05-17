@@ -312,6 +312,11 @@
                 "name": "clear",
                 "type": "bool",
                 "value": "true"
+            },
+            {
+                "name": "clone",
+                "type": "bool",
+                "value": "true"
             }
         ],
         "meta": {},
@@ -2553,7 +2558,7 @@
         "type": "function",
         "z": "520a10812173e701",
         "name": "stash key value ",
-        "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nmsg.stash[key].push(msg[key] || '')\nif (env.get('clear')) {\n    delete msg[key];\n}\nreturn msg;",
+        "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nconst record = env.get('clone') ? JSON.parse(JSON.stringify(msg[key] || '')) : msg[key];\n\nmsg.stash[key].push(record)\n\nif (env.get('clear')) {\n    delete msg[key];\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
