@@ -1781,7 +1781,7 @@
         "z": "d8fea17acfe5c911",
         "name": "dev trigger",
         "style": {
-            "fill": "#ffffbf",
+            "fill": "#d1d1d1",
             "label": true,
             "color": "#000000"
         },
@@ -1952,11 +1952,12 @@
             "35e4bc34206438a5",
             "dab64a431d43ce8e",
             "958c815d44fbd306",
-            "25b03942f12d6faa"
+            "25b03942f12d6faa",
+            "e6e3bd452ba7613c"
         ],
         "x": 1074,
         "y": 59,
-        "w": 352,
+        "w": 492,
         "h": 122
     },
     {
@@ -10174,7 +10175,7 @@
         "z": "d8fea17acfe5c911",
         "g": "8d3ad295cc727f06",
         "name": "cleaned",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10526,7 +10527,8 @@
         "y": 140,
         "wires": [
             [
-                "25b03942f12d6faa"
+                "25b03942f12d6faa",
+                "e6e3bd452ba7613c"
             ]
         ]
     },
@@ -10615,7 +10617,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "publication and date",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10773,5 +10775,23 @@
                 "f786a9803de32950"
             ]
         ]
+    },
+    {
+        "id": "e6e3bd452ba7613c",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "bdeb547ea6889d89",
+        "name": "preprocessed",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 100,
+        "wires": []
     }
 ]
