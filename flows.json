@@ -1784,10 +1784,58 @@
             "b152fa833e7a6d1b",
             "f6b106073a7d41ac"
         ],
-        "x": 454,
+        "x": 394,
         "y": 59,
         "w": 272,
         "h": 122
+    },
+    {
+        "id": "8d3ad295cc727f06",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "get article contents",
+        "style": {
+            "label": true,
+            "fill": "#bfbfbf",
+            "color": "#000000"
+        },
+        "nodes": [
+            "a956e88ac1d87f03",
+            "490cd1eb33a07949",
+            "e845e68972eb0d2b",
+            "d7b1e2e892972a8c",
+            "44ef6586beec5788",
+            "78856da8c78fcb8c",
+            "d804b639537d61b3",
+            "0c938588de937a83",
+            "9b154273046a68f7"
+        ],
+        "x": 394,
+        "y": 219,
+        "w": 472,
+        "h": 202
+    },
+    {
+        "id": "70fcf5b7bc000afb",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "Gather Facts",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "273ca1d933a96ef7",
+            "35611ad2cb429f12",
+            "25aadfc07cd42046",
+            "582214b94cca9b80",
+            "e3eb371c9c6a90b7"
+        ],
+        "x": 394,
+        "y": 459,
+        "w": 452,
+        "h": 162
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -9728,7 +9776,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 590,
+        "x": 530,
         "y": 100,
         "wires": [
             [
@@ -9748,12 +9796,11 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 590,
+        "x": 530,
         "y": 140,
         "wires": [
             [
-                "f6b106073a7d41ac",
-                "490cd1eb33a07949"
+                "f6b106073a7d41ac"
             ]
         ]
     },
@@ -9767,7 +9814,7 @@
             "dcfceb735e4ceb30",
             "1c2e9301080aadf2"
         ],
-        "x": 495,
+        "x": 435,
         "y": 100,
         "wires": [
             [
@@ -9782,8 +9829,10 @@
         "g": "5040a12394bce377",
         "name": "link out 17",
         "mode": "link",
-        "links": [],
-        "x": 685,
+        "links": [
+            "0c938588de937a83"
+        ],
+        "x": 625,
         "y": 140,
         "wires": []
     },
@@ -9791,6 +9840,7 @@
         "id": "a956e88ac1d87f03",
         "type": "http request",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "",
         "method": "GET",
         "ret": "txt",
@@ -9803,8 +9853,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 590,
-        "y": 320,
+        "x": 550,
+        "y": 300,
         "wires": [
             [
                 "44ef6586beec5788",
@@ -9816,6 +9866,7 @@
         "id": "490cd1eb33a07949",
         "type": "change",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "",
         "rules": [
             {
@@ -9831,8 +9882,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 590,
-        "y": 280,
+        "x": 550,
+        "y": 260,
         "wires": [
             [
                 "a956e88ac1d87f03"
@@ -9843,14 +9894,15 @@
         "id": "e845e68972eb0d2b",
         "type": "html",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "get contents",
         "property": "payload",
         "outproperty": "payload",
         "tag": "article, div.Article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
         "ret": "text",
         "as": "single",
-        "x": 590,
-        "y": 360,
+        "x": 550,
+        "y": 340,
         "wires": [
             [
                 "d7b1e2e892972a8c",
@@ -9859,28 +9911,12 @@
         ]
     },
     {
-        "id": "a40397b314b4f671",
-        "type": "template",
-        "z": "d8fea17acfe5c911",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "https://archive.is/{{{payload}}}",
-        "output": "str",
-        "x": 580,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "d7b1e2e892972a8c",
         "type": "debug",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "extracted",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -9888,14 +9924,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 360,
+        "x": 760,
+        "y": 300,
         "wires": []
     },
     {
         "id": "44ef6586beec5788",
         "type": "debug",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "raw",
         "active": false,
         "tosidebar": true,
@@ -9905,26 +9942,28 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 790,
-        "y": 320,
+        "x": 750,
+        "y": 260,
         "wires": []
     },
     {
         "id": "78856da8c78fcb8c",
         "type": "function",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "clean contents",
-        "func": "\nmsg.payload = msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\");\n\nreturn msg;",
+        "func": "\nmsg.payload = msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\") + `\\n`;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 400,
+        "x": 560,
+        "y": 380,
         "wires": [
             [
-                "d804b639537d61b3"
+                "d804b639537d61b3",
+                "9b154273046a68f7"
             ]
         ]
     },
@@ -9932,7 +9971,105 @@
         "id": "d804b639537d61b3",
         "type": "debug",
         "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
         "name": "cleaned",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0c938588de937a83",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "link in 12",
+        "links": [
+            "f6b106073a7d41ac"
+        ],
+        "x": 435,
+        "y": 260,
+        "wires": [
+            [
+                "490cd1eb33a07949"
+            ]
+        ]
+    },
+    {
+        "id": "9b154273046a68f7",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "link out 18",
+        "mode": "link",
+        "links": [
+            "e3eb371c9c6a90b7"
+        ],
+        "x": 715,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "273ca1d933a96ef7",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "g": "70fcf5b7bc000afb",
+        "name": "",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The user will provide you with a news article.\n\nExtract all the factual claims from the article -- including all date and numerical facts -- and enumerate them in a list. Claims that are included in the original article as a quote, indirectly or directly, should remain attributed to the source. After each claim, add a ranking from 0 to 9 indicating how central the claim is to understanding the news event and relevant context, where 9 is most central and 0 least central. The ranking should be in square brackets, with no label. When done, write “THE END”.\n\nbegin your answer with \"Let’s work this out step by step to make sure we get the right answer:\"",
+        "output": "str",
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "35611ad2cb429f12"
+            ]
+        ]
+    },
+    {
+        "id": "35611ad2cb429f12",
+        "type": "subflow:788598196e86646c",
+        "z": "d8fea17acfe5c911",
+        "g": "70fcf5b7bc000afb",
+        "name": "",
+        "x": 550,
+        "y": 540,
+        "wires": [
+            [
+                "25aadfc07cd42046"
+            ]
+        ]
+    },
+    {
+        "id": "25aadfc07cd42046",
+        "type": "subflow:237429fb2a5a7712",
+        "z": "d8fea17acfe5c911",
+        "g": "70fcf5b7bc000afb",
+        "name": "",
+        "x": 540,
+        "y": 580,
+        "wires": [
+            [
+                "582214b94cca9b80"
+            ]
+        ]
+    },
+    {
+        "id": "582214b94cca9b80",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "70fcf5b7bc000afb",
+        "name": "facts",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -9941,8 +10078,25 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 400,
+        "x": 750,
+        "y": 540,
         "wires": []
+    },
+    {
+        "id": "e3eb371c9c6a90b7",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "70fcf5b7bc000afb",
+        "name": "link in 13",
+        "links": [
+            "9b154273046a68f7"
+        ],
+        "x": 435,
+        "y": 500,
+        "wires": [
+            [
+                "273ca1d933a96ef7"
+            ]
+        ]
     }
 ]
