@@ -10929,8 +10929,7 @@
         "y": 880,
         "wires": [
             [
-                "c4c784546a06a06d",
-                "75b2658da846838b"
+                "c4c784546a06a06d"
             ]
         ]
     },
@@ -11192,7 +11191,7 @@
         "y": 960,
         "wires": [
             [
-                "75b2658da846838b"
+                "4ed6b57ea0151e33"
             ]
         ]
     },
@@ -11212,5 +11211,24 @@
         "x": 880,
         "y": 960,
         "wires": []
+    },
+    {
+        "id": "4ed6b57ea0151e33",
+        "type": "file",
+        "z": "d8fea17acfe5c911",
+        "name": "",
+        "filename": "/data/openai.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 680,
+        "y": 1000,
+        "wires": [
+            [
+                "75b2658da846838b"
+            ]
+        ]
     }
 ]
