@@ -1255,8 +1255,8 @@
         "category": "",
         "in": [
             {
-                "x": 80,
-                "y": 100,
+                "x": 100,
+                "y": 120,
                 "wires": [
                     {
                         "id": "a4edc57e00ce9ee8"
@@ -1266,8 +1266,8 @@
         ],
         "out": [
             {
-                "x": 440,
-                "y": 380,
+                "x": 400,
+                "y": 480,
                 "wires": [
                     {
                         "id": "7ad188968d3bb2cf",
@@ -1276,8 +1276,8 @@
                 ]
             },
             {
-                "x": 440,
-                "y": 260,
+                "x": 400,
+                "y": 360,
                 "wires": [
                     {
                         "id": "74fd3bc92e6aa498",
@@ -1296,8 +1296,8 @@
         "meta": {},
         "color": "#DDAA99",
         "status": {
-            "x": 460,
-            "y": 40,
+            "x": 420,
+            "y": 80,
             "wires": [
                 {
                     "id": "e88e460e71e02bb0",
@@ -1885,7 +1885,7 @@
             "90ad11fbbe016cce",
             "5bf08439273e5659"
         ],
-        "x": 894,
+        "x": 1034,
         "y": 239,
         "w": 592,
         "h": 402
@@ -2201,7 +2201,7 @@
         "type": "junction",
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
-        "x": 1200,
+        "x": 1340,
         "y": 440,
         "wires": [
             [
@@ -5155,8 +5155,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 260,
-        "y": 180,
+        "x": 220,
+        "y": 240,
         "wires": [
             [
                 "f74815a576c072c6"
@@ -5173,8 +5173,8 @@
             "f74815a576c072c6"
         ],
         "uncaught": false,
-        "x": 270,
-        "y": 300,
+        "x": 230,
+        "y": 400,
         "wires": [
             [
                 "860f8fd641e8d824"
@@ -5203,8 +5203,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 280,
-        "y": 380,
+        "x": 240,
+        "y": 520,
         "wires": [
             []
         ]
@@ -5214,11 +5214,11 @@
         "type": "subflow:411e0c8d5e99f249",
         "z": "80a84193bc2e4430",
         "name": "",
-        "x": 280,
-        "y": 100,
+        "x": 240,
+        "y": 120,
         "wires": [
             [
-                "7e207e98c29a6262"
+                "b9a71a7cdd385c47"
             ]
         ]
     },
@@ -5233,11 +5233,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 260,
-        "y": 220,
+        "x": 220,
+        "y": 280,
         "wires": [
             [
-                "74fd3bc92e6aa498"
+                "785a452076018c4d"
             ]
         ]
     },
@@ -5247,8 +5247,8 @@
         "z": "80a84193bc2e4430",
         "name": "",
         "scope": null,
-        "x": 260,
-        "y": 40,
+        "x": 220,
+        "y": 80,
         "wires": [
             []
         ]
@@ -5257,9 +5257,9 @@
         "id": "7e207e98c29a6262",
         "type": "subflow:520a10812173e701",
         "z": "80a84193bc2e4430",
-        "name": "",
-        "x": 250,
-        "y": 140,
+        "name": "stash parts",
+        "x": 230,
+        "y": 200,
         "wires": [
             [
                 "a7cf5100c8c7fecb"
@@ -5270,12 +5270,12 @@
         "id": "860f8fd641e8d824",
         "type": "subflow:a25be0e127fc9e24",
         "z": "80a84193bc2e4430",
-        "name": "",
-        "x": 260,
-        "y": 340,
+        "name": "restore parts",
+        "x": 230,
+        "y": 440,
         "wires": [
             [
-                "7ad188968d3bb2cf"
+                "b82a5b1dcb429377"
             ]
         ]
     },
@@ -5283,7 +5283,38 @@
         "id": "74fd3bc92e6aa498",
         "type": "subflow:a25be0e127fc9e24",
         "z": "80a84193bc2e4430",
-        "name": "",
+        "name": "restore parts",
+        "env": [
+            {
+                "name": "key",
+                "value": "parts",
+                "type": "str"
+            }
+        ],
+        "x": 230,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9a71a7cdd385c47",
+        "type": "subflow:520a10812173e701",
+        "z": "80a84193bc2e4430",
+        "name": "stash payload",
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "7e207e98c29a6262"
+            ]
+        ]
+    },
+    {
+        "id": "785a452076018c4d",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "80a84193bc2e4430",
+        "name": "clear payload",
         "env": [
             {
                 "name": "apply",
@@ -5291,10 +5322,25 @@
                 "type": "bool"
             }
         ],
-        "x": 260,
-        "y": 260,
+        "x": 240,
+        "y": 320,
         "wires": [
-            []
+            [
+                "74fd3bc92e6aa498"
+            ]
+        ]
+    },
+    {
+        "id": "b82a5b1dcb429377",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "80a84193bc2e4430",
+        "name": "restore payload",
+        "x": 240,
+        "y": 480,
+        "wires": [
+            [
+                "7ad188968d3bb2cf"
+            ]
         ]
     },
     {
@@ -10247,7 +10293,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1050,
+        "x": 1190,
         "y": 440,
         "wires": [
             [
@@ -10262,7 +10308,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1040,
+        "x": 1180,
         "y": 480,
         "wires": [
             [
@@ -10280,7 +10326,7 @@
         "links": [
             "56985a305923010c"
         ],
-        "x": 935,
+        "x": 1075,
         "y": 280,
         "wires": [
             [
@@ -10294,7 +10340,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1050,
+        "x": 1190,
         "y": 560,
         "wires": [
             [
@@ -10316,7 +10362,7 @@
         "links": [
             "dab64a431d43ce8e"
         ],
-        "x": 1255,
+        "x": 1395,
         "y": 600,
         "wires": []
     },
@@ -10384,7 +10430,7 @@
         "syntax": "plain",
         "template": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"publication\": {\n      \"type\": \"string\"\n    },\n    \"date\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\"publication\"]\n}",
         "output": "json",
-        "x": 1050,
+        "x": 1190,
         "y": 280,
         "wires": [
             [
@@ -10411,7 +10457,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1070,
+        "x": 1210,
         "y": 600,
         "wires": [
             [
@@ -10434,7 +10480,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1310,
+        "x": 1450,
         "y": 520,
         "wires": []
     },
@@ -10452,7 +10498,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1340,
+        "x": 1480,
         "y": 560,
         "wires": []
     },
@@ -10468,7 +10514,7 @@
         "syntax": "mustache",
         "template": "The user will provide you with a url.\n\nrespond with a JSON object containing the keys \"publication\" and \"date\", filled in based on the url.\n\nif you cannot infer the date, leave it blank.\n\nreturn only the JSON, without preamble or postscript.\n\nabide by the following JSON schema:\n{{{schemaString}}}",
         "output": "str",
-        "x": 1080,
+        "x": 1220,
         "y": 400,
         "wires": [
             [
@@ -10503,7 +10549,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
+        "x": 1200,
         "y": 320,
         "wires": [
             [
@@ -10557,7 +10603,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1290,
+        "x": 1430,
         "y": 480,
         "wires": []
     },
@@ -10574,7 +10620,7 @@
                 "type": "str"
             }
         ],
-        "x": 1060,
+        "x": 1200,
         "y": 360,
         "wires": [
             [
@@ -10595,7 +10641,7 @@
                 "type": "str"
             }
         ],
-        "x": 1040,
+        "x": 1180,
         "y": 520,
         "wires": [
             [
