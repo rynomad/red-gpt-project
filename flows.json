@@ -5505,7 +5505,7 @@
         "type": "function",
         "z": "fa051e8fa93f0606",
         "name": "extract string",
-        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nfor (const option of msg.full.data.choices){\n    try {\n        msg.payload = JSON.stringify(JSON.parse(extractJsonString(option.message)))\n        return [null, msg];\n    } catch (e) {\n        //ignore\n    }\n}\n\nmsg.payload = 'unable to parse JSON. please reformat your response as a valid JSON string';\nreturn [msg,null];",
+        "func": "function extractJsonString(str) {\n    const firstIndex = str.indexOf('{');\n    const lastIndex = str.lastIndexOf('}');\n\n    if (firstIndex !== -1 && lastIndex !== -1) {\n        return str.substring(firstIndex, lastIndex + 1);\n    } else {\n        return \"No valid JSON substring found in input string.\";\n    }\n}\n\nfor (const option of msg.full.data.choices){\n    try {\n        msg.payload = JSON.stringify(JSON.parse(extractJsonString(option.message.content)))\n        return [null, msg];\n    } catch (e) {\n        //ignore\n    }\n}\n\nmsg.payload = 'unable to parse JSON. please reformat your response as a valid JSON string';\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
