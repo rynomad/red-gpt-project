@@ -11767,7 +11767,7 @@
         "z": "d8fea17acfe5c911",
         "g": "88af64da0772ea3e",
         "name": "function 10",
-        "func": "function parseCodeBlockWithHTML(inputString) {\n    const codeBlockRegex = /^```html([\\s\\S]*?)^```/gm;\n    const matches = inputString.matchAll(codeBlockRegex);\n    const codeBlocks = [];\n\n    for (const match of matches) {\n        const code = match[1].trim();\n        codeBlocks.push(code);\n    }\n\n    return codeBlocks;\n}\n\nmsg.payload = parseCodeBlockWithHTML(msg.payload).pop()\n\nreturn msg;",
+        "func": "function parseCodeBlockWithHTML(inputString) {\n    const codeBlockRegex = /^```.*([\\s\\S]*?)^```/gm;\n    const matches = inputString.matchAll(codeBlockRegex);\n    const codeBlocks = [];\n\n    for (const match of matches) {\n        const code = match[1].trim();\n        codeBlocks.push(code);\n    }\n\n    return codeBlocks;\n}\n\nmsg.payload = parseCodeBlockWithHTML(msg.payload).pop()\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
