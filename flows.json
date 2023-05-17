@@ -10393,7 +10393,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "publication and date",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10929,7 +10929,8 @@
         "y": 880,
         "wires": [
             [
-                "c4c784546a06a06d"
+                "c4c784546a06a06d",
+                "75b2658da846838b"
             ]
         ]
     },
@@ -11204,8 +11205,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 880,
