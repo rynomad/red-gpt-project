@@ -1533,14 +1533,13 @@
         },
         "nodes": [
             "d2ee1fb0b75e93b6",
-            "2d60fcbd28eb92c7",
             "d5f444de1f8ceabb",
             "199a0f0b9465c0f4"
         ],
         "x": 114,
         "y": 299,
         "w": 252,
-        "h": 202
+        "h": 162
     },
     {
         "id": "1f25593ab1ca5615",
@@ -5996,32 +5995,6 @@
         "y": 380,
         "wires": [
             [
-                "2d60fcbd28eb92c7"
-            ]
-        ]
-    },
-    {
-        "id": "2d60fcbd28eb92c7",
-        "type": "change",
-        "z": "e961334cde89144c",
-        "g": "cef1df36791a4d09",
-        "name": "clear max_tokens",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "max_tokens",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 420,
-        "wires": [
-            [
                 "d5f444de1f8ceabb"
             ]
         ]
@@ -6040,7 +6013,7 @@
             }
         ],
         "x": 210,
-        "y": 460,
+        "y": 420,
         "wires": [
             [
                 "9f4d0154bcaa5bdb"
