@@ -2267,7 +2267,7 @@
         "type": "function",
         "z": "a25be0e127fc9e24",
         "name": "pop",
-        "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nlet depth = env.get('depth')\n\nwhile (depth){\n    const stash = msg.stash[key].pop()\n    if (env.get('apply')){\n        msg[key] = stash;\n    }\n    // @ts-ignore\n    depth--;\n}\nreturn msg;",
+        "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nlet depth = env.get('depth')\n\nwhile (depth){\n    const stash = msg.stash[key].pop()\n    if (stash && env.get('apply')){\n        msg[key] = stash;\n    }\n    // @ts-ignore\n    depth--;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2460,7 +2460,7 @@
         "type": "function",
         "z": "520a10812173e701",
         "name": "stash key value ",
-        "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nmsg.stash[key].push(JSON.parse(JSON.stringify(msg[key] || '')))\nif (env.get('clear')) {\n    msg[key] = undefined;\n}\nreturn msg;",
+        "func": "if (!msg.stash){\n    msg.stash = {}\n}\n\nconst key = env.get('key')\n\nif (!msg.stash[key]){\n    msg.stash[key] = []\n}\n\nmsg.stash[key].push(JSON.parse(JSON.stringify(msg[key] || '')))\nif (env.get('clear')) {\n    delete msg[key];\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5280,6 +5280,13 @@
         "type": "subflow:520a10812173e701",
         "z": "80a84193bc2e4430",
         "name": "stash parts",
+        "env": [
+            {
+                "name": "clear",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
         "x": 230,
         "y": 360,
         "wires": [
