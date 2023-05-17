@@ -1858,7 +1858,7 @@
             "9b154273046a68f7"
         ],
         "x": 394,
-        "y": 219,
+        "y": 239,
         "w": 472,
         "h": 202
     },
@@ -1879,8 +1879,8 @@
             "582214b94cca9b80",
             "e3eb371c9c6a90b7"
         ],
-        "x": 414,
-        "y": 699,
+        "x": 394,
+        "y": 479,
         "w": 452,
         "h": 162
     },
@@ -1895,22 +1895,22 @@
             "color": "#000000"
         },
         "nodes": [
-            "440e59fe168c1cab",
             "fdc292998637cddc",
             "6a5b18780ac49544",
             "f9332dc80c23e5c0",
             "f786a9803de32950",
-            "b4942f1b657178c0",
             "283887287f632b0d",
             "56cf3483348667e0",
             "19bafe626da5146a",
             "794b422d4f001ac9",
             "c31ac9c206f80d68",
-            "7a9225acff5b33ea"
+            "7a9225acff5b33ea",
+            "440e59fe168c1cab",
+            "b4942f1b657178c0"
         ],
-        "x": 934,
-        "y": 219,
-        "w": 552,
+        "x": 914,
+        "y": 239,
+        "w": 592,
         "h": 322
     },
     {
@@ -1930,7 +1930,7 @@
             "a964fd19931c7f56",
             "42c8c53cc172e877"
         ],
-        "x": 874,
+        "x": 694,
         "y": 59,
         "w": 342,
         "h": 142
@@ -1942,7 +1942,8 @@
         "name": "join attributes",
         "style": {
             "fill": "#ffffbf",
-            "label": true
+            "label": true,
+            "color": "#000000"
         },
         "nodes": [
             "35e4bc34206438a5",
@@ -1950,8 +1951,8 @@
             "958c815d44fbd306",
             "25b03942f12d6faa"
         ],
-        "x": 634,
-        "y": 499,
+        "x": 1074,
+        "y": 59,
         "w": 352,
         "h": 122
     },
@@ -2193,7 +2194,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "x": 1220,
-        "y": 340,
+        "y": 400,
         "wires": [
             [
                 "6a5b18780ac49544"
@@ -10032,7 +10033,7 @@
         "senderr": false,
         "headers": [],
         "x": 550,
-        "y": 300,
+        "y": 320,
         "wires": [
             [
                 "44ef6586beec5788",
@@ -10061,7 +10062,7 @@
         "to": "",
         "reg": false,
         "x": 550,
-        "y": 260,
+        "y": 280,
         "wires": [
             [
                 "a956e88ac1d87f03"
@@ -10080,7 +10081,7 @@
         "ret": "text",
         "as": "single",
         "x": 550,
-        "y": 340,
+        "y": 360,
         "wires": [
             [
                 "d7b1e2e892972a8c",
@@ -10103,7 +10104,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 760,
-        "y": 300,
+        "y": 320,
         "wires": []
     },
     {
@@ -10121,7 +10122,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 750,
-        "y": 260,
+        "y": 280,
         "wires": []
     },
     {
@@ -10137,7 +10138,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 380,
+        "y": 400,
         "wires": [
             [
                 "d804b639537d61b3",
@@ -10160,7 +10161,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 760,
-        "y": 340,
+        "y": 360,
         "wires": []
     },
     {
@@ -10173,7 +10174,7 @@
             "a964fd19931c7f56"
         ],
         "x": 435,
-        "y": 260,
+        "y": 280,
         "wires": [
             [
                 "490cd1eb33a07949"
@@ -10187,9 +10188,11 @@
         "g": "8d3ad295cc727f06",
         "name": "link out 18",
         "mode": "link",
-        "links": [],
+        "links": [
+            "dab64a431d43ce8e"
+        ],
         "x": 715,
-        "y": 380,
+        "y": 400,
         "wires": []
     },
     {
@@ -10202,10 +10205,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "The user will provide you with a news article.\n\nExtract all the factual claims from the article -- including all date and numerical facts -- and enumerate them in a list. Claims that are included in the original article as a quote, indirectly or directly, should remain attributed to the source. After each claim, add a ranking from 0 to 9 indicating how central the claim is to understanding the news event and relevant context, where 9 is most central and 0 least central. The ranking should be in square brackets, with no label. When done, write “THE END”.\n\nbegin your answer with \"Let’s work this out step by step to make sure we get the right answer:\"",
+        "template": "The user will provide you with a news article by by {{{publication}}} about a particular news event, published on {{{date}}}\n\nExtract all the factual claims from the article -- including all date and numerical facts -- and enumerate them in a list. Claims that are included in the original article as a quote, indirectly or directly, should remain attributed to the source. After each claim, add a ranking from 0 to 9 indicating how central the claim is to understanding the news event and relevant context, where 9 is most central and 0 least central. The ranking should be in square brackets, with no label. When done, write “THE END”.\n\nbegin your answer with \"Let’s work this out step by step to make sure we get the right answer:\"",
         "output": "str",
-        "x": 560,
-        "y": 740,
+        "x": 540,
+        "y": 520,
         "wires": [
             [
                 "35611ad2cb429f12"
@@ -10218,8 +10221,8 @@
         "z": "d8fea17acfe5c911",
         "g": "70fcf5b7bc000afb",
         "name": "",
-        "x": 570,
-        "y": 780,
+        "x": 550,
+        "y": 560,
         "wires": [
             [
                 "25aadfc07cd42046"
@@ -10232,8 +10235,8 @@
         "z": "d8fea17acfe5c911",
         "g": "70fcf5b7bc000afb",
         "name": "",
-        "x": 560,
-        "y": 820,
+        "x": 540,
+        "y": 600,
         "wires": [
             [
                 "582214b94cca9b80"
@@ -10254,8 +10257,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 780,
+        "x": 750,
+        "y": 560,
         "wires": []
     },
     {
@@ -10267,8 +10270,8 @@
         "links": [
             "25b03942f12d6faa"
         ],
-        "x": 455,
-        "y": 740,
+        "x": 435,
+        "y": 520,
         "wires": [
             [
                 "273ca1d933a96ef7"
@@ -10281,7 +10284,7 @@
         "z": "d8fea17acfe5c911",
         "g": "87416ad3dde25082",
         "name": "",
-        "x": 1050,
+        "x": 870,
         "y": 100,
         "wires": [
             [
@@ -10295,8 +10298,8 @@
         "z": "d8fea17acfe5c911",
         "g": "bdeb547ea6889d89",
         "name": "",
-        "x": 790,
-        "y": 540,
+        "x": 1230,
+        "y": 100,
         "wires": [
             [
                 "958c815d44fbd306"
@@ -10326,7 +10329,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1030,
+        "x": 850,
         "y": 140,
         "wires": [
             [
@@ -10347,7 +10350,7 @@
         "links": [
             "f9332dc80c23e5c0"
         ],
-        "x": 1175,
+        "x": 995,
         "y": 120,
         "wires": []
     },
@@ -10361,7 +10364,7 @@
         "links": [
             "0c938588de937a83"
         ],
-        "x": 1175,
+        "x": 995,
         "y": 160,
         "wires": []
     },
@@ -10374,31 +10377,11 @@
         "links": [
             "f6b106073a7d41ac"
         ],
-        "x": 915,
+        "x": 735,
         "y": 100,
         "wires": [
             [
                 "48bf295b6a8d8784"
-            ]
-        ]
-    },
-    {
-        "id": "440e59fe168c1cab",
-        "type": "template",
-        "z": "d8fea17acfe5c911",
-        "g": "5ce7aa6b7480812d",
-        "name": "",
-        "field": "system",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "The user will provide you with a url.\n\nrespond with a JSON object containing the keys \"publication\" and \"date\", filled in based on the url.\n\nif you cannot infer the date, leave it blank.\n\nreturn only the JSON, without preamble or postscript.",
-        "output": "str",
-        "x": 1080,
-        "y": 260,
-        "wires": [
-            [
-                "19bafe626da5146a"
             ]
         ]
     },
@@ -10408,11 +10391,11 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1090,
-        "y": 340,
+        "x": 1070,
+        "y": 400,
         "wires": [
             [
-                "b4942f1b657178c0"
+                "6a5b18780ac49544"
             ]
         ]
     },
@@ -10422,8 +10405,8 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1080,
-        "y": 420,
+        "x": 1060,
+        "y": 440,
         "wires": [
             [
                 "f786a9803de32950"
@@ -10439,11 +10422,11 @@
         "links": [
             "56985a305923010c"
         ],
-        "x": 975,
-        "y": 260,
+        "x": 955,
+        "y": 280,
         "wires": [
             [
-                "440e59fe168c1cab"
+                "19bafe626da5146a"
             ]
         ]
     },
@@ -10453,8 +10436,8 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1090,
-        "y": 460,
+        "x": 1070,
+        "y": 480,
         "wires": [
             [
                 "283887287f632b0d",
@@ -10466,43 +10449,17 @@
         ]
     },
     {
-        "id": "b4942f1b657178c0",
-        "type": "change",
-        "z": "d8fea17acfe5c911",
-        "g": "5ce7aa6b7480812d",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "n",
-                "pt": "msg",
-                "to": "3",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1080,
-        "y": 380,
-        "wires": [
-            [
-                "6a5b18780ac49544"
-            ]
-        ]
-    },
-    {
         "id": "56cf3483348667e0",
         "type": "link out",
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "link out 21",
         "mode": "link",
-        "links": [],
-        "x": 1265,
-        "y": 500,
+        "links": [
+            "dab64a431d43ce8e"
+        ],
+        "x": 1275,
+        "y": 520,
         "wires": []
     },
     {
@@ -10511,9 +10468,12 @@
         "z": "d8fea17acfe5c911",
         "g": "bdeb547ea6889d89",
         "name": "link in 16",
-        "links": [],
-        "x": 675,
-        "y": 540,
+        "links": [
+            "56cf3483348667e0",
+            "9b154273046a68f7"
+        ],
+        "x": 1115,
+        "y": 100,
         "wires": [
             [
                 "35e4bc34206438a5"
@@ -10532,8 +10492,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
-        "y": 580,
+        "x": 1250,
+        "y": 140,
         "wires": [
             [
                 "25b03942f12d6faa"
@@ -10550,8 +10510,8 @@
         "links": [
             "e3eb371c9c6a90b7"
         ],
-        "x": 945,
-        "y": 580,
+        "x": 1385,
+        "y": 140,
         "wires": []
     },
     {
@@ -10566,11 +10526,11 @@
         "syntax": "plain",
         "template": "{\n  \"$schema\": \"http://json-schema.org/draft-06/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"publication\": {\n      \"type\": \"string\"\n    },\n    \"date\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\"\n    }\n  },\n  \"required\": [\"publication\"]\n}",
         "output": "json",
-        "x": 1090,
-        "y": 300,
+        "x": 1070,
+        "y": 280,
         "wires": [
             [
-                "fdc292998637cddc"
+                "b4942f1b657178c0"
             ]
         ]
     },
@@ -10592,11 +10552,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1110,
-        "y": 500,
+        "x": 1090,
+        "y": 520,
         "wires": [
             [
-                "56cf3483348667e0"
+                "56cf3483348667e0",
+                "7a9225acff5b33ea"
             ]
         ]
     },
@@ -10614,8 +10575,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1350,
-        "y": 460,
+        "x": 1330,
+        "y": 420,
         "wires": []
     },
     {
@@ -10623,7 +10584,7 @@
         "type": "debug",
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
-        "name": "parse failure",
+        "name": "publication and date",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -10632,8 +10593,63 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1370,
-        "y": 500,
+        "x": 1360,
+        "y": 480,
         "wires": []
+    },
+    {
+        "id": "440e59fe168c1cab",
+        "type": "template",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "set system message",
+        "field": "system",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The user will provide you with a url.\n\nrespond with a JSON object containing the keys \"publication\" and \"date\", filled in based on the url.\n\nif you cannot infer the date, leave it blank.\n\nreturn only the JSON, without preamble or postscript.\n\nabide by the following JSON schema:\n{{{schemaString}}}",
+        "output": "str",
+        "x": 1100,
+        "y": 360,
+        "wires": [
+            [
+                "fdc292998637cddc"
+            ]
+        ]
+    },
+    {
+        "id": "b4942f1b657178c0",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "g": "5ce7aa6b7480812d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "n",
+                "pt": "msg",
+                "to": "3",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "schemaString",
+                "pt": "msg",
+                "to": "$string(schema)",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 320,
+        "wires": [
+            [
+                "440e59fe168c1cab"
+            ]
+        ]
     }
 ]
