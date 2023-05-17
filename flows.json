@@ -10553,7 +10553,7 @@
                 "p": "schemaString",
                 "pt": "msg",
                 "to": "$string(schema)",
-                "tot": "str"
+                "tot": "jsonata"
             }
         ],
         "action": "",
