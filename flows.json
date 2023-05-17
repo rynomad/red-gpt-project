@@ -11808,7 +11808,7 @@
         "z": "d8fea17acfe5c911",
         "g": "e80b85ec598376ea",
         "name": "split csv",
-        "func": "flow.set(msg._msgid, msg);\nmsg.__msgid = msg._msgid;\n\nmsg.payload = msg.payload.split(',').map(decodeURI)\nreturn msg;",
+        "func": "flow.set(msg._msgid, msg);\nmsg.__msgid = msg._msgid;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
