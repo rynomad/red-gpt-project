@@ -10297,8 +10297,7 @@
         "y": 440,
         "wires": [
             [
-                "6a5b18780ac49544",
-                "7a9225acff5b33ea"
+                "6a5b18780ac49544"
             ]
         ]
     },
@@ -10434,8 +10433,7 @@
         "y": 280,
         "wires": [
             [
-                "b4942f1b657178c0",
-                "7a9225acff5b33ea"
+                "b4942f1b657178c0"
             ]
         ]
     },
@@ -10472,7 +10470,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "parse failure",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10490,7 +10488,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "publication and date",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10595,7 +10593,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "raw",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
