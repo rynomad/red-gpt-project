@@ -1837,32 +1837,6 @@
         "h": 122
     },
     {
-        "id": "8d3ad295cc727f06",
-        "type": "group",
-        "z": "d8fea17acfe5c911",
-        "name": "get article contents",
-        "style": {
-            "label": true,
-            "fill": "#dbcbe7",
-            "color": "#000000"
-        },
-        "nodes": [
-            "a956e88ac1d87f03",
-            "490cd1eb33a07949",
-            "e845e68972eb0d2b",
-            "d7b1e2e892972a8c",
-            "44ef6586beec5788",
-            "78856da8c78fcb8c",
-            "d804b639537d61b3",
-            "0c938588de937a83",
-            "9b154273046a68f7"
-        ],
-        "x": 394,
-        "y": 239,
-        "w": 472,
-        "h": 202
-    },
-    {
         "id": "70fcf5b7bc000afb",
         "type": "group",
         "z": "d8fea17acfe5c911",
@@ -1880,7 +1854,7 @@
             "e3eb371c9c6a90b7"
         ],
         "x": 394,
-        "y": 479,
+        "y": 559,
         "w": 452,
         "h": 162
     },
@@ -1960,6 +1934,34 @@
         "y": 79,
         "w": 492,
         "h": 122
+    },
+    {
+        "id": "8d3ad295cc727f06",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "get article contents",
+        "style": {
+            "label": true,
+            "fill": "#dbcbe7",
+            "color": "#000000"
+        },
+        "nodes": [
+            "a956e88ac1d87f03",
+            "490cd1eb33a07949",
+            "e845e68972eb0d2b",
+            "d7b1e2e892972a8c",
+            "44ef6586beec5788",
+            "78856da8c78fcb8c",
+            "d804b639537d61b3",
+            "0c938588de937a83",
+            "4d667013fa8ce9ab",
+            "22c909caaf3d0e7d",
+            "9b154273046a68f7"
+        ],
+        "x": 394,
+        "y": 239,
+        "w": 472,
+        "h": 282
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -10040,186 +10042,6 @@
         "wires": []
     },
     {
-        "id": "a956e88ac1d87f03",
-        "type": "http request",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 550,
-        "y": 320,
-        "wires": [
-            [
-                "44ef6586beec5788",
-                "e845e68972eb0d2b"
-            ]
-        ]
-    },
-    {
-        "id": "490cd1eb33a07949",
-        "type": "change",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "url",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 550,
-        "y": 280,
-        "wires": [
-            [
-                "a956e88ac1d87f03"
-            ]
-        ]
-    },
-    {
-        "id": "e845e68972eb0d2b",
-        "type": "html",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "get contents",
-        "property": "payload",
-        "outproperty": "payload",
-        "tag": "article, div.Article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
-        "ret": "text",
-        "as": "single",
-        "x": 550,
-        "y": 360,
-        "wires": [
-            [
-                "d7b1e2e892972a8c",
-                "78856da8c78fcb8c"
-            ]
-        ]
-    },
-    {
-        "id": "d7b1e2e892972a8c",
-        "type": "debug",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "extracted",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 760,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "44ef6586beec5788",
-        "type": "debug",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "raw",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 750,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "78856da8c78fcb8c",
-        "type": "function",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "clean contents",
-        "func": "\nmsg.payload = {\n    article: msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\") + `\\n`\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 560,
-        "y": 400,
-        "wires": [
-            [
-                "d804b639537d61b3",
-                "9b154273046a68f7"
-            ]
-        ]
-    },
-    {
-        "id": "d804b639537d61b3",
-        "type": "debug",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "cleaned",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 760,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "0c938588de937a83",
-        "type": "link in",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "link in 12",
-        "links": [
-            "a964fd19931c7f56"
-        ],
-        "x": 435,
-        "y": 280,
-        "wires": [
-            [
-                "490cd1eb33a07949"
-            ]
-        ]
-    },
-    {
-        "id": "9b154273046a68f7",
-        "type": "link out",
-        "z": "d8fea17acfe5c911",
-        "g": "8d3ad295cc727f06",
-        "name": "link out 18",
-        "mode": "link",
-        "links": [
-            "dab64a431d43ce8e"
-        ],
-        "x": 715,
-        "y": 400,
-        "wires": []
-    },
-    {
         "id": "273ca1d933a96ef7",
         "type": "template",
         "z": "d8fea17acfe5c911",
@@ -10232,7 +10054,7 @@
         "template": "The user will provide you with a news article by by {{{publication}}} about a particular news event, published on {{{date}}}\n\nExtract all the factual claims from the article -- including all date and numerical facts -- and enumerate them in a list. Claims that are included in the original article as a quote, indirectly or directly, should remain attributed to the source. After each claim, add a ranking from 0 to 9 indicating how central the claim is to understanding the news event and relevant context, where 9 is most central and 0 least central. The ranking should be in square brackets, with no label. When done, write “THE END”.\n\nbegin your answer with \"Let’s work this out step by step to make sure we get the right answer:\"",
         "output": "str",
         "x": 540,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "35611ad2cb429f12"
@@ -10246,7 +10068,7 @@
         "g": "70fcf5b7bc000afb",
         "name": "",
         "x": 550,
-        "y": 560,
+        "y": 640,
         "wires": [
             [
                 "25aadfc07cd42046"
@@ -10260,7 +10082,7 @@
         "g": "70fcf5b7bc000afb",
         "name": "",
         "x": 540,
-        "y": 600,
+        "y": 680,
         "wires": [
             [
                 "582214b94cca9b80"
@@ -10282,7 +10104,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 750,
-        "y": 560,
+        "y": 640,
         "wires": []
     },
     {
@@ -10295,7 +10117,7 @@
             "25b03942f12d6faa"
         ],
         "x": 435,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "273ca1d933a96ef7"
@@ -10812,6 +10634,228 @@
         "statusType": "auto",
         "x": 1080,
         "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a956e88ac1d87f03",
+        "type": "http request",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 360,
+        "wires": [
+            [
+                "44ef6586beec5788",
+                "e845e68972eb0d2b"
+            ]
+        ]
+    },
+    {
+        "id": "490cd1eb33a07949",
+        "type": "change",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "4d667013fa8ce9ab"
+            ]
+        ]
+    },
+    {
+        "id": "e845e68972eb0d2b",
+        "type": "html",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "get contents",
+        "property": "payload",
+        "outproperty": "payload",
+        "tag": "article, div.Article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
+        "ret": "text",
+        "as": "single",
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "d7b1e2e892972a8c",
+                "78856da8c78fcb8c"
+            ]
+        ]
+    },
+    {
+        "id": "d7b1e2e892972a8c",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "extracted",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "44ef6586beec5788",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "raw",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "78856da8c78fcb8c",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "clean contents",
+        "func": "\nmsg.payload = {\n    article: msg.payload[0].replace(/^\\s*[\\r\\n]/gm, \"\\n\") + `\\n`\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 440,
+        "wires": [
+            [
+                "d804b639537d61b3",
+                "22c909caaf3d0e7d"
+            ]
+        ]
+    },
+    {
+        "id": "d804b639537d61b3",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "cleaned",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "0c938588de937a83",
+        "type": "link in",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "link in 12",
+        "links": [
+            "a964fd19931c7f56"
+        ],
+        "x": 435,
+        "y": 280,
+        "wires": [
+            [
+                "490cd1eb33a07949"
+            ]
+        ]
+    },
+    {
+        "id": "4d667013fa8ce9ab",
+        "type": "subflow:520a10812173e701",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "",
+        "env": [
+            {
+                "name": "key",
+                "value": "parts",
+                "type": "str"
+            }
+        ],
+        "x": 530,
+        "y": 320,
+        "wires": [
+            [
+                "a956e88ac1d87f03"
+            ]
+        ]
+    },
+    {
+        "id": "22c909caaf3d0e7d",
+        "type": "subflow:a25be0e127fc9e24",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "",
+        "env": [
+            {
+                "name": "key",
+                "value": "parts",
+                "type": "str"
+            }
+        ],
+        "x": 540,
+        "y": 480,
+        "wires": [
+            [
+                "9b154273046a68f7"
+            ]
+        ]
+    },
+    {
+        "id": "9b154273046a68f7",
+        "type": "link out",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "link out 18",
+        "mode": "link",
+        "links": [
+            "dab64a431d43ce8e"
+        ],
+        "x": 695,
+        "y": 480,
         "wires": []
     }
 ]
