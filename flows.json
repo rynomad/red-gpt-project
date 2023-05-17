@@ -10132,7 +10132,8 @@
         "y": 160,
         "wires": [
             [
-                "9a2f6508548b5a82"
+                "9a2f6508548b5a82",
+                "a910593a291ec8e6"
             ]
         ]
     },
@@ -10437,7 +10438,7 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "publication and date",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10602,7 +10603,7 @@
         "z": "d8fea17acfe5c911",
         "g": "bdeb547ea6889d89",
         "name": "preprocessed",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10819,7 +10820,7 @@
         "z": "d8fea17acfe5c911",
         "g": "8d3ad295cc727f06",
         "name": "restore parts",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
