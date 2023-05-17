@@ -1861,8 +1861,8 @@
             "5bf08439273e5659",
             "ee5fff505e151786"
         ],
-        "x": 1134,
-        "y": 79,
+        "x": 1124,
+        "y": 59,
         "w": 592,
         "h": 402
     },
@@ -1885,9 +1885,9 @@
             "9a2f6508548b5a82",
             "356a5ab69f22d8ea"
         ],
-        "x": 654,
-        "y": 79,
-        "w": 472,
+        "x": 644,
+        "y": 59,
+        "w": 432,
         "h": 162
     },
     {
@@ -1908,8 +1908,8 @@
             "e6e3bd452ba7613c",
             "25b03942f12d6faa"
         ],
-        "x": 574,
-        "y": 559,
+        "x": 564,
+        "y": 539,
         "w": 492,
         "h": 122
     },
@@ -1936,8 +1936,8 @@
             "9b154273046a68f7",
             "2ea8ea5d537cc8a1"
         ],
-        "x": 574,
-        "y": 279,
+        "x": 564,
+        "y": 259,
         "w": 532,
         "h": 242
     },
@@ -1962,8 +1962,8 @@
             "e3eb371c9c6a90b7",
             "cad9c49d20d1a099"
         ],
-        "x": 1154,
-        "y": 519,
+        "x": 1144,
+        "y": 499,
         "w": 312,
         "h": 322
     },
@@ -2059,13 +2059,39 @@
             "bdeb547ea6889d89",
             "8d3ad295cc727f06",
             "70fcf5b7bc000afb",
-            "066788cbeb12a5d7",
             "50bc25540ab03be0"
         ],
-        "x": 494,
-        "y": 53,
-        "w": 1258,
+        "x": 538,
+        "y": 33,
+        "w": 1204,
         "h": 814
+    },
+    {
+        "id": "88af64da0772ea3e",
+        "type": "group",
+        "z": "d8fea17acfe5c911",
+        "name": "format as html",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "ae7958be39f67e3e",
+            "9abe61faf3de8fed",
+            "a37fd11fa2672df6",
+            "9b72d4ba1c260df2",
+            "3a30d45ecb5106c2",
+            "c314d9d6cf468ba1",
+            "30230815a3748042",
+            "9f024826b28091fa",
+            "55714efa3a6b8cda",
+            "5c8905d96713e876"
+        ],
+        "x": 144,
+        "y": 499,
+        "w": 302,
+        "h": 402
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -2304,8 +2330,8 @@
         "type": "junction",
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
-        "x": 1440,
-        "y": 280,
+        "x": 1430,
+        "y": 260,
         "wires": [
             [
                 "6a5b18780ac49544"
@@ -10134,8 +10160,8 @@
                 "type": "num"
             }
         ],
-        "x": 750,
-        "y": 160,
+        "x": 740,
+        "y": 140,
         "wires": [
             [
                 "9a2f6508548b5a82",
@@ -10149,8 +10175,8 @@
         "z": "d8fea17acfe5c911",
         "g": "bdeb547ea6889d89",
         "name": "",
-        "x": 730,
-        "y": 600,
+        "x": 720,
+        "y": 580,
         "wires": [
             [
                 "958c815d44fbd306",
@@ -10181,8 +10207,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 730,
-        "y": 200,
+        "x": 720,
+        "y": 180,
         "wires": [
             [
                 "56985a305923010c"
@@ -10203,8 +10229,8 @@
             "f9332dc80c23e5c0",
             "73d02e04aecca8a2"
         ],
-        "x": 895,
-        "y": 160,
+        "x": 885,
+        "y": 140,
         "wires": []
     },
     {
@@ -10217,8 +10243,8 @@
         "links": [
             "0c938588de937a83"
         ],
-        "x": 895,
-        "y": 200,
+        "x": 885,
+        "y": 180,
         "wires": []
     },
     {
@@ -10233,8 +10259,8 @@
             "dcfceb735e4ceb30",
             "1c2e9301080aadf2"
         ],
-        "x": 615,
-        "y": 120,
+        "x": 605,
+        "y": 100,
         "wires": [
             [
                 "356a5ab69f22d8ea"
@@ -10247,8 +10273,8 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1290,
-        "y": 280,
+        "x": 1280,
+        "y": 260,
         "wires": [
             [
                 "6a5b18780ac49544",
@@ -10262,8 +10288,8 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1280,
-        "y": 320,
+        "x": 1270,
+        "y": 300,
         "wires": [
             [
                 "d8e32f59bb54b6f0",
@@ -10280,8 +10306,8 @@
         "links": [
             "56985a305923010c"
         ],
-        "x": 1175,
-        "y": 120,
+        "x": 1165,
+        "y": 100,
         "wires": [
             [
                 "19bafe626da5146a"
@@ -10294,8 +10320,8 @@
         "z": "d8fea17acfe5c911",
         "g": "5ce7aa6b7480812d",
         "name": "",
-        "x": 1290,
-        "y": 400,
+        "x": 1280,
+        "y": 380,
         "wires": [
             [
                 "283887287f632b0d",
@@ -10316,8 +10342,8 @@
         "links": [
             "dab64a431d43ce8e"
         ],
-        "x": 1495,
-        "y": 440,
+        "x": 1485,
+        "y": 420,
         "wires": []
     },
     {
@@ -10331,8 +10357,8 @@
             "9b154273046a68f7",
             "cb509fac9735f5bc"
         ],
-        "x": 615,
-        "y": 600,
+        "x": 605,
+        "y": 580,
         "wires": [
             [
                 "35e4bc34206438a5"
@@ -10351,8 +10377,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 640,
+        "x": 740,
+        "y": 620,
         "wires": [
             [
                 "25b03942f12d6faa"
@@ -10369,8 +10395,8 @@
         "links": [
             "e3eb371c9c6a90b7"
         ],
-        "x": 1015,
-        "y": 640,
+        "x": 1005,
+        "y": 620,
         "wires": []
     },
     {
@@ -10385,8 +10411,8 @@
         "syntax": "plain",
         "template": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"publication\": {\n      \"type\": \"string\"\n    },\n    \"date\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\"publication\"]\n}",
         "output": "json",
-        "x": 1290,
-        "y": 120,
+        "x": 1280,
+        "y": 100,
         "wires": [
             [
                 "b4942f1b657178c0"
@@ -10411,8 +10437,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1310,
-        "y": 440,
+        "x": 1300,
+        "y": 420,
         "wires": [
             [
                 "56cf3483348667e0",
@@ -10434,8 +10460,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1550,
-        "y": 360,
+        "x": 1540,
+        "y": 340,
         "wires": []
     },
     {
@@ -10452,8 +10478,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1580,
-        "y": 400,
+        "x": 1570,
+        "y": 380,
         "wires": []
     },
     {
@@ -10468,8 +10494,8 @@
         "syntax": "mustache",
         "template": "The user will provide you with a url.\n\nrespond with a JSON object containing the keys \"publication\" and \"date\", filled in based on the url.\n\nif you cannot infer the date, leave it blank.\n\nreturn only the JSON, without preamble or postscript.\n\nabide by the following JSON schema:\n{{{schemaString}}}",
         "output": "str",
-        "x": 1320,
-        "y": 240,
+        "x": 1310,
+        "y": 220,
         "wires": [
             [
                 "fdc292998637cddc"
@@ -10503,8 +10529,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1300,
-        "y": 160,
+        "x": 1290,
+        "y": 140,
         "wires": [
             [
                 "90ad11fbbe016cce"
@@ -10557,8 +10583,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1530,
-        "y": 320,
+        "x": 1520,
+        "y": 300,
         "wires": []
     },
     {
@@ -10574,8 +10600,8 @@
                 "type": "str"
             }
         ],
-        "x": 1300,
-        "y": 200,
+        "x": 1290,
+        "y": 180,
         "wires": [
             [
                 "440e59fe168c1cab"
@@ -10595,8 +10621,8 @@
                 "type": "str"
             }
         ],
-        "x": 1280,
-        "y": 360,
+        "x": 1270,
+        "y": 340,
         "wires": [
             [
                 "f786a9803de32950"
@@ -10617,8 +10643,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 600,
+        "x": 930,
+        "y": 580,
         "wires": []
     },
     {
@@ -10635,8 +10661,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 120,
+        "x": 930,
+        "y": 100,
         "wires": []
     },
     {
@@ -10656,8 +10682,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 730,
-        "y": 360,
+        "x": 720,
+        "y": 340,
         "wires": [
             [
                 "44ef6586beec5788",
@@ -10685,8 +10711,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
-        "y": 320,
+        "x": 720,
+        "y": 300,
         "wires": [
             [
                 "a956e88ac1d87f03"
@@ -10704,8 +10730,8 @@
         "tag": "article, div.Article, div.content, div.post-content, div.entry-content, section[data-type='articleBody']",
         "ret": "text",
         "as": "single",
-        "x": 730,
-        "y": 400,
+        "x": 720,
+        "y": 380,
         "wires": [
             [
                 "d7b1e2e892972a8c",
@@ -10727,8 +10753,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 360,
+        "x": 970,
+        "y": 340,
         "wires": []
     },
     {
@@ -10745,8 +10771,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 320,
+        "x": 960,
+        "y": 300,
         "wires": []
     },
     {
@@ -10761,8 +10787,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 440,
+        "x": 730,
+        "y": 420,
         "wires": [
             [
                 "d804b639537d61b3",
@@ -10785,8 +10811,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 400,
+        "x": 970,
+        "y": 380,
         "wires": []
     },
     {
@@ -10798,8 +10824,8 @@
         "links": [
             "a964fd19931c7f56"
         ],
-        "x": 615,
-        "y": 320,
+        "x": 605,
+        "y": 300,
         "wires": [
             [
                 "490cd1eb33a07949"
@@ -10816,8 +10842,8 @@
         "links": [
             "dab64a431d43ce8e"
         ],
-        "x": 875,
-        "y": 480,
+        "x": 865,
+        "y": 460,
         "wires": []
     },
     {
@@ -10834,8 +10860,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 440,
+        "x": 980,
+        "y": 420,
         "wires": []
     },
     {
@@ -10852,8 +10878,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1550,
-        "y": 280,
+        "x": 1540,
+        "y": 260,
         "wires": []
     },
     {
@@ -10905,8 +10931,8 @@
         "syntax": "mustache",
         "template": "The user will provide you with a news article by by {{{payload.publication}}} about a particular news event, published on {{{payload.date}}}\n\nExtract all the factual claims from the article -- including all date and numerical facts -- and enumerate them in a list. Claims that are included in the original article as a quote, indirectly or directly, should remain attributed to the source. After each claim, add a ranking from 0 to 9 indicating how central the claim is to understanding the news event and relevant context, where 9 is most central and 0 least central. The ranking should be in square brackets, with no label. When done, write “THE END”.\n\nbegin your answer with \"Let’s work this out step by step to make sure we get the right answer:\"",
         "output": "str",
-        "x": 1300,
-        "y": 600,
+        "x": 1290,
+        "y": 580,
         "wires": [
             [
                 "35611ad2cb429f12"
@@ -10919,8 +10945,8 @@
         "z": "d8fea17acfe5c911",
         "g": "70fcf5b7bc000afb",
         "name": "",
-        "x": 1310,
-        "y": 640,
+        "x": 1300,
+        "y": 620,
         "wires": [
             [
                 "25aadfc07cd42046"
@@ -10933,8 +10959,8 @@
         "z": "d8fea17acfe5c911",
         "g": "70fcf5b7bc000afb",
         "name": "",
-        "x": 1300,
-        "y": 680,
+        "x": 1290,
+        "y": 660,
         "wires": [
             [
                 "cad9c49d20d1a099"
@@ -10955,8 +10981,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1290,
-        "y": 800,
+        "x": 1280,
+        "y": 780,
         "wires": []
     },
     {
@@ -10969,8 +10995,8 @@
         "links": [
             "cb70c47d28df92c2"
         ],
-        "x": 1655,
-        "y": 760,
+        "x": 1645,
+        "y": 740,
         "wires": []
     },
     {
@@ -10993,8 +11019,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1330,
-        "y": 560,
+        "x": 1320,
+        "y": 540,
         "wires": [
             [
                 "273ca1d933a96ef7"
@@ -11021,8 +11047,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1320,
-        "y": 760,
+        "x": 1310,
+        "y": 740,
         "wires": [
             [
                 "582214b94cca9b80",
@@ -11039,8 +11065,8 @@
         "links": [
             "25b03942f12d6faa"
         ],
-        "x": 1195,
-        "y": 560,
+        "x": 1185,
+        "y": 540,
         "wires": [
             [
                 "1dfcb1bed06911af"
@@ -11067,8 +11093,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1340,
-        "y": 720,
+        "x": 1330,
+        "y": 700,
         "wires": [
             [
                 "83a41c38d4eadb81"
@@ -11385,6 +11411,7 @@
         "id": "ae7958be39f67e3e",
         "type": "switch",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "",
         "property": "res",
         "propertyType": "msg",
@@ -11396,8 +11423,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 250,
-        "y": 920,
+        "x": 310,
+        "y": 660,
         "wires": [
             [
                 "c314d9d6cf468ba1"
@@ -11408,29 +11435,12 @@
         "id": "9abe61faf3de8fed",
         "type": "http response",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "send article",
         "statusCode": "200",
         "headers": {},
-        "x": 270,
-        "y": 1080,
-        "wires": []
-    },
-    {
-        "id": "066788cbeb12a5d7",
-        "type": "debug",
-        "z": "d8fea17acfe5c911",
-        "g": "70d3949bbb93a4fa",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 200,
+        "x": 330,
+        "y": 820,
         "wires": []
     },
     {
@@ -11455,7 +11465,6 @@
         "y": 440,
         "wires": [
             [
-                "066788cbeb12a5d7",
                 "1c2e9301080aadf2"
             ]
         ]
@@ -11506,6 +11515,7 @@
         "id": "a37fd11fa2672df6",
         "type": "subflow:a25be0e127fc9e24",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "",
         "env": [
             {
@@ -11514,8 +11524,8 @@
                 "type": "str"
             }
         ],
-        "x": 260,
-        "y": 840,
+        "x": 320,
+        "y": 580,
         "wires": [
             [
                 "9b72d4ba1c260df2",
@@ -11527,6 +11537,7 @@
         "id": "9b72d4ba1c260df2",
         "type": "subflow:a25be0e127fc9e24",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "",
         "env": [
             {
@@ -11535,8 +11546,8 @@
                 "type": "str"
             }
         ],
-        "x": 260,
-        "y": 880,
+        "x": 320,
+        "y": 620,
         "wires": [
             [
                 "ae7958be39f67e3e"
@@ -11595,12 +11606,13 @@
         "id": "3a30d45ecb5106c2",
         "type": "link in",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "link in 19",
         "links": [
             "2ddb7664816d8620"
         ],
-        "x": 125,
-        "y": 840,
+        "x": 185,
+        "y": 580,
         "wires": [
             [
                 "a37fd11fa2672df6"
@@ -11611,6 +11623,7 @@
         "id": "c314d9d6cf468ba1",
         "type": "template",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "",
         "field": "system",
         "fieldType": "msg",
@@ -11618,8 +11631,8 @@
         "syntax": "plain",
         "template": "You are an expert web designer specializing on news stories. \n\nThe user will give you an article they have written.\n\nYour job is to turn it into a well formatted HTML page for viewing\n\nFirst, briefly give an overview of your design approach, describing what you will do to give the page a good aesthetic\n\nFinish your response with a github flavored markdown code block containing a full html web page containing the article.\n\nYou may use any CDN hosted stylesheets you want as long as you make sure to import them in the <head> of the document.",
         "output": "str",
-        "x": 260,
-        "y": 960,
+        "x": 320,
+        "y": 700,
         "wires": [
             [
                 "30230815a3748042"
@@ -11630,9 +11643,10 @@
         "id": "30230815a3748042",
         "type": "subflow:788598196e86646c",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "",
-        "x": 270,
-        "y": 1000,
+        "x": 330,
+        "y": 740,
         "wires": [
             [
                 "9f024826b28091fa"
@@ -11643,12 +11657,14 @@
         "id": "9f024826b28091fa",
         "type": "subflow:237429fb2a5a7712",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "",
-        "x": 260,
-        "y": 1040,
+        "x": 320,
+        "y": 780,
         "wires": [
             [
-                "9abe61faf3de8fed"
+                "9abe61faf3de8fed",
+                "5c8905d96713e876"
             ]
         ]
     },
@@ -11665,8 +11681,7 @@
         "y": 160,
         "wires": [
             [
-                "dcfceb735e4ceb30",
-                "066788cbeb12a5d7"
+                "dcfceb735e4ceb30"
             ]
         ]
     },
@@ -11682,8 +11697,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 730,
-        "y": 120,
+        "x": 720,
+        "y": 100,
         "wires": [
             [
                 "48bf295b6a8d8784"
@@ -11707,8 +11722,8 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 1570,
-        "y": 760,
+        "x": 1560,
+        "y": 740,
         "wires": [
             [
                 "5acdae929bdba67e"
@@ -11719,6 +11734,7 @@
         "id": "55714efa3a6b8cda",
         "type": "debug",
         "z": "d8fea17acfe5c911",
+        "g": "88af64da0772ea3e",
         "name": "completed",
         "active": true,
         "tosidebar": true,
@@ -11728,19 +11744,26 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 450,
-        "y": 840,
+        "x": 330,
+        "y": 540,
         "wires": []
     },
     {
-        "id": "65fc91e9838fff13",
-        "type": "websocket in",
+        "id": "5c8905d96713e876",
+        "type": "debug",
         "z": "d8fea17acfe5c911",
-        "name": "",
-        "x": 180,
-        "y": 600,
-        "wires": [
-            []
-        ]
+        "g": "88af64da0772ea3e",
+        "name": "completed",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 860,
+        "wires": []
     }
 ]
