@@ -1956,11 +1956,12 @@
             "0c938588de937a83",
             "4d667013fa8ce9ab",
             "22c909caaf3d0e7d",
-            "9b154273046a68f7"
+            "9b154273046a68f7",
+            "2ea8ea5d537cc8a1"
         ],
         "x": 394,
         "y": 239,
-        "w": 472,
+        "w": 572,
         "h": 282
     },
     {
@@ -10724,7 +10725,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
+        "x": 840,
         "y": 320,
         "wires": []
     },
@@ -10734,7 +10735,7 @@
         "z": "d8fea17acfe5c911",
         "g": "8d3ad295cc727f06",
         "name": "raw",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10742,7 +10743,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
+        "x": 830,
         "y": 280,
         "wires": []
     },
@@ -10773,7 +10774,7 @@
         "z": "d8fea17acfe5c911",
         "g": "8d3ad295cc727f06",
         "name": "cleaned",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10781,7 +10782,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
+        "x": 840,
         "y": 360,
         "wires": []
     },
@@ -10840,7 +10841,8 @@
         "y": 480,
         "wires": [
             [
-                "9b154273046a68f7"
+                "9b154273046a68f7",
+                "2ea8ea5d537cc8a1"
             ]
         ]
     },
@@ -10856,6 +10858,24 @@
         ],
         "x": 695,
         "y": 480,
+        "wires": []
+    },
+    {
+        "id": "2ea8ea5d537cc8a1",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "g": "8d3ad295cc727f06",
+        "name": "restore parts",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 400,
         "wires": []
     }
 ]
