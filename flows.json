@@ -11674,7 +11674,7 @@
         "z": "d8fea17acfe5c911",
         "g": "e80b85ec598376ea",
         "name": "split csv",
-        "func": "msg.payload = msg.payload.split(',')\nreturn msg;",
+        "func": "msg.payload = msg.payload.split(',').map(decodeURI)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
