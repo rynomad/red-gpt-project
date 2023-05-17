@@ -2353,12 +2353,6 @@
         ]
     },
     {
-        "id": "21fed1909aedb8c3",
-        "type": "websocket-listener",
-        "path": "",
-        "wholemsg": "false"
-    },
-    {
         "id": "07ae0da70cee4ba6",
         "type": "function",
         "z": "d295481a52b8fd83",
