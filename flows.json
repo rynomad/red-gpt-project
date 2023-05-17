@@ -1825,12 +1825,13 @@
             "2da46581aab59cf8",
             "1c2e9301080aadf2",
             "b268329dd336d0cf",
-            "32ceb9f8b30507ba"
+            "32ceb9f8b30507ba",
+            "2ad8d22b035e3695"
         ],
-        "x": 194,
-        "y": 239,
-        "w": 262,
-        "h": 242
+        "x": 154,
+        "y": 219,
+        "w": 252,
+        "h": 282
     },
     {
         "id": "5ce7aa6b7480812d",
@@ -2089,9 +2090,9 @@
             "5c8905d96713e876",
             "a78386ef55a00222"
         ],
-        "x": 144,
-        "y": 499,
-        "w": 302,
+        "x": 154,
+        "y": 539,
+        "w": 292,
         "h": 462
     },
     {
@@ -10118,8 +10119,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 290,
-        "y": 280,
+        "x": 250,
+        "y": 300,
         "wires": [
             [
                 "b268329dd336d0cf",
@@ -11420,7 +11421,7 @@
         "repair": false,
         "outputs": 1,
         "x": 310,
-        "y": 660,
+        "y": 700,
         "wires": [
             [
                 "c314d9d6cf468ba1"
@@ -11436,7 +11437,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 330,
-        "y": 880,
+        "y": 920,
         "wires": []
     },
     {
@@ -11457,8 +11458,8 @@
                 "type": "bool"
             }
         ],
-        "x": 270,
-        "y": 440,
+        "x": 230,
+        "y": 460,
         "wires": [
             [
                 "1c2e9301080aadf2"
@@ -11483,8 +11484,8 @@
                 "type": "bool"
             }
         ],
-        "x": 270,
-        "y": 400,
+        "x": 230,
+        "y": 420,
         "wires": [
             [
                 "a1d1239323426235"
@@ -11503,8 +11504,8 @@
             "b9f92d4b3de542a8",
             "42c8c53cc172e877"
         ],
-        "x": 415,
-        "y": 440,
+        "x": 365,
+        "y": 460,
         "wires": []
     },
     {
@@ -11521,7 +11522,7 @@
             }
         ],
         "x": 320,
-        "y": 580,
+        "y": 620,
         "wires": [
             [
                 "9b72d4ba1c260df2",
@@ -11543,7 +11544,7 @@
             }
         ],
         "x": 320,
-        "y": 620,
+        "y": 660,
         "wires": [
             [
                 "ae7958be39f67e3e"
@@ -11570,8 +11571,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
-        "y": 320,
+        "x": 260,
+        "y": 340,
         "wires": [
             [
                 "32ceb9f8b30507ba"
@@ -11590,8 +11591,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 360,
+        "x": 240,
+        "y": 380,
         "wires": [
             [
                 "2da46581aab59cf8"
@@ -11607,8 +11608,8 @@
         "links": [
             "2ddb7664816d8620"
         ],
-        "x": 185,
-        "y": 580,
+        "x": 195,
+        "y": 620,
         "wires": [
             [
                 "a37fd11fa2672df6"
@@ -11628,7 +11629,7 @@
         "template": "You are an expert web designer specializing on news stories. \n\nThe user will give you an article they have written.\n\nYour job is to turn it into a well formatted HTML page for viewing\n\nFirst, briefly give an overview of your design approach, describing what you will do to give the page a good aesthetic\n\nFinish your response with a github flavored markdown code block containing a full html web page containing the article.\n\nYou may use any CDN hosted stylesheets you want as long as you make sure to import them in the <head> of the document.",
         "output": "str",
         "x": 320,
-        "y": 700,
+        "y": 740,
         "wires": [
             [
                 "30230815a3748042"
@@ -11642,7 +11643,7 @@
         "g": "88af64da0772ea3e",
         "name": "",
         "x": 330,
-        "y": 740,
+        "y": 780,
         "wires": [
             [
                 "9f024826b28091fa"
@@ -11656,7 +11657,7 @@
         "g": "88af64da0772ea3e",
         "name": "",
         "x": 320,
-        "y": 780,
+        "y": 820,
         "wires": [
             [
                 "a78386ef55a00222"
@@ -11740,7 +11741,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 330,
-        "y": 540,
+        "y": 580,
         "wires": []
     },
     {
@@ -11758,7 +11759,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 330,
-        "y": 920,
+        "y": 960,
         "wires": []
     },
     {
@@ -11774,7 +11775,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 820,
+        "y": 860,
         "wires": [
             [
                 "9abe61faf3de8fed",
@@ -11786,6 +11787,7 @@
         "id": "2ad8d22b035e3695",
         "type": "debug",
         "z": "d8fea17acfe5c911",
+        "g": "e80b85ec598376ea",
         "name": "error",
         "active": true,
         "tosidebar": true,
@@ -11795,8 +11797,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 510,
-        "y": 280,
+        "x": 230,
+        "y": 260,
         "wires": []
     }
 ]
