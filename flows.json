@@ -10426,7 +10426,7 @@
         "y": 280,
         "wires": [
             [
-                "19bafe626da5146a"
+                "b4942f1b657178c0"
             ]
         ]
     },
@@ -10526,7 +10526,7 @@
         "syntax": "plain",
         "template": "{\n  \"$schema\": \"http://json-schema.org/draft-06/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"publication\": {\n      \"type\": \"string\"\n    },\n    \"date\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\"publication\"]\n}",
         "output": "json",
-        "x": 1070,
+        "x": 1130,
         "y": 280,
         "wires": [
             [
