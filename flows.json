@@ -1826,12 +1826,13 @@
             "1c2e9301080aadf2",
             "b268329dd336d0cf",
             "32ceb9f8b30507ba",
-            "2ad8d22b035e3695"
+            "2ad8d22b035e3695",
+            "a136ff762044e4d6"
         ],
         "x": 154,
         "y": 219,
         "w": 252,
-        "h": 282
+        "h": 322
     },
     {
         "id": "5ce7aa6b7480812d",
@@ -10123,8 +10124,8 @@
         "y": 300,
         "wires": [
             [
-                "b268329dd336d0cf",
-                "2ad8d22b035e3695"
+                "2ad8d22b035e3695",
+                "a136ff762044e4d6"
             ]
         ]
     },
@@ -11437,7 +11438,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 330,
-        "y": 920,
+        "y": 900,
         "wires": []
     },
     {
@@ -11459,7 +11460,7 @@
             }
         ],
         "x": 230,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "1c2e9301080aadf2"
@@ -11485,7 +11486,7 @@
             }
         ],
         "x": 230,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "a1d1239323426235"
@@ -11572,7 +11573,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 340,
+        "y": 380,
         "wires": [
             [
                 "32ceb9f8b30507ba"
@@ -11585,14 +11586,14 @@
         "z": "d8fea17acfe5c911",
         "g": "e80b85ec598376ea",
         "name": "split csv",
-        "func": "msg.payload = msg.payload.split(',').map(decodeURI)\nreturn msg;",
+        "func": "\nmsg.payload = msg.payload.split(',').map(decodeURI)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 240,
-        "y": 380,
+        "y": 420,
         "wires": [
             [
                 "2da46581aab59cf8"
@@ -11768,7 +11769,7 @@
         "z": "d8fea17acfe5c911",
         "g": "88af64da0772ea3e",
         "name": "function 10",
-        "func": "function parseCodeBlockWithHTML(inputString) {\n    const codeBlockRegex = /^```.*([\\s\\S]*?)^```/gm;\n    const matches = inputString.matchAll(codeBlockRegex);\n    const codeBlocks = [];\n\n    for (const match of matches) {\n        const code = match[1].trim();\n        codeBlocks.push(code);\n    }\n\n    return codeBlocks;\n}\n\nmsg.payload = parseCodeBlockWithHTML(msg.payload).pop()\n\nreturn msg;",
+        "func": "function parseCodeBlockWithHTML(inputString) {\n    const codeBlockRegex = /^```.*([\\s\\S]*?)^```/gm;\n    const matches = inputString.matchAll(codeBlockRegex);\n    const codeBlocks = [];\n\n    for (const match of matches) {\n        const code = match[1].trim();\n        codeBlocks.push(code);\n    }\n\n    return codeBlocks;\n}\n\nconst _msg = flow.get(msg.__msgid)\n_msg.req = msg.req;\n_msg.res = msg.res;\n\n_msg.payload = parseCodeBlockWithHTML(msg.payload).pop()\n\nreturn _msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -11800,5 +11801,25 @@
         "x": 230,
         "y": 260,
         "wires": []
+    },
+    {
+        "id": "a136ff762044e4d6",
+        "type": "function",
+        "z": "d8fea17acfe5c911",
+        "g": "e80b85ec598376ea",
+        "name": "split csv",
+        "func": "flow.set(msg._msgid, msg);\nmsg.__msgid = msg._msgid;\n\nmsg.payload = msg.payload.split(',').map(decodeURI)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "b268329dd336d0cf"
+            ]
+        ]
     }
 ]
