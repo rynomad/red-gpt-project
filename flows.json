@@ -5299,7 +5299,7 @@
         "type": "function",
         "z": "80a84193bc2e4430",
         "name": "parse hit",
-        "func": "let hits = flow.get('hits') || 0\nhits++\nflow.set('hits', hits)\nnode.status({ fill: \"green\", shape: \"dot\", text: `${hits}` });\n\nlet rval = JSON.parse(msg.payload)\nrval._linkSource = msg._linkSource;\nreturn rval;",
+        "func": "let hits = flow.get('hits') || 0;\nhits++;\nflow.set('hits', hits);\nnode.status({ fill: \"green\", shape: \"dot\", text: `${hits}` });\n\nlet {history, full, payload, temperature, n} = JSON.parse(msg.payload);\n\nmsg.history = history;\nmsg.full = full;\nmsg.payload = payload;\nmsg.full = full;\nmsg.n = n;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5562,7 +5562,7 @@
         "id": "19da1f8da33d41e4",
         "type": "switch",
         "z": "411e0c8d5e99f249",
-        "name": "",
+        "name": "should skip hash?",
         "property": "skipHash",
         "propertyType": "env",
         "rules": [
@@ -5576,7 +5576,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 230,
+        "x": 270,
         "y": 140,
         "wires": [
             [
