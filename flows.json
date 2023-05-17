@@ -5063,7 +5063,7 @@
         "type": "function",
         "z": "d158fb9598ddc8a1",
         "name": "clone",
-        "func": "const payload = []\n\n// @ts-ignore\nfor (let i = 0; i < env.get('quantity'); i++){\n    payload.push(JSON.parse(JSON.stringify(msg.payload)))\n}\n\nmsg.payload = payload\nreturn msg;",
+        "func": "const payload = []\nnode.warn('quantity: ' + env.get('quantity'));\n// @ts-ignore\nfor (let i = 0; i < env.get('quantity'); i++){\n    payload.push(JSON.parse(JSON.stringify(msg.payload)))\n}\n\nmsg.payload = payload\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
