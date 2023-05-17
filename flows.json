@@ -11252,7 +11252,8 @@
                 "a0c16b59aa0c1bee"
             ],
             [
-                "580aab1f23197f05"
+                "580aab1f23197f05",
+                "7dc5a014e803be42"
             ]
         ]
     },
@@ -11317,5 +11318,22 @@
                 "e980abdeacc89946"
             ]
         ]
+    },
+    {
+        "id": "7dc5a014e803be42",
+        "type": "debug",
+        "z": "d8fea17acfe5c911",
+        "name": "reduce",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 920,
+        "wires": []
     }
 ]
