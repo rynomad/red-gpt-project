@@ -3,7 +3,7 @@
     "description": "A Node-RED Project",
     "version": "0.0.1",
     "dependencies": {
-        "node-red-contrib-custom-chatgpt": "github:rynomad/node-red-contrib-chatgpt#11a7a06"
+        "node-red-contrib-custom-chatgpt": "github:rynomad/node-red-contrib-chatgpt#6ef513e"
     },
     "node-red": {
         "settings": {

@@ -42,7 +42,7 @@
     {
         "id": "b82d52604ecd4650",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "Smart GPT",
         "disabled": false,
         "info": "",
         "env": []
@@ -1566,9 +1566,7 @@
             "b619ecd827a40d17"
         ],
         "x": 54,
-        "y": 579,
-        "w": 352,
-        "h": 282
+        "y": 579
     },
     {
         "id": "f7178adeaceda352",
@@ -1589,9 +1587,7 @@
             "3bd4d0e7955f70cc"
         ],
         "x": 474,
-        "y": 99,
-        "w": 332,
-        "h": 202
+        "y": 99
     },
     {
         "id": "d98aa00cb0e639fe",
@@ -1613,9 +1609,7 @@
             "f8c7b0b4d7308197"
         ],
         "x": 468,
-        "y": 328,
-        "w": 864,
-        "h": 1073
+        "y": 328
     },
     {
         "id": "ef4838b57d8a8292",
@@ -1644,9 +1638,7 @@
             "97f2373daf2bd0cc"
         ],
         "x": 54,
-        "y": 99,
-        "w": 392,
-        "h": 447
+        "y": 99
     },
     {
         "id": "d93e257c176bb0a5",
@@ -1667,9 +1659,7 @@
             "eaa56c15e37f5e2f"
         ],
         "x": 834,
-        "y": 99,
-        "w": 332,
-        "h": 202
+        "y": 99
     },
     {
         "id": "629254ef17813dda",
@@ -1688,9 +1678,7 @@
             "6a9ed2cdd37c2209"
         ],
         "x": 154,
-        "y": 39,
-        "w": 252,
-        "h": 162
+        "y": 39
     },
     {
         "id": "e80b85ec598376ea",
@@ -1714,9 +1702,7 @@
             "a136ff762044e4d6"
         ],
         "x": 154,
-        "y": 219,
-        "w": 252,
-        "h": 322
+        "y": 219
     },
     {
         "id": "fd8ce360fc73cf16",
@@ -1735,9 +1721,7 @@
             "2ddb7664816d8620"
         ],
         "x": 554,
-        "y": 893,
-        "w": 962,
-        "h": 439
+        "y": 893
     },
     {
         "id": "70d3949bbb93a4fa",
@@ -1760,9 +1744,7 @@
             "50bc25540ab03be0"
         ],
         "x": 538,
-        "y": 53,
-        "w": 1204,
-        "h": 814
+        "y": 53
     },
     {
         "id": "88af64da0772ea3e",
@@ -1788,9 +1770,7 @@
             "a78386ef55a00222"
         ],
         "x": 154,
-        "y": 539,
-        "w": 292,
-        "h": 462
+        "y": 539
     },
     {
         "id": "5bc27646deb5dff2",
@@ -1811,9 +1791,7 @@
             "cf28e4a3eb7a131c"
         ],
         "x": 754,
-        "y": 1199,
-        "w": 332,
-        "h": 162
+        "y": 1199
     },
     {
         "id": "ced0597ce1f434c4",
@@ -1839,9 +1817,7 @@
             "b3c1417704b4555c"
         ],
         "x": 1024,
-        "y": 799,
-        "w": 282,
-        "h": 362
+        "y": 799
     },
     {
         "id": "0dc88fbb1e7d8a7d",
@@ -1870,9 +1846,7 @@
             "ec635034eef78b6a"
         ],
         "x": 494,
-        "y": 799,
-        "w": 492,
-        "h": 362
+        "y": 799
     },
     {
         "id": "87f661e4d4efc5c4",
@@ -1903,9 +1877,7 @@
             "5d9143ec61b8e625"
         ],
         "x": 674,
-        "y": 354,
-        "w": 492,
-        "h": 407
+        "y": 354
     },
     {
         "id": "5ce7aa6b7480812d",
@@ -1937,9 +1909,7 @@
             "ee5fff505e151786"
         ],
         "x": 1124,
-        "y": 79,
-        "w": 592,
-        "h": 402
+        "y": 79
     },
     {
         "id": "87416ad3dde25082",
@@ -1961,9 +1931,7 @@
             "356a5ab69f22d8ea"
         ],
         "x": 644,
-        "y": 79,
-        "w": 432,
-        "h": 162
+        "y": 79
     },
     {
         "id": "bdeb547ea6889d89",
@@ -1984,9 +1952,7 @@
             "25b03942f12d6faa"
         ],
         "x": 564,
-        "y": 559,
-        "w": 492,
-        "h": 122
+        "y": 559
     },
     {
         "id": "8d3ad295cc727f06",
@@ -2012,9 +1978,7 @@
             "2ea8ea5d537cc8a1"
         ],
         "x": 564,
-        "y": 279,
-        "w": 532,
-        "h": 242
+        "y": 279
     },
     {
         "id": "70fcf5b7bc000afb",
@@ -2038,9 +2002,7 @@
             "cad9c49d20d1a099"
         ],
         "x": 1144,
-        "y": 519,
-        "w": 312,
-        "h": 322
+        "y": 519
     },
     {
         "id": "7e409e7a7eca06f0",
@@ -2067,9 +2029,7 @@
             "7f675bee69add766"
         ],
         "x": 654,
-        "y": 919,
-        "w": 432,
-        "h": 387
+        "y": 919
     },
     {
         "id": "b651702235fdbc29",
@@ -2091,9 +2051,7 @@
             "93f28b8a242cc779"
         ],
         "x": 1164,
-        "y": 919,
-        "w": 262,
-        "h": 242
+        "y": 919
     },
     {
         "id": "c8ed6299a7db1bac",
@@ -2352,6 +2310,30 @@
                 "f015f23c12d7f594"
             ]
         ]
+    },
+    {
+        "id": "e9abc2ec5043e9e6",
+        "type": "websocket-listener",
+        "path": "/ws/0.7434503079585679",
+        "wholemsg": "true"
+    },
+    {
+        "id": "24c7fa07f408365e",
+        "type": "websocket-listener",
+        "path": "/ws/0.36735402987733323",
+        "wholemsg": "true"
+    },
+    {
+        "id": "77318c797dc79ac7",
+        "type": "websocket-listener",
+        "path": "/ws/0.01638793556490259",
+        "wholemsg": "true"
+    },
+    {
+        "id": "0efdf87c551f6157",
+        "type": "websocket-listener",
+        "path": "/ws/0.8526569702907416",
+        "wholemsg": "true"
     },
     {
         "id": "07ae0da70cee4ba6",
@@ -9754,6 +9736,70 @@
         "x": 900,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "38d7bbf4a74f4b5c",
+        "type": "PromptGPT",
+        "z": "b82d52604ecd4650",
+        "name": "User Input",
+        "model": "3.5",
+        "mode": "system",
+        "temperature": "0.7",
+        "system": "The user will ask you a question. Do your best to answer it\n\nBegin your response with \"Let's work this out in a step by step way to make sure we have the right answer\"",
+        "prompt": "",
+        "propagateResponse": true,
+        "server": "e9abc2ec5043e9e6",
+        "wsid": "0.7434503079585679",
+        "quantity": "3",
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "1dec7c442a125dcd"
+            ]
+        ]
+    },
+    {
+        "id": "1dec7c442a125dcd",
+        "type": "PromptGPT",
+        "z": "b82d52604ecd4650",
+        "name": "Reviewer",
+        "model": "3.5",
+        "mode": "system",
+        "temperature": "0.4",
+        "system": "You are a researcher tasked with investigating the response options provided. List the flaws and faulty logic of each answer option. \n\nBegin your response with \"Let's work this out in a step by step way to be sure we have all the errors:\"",
+        "prompt": "",
+        "propagateResponse": false,
+        "server": "77318c797dc79ac7",
+        "wsid": "0.01638793556490259",
+        "quantity": 1,
+        "x": 280,
+        "y": 240,
+        "wires": [
+            [
+                "0d36c6cf697dd656"
+            ]
+        ]
+    },
+    {
+        "id": "0d36c6cf697dd656",
+        "type": "PromptGPT",
+        "z": "b82d52604ecd4650",
+        "name": "Resolver",
+        "model": "3.5",
+        "mode": "prompt",
+        "temperature": 0.5,
+        "system": "",
+        "prompt": "You are a resolver tasked with:\n1) finding which of the answer options the researcher thought was best\n2) improving that answer\n3) Printing the improved answer in full\n\nLet's work this out in a step by step way to be sure we have the right answer. ",
+        "propagateResponse": false,
+        "server": "0efdf87c551f6157",
+        "wsid": "0.8526569702907416",
+        "quantity": 1,
+        "x": 280,
+        "y": 300,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "270dcc5c3ccf3876",
